@@ -10,17 +10,17 @@ chapter: false
 
 
 ### Student Information:
-&emsp; **Full Name:** Nguyen Van A
+&emsp; **Full Name:** Lê Trọng Nhân
 
-&emsp; **Phone Number:** 0989888999 
+&emsp; **Phone Number:** 0397609967 
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Email:** nhanle221199@gmail.com
 
 &emsp; **University:** FPT University
 
-&emsp; **Major:** Information Technology
+&emsp; **Major:** Artificial Intelligence
 
-&emsp; **Class:** AWS082025
+&emsp; **Class:** SE190525
 
 &emsp; **Internship Company:** Amazon Web Services Vietnam Co., Ltd.
 
@@ -28,7 +28,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 12/08/2025 to 12/11/2025
 
-![Your profile picture](/images/avatar_new.png)
+![Your profile picture](/images/image.png)
 
 ### Report Content
 

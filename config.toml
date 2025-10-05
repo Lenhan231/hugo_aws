@@ -20,31 +20,34 @@ home = [ "HTML", "RSS", "JSON"]
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
-  
-[Languages]
-[Languages.en]
-title = "Internship Report"
-weight = 1
-languageName = "English"
+  disableSearch = true
+  disableLanguageSwitchingButton = true
 
-[[Languages.en.menu.shortcuts]]
-name = "<i class='fab fa-facebook'></i> AWS Study Group"
-identifier = "AWS Study Group FB"
-url = "https://www.facebook.com/groups/awsstudygroupfcj/"
-weight = 20
+[languages]
+  [languages.en]
+  title = "Internship Report"
+  weight = 1
+  languageName = "English"
 
-[Languages.vi]
-title = "Báo cáo thực tập"
-weight = 2
-languageName = "Tiếng Việt"
+  [[languages.en.menu.shortcuts]]
+  name = "<i class='fab fa-facebook'></i> AWS Study Group"
+  identifier = "AWS Study Group FB"
+  url = "https://www.facebook.com/groups/awsstudygroupfcj/"
+  weight = 20
 
-[[Languages.vi.menu.shortcuts]]
-name = "<i class='fab fa-facebook'></i> AWS Study Group"
-identifier = "AWS Study Group FB"
-url = "https://www.facebook.com/groups/awsstudygroupfcj/"
-weight = 20
+  [languages.vi]
+  title = "Báo cáo thực tập"
+  weight = 2
+  languageName = "Tiếng Việt"
+
+  [[languages.vi.menu.shortcuts]]
+  name = "<i class='fab fa-facebook'></i> AWS Study Group"
+  identifier = "AWS Study Group FB"
+  url = "https://www.facebook.com/groups/awsstudygroupfcj/"
+  weight = 20
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+

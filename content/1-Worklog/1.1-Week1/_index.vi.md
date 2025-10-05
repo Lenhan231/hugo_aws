@@ -1,61 +1,185 @@
 ---
-title: "Worklog Tuần 1"
-
+title: "Tuần 1 – Mô-đun 1"
 weight: 1
 chapter: false
-pre: " <b> 1.1. </b> "
+pre: "<b> 1.1. </b>"
+date: 2025-09-09
+status: "Hoàn thành"
 ---
 
+# Mô-đun 1
 
-### Mục tiêu tuần 1:
+**Ngày:** 09/09/2025  
+**Trạng thái:** Hoàn thành  
+**Tuần:** Tuần 1  
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+---
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 08/09/2025   | 08/09/2025      | <https://policies.fcjuni.com/>
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 09/09/2025   | 09/09/2025      | <https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 10/09/2025   | 10/09/2025      | <https://000001.awsstudygroup.com/vi/1-create-new-aws-account/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + Ngân sách <br>&emsp; + Ngân sách sử dụng br>&emsp; + Ngân sách đặt chỗ <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>  - Kế hoạch tiết kiệm Ngân sách <br>                | 11/09/2025   | 11/09/2025      | <https://000007.awsstudygroup.com/vi/5-explore-and-configure-the-aws-management-console/> |
-| 6   | - **Thực hành:**<br>&emsp; + Tạo Ngân sách theo Mẫu <br>&emsp; + Tạo Ngân sách Sử dụng <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 12/09/2025  | 12/09/2025     | <https://000007.awsstudygroup.com/vi/5-explore-and-configure-the-aws-management-console/> |
+## Ghi chú bài giảng
 
+### Điện toán đám mây là gì?
 
-### Kết quả đạt được tuần 1:
+- Là việc phân phối các tài nguyên CNTT qua Internet với chính sách **trả tiền theo mức sử dụng**.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * Chi Phí
-  * Ngân sách sử dụng
-  * Ngân sách kế hoạch tiết kiệm
+#### Lợi ích của điện toán đám mây
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+- Sử dụng bao nhiêu trả bấy nhiêu, giúp **tối ưu chi phí**.  
+- Tăng tốc độ phát triển nhờ **tự động hóa và quản trị tập trung** từ nhà cung cấp.  
+- Linh hoạt, có thể thêm bớt tài nguyên dễ dàng.  
+- Dễ dàng mở rộng quy mô ứng dụng ra toàn cầu.
 
-* Tạo Ngân sách AWS bằng các mẫu được cấu hình sẵn do AWS cung cấp
+#### AWS — Điều gì tạo nên sự khác biệt?
 
-* Tạo và cấu hình Ngân sách Chi phí AWS để theo dõi và quản lý AWS của bạn
+- AWS là nhà cung cấp dịch vụ đám mây dẫn đầu **13 năm liên tiếp** (tính đến 2023).  
+- AWS khác biệt nhờ **tầm nhìn dài hạn** và **văn hóa hướng khách hàng**.  
+- Triết lý giá của AWS: khách hàng sẽ **ngày càng trả ít hơn** cho cùng một dịch vụ hoặc tài nguyên.  
+- AWS luôn đặt **giá trị thật cho khách hàng** làm trung tâm trong các Nguyên tắc Lãnh đạo (Leadership Principles).  
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+![Tổng quan AWS](/images/1-Worklog/Week1/image.png)
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
+---
 
+### Bắt đầu hành trình “lên mây”
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+- Có nhiều khóa học về AWS, hoàn toàn có thể **tự học để trở thành chuyên gia**.  
+- Đăng ký tài khoản AWS và trải nghiệm qua **Free Tier**.  
+- Một số nền tảng học uy tín:
+  - [Udemy](https://udemy.com/)
+  - [Cloud Guru](https://cloudguru.com/)
+- Lộ trình học AWS: [AWS Learning Paths](https://aws.amazon.com/vi/training/learning-paths)
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
+---
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
+## Hạ tầng AWS
 
+### Trung tâm dữ liệu (Data Center)
 
+- Mỗi trung tâm dữ liệu có thể chứa **hàng chục ngàn máy chủ**.  
+- AWS sử dụng phần cứng **tối ưu hóa riêng** cho hạ tầng của mình.
 
+### Availability Zone (AZ)
+
+- Mỗi AZ bao gồm một hoặc nhiều trung tâm dữ liệu.  
+- AZ được thiết kế để **cô lập lỗi (fault isolation)** — tránh việc hai AZ bị sự cố cùng lúc.  
+- Các AZ kết nối với nhau qua **đường truyền tốc độ cao riêng biệt**.  
+- AWS khuyến nghị nên triển khai ứng dụng trên ít nhất **2 AZ**.
+
+### Region
+
+- Mỗi **Region** gồm ít nhất **3 AZ** — hiện AWS có hơn **25 Region** trên toàn cầu.  
+- Các Region được kết nối bằng **mạng backbone toàn cầu** của AWS.  
+- Mặc định, dữ liệu và dịch vụ được tách biệt giữa các Region (trừ một số dịch vụ mang tính toàn cầu).
+
+### Edge Locations
+
+- Là hệ thống trung tâm dữ liệu biên giúp **giảm độ trễ truy cập**.  
+- Một số dịch vụ hoạt động tại Edge:
+  - CloudFront (CDN)  
+  - Web Application Firewall (WAF)  
+  - Route 53 (DNS Service)
+
+---
+
+## Công cụ quản lý dịch vụ AWS
+
+### AWS Management Console — Đăng nhập Root
+
+- Có thể đăng nhập bằng **tài khoản gốc (Root)** hoặc **IAM User** (tài khoản con có phân quyền truy cập tài nguyên).
+
+### AWS Management Console — Đăng nhập IAM User
+
+- Khi đăng nhập IAM User cần cung cấp thêm **Account ID** (chuỗi 12 chữ số) để định danh tài khoản AWS.
+
+### AWS Management Console — Tìm kiếm dịch vụ
+
+- Sau khi đăng nhập, có thể tìm kiếm các dịch vụ AWS.  
+- Mỗi dịch vụ có **trang quản lý riêng** để sử dụng các tính năng của nó.
+
+### AWS Management Console — Trung tâm hỗ trợ (Support Center)
+
+- Ở góc phải giao diện, chọn **Support → Support Center** để tạo yêu cầu hỗ trợ (Support Case).
+
+![Hỗ trợ AWS](/images/1-Worklog/Week1/image%20copy%204.png)
+
+---
+
+### AWS Command Line Interface (CLI)
+
+- AWS CLI là **công cụ mã nguồn mở** cho phép quản lý dịch vụ AWS qua **dòng lệnh**.  
+- Cung cấp chức năng tương đương với AWS Console trên trình duyệt, nhưng thao tác nhanh hơn.
+
+![AWS CLI](/images/1-Worklog/Week1/image%20copy%207.png)
+
+---
+
+### AWS Software Development Kit (SDK)
+
+- AWS SDK giúp **lập trình viên dễ dàng tương tác với AWS Services** thông qua thư viện chuẩn.  
+- SDK quản lý các tác vụ như: **xác thực, retry, tuần tự hóa dữ liệu (serialization/deserialization)**,...
+
+![AWS SDK](/images/1-Worklog/Week1/image%20copy%205.png)
+
+---
+
+## Tối ưu chi phí trên AWS
+
+- Chọn cấu hình và vùng lưu trữ phù hợp.  
+- Sử dụng các hình thức thanh toán ưu đãi (Reserved Instances, Savings Plans, Spot Instances).  
+- Xóa tài nguyên không dùng, bật/tắt tự động với workload không chạy 24/7.  
+- Tận dụng các dịch vụ **serverless**.  
+- Thiết kế kiến trúc phù hợp để tối ưu hiệu năng và chi phí.  
+- Cài đặt và sử dụng **AWS Budgets**.  
+- Quản lý chi phí theo phòng ban hoặc ứng dụng bằng **cost allocation tags**.  
+- Theo dõi và tối ưu chi phí liên tục.
+
+**Công cụ ước tính chi phí:** [AWS Calculator](https://calculator.aws/#/)  
+Cho phép tạo và chia sẻ bản ước tính, đồng thời xem sự khác biệt chi phí giữa các Region.
+
+![Công cụ tính chi phí AWS](/images/1-Worklog/Week1/image%20copy%206.png)
+
+---
+
+## Làm việc với AWS Support
+
+- AWS có 4 gói hỗ trợ chính:
+  1. **Basic** (Khám phá)
+  2. **Developer** (Phát triển / Kiểm thử)
+  3. **Business** (Vận hành sản xuất)
+  4. **Enterprise** (Doanh nghiệp lớn)
+- Có thể nâng cấp tạm thời để xử lý sự cố quan trọng nhanh hơn.
+
+---
+
+## Thực hành
+
+### Tạo tài khoản AWS
+
+1. Tạo tài khoản AWS mới.  
+2. Kích hoạt **MFA** cho tài khoản Root.  
+3. Tạo nhóm **Admin** và gán người dùng.  
+4. Xác thực thông tin tài khoản.  
+
+### Bắt đầu với AWS Budgets
+
+1. Tạo **Cost Budget**.  
+2. Tạo **Usage Budget**.  
+3. Tạo **Reservation Budget**.  
+4. Tạo **Savings Plans Budget**.
+
+### Gửi yêu cầu hỗ trợ qua AWS Support
+
+1. Tìm hiểu các gói hỗ trợ AWS.  
+2. Truy cập **Support Center**.  
+3. Quản lý các **support case**.
+
+---
+
+## Nghiên cứu bổ sung
+
+### AWS Well-Architected Framework
+
+- Bộ nguyên tắc và thực hành tốt nhất để thiết kế hệ thống trên nền tảng đám mây.  
+- Framework cung cấp câu hỏi đánh giá mức độ phù hợp của kiến trúc với best practices.  
+- Khi dùng **Well-Architected Tool**, AWS gợi ý trực tiếp các hướng cải thiện kiến trúc trong Console.
+
+---

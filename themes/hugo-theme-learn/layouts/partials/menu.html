@@ -35,12 +35,12 @@
         {{end}}
       </ul>
     </section>
-    {{end}} {{ if or hugo.IsMultilingual $showvisitedlinks }}
+  {{end}} {{ if or .Site.IsMultiLingual $showvisitedlinks }}
     <section id="prefooter">
       <hr />
       <ul>
-        {{ if and hugo.IsMultilingual (not
-        .Site.Params.DisableLanguageSwitchingButton)}}
+  {{ if and .Site.IsMultiLingual (not
+  .Site.Params.DisableLanguageSwitchingButton)}}
         <li>
           <a class="padding">
             <i class="fas fa-language fa-fw"></i>
