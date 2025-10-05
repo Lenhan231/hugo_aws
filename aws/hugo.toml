@@ -1,7 +1,12 @@
-baseURL = 'https://example.org/'
-languageCode = 'vi'
-title = 'My New Hugo Site'
+baseURL = "https://hugo-aws.vercel.app/"
+languageCode = "vi"
+title = "Hugo AWS Workshop"
+theme = "PaperMod"
+paginate = 10
 
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn-master"
 
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
