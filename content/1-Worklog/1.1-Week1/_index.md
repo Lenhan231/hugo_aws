@@ -3,183 +3,154 @@ title: "Week 1 Worklog"
 weight: 1
 chapter: false
 pre: "<b> 1.1. </b>"
-date: 2025-09-09
-status: "Done"
 ---
 
-# Module 1
-
-**Date:** September 9, 2025  
-**Status:** Done  
-**Week:** Week 1  
+**Date:** 2025-09-09  
+**Status:** "Done"  
+**Week:** "Week 1"  
 
 ---
 
-## Lecture Note
+# **Lecture Notes**
 
-### What Is Cloud Computing?
+## What Is Cloud Computing?
 
-- It is the distribution of IT resources over the Internet with a pay-as-you-go model.
+- The on-demand delivery of IT resources over the Internet with pay-as-you-go pricing.
 
-#### Benefits of Cloud Computing
+### Benefits of Cloud Computing
+- Pay only for what you use, optimizing cost efficiency.  
+- Accelerate development through automation and managed services.  
+- Scale resources up or down as needed.  
+- Deploy applications globally in minutes.
 
-- Pay only for what you use, providing cost optimization.  
-- Increase development speed by leveraging automation and vendor management.  
-- Flexible — scale resources up or down as needed.  
-- Expand your applications globally with ease.
+### Why AWS?
 
-#### AWS — What Makes It Different?
+- AWS has been the global cloud leader for 13 consecutive years (as of 2023).
 
-- AWS has been the leading cloud provider for 13 consecutive years (as of 2023).  
-- AWS stands out through its long-term vision and customer-centric culture.  
-- AWS pricing philosophy: over time, customers pay less for the same service, features, or resources.  
-- AWS puts customer value at the core of its Leadership Principles.  
+![image](/images/1-Worklog/Week1/385db477-c0f2-419e-a85e-33093aeaa46c.png)
 
-![AWS Overview](/images/1-Worklog/Week1/image.png)
+- Unique culture, vision, and long-term customer obsession.  
+- AWS pricing philosophy: customers should pay less over time for the same resources.
 
----
+![image](/images/1-Worklog/Week1/57178798-ff37-4e69-a976-000b2f9e1682.png)
 
-### How to Start Your Cloud Journey
+- Every AWS Leadership Principle is focused on delivering real customer value.
 
-- There are many AWS courses available — you can self-study to become a cloud professional.  
-- Sign up for an AWS account and experiment through the **Free Tier**.  
-- Recommended learning platforms:
-  - [Udemy](https://udemy.com/)
-  - [Cloud Guru](https://cloudguru.com/)
-- AWS Learning Path: [AWS Training Paths](https://aws.amazon.com/training/learning-paths)
+![image](/images/1-Worklog/Week1/Screenshot_2025-09-10_175302.png)
+
+### How to Get Started with AWS
+- There are many learning paths—self-study is completely possible.  
+- Register an AWS Free Tier account to explore.  
+- Recommended course platforms:  
+  - [Udemy](https://udemy.com/)  
+  - [A Cloud Guru](https://cloudguru.com/)  
+- Explore AWS learning paths:  
+  - [AWS Learning Paths](https://aws.amazon.com/training/learning-paths)
 
 ---
 
 ## AWS Infrastructure
 
-### AWS Data Centers
-
-- A single data center can host tens of thousands of servers.  
-- All AWS data centers use purpose-built hardware optimized for its workloads.
+### Data Centers
+- Each data center can host tens of thousands of servers.  
+- AWS builds and manages its own custom hardware for efficiency and reliability.
 
 ### Availability Zone (AZ)
-
-- An AZ consists of one or more data centers.  
-- AZs are designed for **fault isolation**, preventing simultaneous failure of multiple AZs.  
-- AZs are connected through high-speed private links.  
+- One or more physically separate data centers within a Region.  
+- Each AZ is designed for fault isolation.  
+- Connected via low-latency, high-throughput private links.  
 - AWS recommends deploying workloads across at least two AZs.
 
 ### Region
-
-- An AWS Region contains at least three AZs. There are over 25 Regions globally.  
-- Regions are connected through AWS’s global backbone network.  
-- Services and data are isolated per Region (except a few global services).
+- A Region contains at least three Availability Zones.  
+- There are currently 25+ Regions worldwide.  
+- Regions are interconnected by the AWS backbone network.  
+- Most services are Region-scoped by default.
 
 ### Edge Locations
-
-- Edge Locations are data centers designed to minimize latency.  
-- Key AWS services operating at the edge:
-  - CloudFront (CDN)  
-  - Web Application Firewall (WAF)  
-  - Route 53 (DNS Service)
+- Global network of edge sites designed to serve content with minimal latency.  
+- Used by services such as:  
+  - Amazon CloudFront (CDN)  
+  - AWS WAF (Web Application Firewall)  
+  - Amazon Route 53 (DNS Service)
 
 ---
 
 ## AWS Management Tools
 
-### AWS Management Console — Root Login
+### AWS Management Console
+- Log in as Root User or IAM User (requires 12-digit Account ID).  
+- Search and access individual service dashboards.  
+- Support Center allows you to open support cases directly.
 
-- You can log in using a **root account** or an **IAM User** (a sub-account controlling access to resources).
-
-### AWS Management Console — IAM User Login
-
-- Logging in as an IAM User requires an **Account ID** (12-digit number) to identify the AWS account.
-
-### AWS Management Console — Service Search
-
-- After logging in, you can search for any AWS service.  
-- Each service has its own management dashboard and feature set.
-
-### AWS Management Console — Support Center
-
-- On the top-right menu, select **Support → Support Center** to create and manage support cases.
-
-![AWS Support](/images/1-Worklog/Week1/image%20copy%204.png)
-
----
+![image](/images/1-Worklog/Week1/Screenshot_2025-09-11_132420.png)
 
 ### AWS Command Line Interface (CLI)
+- Open-source command-line tool for interacting with AWS services.  
+- Provides functionality equivalent to the Console.
 
-- The AWS CLI is an open-source tool for managing AWS services via command line.  
-- It provides the same functionality as the web-based console, but through commands.
+![image](/images/1-Worklog/Week1/image.png)
 
-![AWS CLI](/images/1-Worklog/Week1/image%20copy%207.png)
+### AWS SDK (Software Development Kit)
+- Simplifies integration of AWS services within applications.  
+- Handles authentication, retries, and data serialization/deserialization automatically.
 
----
-
-### AWS Software Development Kit (SDK)
-
-- The AWS SDK simplifies development by offering consistent libraries for multiple programming languages.  
-- It manages API lifecycle tasks such as credentials, retries, data marshalling, serialization, and deserialization.
-
-![AWS SDK](/images/1-Worklog/Week1/image%20copy%205.png)
+![image](/images/1-Worklog/Week1/image%201.png)
 
 ---
 
 ## Cost Optimization on AWS
 
-- Choose appropriate compute and storage configurations.  
-- Use discounted payment models (Reserved Instances, Savings Plans, Spot).  
-- Remove unused resources; schedule automatic start/stop for non-critical workloads.  
-- Leverage **serverless** services.  
-- Design architectures that meet requirements efficiently.  
-- Set up and use **AWS Budgets**.  
-- Manage costs by department/application with **cost allocation tags**.  
-- Continuously monitor and optimize expenses.
+- Choose the right resource types and Regions.  
+- Use pricing models such as Reserved Instances, Savings Plans, and Spot Instances.  
+- Remove or schedule idle resources.  
+- Leverage serverless architectures.  
+- Continuously review and improve cost efficiency with AWS Budgets and Cost Explorer.  
+- Tag resources with Cost Allocation Tags for department-level tracking.
 
-**Cost Estimation Tool:** [AWS Calculator](https://calculator.aws/#/)  
-Create estimates, share them with others, and view pricing differences by Region.
+### AWS Pricing Calculator
+[calculator.aws](https://calculator.aws/#/)
 
-![AWS Calculator](/images/1-Worklog/Week1/image%20copy%206.png)
+- Create and share cost estimates for common services.  
+- Pricing varies by Region.
 
----
-
-## Working with AWS Support
-
-- AWS offers four main support plans:
-  1. **Basic** (Explore)
-  2. **Developer** (Test/Dev)
-  3. **Business** (Production)
-  4. **Enterprise** (Large Enterprise)
-- You can temporarily upgrade your plan to handle urgent production issues faster.
+![image](/images/1-Worklog/Week1/image%202.png)
 
 ---
 
-## Hands-On Practice
+## AWS Support Plans
 
-### Create an AWS Account
-
-1. Create a new AWS account.  
-2. Enable **MFA** for the root user.  
-3. Create an **Admin group** and assign users.  
-4. Verify account information.
-
-### Getting Started with AWS Budgets
-
-1. Create a **Cost Budget**.  
-2. Create a **Usage Budget**.  
-3. Create a **Reservation Budget**.  
-4. Create a **Savings Plans Budget**.
-
-### Request Assistance through AWS Support
-
-1. Understand AWS Support plans.  
-2. Access the **Support Center**.  
-3. Manage support cases.
+- Four tiers: **Basic**, **Developer**, **Business**, and **Enterprise**.  
+- Plans can be upgraded temporarily during critical incidents.
 
 ---
 
-## Additional Study
+# **Exploration**
 
-### AWS Well-Architected Framework
-
-- Provides design principles and best practices for building systems in the cloud.  
-- Use the framework by answering guided questions to assess architectural alignment with AWS best practices.  
-- When using the **Well-Architected Tool**, AWS offers direct recommendations for improvement through the Console.
+## [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected)
+- A set of design principles and best practices for building reliable, secure, efficient, and cost-effective cloud architectures.  
+- The Well-Architected Tool in the Console provides self-assessments and improvement guidance.
 
 ---
+
+# **Hands-On Labs**
+
+### Lab 01 – AWS Account & IAM Setup
+1. Create an AWS Account → *01-01*  
+2. Configure Virtual MFA Device → *01-02*  
+3. Create Admin Group and Admin User → *01-03*  
+4. Account Authentication Support → *01-04*
+
+### Lab 07 – AWS Budgets & Cost Management
+1. Create Budget by Template → *07-01*  
+2. Create Cost Budget Tutorial → *07-02*  
+3. Create Usage Budget → *07-03*  
+4. Create Reserved Instance (RI) Budget → *07-04*  
+5. Create Savings Plans Budget → *07-05*  
+6. Clean Up Budgets → *07-06*
+
+### Lab 09 – AWS Support Plans
+1. AWS Support Packages → *09-01*  
+2. Types of Support Requests → *09-02*  
+3. Change Support Package → *09-03*  
+4. Manage Support Requests → *09-04*

@@ -3,196 +3,224 @@ title: "Week 2 Worklog"
 weight: 2
 chapter: false
 pre: "<b> 1.2. </b>"
-date: 2025-09-16
-status: "Done"
-lang: "en"
-translationKey: "week2-module2"
 ---
 
-# Module 2
-
-**Date:** September 16, 2025  
-**Status:** Done  
-**Week:** Week 2  
+**Date:** 2025-09-16  
+**Status:** "Done"  
+**Week:** "Week 2"  
 
 ---
 
-## Lecture Notes
+# **Lecture Notes**
 
-# Networking Services on AWS
+## Networking Services on AWS
 
-## Amazon Virtual Private Cloud (VPC)
+### Amazon Virtual Private Cloud (VPC)
 
 - Amazon Virtual Private Cloud (Amazon VPC) allows you to launch AWS resources into a virtual network you define.
 
-![VPC Overview](/images/1-Worklog/Week2/c7387b7b-422f-41ee-a0b7-886017264e85.png)
+![image](/images/1-Worklog/Week2/c7387b7b-422f-41ee-a0b7-886017264e85.png)
 
-- A VPC exists within a single **Region**. When creating a VPC, you must define an **IPv4 CIDR block** (mandatory) and optionally an IPv6 one.  
-- The current limit is **5 VPCs per Region per Account**.  
-- Commonly used to separate environments such as **Production / Dev / Test / Staging**.  
-- Note: To completely isolate resources (so one user cannot view another’s), create **multiple AWS Accounts** — separate VPCs alone won’t achieve that.
+- A VPC exists within a single Region. When creating a VPC, you must define an IPv4 CIDR block (required) and optionally an IPv6 one.  
+- The default limit is 5 VPCs per Region per Account.  
+- Commonly used to separate environments such as Production, Development, and Staging.  
+- To achieve full resource isolation, use separate AWS Accounts rather than multiple VPCs.
 
-![VPC Architecture](/images/1-Worklog/Week2/image.png)
+![image](/images/1-Worklog/Week2/image.png)
 
-### Subnet
+### Subnets
 
-- You can divide your VPC into multiple **subnets**.  
-- Each subnet resides in a **specific Availability Zone (AZ)**.  
-- Subnet CIDR must be a **subset** of the VPC CIDR block.  
-- AWS reserves **five IP addresses** in each subnet (e.g. `10.10.1.0/24`):
-  - Network address (10.10.1.0)
-  - Broadcast address (10.10.1.255)
-  - Router address (10.10.1.1)
-  - DNS address (10.10.1.2)
-  - Future use (10.10.1.3)
+- A subnet resides within one Availability Zone.  
+- The subnet CIDR must be a subset of the parent VPC’s CIDR block.  
+- AWS reserves 5 IP addresses in each subnet: network, broadcast, router, DNS, and future use.  
 
-![Subnet Reserved IPs](/images/1-Worklog/Week2/image%201.png)
+![image](/images/1-Worklog/Week2/image%201.png)
 
-- **Route Tables** define routing paths within your VPC.  
-- A default route table is automatically created (cannot be deleted) with one **“local”** route allowing communication between subnets in the same VPC.  
-- Each subnet is associated with a route table. You can create **custom route tables**, but you cannot remove the **local route**.
+- A route table defines how traffic is directed.  
+- Each VPC has a default route table containing only a local route allowing internal communication between subnets.  
+- Custom route tables can be created, but the local route cannot be deleted.
 
-![Route Table Example](/images/1-Worklog/Week2/f02d3571-7a7c-4388-a88f-87929790a60b.png)
+![image](/images/1-Worklog/Week2/f02d3571-7a7c-4388-a88f-87929790a60b.png)
 
 ### Elastic Network Interface (ENI)
 
-- **ENI** is a virtual network card that can be attached or moved between EC2 instances.  
-- When moved, it retains:
-  - Private IP
-  - Elastic IP (if assigned)
-  - MAC address  
-- **Elastic IP (EIP)** is a static public IPv4 address; unused EIPs incur charges.
+- An ENI is a virtual network card that can be moved between EC2 instances.  
+- It retains its private IP, Elastic IP address, and MAC address when reassigned.  
+- Elastic IP (EIP) is a static public IPv4 address that can be associated with an ENI.  
+- Unused EIPs incur charges.
 
-![ENI and EIP](/images/1-Worklog/Week2/image%202.png)
+![image](/images/1-Worklog/Week2/image%202.png)
 
-- **VPC Endpoints** allow private connections between your VPC and supported AWS services via **AWS PrivateLink**, avoiding the public Internet.  
-- Two types:
-  - **Interface Endpoint:** Uses an ENI with a private IP in your VPC.  
-  - **Gateway Endpoint:** Uses a route table entry (for **S3** and **DynamoDB** only).
+- A **VPC Endpoint** enables private connectivity to supported AWS services via **AWS PrivateLink** without using the public Internet.  
+- Two types:  
+  - **Interface Endpoint:** Uses an ENI with a private IP.  
+  - **Gateway Endpoint:** Uses route tables (available for S3 and DynamoDB only).
 
-![VPC Endpoints](/images/1-Worklog/Week2/image%203.png)
+![image](/images/1-Worklog/Week2/image%203.png)
 
-### Internet Gateway
+### Internet Gateway (IGW)
 
-- **Internet Gateway (IGW)** enables instances in a VPC to communicate with the Internet.  
-- IGW is fully managed by AWS — no manual scaling or HA setup required.
+- A horizontally scalable, redundant, and highly available VPC component that allows communication between instances in your VPC and the Internet.  
+- Fully managed by AWS – no manual scaling or HA configuration required.
 
-![Internet Gateway Public Subnet](/images/1-Worklog/Week2/image%204.png)
-![Internet Gateway Traffic Flow](/images/1-Worklog/Week2/image%205.png)
+![image](/images/1-Worklog/Week2/image%204.png)
+![image](/images/1-Worklog/Week2/image%205.png)
 
 ### NAT Gateway
 
-- **NAT Gateway** allows instances in private subnets to **initiate outbound connections** to the Internet or other AWS services, but blocks inbound traffic.
+- Allows instances in private subnets to access the Internet or other AWS services, but prevents inbound Internet connections.
 
-![NAT Gateway](/images/1-Worklog/Week2/image%206.png)
+![image](/images/1-Worklog/Week2/image%206.png)
 
 ### Security Group (SG)
 
-- A **Security Group** is a **stateful firewall** controlling inbound and outbound traffic for AWS resources.  
-- Rules can be based on **protocol**, **port**, **source address**, or **another SG**.  
-- Only **allow rules** are supported — no explicit deny.  
-- SGs apply at the **ENI level**.
+- A **stateful** virtual firewall that controls inbound and outbound traffic to AWS resources.  
+- Rules are based on protocol, port, source, or another security group.  
+- Only allow rules are supported.  
+- Applied to Elastic Network Interfaces (ENIs).
 
-![Security Group Overview](/images/1-Worklog/Week2/image%207.png)
-![Security Group Example Rules](/images/1-Worklog/Week2/image%208.png)
+![image](/images/1-Worklog/Week2/image%207.png)
+![image](/images/1-Worklog/Week2/image%208.png)
 
 ### Network Access Control List (NACL)
 
-- A **NACL** is a **stateless** firewall at the subnet level.  
-- Filters traffic by **protocol**, **port**, and **source/destination address**.  
-- Default NACL allows all inbound and outbound traffic.
+- A **stateless** virtual firewall that operates at the subnet level.  
+- Rules control inbound and outbound traffic by protocol, port, and source.  
+- Default NACL allows all traffic.
 
-![NACL Overview](/images/1-Worklog/Week2/image%209.png)
-![NACL Example Rules](/images/1-Worklog/Week2/image%2010.png)
+![image](/images/1-Worklog/Week2/image%209.png)
+![image](/images/1-Worklog/Week2/image%2010.png)
 
 ### VPC Flow Logs
 
-- **VPC Flow Logs** capture **IP traffic metadata** (not packet content) for network interfaces in your VPC.  
-- Logs can be delivered to **CloudWatch Logs** or **S3**.
+- Capture metadata about IP traffic to and from network interfaces in your VPC.  
+- Logs can be delivered to Amazon CloudWatch Logs or S3.  
+- Flow Logs do not record packet payloads.
 
-![VPC Flow Logs](/images/1-Worklog/Week2/image%2011.png)
-
----
+![image](/images/1-Worklog/Week2/image%2011.png)
 
 ## VPC Peering & Transit Gateway
 
 ### VPC Peering
 
-- **VPC Peering** connects two VPCs directly so resources can communicate privately without traversing the Internet.  
-- One-to-one connection (**no transitive routing**).  
-- Peering is not supported if VPCs have **overlapping CIDRs**.
+- Enables direct, private connectivity between two VPCs without traversing the Internet.  
+- Does not support transitive routing or overlapping CIDRs.
 
-![VPC Peering Diagram](/images/1-Worklog/Week2/image%2012.png)
-![VPC Peering Routes](/images/1-Worklog/Week2/image%2013.png)
-![VPC Peering Limitations](/images/1-Worklog/Week2/image%2014.png)
+![image](/images/1-Worklog/Week2/image%2012.png)
+![image](/images/1-Worklog/Week2/image%2013.png)
+![image](/images/1-Worklog/Week2/image%2014.png)
 
-### Transit Gateway (TGW)
+### AWS Transit Gateway (TGW)
 
-- **Transit Gateway** acts as a **central hub** to interconnect multiple VPCs and on-premises networks, simplifying complex routing.  
-- **Transit Gateway Attachment** links subnets from each VPC to the TGW at the **AZ level**.  
-- Once a subnet in an AZ is attached to the TGW, other subnets in the same AZ can use that connection.
+- Acts as a hub to connect multiple VPCs and on-prem networks, simplifying complex mesh topologies.  
+- TGW Attachments associate subnets in specific AZs with a TGW.  
+- All subnets within the same AZ can reach the TGW once attached.
 
-![Transit Gateway Architecture](/images/1-Worklog/Week2/image%2015.png)
-![Transit Gateway Flow](/images/1-Worklog/Week2/image%2016.png)
-
----
+![image](/images/1-Worklog/Week2/image%2015.png)
+![image](/images/1-Worklog/Week2/image%2016.png)
 
 ## VPN & Direct Connect
 
-### VPN Site-to-Site
+### Site-to-Site VPN
 
-- Used in **hybrid architectures** to connect on-premises data centers with AWS VPCs.  
-- Two endpoints:
-  - **Virtual Private Gateway (VGW):** AWS-managed, redundant across AZs.  
-  - **Customer Gateway (CGW):** On-premises endpoint (hardware or software).
+- Establishes a secure IPSec connection between an on-premises data center and AWS VPC.  
+- Consists of:  
+  - **Virtual Private Gateway (VGW):** AWS-managed, multi-AZ endpoints.  
+  - **Customer Gateway (CGW):** Customer-managed device or software appliance.
 
 ### AWS Direct Connect
 
-- **Direct Connect** provides a **dedicated private connection** between a customer’s data center and AWS.  
-- Typical latency: **20–30 ms**.  
-- In Vietnam, connections are made via **AWS Direct Connect Partners (Hosted Connections)**.  
-- Bandwidth can be adjusted up or down as needed.
-
----
+- Provides a dedicated private network connection between an on-prem data center and AWS.  
+- Typical latency: 20–30 ms.  
+- In Vietnam, available through Hosted Connections (via partners).  
+- Bandwidth is adjustable.
 
 ## Elastic Load Balancing (ELB)
 
-### Definition
+### Overview
 
-- **Elastic Load Balancing** distributes incoming traffic across multiple **EC2 instances**, **containers**, or **Lambda functions**.  
-- Supports **HTTP/HTTPS, TCP/TLS** protocols.  
-- Works in both **public** and **private** subnets.  
-- Each ELB gets a **DNS name** (NLB supports **static IPs**).  
-- Performs **health checks** to exclude unhealthy targets.  
-- Four types:
-  1. **Application Load Balancer (ALB)** – Layer 7  
-  2. **Network Load Balancer (NLB)** – Layer 4  
-  3. **Gateway Load Balancer (GWLB)** – Layer 3  
-  4. **Classic Load Balancer (CLB)** – Legacy  
-- **Sticky sessions (session affinity)** ensure that user requests during a session are routed to the same target (available on ALB/NLB/CLB).  
-- **Access logs** can be enabled and stored in **S3** for analysis and troubleshooting.
+- A fully managed service distributing traffic across multiple targets (EC2, containers, etc.).  
+- Supports HTTP, HTTPS, TCP, TLS.  
+- Can be deployed in public or private subnets.  
+- Provides DNS names; only NLB supports static IPs.  
+- Includes health checks and access logs (to S3).  
+- Supports sticky sessions (session affinity).  
+- Types: **Application**, **Network**, **Classic**, and **Gateway** Load Balancer.
 
 ### Application Load Balancer (ALB)
 
-- Operates at **Layer 7** using **HTTP/HTTPS**.  
-- Supports **path-based routing** (e.g. `/mobile`, `/desktop`).  
-- Routes traffic to **IP addresses**, **EC2**, **Lambda**, or **Containers (ECS/EKS)** — even outside the VPC.
+- Operates at Layer 7 (HTTP/HTTPS).  
+- Supports path-based routing (e.g., /mobile vs /desktop).  
+- Targets: EC2, Lambda, IP addresses, containers (ECS/EKS).
 
-![Application Load Balancer](/images/1-Worklog/Week2/image%2017.png)
+![image](/images/1-Worklog/Week2/image%2017.png)
 
 ### Network Load Balancer (NLB)
 
-- Operates at **Layer 4** using **TCP/TLS**.  
-- Supports **static IPs** and can handle **millions of requests per second**.  
-- Routes traffic to **external IPs**, **EC2**, or **Containers (ECS/EKS)**.
+- Operates at Layer 4 (TCP/TLS).  
+- Supports static IPs and handles millions of requests per second.  
+- Targets: EC2, IP addresses, containers (ECS/EKS).
 
 ### Gateway Load Balancer (GWLB)
 
-- Operates at **Layer 3**, listening to IP packets and forwarding them to target groups.  
-- Uses **GENEVE protocol (port 6081)**.  
-- Routes traffic to **virtual appliances** from AWS partners.  
-- Supported vendors: <https://aws.amazon.com/elasticloadbalancing/partners/>
+- Operates at Layer 3 (IP packets).  
+- Uses the GENEVE protocol on port 6081.  
+- Routes traffic to virtual appliances such as firewalls or monitoring tools.  
+- Partner list: [aws.amazon.com/elasticloadbalancing/partners](https://aws.amazon.com/elasticloadbalancing/partners)
 
-Typical GWLB deployment model:
+Typical GWLB architecture:
 
-![Gateway Load Balancer](/images/1-Worklog/Week2/image%2018.png)
+![image](/images/1-Worklog/Week2/image%2018.png)
+
+---
+
+# **Exploration**
+
+## [AWS Advanced Networking – Specialty Study Guide](https://www.amazon.co.uk/Certified-Advanced-Networking-Official-Study/dp/1119439833)
+
+- Official study guide covering exam topics, AWS network design principles, and real-world architecture scenarios.
+
+---
+
+# **Hands-On Labs**
+
+## Lab 03 – Amazon VPC & Networking Basics
+1. Create VPC → *03-03.1*  
+2. Create Subnet → *03-03.2*  
+3. Create Internet Gateway (IGW) → *03-03.3*  
+4. Create Route Table (Outbound via IGW) → *03-03.4*  
+5. Create Security Groups → *03-03.5*  
+6. Launch EC2 Instances in Subnets → *04-1*  
+7. Test Connection Between Instances → *04-2*  
+8. Create NAT Gateway (Private ↔ Internet) → *04-3*  
+9. EC2 Instance Connect Endpoint (no bastion) → *04-5*
+
+---
+
+## Lab 10 – Hybrid DNS (Route 53 Resolver)
+1. Generate Key Pair → *10-02.1*  
+2. Initialize CloudFormation Template → *10-02.2*  
+3. Configure Security Group → *10-02.3*  
+4. Set up DNS System → *10-05*  
+5. Create Route 53 Outbound Endpoint → *10-05.1*  
+6. Create Resolver Rules → *10-05.2*  
+7. Create Inbound Endpoints → *10-05.3*
+
+---
+
+## Lab 19 – VPC Peering
+1. Initialize CloudFormation Templates → *19-02.1*  
+2. Create Security Group → *19-02.2*  
+3. Create EC2 Instance (Test Peering) → *19-02.3*  
+4. Create Peering Connection → *19-04*  
+5. Configure Route Tables (Cross-VPC) → *19-05*  
+6. Enable Cross-Peer DNS → *19-06*
+
+---
+
+## Lab 20 – AWS Transit Gateway
+1. Preparation Steps → *20-02*  
+2. Create Transit Gateway → *20-03*  
+3. Create TGW Attachments → *20-04*  
+4. Create TGW Route Tables → *20-05*  
+5. Add TGW Routes to VPC Route Tables → *20-06*

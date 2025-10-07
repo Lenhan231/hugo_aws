@@ -1,185 +1,156 @@
 ---
-title: "Tuần 1 – Mô-đun 1"
+title: "Week 1 Worklog"
 weight: 1
 chapter: false
 pre: "<b> 1.1. </b>"
-date: 2025-09-09
-status: "Hoàn thành"
 ---
 
-# Mô-đun 1
-
-**Ngày:** 09/09/2025  
-**Trạng thái:** Hoàn thành  
-**Tuần:** Tuần 1  
+**Date:** 2025-09-09  
+**Status:** "Done"  
+**Week:** "Week 1"  
 
 ---
 
-## Ghi chú bài giảng
+# **Lecture Notes**
 
-### Điện toán đám mây là gì?
+## What Is Cloud Computing?
 
-- Là việc phân phối các tài nguyên CNTT qua Internet với chính sách **trả tiền theo mức sử dụng**.
+- The on-demand delivery of IT resources over the Internet with pay-as-you-go pricing.
 
-#### Lợi ích của điện toán đám mây
+### Benefits of Cloud Computing
+- Pay only for what you use, optimizing cost efficiency.  
+- Accelerate development through automation and managed services.  
+- Scale resources up or down as needed.  
+- Deploy applications globally in minutes.
 
-- Sử dụng bao nhiêu trả bấy nhiêu, giúp **tối ưu chi phí**.  
-- Tăng tốc độ phát triển nhờ **tự động hóa và quản trị tập trung** từ nhà cung cấp.  
-- Linh hoạt, có thể thêm bớt tài nguyên dễ dàng.  
-- Dễ dàng mở rộng quy mô ứng dụng ra toàn cầu.
+### Why AWS?
 
-#### AWS — Điều gì tạo nên sự khác biệt?
+- AWS has been the global cloud leader for 13 consecutive years (as of 2023).
 
-- AWS là nhà cung cấp dịch vụ đám mây dẫn đầu **13 năm liên tiếp** (tính đến 2023).  
-- AWS khác biệt nhờ **tầm nhìn dài hạn** và **văn hóa hướng khách hàng**.  
-- Triết lý giá của AWS: khách hàng sẽ **ngày càng trả ít hơn** cho cùng một dịch vụ hoặc tài nguyên.  
-- AWS luôn đặt **giá trị thật cho khách hàng** làm trung tâm trong các Nguyên tắc Lãnh đạo (Leadership Principles).  
+![image](/images/1-Worklog/Week1/385db477-c0f2-419e-a85e-33093aeaa46c.png)
 
-![Tổng quan AWS](/images/1-Worklog/Week1/image.png)
+- Unique culture, vision, and long-term customer obsession.  
+- AWS pricing philosophy: customers should pay less over time for the same resources.
+
+![image](/images/1-Worklog/Week1/57178798-ff37-4e69-a976-000b2f9e1682.png)
+
+- Every AWS Leadership Principle is focused on delivering real customer value.
+
+![image](/images/1-Worklog/Week1/Screenshot_2025-09-10_175302.png)
+
+### How to Get Started with AWS
+- There are many learning paths—self-study is completely possible.  
+- Register an AWS Free Tier account to explore.  
+- Recommended course platforms:  
+  - [Udemy](https://udemy.com/)  
+  - [A Cloud Guru](https://cloudguru.com/)  
+- Explore AWS learning paths:  
+  - [AWS Learning Paths](https://aws.amazon.com/training/learning-paths)
 
 ---
 
-### Bắt đầu hành trình “lên mây”
+## AWS Infrastructure
 
-- Có nhiều khóa học về AWS, hoàn toàn có thể **tự học để trở thành chuyên gia**.  
-- Đăng ký tài khoản AWS và trải nghiệm qua **Free Tier**.  
-- Một số nền tảng học uy tín:
-  - [Udemy](https://udemy.com/)
-  - [Cloud Guru](https://cloudguru.com/)
-- Lộ trình học AWS: [AWS Learning Paths](https://aws.amazon.com/vi/training/learning-paths)
-
----
-
-## Hạ tầng AWS
-
-### Trung tâm dữ liệu (Data Center)
-
-- Mỗi trung tâm dữ liệu có thể chứa **hàng chục ngàn máy chủ**.  
-- AWS sử dụng phần cứng **tối ưu hóa riêng** cho hạ tầng của mình.
+### Data Centers
+- Each data center can host tens of thousands of servers.  
+- AWS builds and manages its own custom hardware for efficiency and reliability.
 
 ### Availability Zone (AZ)
-
-- Mỗi AZ bao gồm một hoặc nhiều trung tâm dữ liệu.  
-- AZ được thiết kế để **cô lập lỗi (fault isolation)** — tránh việc hai AZ bị sự cố cùng lúc.  
-- Các AZ kết nối với nhau qua **đường truyền tốc độ cao riêng biệt**.  
-- AWS khuyến nghị nên triển khai ứng dụng trên ít nhất **2 AZ**.
+- One or more physically separate data centers within a Region.  
+- Each AZ is designed for fault isolation.  
+- Connected via low-latency, high-throughput private links.  
+- AWS recommends deploying workloads across at least two AZs.
 
 ### Region
-
-- Mỗi **Region** gồm ít nhất **3 AZ** — hiện AWS có hơn **25 Region** trên toàn cầu.  
-- Các Region được kết nối bằng **mạng backbone toàn cầu** của AWS.  
-- Mặc định, dữ liệu và dịch vụ được tách biệt giữa các Region (trừ một số dịch vụ mang tính toàn cầu).
+- A Region contains at least three Availability Zones.  
+- There are currently 25+ Regions worldwide.  
+- Regions are interconnected by the AWS backbone network.  
+- Most services are Region-scoped by default.
 
 ### Edge Locations
-
-- Là hệ thống trung tâm dữ liệu biên giúp **giảm độ trễ truy cập**.  
-- Một số dịch vụ hoạt động tại Edge:
-  - CloudFront (CDN)  
-  - Web Application Firewall (WAF)  
-  - Route 53 (DNS Service)
-
----
-
-## Công cụ quản lý dịch vụ AWS
-
-### AWS Management Console — Đăng nhập Root
-
-- Có thể đăng nhập bằng **tài khoản gốc (Root)** hoặc **IAM User** (tài khoản con có phân quyền truy cập tài nguyên).
-
-### AWS Management Console — Đăng nhập IAM User
-
-- Khi đăng nhập IAM User cần cung cấp thêm **Account ID** (chuỗi 12 chữ số) để định danh tài khoản AWS.
-
-### AWS Management Console — Tìm kiếm dịch vụ
-
-- Sau khi đăng nhập, có thể tìm kiếm các dịch vụ AWS.  
-- Mỗi dịch vụ có **trang quản lý riêng** để sử dụng các tính năng của nó.
-
-### AWS Management Console — Trung tâm hỗ trợ (Support Center)
-
-- Ở góc phải giao diện, chọn **Support → Support Center** để tạo yêu cầu hỗ trợ (Support Case).
-
-![Hỗ trợ AWS](/images/1-Worklog/Week1/image%20copy%204.png)
+- Global network of edge sites designed to serve content with minimal latency.  
+- Used by services such as:  
+  - Amazon CloudFront (CDN)  
+  - AWS WAF (Web Application Firewall)  
+  - Amazon Route 53 (DNS Service)
 
 ---
+
+## AWS Management Tools
+
+### AWS Management Console
+- Log in as Root User or IAM User (requires 12-digit Account ID).  
+- Search and access individual service dashboards.  
+- Support Center allows you to open support cases directly.
+
+![image](/images/1-Worklog/Week1/Screenshot_2025-09-11_132420.png)
 
 ### AWS Command Line Interface (CLI)
+- Open-source command-line tool for interacting with AWS services.  
+- Provides functionality equivalent to the Console.
 
-- AWS CLI là **công cụ mã nguồn mở** cho phép quản lý dịch vụ AWS qua **dòng lệnh**.  
-- Cung cấp chức năng tương đương với AWS Console trên trình duyệt, nhưng thao tác nhanh hơn.
+![image](/images/1-Worklog/Week1/image.png)
 
-![AWS CLI](/images/1-Worklog/Week1/image%20copy%207.png)
+### AWS SDK (Software Development Kit)
+- Simplifies integration of AWS services within applications.  
+- Handles authentication, retries, and data serialization/deserialization automatically.
 
----
-
-### AWS Software Development Kit (SDK)
-
-- AWS SDK giúp **lập trình viên dễ dàng tương tác với AWS Services** thông qua thư viện chuẩn.  
-- SDK quản lý các tác vụ như: **xác thực, retry, tuần tự hóa dữ liệu (serialization/deserialization)**,...
-
-![AWS SDK](/images/1-Worklog/Week1/image%20copy%205.png)
+![image](/images/1-Worklog/Week1/image%201.png)
 
 ---
 
-## Tối ưu chi phí trên AWS
+## Cost Optimization on AWS
 
-- Chọn cấu hình và vùng lưu trữ phù hợp.  
-- Sử dụng các hình thức thanh toán ưu đãi (Reserved Instances, Savings Plans, Spot Instances).  
-- Xóa tài nguyên không dùng, bật/tắt tự động với workload không chạy 24/7.  
-- Tận dụng các dịch vụ **serverless**.  
-- Thiết kế kiến trúc phù hợp để tối ưu hiệu năng và chi phí.  
-- Cài đặt và sử dụng **AWS Budgets**.  
-- Quản lý chi phí theo phòng ban hoặc ứng dụng bằng **cost allocation tags**.  
-- Theo dõi và tối ưu chi phí liên tục.
+- Choose the right resource types and Regions.  
+- Use pricing models such as Reserved Instances, Savings Plans, and Spot Instances.  
+- Remove or schedule idle resources.  
+- Leverage serverless architectures.  
+- Continuously review and improve cost efficiency with AWS Budgets and Cost Explorer.  
+- Tag resources with Cost Allocation Tags for department-level tracking.
 
-**Công cụ ước tính chi phí:** [AWS Calculator](https://calculator.aws/#/)  
-Cho phép tạo và chia sẻ bản ước tính, đồng thời xem sự khác biệt chi phí giữa các Region.
+### AWS Pricing Calculator
+[calculator.aws](https://calculator.aws/#/)
 
-![Công cụ tính chi phí AWS](/images/1-Worklog/Week1/image%20copy%206.png)
+- Create and share cost estimates for common services.  
+- Pricing varies by Region.
 
----
-
-## Làm việc với AWS Support
-
-- AWS có 4 gói hỗ trợ chính:
-  1. **Basic** (Khám phá)
-  2. **Developer** (Phát triển / Kiểm thử)
-  3. **Business** (Vận hành sản xuất)
-  4. **Enterprise** (Doanh nghiệp lớn)
-- Có thể nâng cấp tạm thời để xử lý sự cố quan trọng nhanh hơn.
+![image](/images/1-Worklog/Week1/image%202.png)
 
 ---
 
-## Thực hành
+## AWS Support Plans
 
-### Tạo tài khoản AWS
-
-1. Tạo tài khoản AWS mới.  
-2. Kích hoạt **MFA** cho tài khoản Root.  
-3. Tạo nhóm **Admin** và gán người dùng.  
-4. Xác thực thông tin tài khoản.  
-
-### Bắt đầu với AWS Budgets
-
-1. Tạo **Cost Budget**.  
-2. Tạo **Usage Budget**.  
-3. Tạo **Reservation Budget**.  
-4. Tạo **Savings Plans Budget**.
-
-### Gửi yêu cầu hỗ trợ qua AWS Support
-
-1. Tìm hiểu các gói hỗ trợ AWS.  
-2. Truy cập **Support Center**.  
-3. Quản lý các **support case**.
+- Four tiers: **Basic**, **Developer**, **Business**, and **Enterprise**.  
+- Plans can be upgraded temporarily during critical incidents.
 
 ---
 
-## Nghiên cứu bổ sung
+# **Exploration**
 
-### AWS Well-Architected Framework
-
-- Bộ nguyên tắc và thực hành tốt nhất để thiết kế hệ thống trên nền tảng đám mây.  
-- Framework cung cấp câu hỏi đánh giá mức độ phù hợp của kiến trúc với best practices.  
-- Khi dùng **Well-Architected Tool**, AWS gợi ý trực tiếp các hướng cải thiện kiến trúc trong Console.
+## [AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected)
+- A set of design principles and best practices for building reliable, secure, efficient, and cost-effective cloud architectures.  
+- The Well-Architected Tool in the Console provides self-assessments and improvement guidance.
 
 ---
+
+# **Hands-On Labs**
+
+### Lab 01 – AWS Account & IAM Setup
+1. Create an AWS Account → *01-01*  
+2. Configure Virtual MFA Device → *01-02*  
+3. Create Admin Group and Admin User → *01-03*  
+4. Account Authentication Support → *01-04*
+
+### Lab 07 – AWS Budgets & Cost Management
+1. Create Budget by Template → *07-01*  
+2. Create Cost Budget Tutorial → *07-02*  
+3. Create Usage Budget → *07-03*  
+4. Create Reserved Instance (RI) Budget → *07-04*  
+5. Create Savings Plans Budget → *07-05*  
+6. Clean Up Budgets → *07-06*
+
+### Lab 09 – AWS Support Plans
+1. AWS Support Packages → *09-01*  
+2. Types of Support Requests → *09-02*  
+3. Change Support Package → *09-03*  
+4. Manage Support Requests → *09-04*
