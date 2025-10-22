@@ -1,37 +1,71 @@
 ---
-title: "Worklog"
-
+title: "Worklog - AWS Learning Journey"
 weight: 1
-chapter: false
-pre: " <b> 1. </b> "
+chapter: true
+pre: "<b> 1. </b>"
 ---
 
+# Worklog
 
+## Tổng quan
 
-**On this page**, you will need to introduce your worklog. **How** did you complete it? How many weeks did you take to complete the program? **What** did you do in those weeks?
+Đây là worklog ghi lại quá trình học AWS từ ngày 8/9/2025 đến 22/10/2025 (33 ngày làm việc).
 
-Typically, and as a standard, a worklog is carried out over about 3 months (throughout the internship period) with weekly contents as follows:
+### Cấu trúc
 
-**Week 1:** [Getting familiar with AWS and basic AWS services](1.1-week1/)
+Worklog được tổ chức theo **tuần**, mỗi tuần có **5 ngày làm việc** (Thứ Hai đến Thứ Sáu).
 
-**Week 2:** [Doing task A...](1.2-week2/)
+### Tiến độ
 
-**Week 3:** [Doing task B...](1.3-week3/)
+- ✅ **Week 1** (8-12/9): Cloud Computing Fundamentals
+- ✅ **Week 2** (15-19/9): AWS Networking Services
+- ✅ **Week 3** (22-26/9): AWS Compute Services
+- ✅ **Week 4** (29/9-3/10): AWS Storage Services
+- ✅ **Week 5** (6-10/10): AWS Security & Identity
+- ✅ **Week 6** (13-17/10): AWS Database Services
+- 🔄 **Week 7** (20-22/10): Advanced Topics (3 ngày)
 
-**Week 4:** [Doing task C...](1.4-week4/)
+### Thống kê
 
-**Week 5:** [Doing task D...](1.5-week5/)
+- **Tổng số ngày:** 33 ngày làm việc
+- **Tổng số tuần:** 6 tuần đầy đủ + 3 ngày
+- **Tổng số labs:** 25+ hands-on labs
+- **Chủ đề chính:** 7 domains (Cloud Fundamentals, Networking, Compute, Storage, Security, Database, Advanced)
 
-**Week 6:** [Doing task E...](1.6-week6/)
+### Nội dung chính
 
-**Week 7:** [Doing task G...](1.7-week7/)
+1. **Cloud Computing Fundamentals**
+   - AWS basics, infrastructure, management tools
+   - Cost optimization, support plans
+   - Well-Architected Framework
 
-**Week 8:** [Doing task H...](1.8-week8/)
+2. **Networking**
+   - VPC, subnets, security groups, NACLs
+   - Load balancing (ALB, NLB, GWLB)
+   - VPC Peering, Transit Gateway
+   - VPN, Direct Connect
 
-**Week 9:** [Doing task I...](1.9-week9/)
+3. **Compute**
+   - EC2, AMI, EBS, Instance Store
+   - Auto Scaling, pricing models
+   - Lightsail, EFS, FSx
 
-**Week 10:** [Doing task L...](1.10-week10/)
+4. **Storage**
+   - S3, storage classes, Glacier
+   - Snow Family, Storage Gateway
+   - Disaster Recovery, AWS Backup
 
-**Week 11:** [Doing task M...](1.11-week11/)
+5. **Security & Identity**
+   - IAM, Cognito, Organizations
+   - KMS, Security Hub
+   - Identity Center (SSO)
 
-**Week 12:** [Doing task N...](1.12-week12/)
+6. **Database**
+   - RDS, Aurora, Redshift
+   - ElastiCache, DMS
+   - Database best practices
+
+7. **Advanced Topics**
+   - Serverless (Lambda)
+   - Containers (ECS, EKS, ECR)
+   - Monitoring (CloudWatch, X-Ray, CloudTrail)
