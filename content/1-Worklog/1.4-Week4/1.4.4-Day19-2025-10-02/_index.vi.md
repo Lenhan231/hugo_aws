@@ -38,3 +38,55 @@ pre: "<b> 1.4.4. </b>"
 - Hệ thống hoàn chỉnh chạy ở quy mô giảm trên AWS.  
 - Scale lên khi failover.  
 - **RTO:** phút – giờ. **RPO:** giây – phút. **Chi phí:** cao hơn.
+
+**Multi-Site (Active/Active hoặc Active/Passive)**
+
+- Môi trường production chạy song song giữa on-prem và AWS, hoặc giữa nhiều Region AWS.  
+- Có thể chuyển hướng traffic ngay lập tức (Route 53, Global Accelerator).  
+- **RTO/RPO:** gần như bằng 0. **Chi phí:** cao nhất.
+
+**So sánh chiến lược DR:**
+
+| Chiến lược | RTO | RPO | Chi phí | Độ phức tạp |
+|------------|-----|-----|---------|-------------|
+| Backup & Restore | Giờ – Ngày | Giờ | $ | Thấp |
+| Pilot Light | Giờ | Phút | $$ | Trung bình |
+| Warm Standby | Phút | Giây | $$$ | Trung bình-Cao |
+| Multi-Site | Giây | Gần 0 | $$$$ | Cao |
+
+---
+
+## Best Practices cho DR
+
+### Lập kế hoạch
+
+- Xác định yêu cầu RTO và RPO.  
+- Tài liệu hóa quy trình khôi phục.  
+- Nhận diện hệ thống và phụ thuộc quan trọng.  
+- Thiết lập kế hoạch truyền thông.
+
+### Triển khai
+
+- Tự động hóa quy trình khôi phục.  
+- Sử dụng nhiều AZ và Region.  
+- Triển khai cơ chế sao chép dữ liệu.  
+- Kiểm thử backup định kỳ.
+
+### Kiểm thử
+
+- Thực hiện diễn tập DR thường xuyên.  
+- Thử nghiệm quy trình khôi phục.  
+- Đo lường RTO/RPO thực tế.  
+- Cập nhật tài liệu.
+
+---
+
+# **Hands-On Labs**
+
+## Lab 14 – AWS VM Import/Export (Phần 2)
+
+4. Import máy ảo lên AWS → *14-02.3*  
+5. Deploy instance từ AMI → *14-02.4*  
+6. Thiết lập ACL cho S3 Bucket → *14-03.1*  
+7. Export máy ảo từ instance → *14-03.2*  
+8. Dọn dẹp tài nguyên trên AWS → *14-05*

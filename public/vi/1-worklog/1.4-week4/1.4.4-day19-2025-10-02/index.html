@@ -15,21 +15,21 @@
     <title>Ngày 19 - Disaster Recovery trên AWS :: Báo cáo thực tập</title>
 
     
-    <link href="../../../../css/nucleus.css?1762444297" rel="stylesheet">
-    <link href="../../../../css/fontawesome-all.min.css?1762444297" rel="stylesheet">
-    <link href="../../../../css/hybrid.css?1762444297" rel="stylesheet">
-    <link href="../../../../css/featherlight.min.css?1762444297" rel="stylesheet">
-    <link href="../../../../css/perfect-scrollbar.min.css?1762444297" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1762444297" rel="stylesheet">
-    <link href="../../../../css/atom-one-dark-reasonable.css?1762444297" rel="stylesheet">
-    <link href="../../../../css/theme.css?1762444297" rel="stylesheet">
-    <link href="../../../../css/hugo-theme.css?1762444297" rel="stylesheet">
+    <link href="../../../../css/nucleus.css?1762444412" rel="stylesheet">
+    <link href="../../../../css/fontawesome-all.min.css?1762444412" rel="stylesheet">
+    <link href="../../../../css/hybrid.css?1762444412" rel="stylesheet">
+    <link href="../../../../css/featherlight.min.css?1762444412" rel="stylesheet">
+    <link href="../../../../css/perfect-scrollbar.min.css?1762444412" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1762444412" rel="stylesheet">
+    <link href="../../../../css/atom-one-dark-reasonable.css?1762444412" rel="stylesheet">
+    <link href="../../../../css/theme.css?1762444412" rel="stylesheet">
+    <link href="../../../../css/hugo-theme.css?1762444412" rel="stylesheet">
     
-    <link href="../../../../css/theme-workshop.css?1762444297" rel="stylesheet">
+    <link href="../../../../css/theme-workshop.css?1762444412" rel="stylesheet">
     
     
 
-    <script src="../../../../js/jquery-3.3.1.min.js?1762444297"></script>
+    <script src="../../../../js/jquery-3.3.1.min.js?1762444412"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -534,7 +534,7 @@
             
 <li
   data-nav-id="/vi/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/"
-  title="Day 20 - AWS Backup &amp; FSx"
+  title="Ngày 20 - AWS Backup &amp; FSx"
   class="dd-item 
         
         
@@ -542,7 +542,7 @@
         "
 >
   <a href="../../../../vi/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/">
-    <b> 1.4.5. </b>Day 20 - AWS Backup &amp; FSx 
+    <b> 1.4.5. </b>Ngày 20 - AWS Backup &amp; FSx 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -1452,6 +1452,17 @@
         <li><a href="#chiến-lược-dr-tăng-dần-theo-độ-phức-tạp--chi-phí">Chiến lược DR (tăng dần theo độ phức tạp &amp; chi phí)</a></li>
       </ul>
     </li>
+    <li><a href="#best-practices-cho-dr">Best Practices cho DR</a>
+      <ul>
+        <li><a href="#lập-kế-hoạch">Lập kế hoạch</a></li>
+        <li><a href="#triển-khai">Triển khai</a></li>
+        <li><a href="#kiểm-thử">Kiểm thử</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#lab-14--aws-vm-importexport-phần-2">Lab 14 – AWS VM Import/Export (Phần 2)</a></li>
   </ul>
 </nav></div>
 </div>
@@ -1505,6 +1516,87 @@
 <li>Scale lên khi failover.</li>
 <li><strong>RTO:</strong> phút – giờ. <strong>RPO:</strong> giây – phút. <strong>Chi phí:</strong> cao hơn.</li>
 </ul>
+<p><strong>Multi-Site (Active/Active hoặc Active/Passive)</strong></p>
+<ul>
+<li>Môi trường production chạy song song giữa on-prem và AWS, hoặc giữa nhiều Region AWS.</li>
+<li>Có thể chuyển hướng traffic ngay lập tức (Route 53, Global Accelerator).</li>
+<li><strong>RTO/RPO:</strong> gần như bằng 0. <strong>Chi phí:</strong> cao nhất.</li>
+</ul>
+<p><strong>So sánh chiến lược DR:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Chiến lược</th>
+          <th>RTO</th>
+          <th>RPO</th>
+          <th>Chi phí</th>
+          <th>Độ phức tạp</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Backup &amp; Restore</td>
+          <td>Giờ – Ngày</td>
+          <td>Giờ</td>
+          <td>$</td>
+          <td>Thấp</td>
+      </tr>
+      <tr>
+          <td>Pilot Light</td>
+          <td>Giờ</td>
+          <td>Phút</td>
+          <td>$$</td>
+          <td>Trung bình</td>
+      </tr>
+      <tr>
+          <td>Warm Standby</td>
+          <td>Phút</td>
+          <td>Giây</td>
+          <td>$$$</td>
+          <td>Trung bình-Cao</td>
+      </tr>
+      <tr>
+          <td>Multi-Site</td>
+          <td>Giây</td>
+          <td>Gần 0</td>
+          <td>$$$$</td>
+          <td>Cao</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="best-practices-cho-dr">Best Practices cho DR</h2>
+<h3 id="lập-kế-hoạch">Lập kế hoạch</h3>
+<ul>
+<li>Xác định yêu cầu RTO và RPO.</li>
+<li>Tài liệu hóa quy trình khôi phục.</li>
+<li>Nhận diện hệ thống và phụ thuộc quan trọng.</li>
+<li>Thiết lập kế hoạch truyền thông.</li>
+</ul>
+<h3 id="triển-khai">Triển khai</h3>
+<ul>
+<li>Tự động hóa quy trình khôi phục.</li>
+<li>Sử dụng nhiều AZ và Region.</li>
+<li>Triển khai cơ chế sao chép dữ liệu.</li>
+<li>Kiểm thử backup định kỳ.</li>
+</ul>
+<h3 id="kiểm-thử">Kiểm thử</h3>
+<ul>
+<li>Thực hiện diễn tập DR thường xuyên.</li>
+<li>Thử nghiệm quy trình khôi phục.</li>
+<li>Đo lường RTO/RPO thực tế.</li>
+<li>Cập nhật tài liệu.</li>
+</ul>
+<hr>
+<h1 id="hands-on-labs"><strong>Hands-On Labs</strong></h1>
+<h2 id="lab-14--aws-vm-importexport-phần-2">Lab 14 – AWS VM Import/Export (Phần 2)</h2>
+<ol start="4">
+<li>Import máy ảo lên AWS → <em>14-02.3</em></li>
+<li>Deploy instance từ AMI → <em>14-02.4</em></li>
+<li>Thiết lập ACL cho S3 Bucket → <em>14-03.1</em></li>
+<li>Export máy ảo từ instance → <em>14-03.2</em></li>
+<li>Dọn dẹp tài nguyên trên AWS → <em>14-05</em></li>
+</ol>
 
 
 
@@ -2646,7 +2738,7 @@
 			<a class="nav nav-prev" href="../../../../vi/1-worklog/1.4-week4/1.4.3-day18-2025-10-01/" title="Ngày 18 - AWS Snow Family &amp; Hybrid Storage"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../../../vi/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/" title="Day 20 - AWS Backup &amp; FSx" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../../../vi/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/" title="Ngày 20 - AWS Backup &amp; FSx" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -2656,19 +2748,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../../js/clipboard.min.js?1762444297"></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1762444297"></script>
-    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1762444297"></script>
-    <script src="../../../../js/jquery.sticky.js?1762444297"></script>
-    <script src="../../../../js/featherlight.min.js?1762444297"></script>
-    <script src="../../../../js/highlight.pack.js?1762444297"></script>
+    <script src="../../../../js/clipboard.min.js?1762444412"></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1762444412"></script>
+    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1762444412"></script>
+    <script src="../../../../js/jquery.sticky.js?1762444412"></script>
+    <script src="../../../../js/featherlight.min.js?1762444412"></script>
+    <script src="../../../../js/highlight.pack.js?1762444412"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../../js/modernizr.custom-3.6.0.js?1762444297"></script>
-    <script src="../../../../js/learn.js?1762444297"></script>
-    <script src="../../../../js/hugo-learn.js?1762444297"></script>
+    <script src="../../../../js/modernizr.custom-3.6.0.js?1762444412"></script>
+    <script src="../../../../js/learn.js?1762444412"></script>
+    <script src="../../../../js/hugo-learn.js?1762444412"></script>
 
-    <link href="../../../../mermaid/mermaid.css?1762444297" rel="stylesheet" />
-    <script src="../../../../mermaid/mermaid.js?1762444297"></script>
+    <link href="../../../../mermaid/mermaid.css?1762444412" rel="stylesheet" />
+    <script src="../../../../mermaid/mermaid.js?1762444412"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

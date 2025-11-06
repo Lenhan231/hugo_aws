@@ -15,21 +15,21 @@
     <title>Ngày 16 - Kiến thức cơ bản về Amazon S3 :: Báo cáo thực tập</title>
 
     
-    <link href="../../../../css/nucleus.css?1762444257" rel="stylesheet">
-    <link href="../../../../css/fontawesome-all.min.css?1762444257" rel="stylesheet">
-    <link href="../../../../css/hybrid.css?1762444257" rel="stylesheet">
-    <link href="../../../../css/featherlight.min.css?1762444257" rel="stylesheet">
-    <link href="../../../../css/perfect-scrollbar.min.css?1762444257" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1762444257" rel="stylesheet">
-    <link href="../../../../css/atom-one-dark-reasonable.css?1762444257" rel="stylesheet">
-    <link href="../../../../css/theme.css?1762444257" rel="stylesheet">
-    <link href="../../../../css/hugo-theme.css?1762444257" rel="stylesheet">
+    <link href="../../../../css/nucleus.css?1762444472" rel="stylesheet">
+    <link href="../../../../css/fontawesome-all.min.css?1762444472" rel="stylesheet">
+    <link href="../../../../css/hybrid.css?1762444472" rel="stylesheet">
+    <link href="../../../../css/featherlight.min.css?1762444472" rel="stylesheet">
+    <link href="../../../../css/perfect-scrollbar.min.css?1762444472" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1762444472" rel="stylesheet">
+    <link href="../../../../css/atom-one-dark-reasonable.css?1762444472" rel="stylesheet">
+    <link href="../../../../css/theme.css?1762444472" rel="stylesheet">
+    <link href="../../../../css/hugo-theme.css?1762444472" rel="stylesheet">
     
-    <link href="../../../../css/theme-workshop.css?1762444257" rel="stylesheet">
+    <link href="../../../../css/theme-workshop.css?1762444472" rel="stylesheet">
     
     
 
-    <script src="../../../../js/jquery-3.3.1.min.js?1762444257"></script>
+    <script src="../../../../js/jquery-3.3.1.min.js?1762444472"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -480,7 +480,7 @@
             
 <li
   data-nav-id="/vi/1-worklog/1.4-week4/1.4.2-day17-2025-09-30/"
-  title="Day 17 - S3 Advanced Features"
+  title="Ngày 17 - Tính năng nâng cao của S3"
   class="dd-item 
         
         
@@ -488,7 +488,7 @@
         "
 >
   <a href="../../../../vi/1-worklog/1.4-week4/1.4.2-day17-2025-09-30/">
-    <b> 1.4.2. </b>Day 17 - S3 Advanced Features 
+    <b> 1.4.2. </b>Ngày 17 - Tính năng nâng cao của S3 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -498,7 +498,7 @@
             
 <li
   data-nav-id="/vi/1-worklog/1.4-week4/1.4.3-day18-2025-10-01/"
-  title="Day 18 - AWS Snow Family &amp; Hybrid Storage"
+  title="Ngày 18 - AWS Snow Family &amp; Hybrid Storage"
   class="dd-item 
         
         
@@ -506,7 +506,7 @@
         "
 >
   <a href="../../../../vi/1-worklog/1.4-week4/1.4.3-day18-2025-10-01/">
-    <b> 1.4.3. </b>Day 18 - AWS Snow Family &amp; Hybrid Storage 
+    <b> 1.4.3. </b>Ngày 18 - AWS Snow Family &amp; Hybrid Storage 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -516,7 +516,7 @@
             
 <li
   data-nav-id="/vi/1-worklog/1.4-week4/1.4.4-day19-2025-10-02/"
-  title="Day 19 - Disaster Recovery on AWS"
+  title="Ngày 19 - Disaster Recovery trên AWS"
   class="dd-item 
         
         
@@ -524,7 +524,7 @@
         "
 >
   <a href="../../../../vi/1-worklog/1.4-week4/1.4.4-day19-2025-10-02/">
-    <b> 1.4.4. </b>Day 19 - Disaster Recovery on AWS 
+    <b> 1.4.4. </b>Ngày 19 - Disaster Recovery trên AWS 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -534,7 +534,7 @@
             
 <li
   data-nav-id="/vi/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/"
-  title="Day 20 - AWS Backup &amp; FSx"
+  title="Ngày 20 - AWS Backup &amp; FSx"
   class="dd-item 
         
         
@@ -542,7 +542,7 @@
         "
 >
   <a href="../../../../vi/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/">
-    <b> 1.4.5. </b>Day 20 - AWS Backup &amp; FSx 
+    <b> 1.4.5. </b>Ngày 20 - AWS Backup &amp; FSx 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -1452,8 +1452,13 @@
         <li><a href="#amazon-simple-storage-service-s3">Amazon Simple Storage Service (S3)</a></li>
         <li><a href="#tính-năng-cốt-lõi-của-s3">Tính năng cốt lõi của S3</a></li>
         <li><a href="#s3-access-points">S3 Access Points</a></li>
+        <li><a href="#các-lớp-lưu-trữ-s3">Các lớp lưu trữ S3</a></li>
       </ul>
     </li>
+  </ul>
+
+  <ul>
+    <li><a href="#lab-57--amazon-s3--cloudfront-phần-1">Lab 57 – Amazon S3 &amp; CloudFront (Phần 1)</a></li>
   </ul>
 </nav></div>
 </div>
@@ -1504,7 +1509,85 @@
 <p>Access Point giúp đơn giản hóa việc quản lý truy cập cho dataset dùng chung.</p>
 <ul>
 <li><strong>Kiểm soát theo ứng dụng:</strong> Mỗi access point có policy riêng.</li>
+<li><strong>Đơn giản vận hành:</strong> Dễ quản lý quyền cho dataset dùng chung nhiều ứng dụng.</li>
+<li><strong>Kiểm soát mạng:</strong> Có thể cấu hình chỉ cho phép truy cập từ các VPC cụ thể.</li>
 </ul>
+<hr>
+<h3 id="các-lớp-lưu-trữ-s3">Các lớp lưu trữ S3</h3>
+<p>Chọn storage class phù hợp với mô hình truy cập và chi phí:</p>
+<ul>
+<li><strong>S3 Standard:</strong> Dữ liệu truy cập thường xuyên; availability và hiệu năng cao nhất.</li>
+<li><strong>S3 Intelligent-Tiering:</strong> Tự động di chuyển object giữa các tier để tối ưu chi phí.</li>
+<li><strong>S3 Standard-IA:</strong> Dữ liệu ít truy cập, vẫn truy xuất mili-giây.</li>
+<li><strong>S3 One Zone-IA:</strong> Tương tự Standard-IA nhưng lưu ở một AZ.</li>
+<li><strong>S3 Glacier Flexible Retrieval:</strong> Lưu trữ chi phí thấp, truy xuất phút–giờ.</li>
+<li><strong>S3 Glacier Deep Archive:</strong> Chi phí thấp nhất, truy xuất ~12 giờ.</li>
+</ul>
+<p><strong>So sánh storage class:</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Class</th>
+          <th>Độ bền</th>
+          <th>Availability</th>
+          <th>Lưu tối thiểu</th>
+          <th>Thời gian truy xuất</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Standard</td>
+          <td>11 số 9</td>
+          <td>99,99%</td>
+          <td>Không</td>
+          <td>Tức thời</td>
+      </tr>
+      <tr>
+          <td>Intelligent-Tiering</td>
+          <td>11 số 9</td>
+          <td>99,9%</td>
+          <td>Không</td>
+          <td>Tức thời</td>
+      </tr>
+      <tr>
+          <td>Standard-IA</td>
+          <td>11 số 9</td>
+          <td>99,9%</td>
+          <td>30 ngày</td>
+          <td>Tức thời</td>
+      </tr>
+      <tr>
+          <td>One Zone-IA</td>
+          <td>11 số 9</td>
+          <td>99,5%</td>
+          <td>30 ngày</td>
+          <td>Tức thời</td>
+      </tr>
+      <tr>
+          <td>Glacier Flexible</td>
+          <td>11 số 9</td>
+          <td>99,99%</td>
+          <td>90 ngày</td>
+          <td>Phút-giờ</td>
+      </tr>
+      <tr>
+          <td>Glacier Deep Archive</td>
+          <td>11 số 9</td>
+          <td>99,99%</td>
+          <td>180 ngày</td>
+          <td>12 giờ</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="hands-on-labs"><strong>Hands-On Labs</strong></h1>
+<h2 id="lab-57--amazon-s3--cloudfront-phần-1">Lab 57 – Amazon S3 &amp; CloudFront (Phần 1)</h2>
+<ol>
+<li>Tạo S3 Bucket → <em>57-2.1</em></li>
+<li>Tải dữ liệu lên → <em>57-2.2</em></li>
+<li>Bật Static Website → <em>57-3</em></li>
+<li>Cấu hình Public Access Block → <em>57-4</em></li>
+</ol>
 
 
 
@@ -2643,7 +2726,7 @@
 			<a class="nav nav-prev" href="../../../../vi/1-worklog/1.4-week4/" title="Tuần 4 - Dịch vụ Lưu trữ trên AWS"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../../../vi/1-worklog/1.4-week4/1.4.2-day17-2025-09-30/" title="Day 17 - S3 Advanced Features" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../../../vi/1-worklog/1.4-week4/1.4.2-day17-2025-09-30/" title="Ngày 17 - Tính năng nâng cao của S3" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -2653,19 +2736,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../../js/clipboard.min.js?1762444257"></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1762444257"></script>
-    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1762444257"></script>
-    <script src="../../../../js/jquery.sticky.js?1762444257"></script>
-    <script src="../../../../js/featherlight.min.js?1762444257"></script>
-    <script src="../../../../js/highlight.pack.js?1762444257"></script>
+    <script src="../../../../js/clipboard.min.js?1762444472"></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1762444472"></script>
+    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1762444472"></script>
+    <script src="../../../../js/jquery.sticky.js?1762444472"></script>
+    <script src="../../../../js/featherlight.min.js?1762444472"></script>
+    <script src="../../../../js/highlight.pack.js?1762444472"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../../js/modernizr.custom-3.6.0.js?1762444257"></script>
-    <script src="../../../../js/learn.js?1762444257"></script>
-    <script src="../../../../js/hugo-learn.js?1762444257"></script>
+    <script src="../../../../js/modernizr.custom-3.6.0.js?1762444472"></script>
+    <script src="../../../../js/learn.js?1762444472"></script>
+    <script src="../../../../js/hugo-learn.js?1762444472"></script>
 
-    <link href="../../../../mermaid/mermaid.css?1762444257" rel="stylesheet" />
-    <script src="../../../../mermaid/mermaid.js?1762444257"></script>
+    <link href="../../../../mermaid/mermaid.css?1762444472" rel="stylesheet" />
+    <script src="../../../../mermaid/mermaid.js?1762444472"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

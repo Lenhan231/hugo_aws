@@ -37,4 +37,41 @@ Amazon S3 là dịch vụ lưu trữ đối tượng, cho phép lưu và truy xu
 
 Access Point giúp đơn giản hóa việc quản lý truy cập cho dataset dùng chung.
 
-- **Kiểm soát theo ứng dụng:** Mỗi access point có policy riêng.
+- **Kiểm soát theo ứng dụng:** Mỗi access point có policy riêng.  
+- **Đơn giản vận hành:** Dễ quản lý quyền cho dataset dùng chung nhiều ứng dụng.  
+- **Kiểm soát mạng:** Có thể cấu hình chỉ cho phép truy cập từ các VPC cụ thể.
+
+---
+
+### Các lớp lưu trữ S3
+
+Chọn storage class phù hợp với mô hình truy cập và chi phí:
+
+- **S3 Standard:** Dữ liệu truy cập thường xuyên; availability và hiệu năng cao nhất.  
+- **S3 Intelligent-Tiering:** Tự động di chuyển object giữa các tier để tối ưu chi phí.  
+- **S3 Standard-IA:** Dữ liệu ít truy cập, vẫn truy xuất mili-giây.  
+- **S3 One Zone-IA:** Tương tự Standard-IA nhưng lưu ở một AZ.  
+- **S3 Glacier Flexible Retrieval:** Lưu trữ chi phí thấp, truy xuất phút–giờ.  
+- **S3 Glacier Deep Archive:** Chi phí thấp nhất, truy xuất ~12 giờ.
+
+**So sánh storage class:**
+
+| Class | Độ bền | Availability | Lưu tối thiểu | Thời gian truy xuất |
+|-------|--------|--------------|---------------|---------------------|
+| Standard | 11 số 9 | 99,99% | Không | Tức thời |
+| Intelligent-Tiering | 11 số 9 | 99,9% | Không | Tức thời |
+| Standard-IA | 11 số 9 | 99,9% | 30 ngày | Tức thời |
+| One Zone-IA | 11 số 9 | 99,5% | 30 ngày | Tức thời |
+| Glacier Flexible | 11 số 9 | 99,99% | 90 ngày | Phút-giờ |
+| Glacier Deep Archive | 11 số 9 | 99,99% | 180 ngày | 12 giờ |
+
+---
+
+# **Hands-On Labs**
+
+## Lab 57 – Amazon S3 & CloudFront (Phần 1)
+
+1. Tạo S3 Bucket → *57-2.1*  
+2. Tải dữ liệu lên → *57-2.2*  
+3. Bật Static Website → *57-3*  
+4. Cấu hình Public Access Block → *57-4*
