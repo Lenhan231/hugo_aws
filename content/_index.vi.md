@@ -1,8 +1,8 @@
 ---
-title: "Báo cáo thực tập"
-
-weight: 1
+title: "Week 7 Worklog"
+weight: 7
 chapter: false
+pre: "<b> 1.7. </b>"
 ---
 
 # Báo cáo thực tập

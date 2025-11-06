@@ -1,121 +1,58 @@
 ---
-title: "Day 31 - Introduction to Serverless"
+title: "Day 31 - Vertical Slice Kickoff"
 weight: 1
 chapter: false
 pre: "<b> 1.7.1. </b>"
 ---
 
 **Date:** 2025-10-20 (Thứ Hai)  
-**Status:** "Planned"  
+**Status:** "Done"  
 
 ---
 
 # **Lecture Notes**
 
-## Serverless Computing
+## Project Context
 
-### What is Serverless?
+### Ebook Demo – Vertical Slice 0
 
-- **Serverless** doesn't mean "no servers" – it means you don't manage servers.
-- AWS handles infrastructure provisioning, scaling, and maintenance.
-- You focus on code, not infrastructure.
+- Mục tiêu: demo tính năng **xem chi tiết sách** end-to-end trước khi phát triển toàn bộ hệ thống.
+- Cách tiếp cận: **Vertical Slice Architecture** để xây từng lát cắt hoàn chỉnh thay vì làm theo tầng.
+- Lợi ích: demo được ngay, phát hiện lỗi sớm, tạo nhịp phối hợp giữa frontend/backend.
 
-**Benefits:**
+### Kiến trúc Slice
 
-- No server management
-- Automatic scaling
-- Pay only for what you use
-- Built-in high availability
-- Faster time to market
-
----
-
-## AWS Lambda
-
-- **AWS Lambda** lets you run code without provisioning or managing servers.
-- Supports multiple languages: Python, Node.js, Java, Go, .NET, Ruby, custom runtimes.
-
-**Key Features:**
-
-- Event-driven execution
-- Automatic scaling (0 to thousands of concurrent executions)
-- Subsecond billing (charged per 1ms)
-- Integrated with 200+ AWS services
-- Built-in fault tolerance
-
-**Lambda Use Cases:**
-
-- Real-time file processing
-- Data transformation
-- API backends
-- Scheduled tasks (cron jobs)
-- Stream processing
-- IoT backends
-
-**Lambda Pricing:**
-
-- **Requests:** $0.20 per 1M requests
-- **Duration:** Based on memory allocated and execution time
-- **Free Tier:** 1M requests and 400,000 GB-seconds per month
-
----
-
-## Lambda Function Structure
-
-**Basic Python Example:**
-
-```python
-import json
-
-def lambda_handler(event, context):
-    # Event: input data
-    # Context: runtime information
-    
-    name = event.get('name', 'World')
-    
-    return {
-        'statusCode': 200,
-        'body': json.dumps(f'Hello, {name}!')
-    }
+```
+User → Frontend → API → Database → Response → UI
 ```
 
-**Lambda Configuration:**
+- Mỗi lát cắt bao gồm UI, API contract, backend logic và dữ liệu giả để trình diễn.
+- Cho phép thay thế từng thành phần mà không ảnh hưởng đến toàn bộ hệ thống.
 
-- **Memory:** 128 MB to 10,240 MB (CPU scales with memory)
-- **Timeout:** Up to 15 minutes
-- **Environment Variables:** Store configuration
-- **Layers:** Share code and dependencies
-- **VPC:** Access private resources
+## Vertical Slice Architecture
 
----
+### Nguyên tắc chính
 
-## Lambda Triggers
+- Phát triển feature theo luồng người dùng, không tách biệt tầng.
+- Giữ scope nhỏ để **demo nhanh** và nhận feedback sớm.
+- Rõ ràng trách nhiệm của từng slice, giúp mở rộng dễ dàng.
 
-Lambda can be triggered by many AWS services:
+### Lợi ích
 
-- **API Gateway:** HTTP requests
-- **S3:** Object uploads/deletes
-- **DynamoDB:** Stream changes
-- **SNS/SQS:** Messages
-- **CloudWatch Events/EventBridge:** Scheduled or event-driven
-- **Kinesis:** Stream processing
-- **ALB:** Application Load Balancer requests
+- Tăng tốc đóng gói giá trị: có thể show cho stakeholder ngay.
+- Giảm rủi ro integration vì mỗi slice tự kiểm chứng.
+- Cho phép phát triển song song giữa các slice khác nhau.
 
----
+## Key Insights
 
-## Best Practices
-
-- **Keep functions small and focused:** Single responsibility
-- **Use environment variables:** For configuration
-- **Implement proper error handling:** Try-catch blocks
-- **Optimize cold starts:** Minimize dependencies, use provisioned concurrency
-- **Monitor with CloudWatch:** Logs and metrics
-- **Use Lambda Layers:** Share common code
-- **Implement idempotency:** Handle duplicate invocations
-- **Set appropriate timeouts:** Don't use max timeout unnecessarily
+- Vertical slice đóng vai trò nền tảng trước khi mở rộng sang các feature khác.
+- Mỗi slice cần có checklist rõ ràng (UI hoàn thiện, contract chuẩn, backend trả dữ liệu đúng).
+- Coi slice như “mini product” với vòng đời riêng giúp giữ chất lượng.
 
 ---
 
 # **Hands-On Labs**
 
-*Labs sẽ được cập nhật*
+- Xác định phạm vi slice 0 (luồng xem chi tiết sách, data tối thiểu).
+- Vẽ sơ đồ luồng dữ liệu và xác định boundary giữa frontend/backend.
+- Chuẩn hóa checklist demo (contract, mock, UI, backend).
