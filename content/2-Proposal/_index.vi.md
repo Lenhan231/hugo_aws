@@ -1,5 +1,5 @@
 ---
-title: "Bản đề xuất"
+title: "Proposal"
 
 weight: 2
 chapter: false
@@ -7,144 +7,245 @@ pre: " <b> 2. </b> "
 ---
 
 
-# KenFi – Nền tảng thương mại và thành viên thể hình AI
-## Nền tảng AWS Serverless Stack thống nhất dành cho Thành viên, Thương mại điện tử và Huấn luyện Thể hình AI 
-
-### 1. Tóm tắt điều hành  
-KenFi là nền tảng số hóa dành cho các phòng gym nội bộ hoặc chuỗi gym quy mô vừa và nhỏ tại Việt Nam, kết hợp ba chức năng chính trên một hệ thống duy nhất: bán gói tập trực tuyến, bán sản phẩm bổ trợ thể hình (whey, creatine, phụ kiện…), và hỗ trợ dinh dưỡng – AI tư vấn tập luyện.
-
-Khách hàng có thể đăng ký gói tập trực tuyến, thanh toán ngay bằng VNPay hoặc PayPal phiên bản thử, và nhận Mã Khách Hàng (Customer ID) hoặc QR Code để quét khi đến quầy lễ tân. Mọi thao tác đều thực hiện qua web – không cần cài ứng dụng riêng.
-
-Về phía vận hành, KenFi giúp chủ phòng gym tự động hóa khâu đăng ký – gia hạn – check-in, giảm tải công việc cho lễ tân, đồng thời chuẩn hóa danh tính khách hàng thông qua hệ thống mã hóa thống nhất trên nền tảng AWS.
-
-Hệ thống được triển khai dựa trên kiến trúc serverless của AWS, đảm bảo chi phí vận hành cực thấp (ước tính chỉ ~0.7 USD/tháng, tương đương 8.40 USD cho 12 tháng) nhưng vẫn đủ khả năng mở rộng lên hàng nghìn hội viên nếu cần.
-
-KenFi không chỉ phục vụ việc quản lý hội viên, mà còn đóng vai trò nền tảng thương mại điện tử thu nhỏ dành riêng cho gym, đồng thời tích hợp công cụ tính dinh dưỡng theo bảng USDA và chatbot AI với phong cách “Bro thân thiện – nhưng nói chuyên môn thì nghiêm túc”.
-
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Hầu hết các phòng tập thể dục địa phương ở Việt Nam vẫn phụ thuộc nhiều vào các quy trình thủ công. Tư cách thành viên thường được theo dõi trên giấy hoặc tệp Excel cơ bản. Khách hàng phải đến trực tiếp quầy để đăng ký hoặc gia hạn, gây chậm trễ, chen chúc trong giờ cao điểm. Không có tùy chọn tự phục vụ để mua tư cách thành viên hoặc thực phẩm bổ sung trực tuyến. Danh tính khách hàng không được chuẩn hóa—mỗi chi nhánh hoặc nhân viên có thể sử dụng các định dạng khác nhau, dẫn đến nhầm lẫn và hồ sơ không nhất quán. Ngoài ra, tư vấn dinh dưỡng và calo thường không chính thức, tùy thuộc vào bất kỳ huấn luyện viên nào có sẵn, dẫn đến lời khuyên không nhất quán.
-
-*Trải nghiệm kỹ thuật số mong đợi mà khách hàng mong muốn:*  
-Các thành viên phòng tập thể dục hiện đại mong đợi mức độ tiện lợi tương tự mà họ nhận được từ thương mại điện tử hoặc ngân hàng trực tuyến. Họ muốn đăng ký gói đào tạo trực tiếp trên điện thoại, thanh toán ngay lập tức bằng các cổng thanh toán phổ biến như VNPay hoặc PayPal và nhận mã QR thành viên hoặc ID khách hàng ngay lập tức. Họ muốn được hướng dẫn rõ ràng về lượng calo nạp vào và sử dụng bổ sung mà không cần phải liên tục hỏi quầy lễ tân. Họ cũng mong muốn hệ thống nhận ra họ ngay lập tức khi nhận phòng mà không lặp lại thông tin cá nhân.
-
-*Khoảng cách trên thị trường:*  
-Trong khi các chuỗi thể dục lớn ở Việt Nam như California Fitness hay CityGym có hệ thống kỹ thuật số một phần, không có nền tảng thống nhất, giá cả phải chăng để các phòng tập thể dục vừa và nhỏ hoạt động với cùng mức độ chuyên nghiệp. Mua các hệ thống làm sẵn từ các nhà cung cấp nước ngoài rất tốn kém và không được tối ưu hóa cho quy trình làm việc của Việt Nam. Hầu hết các sản phẩm phần mềm "quản lý phòng tập thể dục" hiện nay chỉ tập trung vào việc theo dõi điểm danh, không tích hợp thương mại điện tử, hướng dẫn dinh dưỡng hoặc hỗ trợ dựa trên AI.
-
-*KenFi là giải pháp*  
-KenFi thu hẹp khoảng cách này bằng cách cung cấp nền tảng thành viên và thương mại thể dục do AWS cung cấp được thiết kế riêng cho các phòng tập thể dục địa phương. Nó tập trung đăng ký thành viên, thanh toán kỹ thuật số, bán thực phẩm bổ sung, tính toán dinh dưỡng và nhận dạng khách hàng vào một hệ sinh thái thân thiện duy nhất. Khách hàng nhận được ID khách hàng hoặc Mã QR duy nhất ngay sau khi mua gói hàng, có thể hiển thị cho nhân viên lễ tân để nhận biết ngay lập tức. Chatbot AI tích hợp hoạt động như một người anh em phòng tập thể dục thân thiện cho các câu hỏi thông thường, nhưng chuyển sang chế độ chuyên gia nghiêm túc khi thảo luận về các chủ đề kỹ thuật thể dục. Nền tảng này cho phép các phòng tập thể dục nhỏ hoạt động với sự chuyên nghiệp của các chuỗi thể dục lớn mà không yêu cầu cơ sở hạ tầng hoặc bảo trì trả trước nặng nề. 
 
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+# **Thư Viện Online - Nền Tảng Nội Dung Serverless Cho Nhóm Nhỏ**
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+## **1. Tổng quan điều hành**
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+Dự án **Thư Viện Online** nhằm xây dựng một nền tảng serverless, **chi phí thấp** để lưu trữ và phân phối nội dung (PDF/ePub) cho một nhóm người dùng nhỏ (ban đầu **~100 người, n**hóm người dùng gồm sinh viên/lab cần chia sẻ tài liệu nghiên cứu nội bộ có kiểm duyệt). Giải pháp này ưu tiên tính bảo mật, quy trình duyệt nội dung (Admin Approval), và chi phí vận hành **minh bạch, tuyến tính** khi mở rộng. Kiến trúc sử dụng **AWS Serverless** hoàn toàn (Amplify, Cognito, API Gateway, Lambda, S3, CloudFront, DynamoDB). Chi phí dự kiến cho MVP (không tính Free Tier) **≈ $9.80/tháng**, đảm bảo khả năng mở rộng lên 5.000 đến 50.000 người dùng với chi phí dễ dự đoán.
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+## **2. Vấn đề**
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+### **Vấn đề là gì?**
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai* 
+Tài liệu và sách bị phân tán; thiếu một hệ thống **truyền tải nội dung an toàn** và có **kiểm soát truy cập**; quy trình thêm hoặc **kiểm duyệt nội dung** tốn thời gian và nhiều vấn đề liên quan đến pháp lý**.**
 
-Nền tảng KenFi sẽ được triển khai trong các giai đoạn được xác định rõ ràng để đảm bảo tạo mẫu nhanh chóng trong khi vẫn duy trì khả năng mở rộng lâu dài.
+### Giải pháp
 
-Giai đoạn 1 – Lập kế hoạch kiến trúc và thiết lập dịch vụ AWS. Xác định chính xác các tài nguyên AWS cần thiết bao gồm Amplify, Cognito User Pool, API Gateway, hàm Lambda, bảng DynamoDB và vùng lưu trữ S3. Thiết lập quy ước đặt tên, lựa chọn khu vực và vai trò IAM.
+Xây dựng một pipeline serverless trên AWS: Người dùng tải lên qua **Presigned PUT URL** (tới S3 tạm); Admin phê duyệt → Lambda di chuyển file đến thư mục công khai (nhưng được bảo vệ); Người đọc truy cập qua **Signed GET URL** (từ CloudFront/CDN) để đảm bảo tốc độ và kiểm soát truy cập.
 
-Giai đoạn 2 – Quy trình làm việc thành viên cốt lõi. Triển khai quy trình đăng ký tài khoản, mua gói đào tạo, tạo ID khách hàng và mã QR cũng như lưu trữ hiệu lực thành viên trong DynamoDB.
+### Lợi ích và Tỷ suất hoàn vốn
 
-Giai đoạn 3 – Bổ sung mô-đun thương mại. Xây dựng danh mục sản phẩm, quy trình thêm vào giỏ hàng, thanh toán qua VNPay hoặc PayPal sandbox và theo dõi lịch sử đơn hàng.
+- **Giá trị kinh doanh:** Tập trung hóa nội dung; kiểm soát chất lượng qua quy trình duyệt; triển khai nhanh chóng với CI/CD.
+- **Lợi ích kỹ thuật:** Chi phí vận hành thấp (**≈ $9.80/tháng** ở MVP, không tính Free Tier); kiến trúc Serverless có thể **mở rộng quy mô lớn (scale) dễ dàng**; bảo mật truy cập nội dung.
 
-Giai đoạn 4 – Tích hợp máy tính dinh dưỡng. Kết nối các hàm Lambda với API Trung tâm FoodData của USDA, cho phép người dùng nhập các mặt hàng thực phẩm và nhận phân tích calo và vĩ mô.
+---
 
-Giai đoạn 5 – Chatbot AI. Tích hợp mô hình LLM nhẹ chạy trên Lambda hoặc tùy chọn thông qua Amazon Bedrock. Định cấu hình chuyển đổi hành vi giữa chế độ "anh em phòng tập thể dục" thông thường và chế độ chuyên gia nghiêm túc.
-*Dịch vụ AWS và trách nhiệm chính* 
+## **3. Kiến trúc giải pháp**
 
-AWS Amplify lưu trữ giao diện người dùng Next.js và tự động hóa CI/CD từ GitHub hoặc CodeCommit.
+### **A. High-level**
 
-Amazon Cognito quản lý đăng ký, đăng nhập, đặt lại mật khẩu và mã thông báo danh tính.
+![A) High level](/images/Architect.jpeg)
 
-Amazon API Gateway hiển thị các điểm cuối HTTPS bảo mật cho tất cả các hành động của ứng dụng.
+### **B. Luồng xử lý yêu cầu**
+![B) Request flow](/images/Request_flow.jpeg)
 
-Các hàm AWS Lambda xử lý logic kinh doanh như mua thành viên, tạo mã QR và tra cứu dinh dưỡng.
+### **AWS Services Used**
 
-Amazon DynamoDB lưu trữ hồ sơ khách hàng, mã thông báo thành viên, hồ sơ giao dịch và hàng tồn kho sản phẩm.
+| Dịch vụ | Vai trò chính | Hoạt động cụ thể |
+| --- | --- | --- |
+| **Amplify Hosting** | CI/CD + FE Hosting | Build & Deploy Next.js, quản lý domain |
+| **Cognito** | Authentication | Đăng ký/Đăng nhập, cấp JWT, refresh token |
+| **API Gateway** | Entry point API | Nhận request, xác thực JWT, route đến Lambda |
+| **Lambda** | Business Logic | Xử lý upload, duyệt, tạo signed URL, ghi metadata |
+| **S3** | Object Storage | Lưu file gốc, file đã duyệt, được download qua Cloudfront Signed URL |
+| **CloudFront** | CDN | Phân phối nhanh nội dung, chặn direct access qua OAC |
+| **DynamoDB** | Database | Lưu metadata (tên sách, uploader, trạng thái duyệt) |
+| **Route 53** | DNS | Trỏ domain đến Amplify Hosting, API Gateway, CloudFront |
+| **CloudWatch** | Monitoring | Lưu log Lambda, cảnh báo lỗi hoặc chi phí bất thường |
 
-Amazon S3 lưu trữ các tài sản công khai như hình ảnh QR, hình ảnh biểu ngữ và thẻ thành viên có thể tải xuống.
+> Tìm kiếm (Search):
+> 
+- Tìm kiếm đơn giản theo trường (VD: tên sách, tác giả), sử dụng **DynamoDB GSIs** cho các thuộc tính này và query theo GSI.
 
-Bạn có thể sử dụng Amazon SES tùy chọn để gửi email xác nhận có tệp đính kèm mã QR.
+### **Component Design**
 
-*Quy trình tạo mã QR* 
+- **User Upload:** Presigned PUT tới S3 thư mục `uploads/`.
+- **Admin Approval:** Lambda copy file từ `uploads/` sang `public/books/` khi được duyệt.
+- **Reader Security:** CloudFront sử dụng **Origin Access Control (OAC)** để chặn truy cập trực tiếp S3 và chỉ cho phép đọc qua **Signed URL** (ngắn hạn) do Lambda tạo ra.
 
-Khi giao dịch mua được xác nhận, Lambda sẽ tạo một chuỗi thành viên duy nhất bằng cách sử dụng tiền tố như KF-YYYYMM-XXXX. Mã QR được hiển thị thông qua thư viện tạo QR, được lưu trữ tạm thời trong bộ nhớ và được lưu dưới dạng tệp hình ảnh trong S3 theo đường dẫn như /qr-codes/customer-id.png. URL được trả về giao diện người dùng và tùy chọn gửi qua email cho khách hàng.
+### **Search Architecture**
 
-*Kết nối cổng thanh toán* 
+- **Simple Search:**
+    - Thiết kế **GSI** cho `title` và `author` (ví dụ: `GSI1: PK=TITLE#{normalizedTitle}, SK=BOOK#{bookId}`; `GSI2: PK=AUTHOR#{normalizedAuthor}, SK=BOOK#{bookId}`).
+    - Thêm endpoint `GET /search?title=...&author=...` để query theo GSI thay vì `Scan`.
 
-Tài khoản VNPay và PayPal sandbox được sử dụng trong quá trình phát triển. Giao diện người dùng chuyển hướng người dùng đến URL thanh toán thích hợp. Sau khi hoàn tất, VNPay hoặc PayPal trả về callback đến API Gateway với trạng thái giao dịch. Một hàm Lambda chuyên dụng xác minh chữ ký thanh toán và đánh dấu tư cách thành viên là đang hoạt động.
+![Search Architecture](/images/SearchArchitecture.jpeg)
 
-*Chiến lược triển khai* 
+### **Admin Authorization**
 
-Toàn bộ cơ sở hạ tầng có thể được cung cấp thủ công thông qua Bảng điều khiển AWS trong giai đoạn nguyên mẫu. Sau khi ổn định, cơ sở hạ tầng dưới dạng mã sẽ được áp dụng bằng AWS CDK hoặc CloudFormation để triển khai có thể tái tạo trên các môi trường. Phiên bản cho Lambda và chiến lược khôi phục sẽ được thực thi.
+- Sử dụng **Cognito User Groups** với một nhóm `Admins` trong User Pool.
+- Khi Admin đăng nhập, JWT sẽ chứa `cognito:groups: ["Admins"]`.
+- Các Lambda thuộc nghiệp vụ Admin (ví dụ `approveBook`, `takedownBook`) phải kiểm tra claim này; nếu thiếu group, trả `403 Forbidden`.
+- Có thể dùng **JWT Authorizer (API Gateway HTTP API)** để xác thực, phần phân quyền chi tiết xử lý trong Lambda dựa trên claim.
 
-*Kiểm tra và kiểm soát chất lượng* 
+---
 
-Kiểm thử đơn vị được thực hiện trên từng hàm Lambda một cách độc lập. Tích hợp giao diện người dùng được xác minh thông qua các bản dựng xem trước Amplify. Thử nghiệm toàn diện từ đầu đến cuối được mô phỏng với một người dùng giả đăng ký, mua, nhận mã QR và đăng ký. Kiểm tra thâm nhập tập trung vào kiểm soát truy cập và ngăn chặn giả mạo thanh toán.
+## **4. Technical Implementation**
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+### **Implementation Phases**
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+1. **Thiết kế & IaC (Infra-as-Code):** Xây dựng các stack CDK (Cognito, DDB, S3, Amplify, Lambda, API).
+2. **Flow Upload & Duyệt:** Triển khai Presigned PUT, lưu metadata (trạng thái `pending`), và logic Admin duyệt (copy file).
+3. **Flow Đọc Sách:** Triển khai endpoint Signed GET, và giao diện đọc (FE stream qua CloudFront).
+4. **Vận hành (Ops):** Thiết lập logs CloudWatch (retention ngắn), cảnh báo ngân sách (Budget Alerts), hardening IAM.
+5. **Search:**
+    - MVP: thêm GSI cho `title`, `author` và endpoint `GET /search` query theo GSI.
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+### **Technical Requirements**
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+- Sử dụng **CDK** để định nghĩa toàn bộ hạ tầng.
+- API Gateway phải là **HTTP API** để tối ưu chi phí.
+- Lambda (Python) xử lý logic nghiệp vụ và tương tác DynamoDB/S3.
+- S3 Bucket Policy phải **chặn truy cập công khai** và chỉ cho phép CloudFront OAC.
 
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+---
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+## **5. Timeline & Milestones**
 
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+---
 
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 Phòng.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+### Project Timeline
+
+### Nền tảng & Xác thực (Tuần 1-2)
+
+Mục tiêu là thiết lập hạ tầng và cho phép người dùng đăng nhập.
+
+- **Tác vụ Backend (CDK/DevOps):**
+    - Viết stack CDK/IaC cho **Cognito** (User Pool, App Client).
+    - Viết stack CDK cho **DynamoDB** (bảng chính, chưa cần GSI).
+    - Viết stack CDK cho **S3** (Bucket `uploads`, `public`, `logs`) và cấu hình **OAC** (Origin Access Control).
+    - Triển khai **API Gateway** (HTTP API) và một Lambda "hello world" để kiểm thử.
+- **Tác vụ Frontend (Amplify):**
+    - Cấu hình **Amplify Hosting** và kết nối với repo GitHub (CI/CD).
+    - Tích hợp Amplify UI / Cognito SDK cho các trang: Đăng ký, Xác thực email, Đăng nhập, Quên mật khẩu.
+- **Kết quả (Milestone):**
+    - Developer có thể `git push` và FE tự động deploy.
+    - Người dùng có thể đăng ký/đăng nhập và nhận được JWT token.
+
+### Luồng Upload & Duyệt (Tuần 2-3)
+
+Mục tiêu là cho phép người dùng (đã đăng nhập) tải file lên và Admin duyệt file đó.
+
+- **Tác vụ Backend (CDK/Lambda):**
+    - Viết Lambda `createUploadUrl`:
+        - Xác thực JWT (phải đăng nhập).
+        - Tạo **Presigned PUT URL** trỏ đến thư mục `uploads/` trên S3.
+        - Ghi metadata vào DynamoDB (status: `PENDING`).
+    - Viết Lambda `approveBook`:
+        - Xác thực JWT (phải là Admin).
+        - Copy file từ `uploads/` sang `public/books/`.
+        - Cập nhật status trong DynamoDB (status: `APPROVED`).
+- **Tác vụ Frontend:**
+    - Xây dựng Form Upload (kéo thả, chọn file).
+    - Gọi API `createUploadUrl` để lấy URL.
+    - Thực hiện upload file (HTTP PUT) trực tiếp lên S3 Presigned URL.
+    - Xây dựng Giao diện Admin:
+        - Lấy danh sách sách có status `PENDING`.
+        - Có nút "Duyệt" (gọi API `approveBook`).
+
+### Luồng Đọc & Tìm kiếm (Tuần 3-4)
+
+Mục tiêu là cho phép người dùng đọc và tìm kiếm sách đã được duyệt.
+
+- **Tác vụ Backend (CDK/Lambda):**
+    - Viết Lambda `getReadUrl`:
+        - Xác thực JWT (phải đăng nhập).
+        - Kiểm tra xem sách có status `APPROVED` không.
+        - Tạo **Signed GET URL** (ngắn hạn) qua CloudFront trỏ đến file trong `public/books/`.
+    - Cập nhật CDK: Thêm **GSI (Global Secondary Index)** cho `title` và `author` vào bảng DynamoDB.
+    - Viết Lambda `searchBooks`: Query DynamoDB dựa trên GSI (không dùng Scan).
+- **Tác vụ Frontend:**
+    - Xây dựng Trang chủ: Hiển thị danh sách sách (từ API, không có URL).
+    - Xây dựng Thanh tìm kiếm (gọi API `searchBooks`).
+    - Xây dựng Giao diện Đọc sách (Reader):
+        - Khi bấm "Đọc", gọi API `getReadUrl`.
+        - Dùng URL nhận được để render file (ví dụ: dùng `react-pdf`).
+
+### Vận hành & Bảo mật (Tuần 5-6)
+
+Mục tiêu là "hóa cứng" hệ thống, làm cho nó an toàn và dễ giám sát.
+
+- **Tác vụ Backend (CDK/Lambda):**
+    - Thiết lập **S3 Event Notification** (cho `uploads/`).
+    - Viết Lambda `validateMimeType`: Trigger khi có file mới, đọc "magic bytes" để xác thực đúng là PDF/ePub. Nếu sai, cập nhật status: `REJECTED_INVALID_TYPE`.
+    - Viết Lambda `takedownBook` (API cho Admin) và `deleteUpload` (xóa file `PENDING` sau 72h).
+- **Tác vụ DevOps (AWS Console/CDK):**
+    - Thiết lập **AWS Budget Alerts** (cảnh báo khi chi phí vượt $X).
+    - Thiết lập **CloudWatch Alarms** (ví dụ: Lambda error rate > 5%).
+    - Rà soát lại **IAM** (đảm bảo "least-privilege"), **CORS** (chỉ cho phép domain của Amplify).
+
+## **6. Budget Estimation**
+
+You can find the budget estimation on the: [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=45ebafb3c3a0ff07b7c21970b2287f1a06f2a460)
+
+Dưới đây là ước tính chi phí hàng tháng **nghiêm ngặt** (giả định không áp dụng AWS Free Tier) tại quy mô MVP (100 người dùng).
+
+| # | AWS Service | Region | Monthly (USD) | Notes |
+| --- | --- | --- | --- | --- |
+| 0 | **Amazon CloudFront** | Asia Pacific (Singapore) | **0.86** | 10 GB data egress + 10 000 HTTPS requests |
+| 1 | **AWS Amplify** | Asia Pacific (Singapore) | **1.31** | 100 build min + 0.5 GB storage + 2 GB served |
+| 2 | **Amazon API Gateway** | Asia Pacific (Singapore) | **0.01** | ~10 000 HTTP API calls/tháng |
+| 3 | **AWS Lambda** | Asia Pacific (Singapore) | **0.00** | 128 MB RAM × 100 ms × 10 000 invokes |
+| 4 | **Amazon S3 (Standard)** | Asia Pacific (Singapore) | **0.05** | 2 GB object storage for books/images |
+| 5 | **Data Transfer** | Asia Pacific (Singapore) | **0.00** | Included in CloudFront cost |
+| 6 | **DynamoDB (On-Demand)** | Asia Pacific (Singapore) | **0.03** | Light metadata table (0.1 GB, few reads/writes) |
+| 7 | **Amazon Cognito** | Asia Pacific (Singapore) | **5.00** | 100 MAU, Advanced Security enabled |
+| 8 | **Amazon CloudWatch** | Asia Pacific (Singapore) | **1.64** | 5 metrics + 0.1 GB logs/tháng |
+| 9 | **Amazon Route 53** | Asia Pacific (Singapore) | **0.90** | 1 Hosted Zone + DNS queries |
+|  |  |  | **≈ 9.80 USD / month** | **No Free Tier applied** |
+
+### **Infrastructure Costs**
+
+Mô hình chi phí này cho thấy sự hiệu quả của kiến trúc serverless: chi phí tập trung chủ yếu vào **giá trị mang lại cho người dùng** (Cognito MAU) thay vì trả tiền cho "máy chủ chờ" (idle servers).
+
+---
+
+## **7. Risk Assessment**
+
+### **Risk Matrix**
+
+| Rủi ro | Tác động | Chiến lược giảm thiểu |
+| --- | --- | --- |
+| Chi phí tăng khi user đột biến | Cao | Giới hạn MAU, cache metadata qua CloudFront |
+| Upload lạm dụng | Trung bình | Giới hạn ≤ 50MB/file, xóa auto sau 72h |
+| File loại giả mạo/độc hại | Trung bình | S3 Event → Lambda xác thực MIME (magic bytes) |
+| Giám sát quá tải | Thấp | CloudWatch alert, log 14 ngày |
+
+### **Mitigation Strategies**
+
+- **Chi phí:**
+    - Đặt **AWS Budget Alerts** cho CloudFront và Cognito.
+    - Nhận thức rằng **Signed URL** có TTL ngắn nên không cache công khai dài hạn; thay vào đó, **cache metadata/API response** (danh sách sách, chi tiết) trên CloudFront 3–5 phút để giảm tải API.
+    - Chỉ tạo Signed URL khi người dùng thực sự bấm đọc (on‑demand), không tạo sẵn cho cả danh sách.
+- **Tải lên:**
+    - Giới hạn kích thước file **≤ 50MB** cho MVP. (Có thể nâng lên 200MB khi cần, dùng multipart upload ở FE để tránh timeout.)
+    - Áp dụng **Rate Limit/Throttling** trên API Gateway cho các endpoint tạo Presigned URL.
+    - Thiết lập **S3 Lifecycle Policy** để tự động xóa file chưa duyệt ở `uploads/` sau 72h.
+    - Thêm **Server‑side Validation**: S3 Event Notifications → Lambda đọc **magic bytes** (vd. thư viện `file-type`) để xác thực đúng PDF/ePub; nếu sai, tự động xóa và ghi trạng thái `REJECTED_INVALID_TYPE` vào DynamoDB.
+- **Bản quyền (DMCA):**
+    - Lưu **Audit Log** trong DynamoDB: `uploaderID`, `uploadTimestamp`, `adminApproverID`, `approvalTimestamp` để phục vụ truy vết.
+    - Xây dựng **Takedown API** (chỉ Admin): cập nhật status `TAKEDOWN`; tùy chọn di chuyển object từ `public/books/` sang `quarantine/books/` (không xóa hẳn) để lưu vết.
+
+### **Contingency Plans**
+
+Nếu chi phí tăng vượt ngân sách, có thể tạm thời giới hạn người dùng mới thông qua hệ thống mời (Invite-Only) để kiểm soát MAU Cognito và tối ưu hóa file.
+
+---
+
+## **8. Expected Outcomes**
+
+### **Technical Improvements:**
+
+- Đảm bảo **tốc độ truyền tải nhanh** và **bảo mật** nội dung (CDN + Signed URL).
+- Tạo ra một kiến trúc **Serverless tiêu chuẩn** trên AWS, dễ dàng mở rộng lên đến 50.000 người dùng mà không cần thay đổi kiến trúc cốt lõi.
+- Hệ thống **CI/CD hoàn toàn tự động** cho cả Frontend và Backend (CDK/Amplify).
+
+### **Long-term Value**
+
+- Thiết lập một **nền tảng dữ liệu tập trung** và có cấu trúc cho nội dung sách.
+- Cung cấp một **tài liệu tham khảo sống** về việc triển khai Serverless E2E.
+- Khả năng tích hợp các dịch vụ phân tích (như Amazon QuickSight) hoặc AI/ML trong tương lai.
+
+Hệ thống này chứng minh khả năng xây dựng nền tảng nội dung bảo mật, tiết kiệm chi phí và mở rộng dễ dàng bằng AWS Serverless — phù hợp triển khai thực tế cho nhóm nhỏ. Rẻ

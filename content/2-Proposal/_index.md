@@ -8,152 +8,234 @@ pre: " <b> 2. </b> "
 
 
 
-# KenFi – AI Fitness Commerce & Membership Platform
-## A Unified AWS Serverless Stack for Membership, E-Commerce, and AI Fitness Coaching
 
-### 1. Executive Summary
-KenFi is an AI-powered Fitness Commerce and Membership Platform developed as a prototype for a local gym facility, with a scalable architecture designed to support future expansion into a full multi-branch fitness chain. The platform consolidates three traditionally fragmented operations—product retail, membership registration, and customer assistance—into a single digital ecosystem.
+# **Online Library – A Serverless Content Platform for Small Groups**
 
-Through an integrated e-commerce module, customers can purchase fitness products such as whey protein, supplements, apparel, and accessories directly from the platform. Membership plans—including monthly, quarterly, and annual subscriptions—can be acquired online, upon which the system automatically generates a unique Customer ID to be presented to gym reception staff for check-in and access control.
+### **1. Executive Summary**
+The **Online Library** project aims to build a **low-cost serverless platform** for storing and distributing content (PDF/ePub) for a small user group (initially **~100 users**, primarily students/labs needing controlled internal research-material sharing). The solution prioritizes security, content moderation (Admin Approval), and **transparent, linear operating costs** as it scales.
 
-A key differentiator of KenFi is its AI-powered chatbot assistant, designed with a dual-tone personality: approachable and conversational during general interactions, yet precise and professional when providing fitness or nutrition guidance. Phase 1 introduces a calorie and nutrition calculator powered by the USDA FoodData Central API, enabling users to track dietary intake and estimate caloric expenditure based on physical activity levels.
+The architecture uses a fully **AWS Serverless** stack (Amplify, Cognito, API Gateway, Lambda, S3, CloudFront, DynamoDB).
 
-The platform is hosted on AWS using a fully serverless architecture to minimize operational overhead and ensure long-term scalability. Secure online payment processing is supported through sandbox integrations with VNPay and PayPal, allowing seamless transition to production gateways upon deployment in a live environment.
+Estimated cost for the MVP (excluding Free Tier) is **≈ $9.80/month**, with predictable scaling to 5,000–50,000 users.
 
-KenFi aims to streamline internal gym operations, reduce manual registration processes, and deliver a modern, data-driven experience for both gym owners and members. While initially deployed for a single facility, the system is technically architected to scale into a centralized platform capable of serving multiple locations under a unified brand.
+---
 
-### 2. Problem Statement
-### What’s the Problem?
-Most local gyms in Vietnam still rely heavily on manual processes. Memberships are often tracked on paper or basic Excel files. Customers must come directly to the counter to register or renew, causing delays and crowding during peak hours. There is no self-service option for purchasing membership or supplements online. Customer identity is not standardized—each branch or staff member may use different formats, leading to confusion and inconsistent records. Additionally, nutrition and calorie consultation is usually informal, depending on whichever trainer is available, resulting in inconsistent advice.
+### **2. Problem Statement**
+### **What’s the Problem?**
+Documents and books are scattered; there is no secure content delivery system with access control; the process of adding or moderating user-generated content (UGC) is slow and has high friction.
 
-### The Expected Digital Experience Customers Want:
-Modern gym members expect the same level of convenience they receive from e-commerce or online banking. They want to subscribe to a training package directly on their phones, pay instantly using common payment gateways such as VNPay or PayPal, and receive a membership QR code or Customer ID immediately. They want clear guidance on calorie intake and supplement usage without needing to constantly ask the front desk. They also expect the system to recognize them instantly at check-in without repeating personal information.
+### **The Solution:**
+Build a serverless pipeline on AWS:
 
-### The Gap in the Market:
-While large fitness chains in Vietnam such as California Fitness or CityGym have partial digital systems, there is no unified, affordable platform for small-to-medium gyms to operate with the same level of professionalism. Buying ready-made systems from foreign vendors is expensive and not optimized for Vietnamese workflows. Most “gym management” software products currently available focus only on attendance tracking, without integrating e-commerce, nutrition guidance, or AI-based support.
+Users upload files via **Presigned PUT URL** to temporary S3; Admin approves → Lambda moves the file to a protected public folder; Readers access content via **Signed GET URL** (from CloudFront/CDN) to ensure speed and controlled access.
 
-### KenFi as the Solution:
-KenFi bridges this gap by offering an AWS-powered fitness commerce and membership platform tailored specifically for local gyms. It centralizes membership registration, digital payments, supplement sales, nutrition calculation, and customer identity into a single friendly ecosystem. Customers receive a unique Customer ID or QR Code immediately after purchasing a package, which can be shown to reception staff for instant recognition. A built-in AI chatbot acts as a friendly gym bro for casual questions, but switches to serious expert mode when discussing technical fitness topics. This platform enables small gyms to operate with the professionalism of major fitness chains without requiring heavy upfront infrastructure or maintenance.
+### **Benefits and Return on Investment**
+- **Business value:** Centralized content; quality control through moderation; fast deployment with CI/CD.
+- **Technical benefits:** Very low operating cost (**≈ $9.80/month** for MVP); **scalable** serverless architecture; secured content access.
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+---
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+### **3. Solution Architecture**
+#### **A. High level**
+![A) High level](/images/Architect.jpeg)
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
-
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
-
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
-
-### 4. Technical Implementation
-
-**Development Phases**
-
-The KenFi platform will be implemented in clearly defined stages to ensure rapid prototyping while maintaining long-term scalability.
-
-Phase 1 – Architecture Planning and AWS Service Setup. Define the exact AWS resources required including Amplify, Cognito User Pool, API Gateway, Lambda functions, DynamoDB tables, and S3 buckets. Establish naming conventions, region selection, and IAM roles.
-
-Phase 2 – Core Membership Workflow. Implement the end-to-end flow of registering an account, purchasing a training package, generating Customer ID and QR code, and storing membership validity in DynamoDB.
-
-Phase 3 – Supplement Commerce Module. Build product catalog, add-to-cart flow, checkout via VNPay or PayPal sandbox, and order history tracking.
-
-Phase 4 – Nutrition Calculator Integration. Connect Lambda functions to the USDA FoodData Central API, allowing users to input food items and receive calorie and macro breakdowns.
-
-Phase 5 – AI Chatbot. Integrate a lightweight LLM model running on Lambda or optionally through Amazon Bedrock. Configure behavior switching between casual “gym bro” mode and serious expert mode.
-
-**AWS Services and Key Responsibilities**
-
-AWS Amplify hosts the Next.js frontend and automates CI/CD from GitHub or CodeCommit.
-
-Amazon Cognito manages sign-up, login, password resets, and identity tokens.
-
-Amazon API Gateway exposes secure HTTPS endpoints for all application actions.
-
-AWS Lambda functions handle business logic such as membership purchase, QR code generation, and nutrition lookup.
-
-Amazon DynamoDB stores customer profiles, membership tokens, transaction records, and product inventory.
-
-Amazon S3 stores public assets such as QR images, banner images, and downloadable membership cards.
-
-Optional Amazon SES can be used to send confirmation emails with QR code attachments.
-
-**QR Code Generation Process**
-
-When a purchase is confirmed, Lambda generates a unique membership string using a prefix such as KF-YYYYMM-XXXX. A QR code is rendered via a QR generation library, temporarily stored in memory, and saved as an image file in S3 under a path such as /qr-codes/customer-id.png. The URL is returned to the frontend and optionally emailed to the customer.
+#### **B. Request flow**
+![B) Request flow](/images/Request_flow.jpeg)
 
 
-**Payment Gateway Connection**
+### **AWS Services Used**
+| Service | Primary Role | Specific Tasks |
+| --- | --- | --- |
+| **Amplify Hosting** | CI/CD + FE Hosting | Build & Deploy Next.js, domain management |
+| **Cognito** | Authentication | Sign-up/Login, JWT issuance, refresh tokens |
+| **API Gateway** | API Entry Point | Receive requests, validate JWT, route to Lambda |
+| **Lambda** | Business Logic | Handle upload/approval, generate signed URLs, write metadata |
+| **S3** | Object Storage | Store original and approved files, served via CloudFront Signed URL |
+| **CloudFront** | CDN | Fast content delivery, blocks direct S3 access via OAC |
+| **DynamoDB** | Database | Store metadata (title, uploader, approval status) |
+| **Route 53** | DNS | Domain mapping to Amplify, API Gateway, CloudFront |
+| **CloudWatch** | Monitoring | Lambda logs, anomaly alerts |
 
-VNPay and PayPal sandbox accounts are used during development. The frontend redirects the user to the appropriate payment URL. Upon completion, VNPay or PayPal returns a callback to API Gateway with transaction status. A dedicated Lambda function verifies the payment signature and marks the membership as active.
+### **Search**
+Simple search fields (titles, author) using DynamoDB GSIs.
 
-**Deployment Strategy**
+### **Component Design**
 
-The entire infrastructure can be provisioned manually through the AWS Console during the prototype stage. Once stable, infrastructure as code will be applied using AWS CDK or CloudFormation for reproducible deployments across environments. Versioning for Lambdas and rollback strategies will be enforced.
+- **User Upload:** Presigned PUT to S3 `uploads/`.
+- **Admin Approval:** Lambda copies file from `uploads/` → `public/books/` upon approval.
+- **Reader Security:** CloudFront **OAC** prevents direct S3 access; reading occurs only through **Signed URL** generated by Lambda.
 
-**Testing and Quality Control**
+### **Search Architecture**
 
-Unit testing is done on each Lambda function independently. Frontend integration is verified through Amplify preview builds. Full end-to-end testing is simulated with a dummy user registering, purchasing, receiving QR code, and checking in. Penetration testing focuses on access control and payment spoofing prevention.
+- **Simple Search:**
+    - Design **GSI** for `title` and `author` (example: `GSI1: PK=TITLE#{normalizedTitle}, SK=BOOK#{bookId}`; `GSI2: PK=AUTHOR#{normalizedAuthor}, SK=BOOK#{bookId}`).
+    - Add endpoint `GET /search?title=...&author=...` to query GSI instead of `Scan`.
+
+![Search Architecture](/images/SearchArchitecture.jpeg)
+### **Admin Authorization**
+
+- Use **Cognito User Groups** with an `Admins` group.
+- Admin JWT contains `cognito:groups: ["Admins"]`.
+- Admin-specific Lambdas (example`approveBook`, `takedownBook`) check this claim and return `403 Forbidden` otherwise.
+- **JWT Authorizer** (API Gateway HTTP API) handles authentication, while authorization logic is inside Lambda.
+
+---
+
+### **4. Technical Implementation**
+
+### **Implementation Phases**
+
+1. **Design & IaC:** Use CDK to define all stacks (Cognito, DDB, S3, Amplify, Lambda, API).
+2. **Upload & Approval Flow:** Implement Presigned PUT, metadata (status= `PENDING`), Admin approval logic.
+3. **Reading Flow:** Implement Signed GET, FE reader stream via CloudFront.
+4. **Ops:** CloudWatch logs, budget alerts, IAM hardening.
+5. **Search:** Add GSI for `title`, `author`, implement `GET /search`.
+
+### **Technical Requirements**
+
+- Entire infrastructure defined using **CDK**.
+- API Gateway uses **HTTP API** for cost savings.
+- Lambda (Python) handles business logic & DynamoDB/S3.
+- S3 Bucket Policy must **deny public access** and allow only CloudFront OAC.
+
+---
+
+### **5. Timeline & Milestones**
+### **Project Timeline**
+
+### **Platform & Authentication (Week 1–2)**
+
+Objective: Set up infrastructure and allow user login.
+
+- **Backend Tasks (CDK/DevOps):**
+    - CDK/IaC stack for **Cognito**.
+    - CDK stack for **DynamoDB** (main table, no GSI yet).
+    - CDK stack for **S3** (`uploads`, `public`, `logs`) + **OAC**.
+    - Deploy **API Gateway** (HTTP API) + a test Lambda.
+- **Frontend Tasks (Amplify):**
+    - Configure **Amplify Hosting** + GitHub CI/CD.
+    - Integrate Amplify UI / Cognito SDK for: Sign-up, Email verification, Login, Forgot password.
+- **Milestone:**
+    - `git push` automatically deploys FE.
+    - User can sign-up/login and obtain JWT.
 
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+### **Upload & Approval Flow (Week 2–3)**
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+Objective: Allow authenticated users to upload files and Admins to approve them.
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Amplify (Web Hosting and CI/CD Pipeline): approximately 0.30 to 0.50 USD per month under light traffic.
-    - Amazon Cognito (User Authentication and Identity Management): free for up to 50,000 monthly active users.
-    - Amazon API Gateway (HTTPS API Invocation Layer): typically 0.05 to 0.10 USD per month for under 10,000 calls.
-    - AWS Lambda (Business Logic Execution): near zero cost due to generous free tier (1 million requests per month).
-    - Amazon DynamoDB (Membership, Transaction, and Product Data Storage): approximately 0.03 to 0.05 USD per month for minimal read/write activity.
-    - Amazon S3 (Static Asset Storage for QR Codes and Product Images): between 0.05 and 0.10 USD per month depending on image volume.
+- Backend (Lambda/CDK):
+    - Implement `createUploadUrl` Lambda:
+        - Validate JWT.
+        - Create **Presigned PUT URL** to `uploads/`.
+        - Write metadata (status=`PENDING`).
+    - Implement `approveBook`:
+        - Validate Admin role.
+        - Copy S3 file `uploads/` → `public/books/`.
+        - Update DynamoDB status (`APPROVED`).
+- Frontend:
+    - Upload form (drag & drop).
+    - Upload via Presigned PUT.
+    - Admin dashboard with list of `PENDING`, button “Approve”.
 
-Total: ≈ $0.7/month, $8.40/12 months
+---
 
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+### **Reading & Search (Week 3–4)**
 
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+Objective: Allow reading & searching approved books.
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+- Backend:
+    - Implement `getReadUrl`: generate **Signed GET URL** (short TTL).
+    - Add **GSI** for `title`, `author`.
+    - Implement `searchBooks`.
+- Frontend:
+    - Homepage: book list.
+    - Search bar → API `searchBooks`.
+    - Reader screen using the Signed URL (e.g., via `react-pdf`).
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+---
 
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 Store.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+### **Ops & Security (Week 5–6)**
+
+- Backend:
+    - **S3 Event Notification** for new uploads.
+    - Lambda `validateMimeType`: read magic bytes to verify PDF/ePub.
+    - Lambda `takedownBook` (Admin), `deleteUpload` (auto cleanup after 72h).
+- DevOps:
+    - **AWS Budget Alerts**, **CloudWatch Alarms**.
+    - IAM least-privilege + CORS tightening.
+
+---
+
+### **6. Budget Estimation**
+
+Budget comes from [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=45ebafb3c3a0ff07b7c21970b2287f1a06f2a460).
+
+Monthly cost (strict, no Free Tier, ~100 users): **≈ $9.80/month**.
+
+| # | AWS Service | Region | Monthly (USD) | Notes |
+| --- | --- | --- | --- | --- |
+| 0 | **Amazon CloudFront** | Asia Pacific (Singapore) | **0.86** | 10 GB data egress + 10 000 HTTPS requests |
+| 1 | **AWS Amplify** | Asia Pacific (Singapore) | **1.31** | 100 build min + 0.5 GB storage + 2 GB served |
+| 2 | **Amazon API Gateway** | Asia Pacific (Singapore) | **0.01** | ~10 000 HTTP API calls/tháng |
+| 3 | **AWS Lambda** | Asia Pacific (Singapore) | **0.00** | 128 MB RAM × 100 ms × 10 000 invokes |
+| 4 | **Amazon S3 (Standard)** | Asia Pacific (Singapore) | **0.05** | 2 GB object storage for books/images |
+| 5 | **Data Transfer** | Asia Pacific (Singapore) | **0.00** | Included in CloudFront cost |
+| 6 | **DynamoDB (On-Demand)** | Asia Pacific (Singapore) | **0.03** | Light metadata table (0.1 GB, few reads/writes) |
+| 7 | **Amazon Cognito** | Asia Pacific (Singapore) | **5.00** | 100 MAU, Advanced Security enabled |
+| 8 | **Amazon CloudWatch** | Asia Pacific (Singapore) | **1.64** | 5 metrics + 0.1 GB logs/tháng |
+| 9 | **Amazon Route 53** | Asia Pacific (Singapore) | **0.90** | 1 Hosted Zone + DNS queries |
+|  |  |  | **≈ 9.80 USD / month** | **No Free Tier applied** |
+
+### **Infrastructure Costs**
+This cost model demonstrates the efficiency of serverless architecture: costs are primarily centered on the value delivered to the user (Cognito MAU), rather than paying for 'idle servers'.
+
+---
+
+### **7. Risk Assessment**
+
+### **Risk Matrix**
+
+| Risk | Impact | Mitigation |
+| --- | --- | --- |
+| Cost spike due to sudden user growth | High | Limit MAU, cache metadata via CloudFront |
+| Abuse of uploads | Medium | Limit ≤ 50MB; auto-delete after 72h |
+| Fake/malicious file types | Medium | S3 Event → Lambda MIME validation |
+| Monitoring overload | Low | CloudWatch alerts, 14-day retention |
+
+---
+
+### **Mitigation Strategies**
+
+- **cost:**
+    - Set AWS Budget Alerts for CloudFront and Cognito.
+    - Be aware that Signed URLs have a short TTL and should not be cached publicly long-term; instead, cache metadata/API responses (book lists, details) on CloudFront for 3–5 minutes to reduce API load.
+    - Only generate Signed URLs when the user actually clicks to read (on-demand), do not pre-generate for the entire list.
+- **Upload:**
+    - Limit file size to ≤ 50MB for MVP. (Can be increased to 200MB if needed, use multipart upload on the FE to avoid timeouts.)
+    - Apply Rate Limit/Throttling on API Gateway for endpoints that create Presigned URLs.
+    - Set up an S3 Lifecycle Policy to automatically delete unapproved files in `uploads/` after 72h.
+    - Add Server-side Validation: S3 Event Notifications $\to$ Lambda reads magic bytes (e.g., `file-type` library) to verify correct PDF/ePub; if incorrect, automatically delete and write `REJECTED_INVALID_TYPE` status to DynamoDB.
+- **Copyright (DMCA):**
+    - Store **Audit Log** in DynamoDB: `uploaderID`, `uploadTimestamp`, `adminApproverID`, `approvalTimestamp` for traceability.
+    - Build a **Takedown API** (Admin only): update status to `TAKEDOWN`; optionally move the object from `public/books/` to `quarantine/books/` (do not delete completely) to preserve traces.
+
+### **Contingency Plans**
+
+If costs exceed budget, enable Invite-Only mode to cap Cognito MAU and reduce load.
+
+---
+
+### **8. Expected Outcomes**
+
+### **Technical Improvements**
+
+- **Fast and secure content delivery** (CDN + Signed URL).
+- **Standard AWS Serverless** architecture capable of scaling to 50,000 users without redesign.
+- Fully automated **CI/CD** for both frontend & backend.
+
+### **Long-term Value**
+
+- A **centralized content platform** for structured book data.
+- Continuous documentation of an end-to-end Serverless implementation.
+- Room for future analytics (QuickSight) or AI/ML features.

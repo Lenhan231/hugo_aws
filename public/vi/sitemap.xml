@@ -182,18 +182,6 @@
                 href="http://localhost:1313/vi/1-worklog/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/2-proposal/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/2-proposal/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/2-proposal/"
-                />
-  </url><url>
     <loc>http://localhost:1313/vi/5-workshop/5.2-prerequiste/</loc>
     <xhtml:link
                 rel="alternate"
@@ -300,6 +288,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/vi/1-worklog/1.7-week7/1.7.2-day32-2025-10-21/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/vi/2-proposal/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/2-proposal/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/2-proposal/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/</loc>

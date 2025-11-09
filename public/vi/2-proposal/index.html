@@ -12,24 +12,24 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>Bản đề xuất :: Báo cáo thực tập</title>
+    <title>Proposal :: Báo cáo thực tập</title>
 
     
-    <link href="../../css/nucleus.css?1762693375" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1762693375" rel="stylesheet">
-    <link href="../../css/hybrid.css?1762693375" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1762693375" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1762693375" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1762693375" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1762693375" rel="stylesheet">
-    <link href="../../css/theme.css?1762693375" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1762693375" rel="stylesheet">
+    <link href="../../css/nucleus.css?1762698932" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1762698932" rel="stylesheet">
+    <link href="../../css/hybrid.css?1762698932" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1762698932" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1762698932" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1762698932" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1762698932" rel="stylesheet">
+    <link href="../../css/theme.css?1762698932" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1762698932" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1762693375" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1762698932" rel="stylesheet">
     
-    <link href="../../css/custom.css?1762693375" rel="stylesheet">
+    <link href="../../css/custom.css?1762698932" rel="stylesheet">
 
-    <script src="../../js/jquery-3.3.1.min.js?1762693375"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1762698932"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -895,7 +895,7 @@
            
 <li
   data-nav-id="/vi/2-proposal/"
-  title="Bản đề xuất"
+  title="Proposal"
   class="dd-item 
         
         active
@@ -903,7 +903,7 @@
         "
 >
   <a href="../../vi/2-proposal/">
-     <b> 2. </b> Bản đề xuất 
+     <b> 2. </b> Proposal 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -1468,7 +1468,7 @@
             
           
           
-            <a href='../../vi/'>Week 7 Worklog</a> > Bản đề xuất
+            <a href='../../vi/'>Week 7 Worklog</a> > Proposal
           
         
           
@@ -1480,16 +1480,55 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li><a href="#nền-tảng-aws-serverless-stack-thống-nhất-dành-cho-thành-viên-thương-mại-điện-tử-và-huấn-luyện-thể-hình-ai">Nền tảng AWS Serverless Stack thống nhất dành cho Thành viên, Thương mại điện tử và Huấn luyện Thể hình AI</a>
+    <li><a href="#1-tổng-quan-điều-hành"><strong>1. Tổng quan điều hành</strong></a></li>
+    <li><a href="#2-vấn-đề"><strong>2. Vấn đề</strong></a>
       <ul>
-        <li><a href="#1-tóm-tắt-điều-hành">1. Tóm tắt điều hành</a></li>
-        <li><a href="#2-tuyên-bố-vấn-đề">2. Tuyên bố vấn đề</a></li>
-        <li><a href="#3-kiến-trúc-giải-pháp">3. Kiến trúc giải pháp</a></li>
-        <li><a href="#4-triển-khai-kỹ-thuật">4. Triển khai kỹ thuật</a></li>
-        <li><a href="#5-lộ-trình--mốc-triển-khai">5. Lộ trình &amp; Mốc triển khai</a></li>
-        <li><a href="#6-ước-tính-ngân-sách">6. Ước tính ngân sách</a></li>
-        <li><a href="#7-đánh-giá-rủi-ro">7. Đánh giá rủi ro</a></li>
-        <li><a href="#8-kết-quả-kỳ-vọng">8. Kết quả kỳ vọng</a></li>
+        <li><a href="#vấn-đề-là-gì"><strong>Vấn đề là gì?</strong></a></li>
+        <li><a href="#giải-pháp">Giải pháp</a></li>
+        <li><a href="#lợi-ích-và-tỷ-suất-hoàn-vốn">Lợi ích và Tỷ suất hoàn vốn</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-kiến-trúc-giải-pháp"><strong>3. Kiến trúc giải pháp</strong></a>
+      <ul>
+        <li><a href="#a-high-level"><strong>A. High-level</strong></a></li>
+        <li><a href="#b-luồng-xử-lý-yêu-cầu"><strong>B. Luồng xử lý yêu cầu</strong></a></li>
+        <li><a href="#aws-services-used"><strong>AWS Services Used</strong></a></li>
+        <li><a href="#component-design"><strong>Component Design</strong></a></li>
+        <li><a href="#search-architecture"><strong>Search Architecture</strong></a></li>
+        <li><a href="#admin-authorization"><strong>Admin Authorization</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#4-technical-implementation"><strong>4. Technical Implementation</strong></a>
+      <ul>
+        <li><a href="#implementation-phases"><strong>Implementation Phases</strong></a></li>
+        <li><a href="#technical-requirements"><strong>Technical Requirements</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#5-timeline--milestones"><strong>5. Timeline &amp; Milestones</strong></a>
+      <ul>
+        <li><a href="#project-timeline">Project Timeline</a></li>
+        <li><a href="#nền-tảng--xác-thực-tuần-1-2">Nền tảng &amp; Xác thực (Tuần 1-2)</a></li>
+        <li><a href="#luồng-upload--duyệt-tuần-2-3">Luồng Upload &amp; Duyệt (Tuần 2-3)</a></li>
+        <li><a href="#luồng-đọc--tìm-kiếm-tuần-3-4">Luồng Đọc &amp; Tìm kiếm (Tuần 3-4)</a></li>
+        <li><a href="#vận-hành--bảo-mật-tuần-5-6">Vận hành &amp; Bảo mật (Tuần 5-6)</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-budget-estimation"><strong>6. Budget Estimation</strong></a>
+      <ul>
+        <li><a href="#infrastructure-costs"><strong>Infrastructure Costs</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#7-risk-assessment"><strong>7. Risk Assessment</strong></a>
+      <ul>
+        <li><a href="#risk-matrix"><strong>Risk Matrix</strong></a></li>
+        <li><a href="#mitigation-strategies"><strong>Mitigation Strategies</strong></a></li>
+        <li><a href="#contingency-plans"><strong>Contingency Plans</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#8-expected-outcomes"><strong>8. Expected Outcomes</strong></a>
+      <ul>
+        <li><a href="#technical-improvements"><strong>Technical Improvements:</strong></a></li>
+        <li><a href="#long-term-value"><strong>Long-term Value</strong></a></li>
       </ul>
     </li>
   </ul>
@@ -1508,7 +1547,7 @@
           
             <h1>
               
-              Bản đề xuất
+              Proposal
             </h1>
           
 
@@ -1516,121 +1555,412 @@
 
 
 
-	<h1 id="kenfi--nền-tảng-thương-mại-và-thành-viên-thể-hình-ai">KenFi – Nền tảng thương mại và thành viên thể hình AI</h1>
-<h2 id="nền-tảng-aws-serverless-stack-thống-nhất-dành-cho-thành-viên-thương-mại-điện-tử-và-huấn-luyện-thể-hình-ai">Nền tảng AWS Serverless Stack thống nhất dành cho Thành viên, Thương mại điện tử và Huấn luyện Thể hình AI</h2>
-<h3 id="1-tóm-tắt-điều-hành">1. Tóm tắt điều hành</h3>
-<p>KenFi là nền tảng số hóa dành cho các phòng gym nội bộ hoặc chuỗi gym quy mô vừa và nhỏ tại Việt Nam, kết hợp ba chức năng chính trên một hệ thống duy nhất: bán gói tập trực tuyến, bán sản phẩm bổ trợ thể hình (whey, creatine, phụ kiện…), và hỗ trợ dinh dưỡng – AI tư vấn tập luyện.</p>
-<p>Khách hàng có thể đăng ký gói tập trực tuyến, thanh toán ngay bằng VNPay hoặc PayPal phiên bản thử, và nhận Mã Khách Hàng (Customer ID) hoặc QR Code để quét khi đến quầy lễ tân. Mọi thao tác đều thực hiện qua web – không cần cài ứng dụng riêng.</p>
-<p>Về phía vận hành, KenFi giúp chủ phòng gym tự động hóa khâu đăng ký – gia hạn – check-in, giảm tải công việc cho lễ tân, đồng thời chuẩn hóa danh tính khách hàng thông qua hệ thống mã hóa thống nhất trên nền tảng AWS.</p>
-<p>Hệ thống được triển khai dựa trên kiến trúc serverless của AWS, đảm bảo chi phí vận hành cực thấp (ước tính chỉ ~0.7 USD/tháng, tương đương 8.40 USD cho 12 tháng) nhưng vẫn đủ khả năng mở rộng lên hàng nghìn hội viên nếu cần.</p>
-<p>KenFi không chỉ phục vụ việc quản lý hội viên, mà còn đóng vai trò nền tảng thương mại điện tử thu nhỏ dành riêng cho gym, đồng thời tích hợp công cụ tính dinh dưỡng theo bảng USDA và chatbot AI với phong cách “Bro thân thiện – nhưng nói chuyên môn thì nghiêm túc”.</p>
-<h3 id="2-tuyên-bố-vấn-đề">2. Tuyên bố vấn đề</h3>
-<p><em>Vấn đề hiện tại</em><br>
-Hầu hết các phòng tập thể dục địa phương ở Việt Nam vẫn phụ thuộc nhiều vào các quy trình thủ công. Tư cách thành viên thường được theo dõi trên giấy hoặc tệp Excel cơ bản. Khách hàng phải đến trực tiếp quầy để đăng ký hoặc gia hạn, gây chậm trễ, chen chúc trong giờ cao điểm. Không có tùy chọn tự phục vụ để mua tư cách thành viên hoặc thực phẩm bổ sung trực tuyến. Danh tính khách hàng không được chuẩn hóa—mỗi chi nhánh hoặc nhân viên có thể sử dụng các định dạng khác nhau, dẫn đến nhầm lẫn và hồ sơ không nhất quán. Ngoài ra, tư vấn dinh dưỡng và calo thường không chính thức, tùy thuộc vào bất kỳ huấn luyện viên nào có sẵn, dẫn đến lời khuyên không nhất quán.</p>
-<p><em>Trải nghiệm kỹ thuật số mong đợi mà khách hàng mong muốn:</em><br>
-Các thành viên phòng tập thể dục hiện đại mong đợi mức độ tiện lợi tương tự mà họ nhận được từ thương mại điện tử hoặc ngân hàng trực tuyến. Họ muốn đăng ký gói đào tạo trực tiếp trên điện thoại, thanh toán ngay lập tức bằng các cổng thanh toán phổ biến như VNPay hoặc PayPal và nhận mã QR thành viên hoặc ID khách hàng ngay lập tức. Họ muốn được hướng dẫn rõ ràng về lượng calo nạp vào và sử dụng bổ sung mà không cần phải liên tục hỏi quầy lễ tân. Họ cũng mong muốn hệ thống nhận ra họ ngay lập tức khi nhận phòng mà không lặp lại thông tin cá nhân.</p>
-<p><em>Khoảng cách trên thị trường:</em><br>
-Trong khi các chuỗi thể dục lớn ở Việt Nam như California Fitness hay CityGym có hệ thống kỹ thuật số một phần, không có nền tảng thống nhất, giá cả phải chăng để các phòng tập thể dục vừa và nhỏ hoạt động với cùng mức độ chuyên nghiệp. Mua các hệ thống làm sẵn từ các nhà cung cấp nước ngoài rất tốn kém và không được tối ưu hóa cho quy trình làm việc của Việt Nam. Hầu hết các sản phẩm phần mềm &ldquo;quản lý phòng tập thể dục&rdquo; hiện nay chỉ tập trung vào việc theo dõi điểm danh, không tích hợp thương mại điện tử, hướng dẫn dinh dưỡng hoặc hỗ trợ dựa trên AI.</p>
-<p><em>KenFi là giải pháp</em><br>
-KenFi thu hẹp khoảng cách này bằng cách cung cấp nền tảng thành viên và thương mại thể dục do AWS cung cấp được thiết kế riêng cho các phòng tập thể dục địa phương. Nó tập trung đăng ký thành viên, thanh toán kỹ thuật số, bán thực phẩm bổ sung, tính toán dinh dưỡng và nhận dạng khách hàng vào một hệ sinh thái thân thiện duy nhất. Khách hàng nhận được ID khách hàng hoặc Mã QR duy nhất ngay sau khi mua gói hàng, có thể hiển thị cho nhân viên lễ tân để nhận biết ngay lập tức. Chatbot AI tích hợp hoạt động như một người anh em phòng tập thể dục thân thiện cho các câu hỏi thông thường, nhưng chuyển sang chế độ chuyên gia nghiêm túc khi thảo luận về các chủ đề kỹ thuật thể dục. Nền tảng này cho phép các phòng tập thể dục nhỏ hoạt động với sự chuyên nghiệp của các chuỗi thể dục lớn mà không yêu cầu cơ sở hạ tầng hoặc bảo trì trả trước nặng nề.</p>
-<h3 id="3-kiến-trúc-giải-pháp">3. Kiến trúc giải pháp</h3>
-<p>Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.</p>
-<p><img src="../../images/2-Proposal/edge_architecture.jpeg" alt="IoT Weather Station Architecture"></p>
-<p><img src="../../images/2-Proposal/platform_architecture.jpeg" alt="IoT Weather Platform Architecture"></p>
-<p><em>Dịch vụ AWS sử dụng</em></p>
+	<h1 id="thư-viện-online---nền-tảng-nội-dung-serverless-cho-nhóm-nhỏ"><strong>Thư Viện Online - Nền Tảng Nội Dung Serverless Cho Nhóm Nhỏ</strong></h1>
+<h2 id="1-tổng-quan-điều-hành"><strong>1. Tổng quan điều hành</strong></h2>
+<p>Dự án <strong>Thư Viện Online</strong> nhằm xây dựng một nền tảng serverless, <strong>chi phí thấp</strong> để lưu trữ và phân phối nội dung (PDF/ePub) cho một nhóm người dùng nhỏ (ban đầu <strong>~100 người, n</strong>hóm người dùng gồm sinh viên/lab cần chia sẻ tài liệu nghiên cứu nội bộ có kiểm duyệt). Giải pháp này ưu tiên tính bảo mật, quy trình duyệt nội dung (Admin Approval), và chi phí vận hành <strong>minh bạch, tuyến tính</strong> khi mở rộng. Kiến trúc sử dụng <strong>AWS Serverless</strong> hoàn toàn (Amplify, Cognito, API Gateway, Lambda, S3, CloudFront, DynamoDB). Chi phí dự kiến cho MVP (không tính Free Tier) <strong>≈ $9.80/tháng</strong>, đảm bảo khả năng mở rộng lên 5.000 đến 50.000 người dùng với chi phí dễ dự đoán.</p>
+<h2 id="2-vấn-đề"><strong>2. Vấn đề</strong></h2>
+<h3 id="vấn-đề-là-gì"><strong>Vấn đề là gì?</strong></h3>
+<p>Tài liệu và sách bị phân tán; thiếu một hệ thống <strong>truyền tải nội dung an toàn</strong> và có <strong>kiểm soát truy cập</strong>; quy trình thêm hoặc <strong>kiểm duyệt nội dung</strong> tốn thời gian và nhiều vấn đề liên quan đến pháp lý**.**</p>
+<h3 id="giải-pháp">Giải pháp</h3>
+<p>Xây dựng một pipeline serverless trên AWS: Người dùng tải lên qua <strong>Presigned PUT URL</strong> (tới S3 tạm); Admin phê duyệt → Lambda di chuyển file đến thư mục công khai (nhưng được bảo vệ); Người đọc truy cập qua <strong>Signed GET URL</strong> (từ CloudFront/CDN) để đảm bảo tốc độ và kiểm soát truy cập.</p>
+<h3 id="lợi-ích-và-tỷ-suất-hoàn-vốn">Lợi ích và Tỷ suất hoàn vốn</h3>
 <ul>
-<li><em>AWS IoT Core</em>: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.</li>
-<li><em>AWS Lambda</em>: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).</li>
-<li><em>Amazon API Gateway</em>: Giao tiếp với ứng dụng web.</li>
-<li><em>Amazon S3</em>: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).</li>
-<li><em>AWS Glue</em>: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.</li>
-<li><em>AWS Amplify</em>: Lưu trữ giao diện web Next.js.</li>
-<li><em>Amazon Cognito</em>: Quản lý quyền truy cập cho người dùng phòng lab.</li>
+<li><strong>Giá trị kinh doanh:</strong> Tập trung hóa nội dung; kiểm soát chất lượng qua quy trình duyệt; triển khai nhanh chóng với CI/CD.</li>
+<li><strong>Lợi ích kỹ thuật:</strong> Chi phí vận hành thấp (<strong>≈ $9.80/tháng</strong> ở MVP, không tính Free Tier); kiến trúc Serverless có thể <strong>mở rộng quy mô lớn (scale) dễ dàng</strong>; bảo mật truy cập nội dung.</li>
 </ul>
-<p><em>Thiết kế thành phần</em></p>
+<hr>
+<h2 id="3-kiến-trúc-giải-pháp"><strong>3. Kiến trúc giải pháp</strong></h2>
+<h3 id="a-high-level"><strong>A. High-level</strong></h3>
+<p><img src="../../images/Architect.jpeg" alt="A) High level"></p>
+<h3 id="b-luồng-xử-lý-yêu-cầu"><strong>B. Luồng xử lý yêu cầu</strong></h3>
+<p><img src="../../images/Request_flow.jpeg" alt="B) Request flow"></p>
+<h3 id="aws-services-used"><strong>AWS Services Used</strong></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Dịch vụ</th>
+          <th>Vai trò chính</th>
+          <th>Hoạt động cụ thể</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Amplify Hosting</strong></td>
+          <td>CI/CD + FE Hosting</td>
+          <td>Build &amp; Deploy Next.js, quản lý domain</td>
+      </tr>
+      <tr>
+          <td><strong>Cognito</strong></td>
+          <td>Authentication</td>
+          <td>Đăng ký/Đăng nhập, cấp JWT, refresh token</td>
+      </tr>
+      <tr>
+          <td><strong>API Gateway</strong></td>
+          <td>Entry point API</td>
+          <td>Nhận request, xác thực JWT, route đến Lambda</td>
+      </tr>
+      <tr>
+          <td><strong>Lambda</strong></td>
+          <td>Business Logic</td>
+          <td>Xử lý upload, duyệt, tạo signed URL, ghi metadata</td>
+      </tr>
+      <tr>
+          <td><strong>S3</strong></td>
+          <td>Object Storage</td>
+          <td>Lưu file gốc, file đã duyệt, được download qua Cloudfront Signed URL</td>
+      </tr>
+      <tr>
+          <td><strong>CloudFront</strong></td>
+          <td>CDN</td>
+          <td>Phân phối nhanh nội dung, chặn direct access qua OAC</td>
+      </tr>
+      <tr>
+          <td><strong>DynamoDB</strong></td>
+          <td>Database</td>
+          <td>Lưu metadata (tên sách, uploader, trạng thái duyệt)</td>
+      </tr>
+      <tr>
+          <td><strong>Route 53</strong></td>
+          <td>DNS</td>
+          <td>Trỏ domain đến Amplify Hosting, API Gateway, CloudFront</td>
+      </tr>
+      <tr>
+          <td><strong>CloudWatch</strong></td>
+          <td>Monitoring</td>
+          <td>Lưu log Lambda, cảnh báo lỗi hoặc chi phí bất thường</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>Tìm kiếm (Search):</p>
+</blockquote>
 <ul>
-<li><em>Thiết bị biên</em>: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.</li>
-<li><em>Tiếp nhận dữ liệu</em>: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.</li>
-<li><em>Lưu trữ dữ liệu</em>: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.</li>
-<li><em>Xử lý dữ liệu</em>: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.</li>
-<li><em>Giao diện web</em>: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.</li>
-<li><em>Quản lý người dùng</em>: Amazon Cognito giới hạn 5 tài khoản hoạt động.</li>
+<li>Tìm kiếm đơn giản theo trường (VD: tên sách, tác giả), sử dụng <strong>DynamoDB GSIs</strong> cho các thuộc tính này và query theo GSI.</li>
 </ul>
-<h3 id="4-triển-khai-kỹ-thuật">4. Triển khai kỹ thuật</h3>
-<p><em>Các giai đoạn triển khai</em></p>
-<p>Nền tảng KenFi sẽ được triển khai trong các giai đoạn được xác định rõ ràng để đảm bảo tạo mẫu nhanh chóng trong khi vẫn duy trì khả năng mở rộng lâu dài.</p>
-<p>Giai đoạn 1 – Lập kế hoạch kiến trúc và thiết lập dịch vụ AWS. Xác định chính xác các tài nguyên AWS cần thiết bao gồm Amplify, Cognito User Pool, API Gateway, hàm Lambda, bảng DynamoDB và vùng lưu trữ S3. Thiết lập quy ước đặt tên, lựa chọn khu vực và vai trò IAM.</p>
-<p>Giai đoạn 2 – Quy trình làm việc thành viên cốt lõi. Triển khai quy trình đăng ký tài khoản, mua gói đào tạo, tạo ID khách hàng và mã QR cũng như lưu trữ hiệu lực thành viên trong DynamoDB.</p>
-<p>Giai đoạn 3 – Bổ sung mô-đun thương mại. Xây dựng danh mục sản phẩm, quy trình thêm vào giỏ hàng, thanh toán qua VNPay hoặc PayPal sandbox và theo dõi lịch sử đơn hàng.</p>
-<p>Giai đoạn 4 – Tích hợp máy tính dinh dưỡng. Kết nối các hàm Lambda với API Trung tâm FoodData của USDA, cho phép người dùng nhập các mặt hàng thực phẩm và nhận phân tích calo và vĩ mô.</p>
-<p>Giai đoạn 5 – Chatbot AI. Tích hợp mô hình LLM nhẹ chạy trên Lambda hoặc tùy chọn thông qua Amazon Bedrock. Định cấu hình chuyển đổi hành vi giữa chế độ &ldquo;anh em phòng tập thể dục&rdquo; thông thường và chế độ chuyên gia nghiêm túc.
-<em>Dịch vụ AWS và trách nhiệm chính</em></p>
-<p>AWS Amplify lưu trữ giao diện người dùng Next.js và tự động hóa CI/CD từ GitHub hoặc CodeCommit.</p>
-<p>Amazon Cognito quản lý đăng ký, đăng nhập, đặt lại mật khẩu và mã thông báo danh tính.</p>
-<p>Amazon API Gateway hiển thị các điểm cuối HTTPS bảo mật cho tất cả các hành động của ứng dụng.</p>
-<p>Các hàm AWS Lambda xử lý logic kinh doanh như mua thành viên, tạo mã QR và tra cứu dinh dưỡng.</p>
-<p>Amazon DynamoDB lưu trữ hồ sơ khách hàng, mã thông báo thành viên, hồ sơ giao dịch và hàng tồn kho sản phẩm.</p>
-<p>Amazon S3 lưu trữ các tài sản công khai như hình ảnh QR, hình ảnh biểu ngữ và thẻ thành viên có thể tải xuống.</p>
-<p>Bạn có thể sử dụng Amazon SES tùy chọn để gửi email xác nhận có tệp đính kèm mã QR.</p>
-<p><em>Quy trình tạo mã QR</em></p>
-<p>Khi giao dịch mua được xác nhận, Lambda sẽ tạo một chuỗi thành viên duy nhất bằng cách sử dụng tiền tố như KF-YYYYMM-XXXX. Mã QR được hiển thị thông qua thư viện tạo QR, được lưu trữ tạm thời trong bộ nhớ và được lưu dưới dạng tệp hình ảnh trong S3 theo đường dẫn như /qr-codes/customer-id.png. URL được trả về giao diện người dùng và tùy chọn gửi qua email cho khách hàng.</p>
-<p><em>Kết nối cổng thanh toán</em></p>
-<p>Tài khoản VNPay và PayPal sandbox được sử dụng trong quá trình phát triển. Giao diện người dùng chuyển hướng người dùng đến URL thanh toán thích hợp. Sau khi hoàn tất, VNPay hoặc PayPal trả về callback đến API Gateway với trạng thái giao dịch. Một hàm Lambda chuyên dụng xác minh chữ ký thanh toán và đánh dấu tư cách thành viên là đang hoạt động.</p>
-<p><em>Chiến lược triển khai</em></p>
-<p>Toàn bộ cơ sở hạ tầng có thể được cung cấp thủ công thông qua Bảng điều khiển AWS trong giai đoạn nguyên mẫu. Sau khi ổn định, cơ sở hạ tầng dưới dạng mã sẽ được áp dụng bằng AWS CDK hoặc CloudFormation để triển khai có thể tái tạo trên các môi trường. Phiên bản cho Lambda và chiến lược khôi phục sẽ được thực thi.</p>
-<p><em>Kiểm tra và kiểm soát chất lượng</em></p>
-<p>Kiểm thử đơn vị được thực hiện trên từng hàm Lambda một cách độc lập. Tích hợp giao diện người dùng được xác minh thông qua các bản dựng xem trước Amplify. Thử nghiệm toàn diện từ đầu đến cuối được mô phỏng với một người dùng giả đăng ký, mua, nhận mã QR và đăng ký. Kiểm tra thâm nhập tập trung vào kiểm soát truy cập và ngăn chặn giả mạo thanh toán.</p>
-<h3 id="5-lộ-trình--mốc-triển-khai">5. Lộ trình &amp; Mốc triển khai</h3>
+<h3 id="component-design"><strong>Component Design</strong></h3>
 <ul>
-<li><em>Trước thực tập (Tháng 0)</em>: 1 tháng lên kế hoạch và đánh giá trạm cũ.</li>
-<li><em>Thực tập (Tháng 1–3)</em>:
+<li><strong>User Upload:</strong> Presigned PUT tới S3 thư mục <code>uploads/</code>.</li>
+<li><strong>Admin Approval:</strong> Lambda copy file từ <code>uploads/</code> sang <code>public/books/</code> khi được duyệt.</li>
+<li><strong>Reader Security:</strong> CloudFront sử dụng <strong>Origin Access Control (OAC)</strong> để chặn truy cập trực tiếp S3 và chỉ cho phép đọc qua <strong>Signed URL</strong> (ngắn hạn) do Lambda tạo ra.</li>
+</ul>
+<h3 id="search-architecture"><strong>Search Architecture</strong></h3>
 <ul>
-<li>Tháng 1: Học AWS và nâng cấp phần cứng.</li>
-<li>Tháng 2: Thiết kế và điều chỉnh kiến trúc.</li>
-<li>Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.</li>
+<li><strong>Simple Search:</strong>
+<ul>
+<li>Thiết kế <strong>GSI</strong> cho <code>title</code> và <code>author</code> (ví dụ: <code>GSI1: PK=TITLE#{normalizedTitle}, SK=BOOK#{bookId}</code>; <code>GSI2: PK=AUTHOR#{normalizedAuthor}, SK=BOOK#{bookId}</code>).</li>
+<li>Thêm endpoint <code>GET /search?title=...&amp;author=...</code> để query theo GSI thay vì <code>Scan</code>.</li>
 </ul>
 </li>
-<li><em>Sau triển khai</em>: Nghiên cứu thêm trong vòng 1 năm.</li>
 </ul>
-<h3 id="6-ước-tính-ngân-sách">6. Ước tính ngân sách</h3>
-<p>Có thể xem chi phí trên <a href="https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01">AWS Pricing Calculator</a><br>
-Hoặc tải <a href="../attachments/budget_estimation.pdf">tệp ước tính ngân sách</a>.</p>
-<p><em>Chi phí hạ tầng</em></p>
+<p><img src="../../images/SearchArchitecture.jpeg" alt="Search Architecture"></p>
+<h3 id="admin-authorization"><strong>Admin Authorization</strong></h3>
 <ul>
-<li>AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).</li>
-<li>S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).</li>
-<li>Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).</li>
-<li>AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).</li>
-<li>Amazon API Gateway: 0,01 USD/tháng (2.000 request).</li>
-<li>AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).</li>
-<li>AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).</li>
-<li>MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).</li>
+<li>Sử dụng <strong>Cognito User Groups</strong> với một nhóm <code>Admins</code> trong User Pool.</li>
+<li>Khi Admin đăng nhập, JWT sẽ chứa <code>cognito:groups: [&quot;Admins&quot;]</code>.</li>
+<li>Các Lambda thuộc nghiệp vụ Admin (ví dụ <code>approveBook</code>, <code>takedownBook</code>) phải kiểm tra claim này; nếu thiếu group, trả <code>403 Forbidden</code>.</li>
+<li>Có thể dùng <strong>JWT Authorizer (API Gateway HTTP API)</strong> để xác thực, phần phân quyền chi tiết xử lý trong Lambda dựa trên claim.</li>
 </ul>
-<p><em>Tổng</em>: 0,7 USD/tháng, 8,40 USD/12 tháng</p>
+<hr>
+<h2 id="4-technical-implementation"><strong>4. Technical Implementation</strong></h2>
+<h3 id="implementation-phases"><strong>Implementation Phases</strong></h3>
+<ol>
+<li><strong>Thiết kế &amp; IaC (Infra-as-Code):</strong> Xây dựng các stack CDK (Cognito, DDB, S3, Amplify, Lambda, API).</li>
+<li><strong>Flow Upload &amp; Duyệt:</strong> Triển khai Presigned PUT, lưu metadata (trạng thái <code>pending</code>), và logic Admin duyệt (copy file).</li>
+<li><strong>Flow Đọc Sách:</strong> Triển khai endpoint Signed GET, và giao diện đọc (FE stream qua CloudFront).</li>
+<li><strong>Vận hành (Ops):</strong> Thiết lập logs CloudWatch (retention ngắn), cảnh báo ngân sách (Budget Alerts), hardening IAM.</li>
+<li><strong>Search:</strong>
 <ul>
-<li><em>Phần cứng</em>: 265 USD một lần (Raspberry Pi 5 và cảm biến).</li>
+<li>MVP: thêm GSI cho <code>title</code>, <code>author</code> và endpoint <code>GET /search</code> query theo GSI.</li>
 </ul>
-<h3 id="7-đánh-giá-rủi-ro">7. Đánh giá rủi ro</h3>
-<p><em>Ma trận rủi ro</em></p>
+</li>
+</ol>
+<h3 id="technical-requirements"><strong>Technical Requirements</strong></h3>
 <ul>
-<li>Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.</li>
-<li>Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.</li>
-<li>Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.</li>
+<li>Sử dụng <strong>CDK</strong> để định nghĩa toàn bộ hạ tầng.</li>
+<li>API Gateway phải là <strong>HTTP API</strong> để tối ưu chi phí.</li>
+<li>Lambda (Python) xử lý logic nghiệp vụ và tương tác DynamoDB/S3.</li>
+<li>S3 Bucket Policy phải <strong>chặn truy cập công khai</strong> và chỉ cho phép CloudFront OAC.</li>
 </ul>
-<p><em>Chiến lược giảm thiểu</em></p>
+<hr>
+<h2 id="5-timeline--milestones"><strong>5. Timeline &amp; Milestones</strong></h2>
+<hr>
+<h3 id="project-timeline">Project Timeline</h3>
+<h3 id="nền-tảng--xác-thực-tuần-1-2">Nền tảng &amp; Xác thực (Tuần 1-2)</h3>
+<p>Mục tiêu là thiết lập hạ tầng và cho phép người dùng đăng nhập.</p>
 <ul>
-<li>Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.</li>
-<li>Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.</li>
-<li>Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.</li>
-</ul>
-<p><em>Kế hoạch dự phòng</em></p>
+<li><strong>Tác vụ Backend (CDK/DevOps):</strong>
 <ul>
-<li>Quay lại thu thập thủ công nếu AWS gặp sự cố.</li>
-<li>Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.</li>
+<li>Viết stack CDK/IaC cho <strong>Cognito</strong> (User Pool, App Client).</li>
+<li>Viết stack CDK cho <strong>DynamoDB</strong> (bảng chính, chưa cần GSI).</li>
+<li>Viết stack CDK cho <strong>S3</strong> (Bucket <code>uploads</code>, <code>public</code>, <code>logs</code>) và cấu hình <strong>OAC</strong> (Origin Access Control).</li>
+<li>Triển khai <strong>API Gateway</strong> (HTTP API) và một Lambda &ldquo;hello world&rdquo; để kiểm thử.</li>
 </ul>
-<h3 id="8-kết-quả-kỳ-vọng">8. Kết quả kỳ vọng</h3>
-<p><em>Cải tiến kỹ thuật</em>: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 Phòng.<br>
-<em>Giá trị dài hạn</em>: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.</p>
+</li>
+<li><strong>Tác vụ Frontend (Amplify):</strong>
+<ul>
+<li>Cấu hình <strong>Amplify Hosting</strong> và kết nối với repo GitHub (CI/CD).</li>
+<li>Tích hợp Amplify UI / Cognito SDK cho các trang: Đăng ký, Xác thực email, Đăng nhập, Quên mật khẩu.</li>
+</ul>
+</li>
+<li><strong>Kết quả (Milestone):</strong>
+<ul>
+<li>Developer có thể <code>git push</code> và FE tự động deploy.</li>
+<li>Người dùng có thể đăng ký/đăng nhập và nhận được JWT token.</li>
+</ul>
+</li>
+</ul>
+<h3 id="luồng-upload--duyệt-tuần-2-3">Luồng Upload &amp; Duyệt (Tuần 2-3)</h3>
+<p>Mục tiêu là cho phép người dùng (đã đăng nhập) tải file lên và Admin duyệt file đó.</p>
+<ul>
+<li><strong>Tác vụ Backend (CDK/Lambda):</strong>
+<ul>
+<li>Viết Lambda <code>createUploadUrl</code>:
+<ul>
+<li>Xác thực JWT (phải đăng nhập).</li>
+<li>Tạo <strong>Presigned PUT URL</strong> trỏ đến thư mục <code>uploads/</code> trên S3.</li>
+<li>Ghi metadata vào DynamoDB (status: <code>PENDING</code>).</li>
+</ul>
+</li>
+<li>Viết Lambda <code>approveBook</code>:
+<ul>
+<li>Xác thực JWT (phải là Admin).</li>
+<li>Copy file từ <code>uploads/</code> sang <code>public/books/</code>.</li>
+<li>Cập nhật status trong DynamoDB (status: <code>APPROVED</code>).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Tác vụ Frontend:</strong>
+<ul>
+<li>Xây dựng Form Upload (kéo thả, chọn file).</li>
+<li>Gọi API <code>createUploadUrl</code> để lấy URL.</li>
+<li>Thực hiện upload file (HTTP PUT) trực tiếp lên S3 Presigned URL.</li>
+<li>Xây dựng Giao diện Admin:
+<ul>
+<li>Lấy danh sách sách có status <code>PENDING</code>.</li>
+<li>Có nút &ldquo;Duyệt&rdquo; (gọi API <code>approveBook</code>).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="luồng-đọc--tìm-kiếm-tuần-3-4">Luồng Đọc &amp; Tìm kiếm (Tuần 3-4)</h3>
+<p>Mục tiêu là cho phép người dùng đọc và tìm kiếm sách đã được duyệt.</p>
+<ul>
+<li><strong>Tác vụ Backend (CDK/Lambda):</strong>
+<ul>
+<li>Viết Lambda <code>getReadUrl</code>:
+<ul>
+<li>Xác thực JWT (phải đăng nhập).</li>
+<li>Kiểm tra xem sách có status <code>APPROVED</code> không.</li>
+<li>Tạo <strong>Signed GET URL</strong> (ngắn hạn) qua CloudFront trỏ đến file trong <code>public/books/</code>.</li>
+</ul>
+</li>
+<li>Cập nhật CDK: Thêm <strong>GSI (Global Secondary Index)</strong> cho <code>title</code> và <code>author</code> vào bảng DynamoDB.</li>
+<li>Viết Lambda <code>searchBooks</code>: Query DynamoDB dựa trên GSI (không dùng Scan).</li>
+</ul>
+</li>
+<li><strong>Tác vụ Frontend:</strong>
+<ul>
+<li>Xây dựng Trang chủ: Hiển thị danh sách sách (từ API, không có URL).</li>
+<li>Xây dựng Thanh tìm kiếm (gọi API <code>searchBooks</code>).</li>
+<li>Xây dựng Giao diện Đọc sách (Reader):
+<ul>
+<li>Khi bấm &ldquo;Đọc&rdquo;, gọi API <code>getReadUrl</code>.</li>
+<li>Dùng URL nhận được để render file (ví dụ: dùng <code>react-pdf</code>).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="vận-hành--bảo-mật-tuần-5-6">Vận hành &amp; Bảo mật (Tuần 5-6)</h3>
+<p>Mục tiêu là &ldquo;hóa cứng&rdquo; hệ thống, làm cho nó an toàn và dễ giám sát.</p>
+<ul>
+<li><strong>Tác vụ Backend (CDK/Lambda):</strong>
+<ul>
+<li>Thiết lập <strong>S3 Event Notification</strong> (cho <code>uploads/</code>).</li>
+<li>Viết Lambda <code>validateMimeType</code>: Trigger khi có file mới, đọc &ldquo;magic bytes&rdquo; để xác thực đúng là PDF/ePub. Nếu sai, cập nhật status: <code>REJECTED_INVALID_TYPE</code>.</li>
+<li>Viết Lambda <code>takedownBook</code> (API cho Admin) và <code>deleteUpload</code> (xóa file <code>PENDING</code> sau 72h).</li>
+</ul>
+</li>
+<li><strong>Tác vụ DevOps (AWS Console/CDK):</strong>
+<ul>
+<li>Thiết lập <strong>AWS Budget Alerts</strong> (cảnh báo khi chi phí vượt $X).</li>
+<li>Thiết lập <strong>CloudWatch Alarms</strong> (ví dụ: Lambda error rate &gt; 5%).</li>
+<li>Rà soát lại <strong>IAM</strong> (đảm bảo &ldquo;least-privilege&rdquo;), <strong>CORS</strong> (chỉ cho phép domain của Amplify).</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-budget-estimation"><strong>6. Budget Estimation</strong></h2>
+<p>You can find the budget estimation on the: <a href="https://calculator.aws/#/estimate?id=45ebafb3c3a0ff07b7c21970b2287f1a06f2a460">AWS Pricing Calculator</a></p>
+<p>Dưới đây là ước tính chi phí hàng tháng <strong>nghiêm ngặt</strong> (giả định không áp dụng AWS Free Tier) tại quy mô MVP (100 người dùng).</p>
+<table>
+  <thead>
+      <tr>
+          <th>#</th>
+          <th>AWS Service</th>
+          <th>Region</th>
+          <th>Monthly (USD)</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td><strong>Amazon CloudFront</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.86</strong></td>
+          <td>10 GB data egress + 10 000 HTTPS requests</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td><strong>AWS Amplify</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>1.31</strong></td>
+          <td>100 build min + 0.5 GB storage + 2 GB served</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><strong>Amazon API Gateway</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.01</strong></td>
+          <td>~10 000 HTTP API calls/tháng</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><strong>AWS Lambda</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.00</strong></td>
+          <td>128 MB RAM × 100 ms × 10 000 invokes</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td><strong>Amazon S3 (Standard)</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.05</strong></td>
+          <td>2 GB object storage for books/images</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td><strong>Data Transfer</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.00</strong></td>
+          <td>Included in CloudFront cost</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td><strong>DynamoDB (On-Demand)</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.03</strong></td>
+          <td>Light metadata table (0.1 GB, few reads/writes)</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td><strong>Amazon Cognito</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>5.00</strong></td>
+          <td>100 MAU, Advanced Security enabled</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td><strong>Amazon CloudWatch</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>1.64</strong></td>
+          <td>5 metrics + 0.1 GB logs/tháng</td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td><strong>Amazon Route 53</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.90</strong></td>
+          <td>1 Hosted Zone + DNS queries</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><strong>≈ 9.80 USD / month</strong></td>
+          <td><strong>No Free Tier applied</strong></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="infrastructure-costs"><strong>Infrastructure Costs</strong></h3>
+<p>Mô hình chi phí này cho thấy sự hiệu quả của kiến trúc serverless: chi phí tập trung chủ yếu vào <strong>giá trị mang lại cho người dùng</strong> (Cognito MAU) thay vì trả tiền cho &ldquo;máy chủ chờ&rdquo; (idle servers).</p>
+<hr>
+<h2 id="7-risk-assessment"><strong>7. Risk Assessment</strong></h2>
+<h3 id="risk-matrix"><strong>Risk Matrix</strong></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Rủi ro</th>
+          <th>Tác động</th>
+          <th>Chiến lược giảm thiểu</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Chi phí tăng khi user đột biến</td>
+          <td>Cao</td>
+          <td>Giới hạn MAU, cache metadata qua CloudFront</td>
+      </tr>
+      <tr>
+          <td>Upload lạm dụng</td>
+          <td>Trung bình</td>
+          <td>Giới hạn ≤ 50MB/file, xóa auto sau 72h</td>
+      </tr>
+      <tr>
+          <td>File loại giả mạo/độc hại</td>
+          <td>Trung bình</td>
+          <td>S3 Event → Lambda xác thực MIME (magic bytes)</td>
+      </tr>
+      <tr>
+          <td>Giám sát quá tải</td>
+          <td>Thấp</td>
+          <td>CloudWatch alert, log 14 ngày</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="mitigation-strategies"><strong>Mitigation Strategies</strong></h3>
+<ul>
+<li><strong>Chi phí:</strong>
+<ul>
+<li>Đặt <strong>AWS Budget Alerts</strong> cho CloudFront và Cognito.</li>
+<li>Nhận thức rằng <strong>Signed URL</strong> có TTL ngắn nên không cache công khai dài hạn; thay vào đó, <strong>cache metadata/API response</strong> (danh sách sách, chi tiết) trên CloudFront 3–5 phút để giảm tải API.</li>
+<li>Chỉ tạo Signed URL khi người dùng thực sự bấm đọc (on‑demand), không tạo sẵn cho cả danh sách.</li>
+</ul>
+</li>
+<li><strong>Tải lên:</strong>
+<ul>
+<li>Giới hạn kích thước file <strong>≤ 50MB</strong> cho MVP. (Có thể nâng lên 200MB khi cần, dùng multipart upload ở FE để tránh timeout.)</li>
+<li>Áp dụng <strong>Rate Limit/Throttling</strong> trên API Gateway cho các endpoint tạo Presigned URL.</li>
+<li>Thiết lập <strong>S3 Lifecycle Policy</strong> để tự động xóa file chưa duyệt ở <code>uploads/</code> sau 72h.</li>
+<li>Thêm <strong>Server‑side Validation</strong>: S3 Event Notifications → Lambda đọc <strong>magic bytes</strong> (vd. thư viện <code>file-type</code>) để xác thực đúng PDF/ePub; nếu sai, tự động xóa và ghi trạng thái <code>REJECTED_INVALID_TYPE</code> vào DynamoDB.</li>
+</ul>
+</li>
+<li><strong>Bản quyền (DMCA):</strong>
+<ul>
+<li>Lưu <strong>Audit Log</strong> trong DynamoDB: <code>uploaderID</code>, <code>uploadTimestamp</code>, <code>adminApproverID</code>, <code>approvalTimestamp</code> để phục vụ truy vết.</li>
+<li>Xây dựng <strong>Takedown API</strong> (chỉ Admin): cập nhật status <code>TAKEDOWN</code>; tùy chọn di chuyển object từ <code>public/books/</code> sang <code>quarantine/books/</code> (không xóa hẳn) để lưu vết.</li>
+</ul>
+</li>
+</ul>
+<h3 id="contingency-plans"><strong>Contingency Plans</strong></h3>
+<p>Nếu chi phí tăng vượt ngân sách, có thể tạm thời giới hạn người dùng mới thông qua hệ thống mời (Invite-Only) để kiểm soát MAU Cognito và tối ưu hóa file.</p>
+<hr>
+<h2 id="8-expected-outcomes"><strong>8. Expected Outcomes</strong></h2>
+<h3 id="technical-improvements"><strong>Technical Improvements:</strong></h3>
+<ul>
+<li>Đảm bảo <strong>tốc độ truyền tải nhanh</strong> và <strong>bảo mật</strong> nội dung (CDN + Signed URL).</li>
+<li>Tạo ra một kiến trúc <strong>Serverless tiêu chuẩn</strong> trên AWS, dễ dàng mở rộng lên đến 50.000 người dùng mà không cần thay đổi kiến trúc cốt lõi.</li>
+<li>Hệ thống <strong>CI/CD hoàn toàn tự động</strong> cho cả Frontend và Backend (CDK/Amplify).</li>
+</ul>
+<h3 id="long-term-value"><strong>Long-term Value</strong></h3>
+<ul>
+<li>Thiết lập một <strong>nền tảng dữ liệu tập trung</strong> và có cấu trúc cho nội dung sách.</li>
+<li>Cung cấp một <strong>tài liệu tham khảo sống</strong> về việc triển khai Serverless E2E.</li>
+<li>Khả năng tích hợp các dịch vụ phân tích (như Amazon QuickSight) hoặc AI/ML trong tương lai.</li>
+</ul>
+<p>Hệ thống này chứng minh khả năng xây dựng nền tảng nội dung bảo mật, tiết kiệm chi phí và mở rộng dễ dàng bằng AWS Serverless — phù hợp triển khai thực tế cho nhóm nhỏ. Rẻ</p>
 
 
 
@@ -2777,19 +3107,19 @@ Hoặc tải <a href="../attachments/budget_estimation.pdf">tệp ước tính n
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1762693375"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1762693375"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1762693375"></script>
-    <script src="../../js/jquery.sticky.js?1762693375"></script>
-    <script src="../../js/featherlight.min.js?1762693375"></script>
-    <script src="../../js/highlight.pack.js?1762693375"></script>
+    <script src="../../js/clipboard.min.js?1762698932"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1762698932"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1762698932"></script>
+    <script src="../../js/jquery.sticky.js?1762698932"></script>
+    <script src="../../js/featherlight.min.js?1762698932"></script>
+    <script src="../../js/highlight.pack.js?1762698932"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1762693375"></script>
-    <script src="../../js/learn.js?1762693375"></script>
-    <script src="../../js/hugo-learn.js?1762693375"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1762698932"></script>
+    <script src="../../js/learn.js?1762698932"></script>
+    <script src="../../js/hugo-learn.js?1762698932"></script>
 
-    <link href="../../mermaid/mermaid.css?1762693375" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1762693375"></script>
+    <link href="../../mermaid/mermaid.css?1762698932" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1762698932"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
