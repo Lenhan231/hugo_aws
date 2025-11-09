@@ -202,9 +202,9 @@ Mô hình chi phí này cho thấy sự hiệu quả của kiến trúc serverle
 
 ---
 
-## **7. Risk Assessment**
+## **7. Đánh giá rủi ro**
 
-### **Risk Matrix**
+### **Ma trận rủi ro**
 
 | Rủi ro | Tác động | Chiến lược giảm thiểu |
 | --- | --- | --- |
@@ -213,7 +213,7 @@ Mô hình chi phí này cho thấy sự hiệu quả của kiến trúc serverle
 | File loại giả mạo/độc hại | Trung bình | S3 Event → Lambda xác thực MIME (magic bytes) |
 | Giám sát quá tải | Thấp | CloudWatch alert, log 14 ngày |
 
-### **Mitigation Strategies**
+### **Chiến lược giảm thiểu**
 
 - **Chi phí:**
     - Đặt **AWS Budget Alerts** cho CloudFront và Cognito.
@@ -228,21 +228,21 @@ Mô hình chi phí này cho thấy sự hiệu quả của kiến trúc serverle
     - Lưu **Audit Log** trong DynamoDB: `uploaderID`, `uploadTimestamp`, `adminApproverID`, `approvalTimestamp` để phục vụ truy vết.
     - Xây dựng **Takedown API** (chỉ Admin): cập nhật status `TAKEDOWN`; tùy chọn di chuyển object từ `public/books/` sang `quarantine/books/` (không xóa hẳn) để lưu vết.
 
-### **Contingency Plans**
+### **Kế hoạch ứng phó**
 
 Nếu chi phí tăng vượt ngân sách, có thể tạm thời giới hạn người dùng mới thông qua hệ thống mời (Invite-Only) để kiểm soát MAU Cognito và tối ưu hóa file.
 
 ---
 
-## **8. Expected Outcomes**
+## **8. Kết quả mong đợi**
 
-### **Technical Improvements:**
+### **Cải tiến kỹ thuật:**
 
 - Đảm bảo **tốc độ truyền tải nhanh** và **bảo mật** nội dung (CDN + Signed URL).
 - Tạo ra một kiến trúc **Serverless tiêu chuẩn** trên AWS, dễ dàng mở rộng lên đến 50.000 người dùng mà không cần thay đổi kiến trúc cốt lõi.
 - Hệ thống **CI/CD hoàn toàn tự động** cho cả Frontend và Backend (CDK/Amplify).
 
-### **Long-term Value**
+### **Giá trị lâu dài**
 
 - Thiết lập một **nền tảng dữ liệu tập trung** và có cấu trúc cho nội dung sách.
 - Cung cấp một **tài liệu tham khảo sống** về việc triển khai Serverless E2E.

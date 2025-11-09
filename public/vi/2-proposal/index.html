@@ -15,21 +15,21 @@
     <title>Proposal :: Báo cáo thực tập</title>
 
     
-    <link href="../../css/nucleus.css?1762698932" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1762698932" rel="stylesheet">
-    <link href="../../css/hybrid.css?1762698932" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1762698932" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1762698932" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1762698932" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1762698932" rel="stylesheet">
-    <link href="../../css/theme.css?1762698932" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1762698932" rel="stylesheet">
+    <link href="../../css/nucleus.css?1762699167" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1762699167" rel="stylesheet">
+    <link href="../../css/hybrid.css?1762699167" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1762699167" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1762699167" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1762699167" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1762699167" rel="stylesheet">
+    <link href="../../css/theme.css?1762699167" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1762699167" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1762698932" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1762699167" rel="stylesheet">
     
-    <link href="../../css/custom.css?1762698932" rel="stylesheet">
+    <link href="../../css/custom.css?1762699167" rel="stylesheet">
 
-    <script src="../../js/jquery-3.3.1.min.js?1762698932"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1762699167"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1518,17 +1518,17 @@
         <li><a href="#infrastructure-costs"><strong>Infrastructure Costs</strong></a></li>
       </ul>
     </li>
-    <li><a href="#7-risk-assessment"><strong>7. Risk Assessment</strong></a>
+    <li><a href="#7-đánh-giá-rủi-ro"><strong>7. Đánh giá rủi ro</strong></a>
       <ul>
-        <li><a href="#risk-matrix"><strong>Risk Matrix</strong></a></li>
-        <li><a href="#mitigation-strategies"><strong>Mitigation Strategies</strong></a></li>
-        <li><a href="#contingency-plans"><strong>Contingency Plans</strong></a></li>
+        <li><a href="#ma-trận-rủi-ro"><strong>Ma trận rủi ro</strong></a></li>
+        <li><a href="#chiến-lược-giảm-thiểu"><strong>Chiến lược giảm thiểu</strong></a></li>
+        <li><a href="#kế-hoạch-ứng-phó"><strong>Kế hoạch ứng phó</strong></a></li>
       </ul>
     </li>
-    <li><a href="#8-expected-outcomes"><strong>8. Expected Outcomes</strong></a>
+    <li><a href="#8-kết-quả-mong-đợi"><strong>8. Kết quả mong đợi</strong></a>
       <ul>
-        <li><a href="#technical-improvements"><strong>Technical Improvements:</strong></a></li>
-        <li><a href="#long-term-value"><strong>Long-term Value</strong></a></li>
+        <li><a href="#cải-tiến-kỹ-thuật"><strong>Cải tiến kỹ thuật:</strong></a></li>
+        <li><a href="#giá-trị-lâu-dài"><strong>Giá trị lâu dài</strong></a></li>
       </ul>
     </li>
   </ul>
@@ -1887,8 +1887,8 @@
 <h3 id="infrastructure-costs"><strong>Infrastructure Costs</strong></h3>
 <p>Mô hình chi phí này cho thấy sự hiệu quả của kiến trúc serverless: chi phí tập trung chủ yếu vào <strong>giá trị mang lại cho người dùng</strong> (Cognito MAU) thay vì trả tiền cho &ldquo;máy chủ chờ&rdquo; (idle servers).</p>
 <hr>
-<h2 id="7-risk-assessment"><strong>7. Risk Assessment</strong></h2>
-<h3 id="risk-matrix"><strong>Risk Matrix</strong></h3>
+<h2 id="7-đánh-giá-rủi-ro"><strong>7. Đánh giá rủi ro</strong></h2>
+<h3 id="ma-trận-rủi-ro"><strong>Ma trận rủi ro</strong></h3>
 <table>
   <thead>
       <tr>
@@ -1920,7 +1920,7 @@
       </tr>
   </tbody>
 </table>
-<h3 id="mitigation-strategies"><strong>Mitigation Strategies</strong></h3>
+<h3 id="chiến-lược-giảm-thiểu"><strong>Chiến lược giảm thiểu</strong></h3>
 <ul>
 <li><strong>Chi phí:</strong>
 <ul>
@@ -1944,17 +1944,17 @@
 </ul>
 </li>
 </ul>
-<h3 id="contingency-plans"><strong>Contingency Plans</strong></h3>
+<h3 id="kế-hoạch-ứng-phó"><strong>Kế hoạch ứng phó</strong></h3>
 <p>Nếu chi phí tăng vượt ngân sách, có thể tạm thời giới hạn người dùng mới thông qua hệ thống mời (Invite-Only) để kiểm soát MAU Cognito và tối ưu hóa file.</p>
 <hr>
-<h2 id="8-expected-outcomes"><strong>8. Expected Outcomes</strong></h2>
-<h3 id="technical-improvements"><strong>Technical Improvements:</strong></h3>
+<h2 id="8-kết-quả-mong-đợi"><strong>8. Kết quả mong đợi</strong></h2>
+<h3 id="cải-tiến-kỹ-thuật"><strong>Cải tiến kỹ thuật:</strong></h3>
 <ul>
 <li>Đảm bảo <strong>tốc độ truyền tải nhanh</strong> và <strong>bảo mật</strong> nội dung (CDN + Signed URL).</li>
 <li>Tạo ra một kiến trúc <strong>Serverless tiêu chuẩn</strong> trên AWS, dễ dàng mở rộng lên đến 50.000 người dùng mà không cần thay đổi kiến trúc cốt lõi.</li>
 <li>Hệ thống <strong>CI/CD hoàn toàn tự động</strong> cho cả Frontend và Backend (CDK/Amplify).</li>
 </ul>
-<h3 id="long-term-value"><strong>Long-term Value</strong></h3>
+<h3 id="giá-trị-lâu-dài"><strong>Giá trị lâu dài</strong></h3>
 <ul>
 <li>Thiết lập một <strong>nền tảng dữ liệu tập trung</strong> và có cấu trúc cho nội dung sách.</li>
 <li>Cung cấp một <strong>tài liệu tham khảo sống</strong> về việc triển khai Serverless E2E.</li>
@@ -3107,19 +3107,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1762698932"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1762698932"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1762698932"></script>
-    <script src="../../js/jquery.sticky.js?1762698932"></script>
-    <script src="../../js/featherlight.min.js?1762698932"></script>
-    <script src="../../js/highlight.pack.js?1762698932"></script>
+    <script src="../../js/clipboard.min.js?1762699167"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1762699167"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1762699167"></script>
+    <script src="../../js/jquery.sticky.js?1762699167"></script>
+    <script src="../../js/featherlight.min.js?1762699167"></script>
+    <script src="../../js/highlight.pack.js?1762699167"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1762698932"></script>
-    <script src="../../js/learn.js?1762698932"></script>
-    <script src="../../js/hugo-learn.js?1762698932"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1762699167"></script>
+    <script src="../../js/learn.js?1762699167"></script>
+    <script src="../../js/hugo-learn.js?1762699167"></script>
 
-    <link href="../../mermaid/mermaid.css?1762698932" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1762698932"></script>
+    <link href="../../mermaid/mermaid.css?1762699167" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1762699167"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
