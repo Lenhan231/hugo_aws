@@ -452,7 +452,7 @@
 	"title": "Week 6 - AWS Database Services",
 	"tags": [],
 	"description": "",
-	"content": "Week: 2025-10-13 đến 2025-10-17\nStatus: \u0026ldquo;Done\u0026rdquo;\nTổng quan tuần 6 Tuần này tập trung vào các dịch vụ cơ sở dữ liệu của AWS, từ RDBMS đến NoSQL và Data Warehouse.\nNội dung chính Database Fundamentals (RDBMS, NoSQL, OLTP vs OLAP) Amazon RDS \u0026amp; Aurora Amazon Redshift Amazon ElastiCache AWS Database Migration Service (DMS) Labs thực hành Lab 05: Amazon RDS \u0026amp; EC2 Integration Lab 43: AWS Database Migration Service (DMS) "
+	"content": "Week: 2025-10-13 to 2025-10-17\nStatus: \u0026ldquo;Done\u0026rdquo;\nWeek 6 Overview This week focused on the AWS database landscape, covering managed relational engines, purpose-built NoSQL stores, in-memory caching, and analytics data warehouses.\nKey Topics Database Fundamentals (RDBMS, NoSQL, OLTP vs OLAP) Amazon RDS \u0026amp; Aurora Amazon Redshift Amazon ElastiCache AWS Database Migration Service (DMS) Hands-on Labs Lab 05: Amazon RDS \u0026amp; EC2 Integration Lab 43: AWS Database Migration Service (DMS) "
 },
 {
 	"uri": "http://localhost:1313/7-feedback/",

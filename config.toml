@@ -21,7 +21,7 @@ home = [ "HTML", "RSS", "JSON"]
   disableBreadcrumb = false
   disableNextPrev = false
   disableSearch = true
-  disableLanguageSwitchingButton = true
+  disableLanguageSwitchingButton = false
 
 [languages]
   [languages.en]
@@ -50,4 +50,3 @@ home = [ "HTML", "RSS", "JSON"]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-
