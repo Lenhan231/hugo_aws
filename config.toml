@@ -22,6 +22,7 @@ home = [ "HTML", "RSS", "JSON"]
   disableNextPrev = false
   disableSearch = true
   disableLanguageSwitchingButton = false
+  custom_css = ["css/custom.css"]
 
 [languages]
   [languages.en]
