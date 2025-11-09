@@ -19,7 +19,7 @@ Dự án **Thư Viện Online** nhằm xây dựng một nền tảng serverle
 
 ### **Vấn đề là gì?**
 
-Tài liệu và sách bị phân tán; thiếu một hệ thống **truyền tải nội dung an toàn** và có **kiểm soát truy cập**; quy trình thêm hoặc **kiểm duyệt nội dung** tốn thời gian và nhiều vấn đề liên quan đến pháp lý**.**
+Tài liệu và sách bị phân tán; thiếu một hệ thống **truyền tải nội dung an toàn** và có **kiểm soát truy cập**; quy trình thêm hoặc **kiểm duyệt nội dung** tốn thời gian và nhiều vấn đề liên quan đến pháp lý.
 
 ### Giải pháp
 
