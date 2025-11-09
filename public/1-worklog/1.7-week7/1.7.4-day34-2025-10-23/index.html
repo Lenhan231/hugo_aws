@@ -15,21 +15,21 @@
     <title>Day 34 - FastAPI Clean Architecture :: Internship Report</title>
 
     
-    <link href="../../../css/nucleus.css?1762687274" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1762687274" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1762687274" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1762687274" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1762687274" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1762687274" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1762687274" rel="stylesheet">
-    <link href="../../../css/theme.css?1762687274" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1762687274" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1762688266" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1762688266" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1762688266" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1762688266" rel="stylesheet">
+    <link href="../../../css/theme.css?1762688266" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1762688266" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1762687274" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1762688266" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1762687274"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1762688266"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1493,7 +1493,7 @@
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
     <li><a href="#clean-architecture-overview">Clean Architecture Overview</a></li>
-    <li><a href="#cấu-hình--dependency">Cấu hình &amp; Dependency</a></li>
+    <li><a href="#configuration--dependencies">Configuration &amp; Dependencies</a></li>
     <li><a href="#cors--api-stability">CORS &amp; API Stability</a></li>
     <li><a href="#start-simple-refactor-later">Start Simple, Refactor Later</a></li>
   </ul>
@@ -1520,15 +1520,15 @@
 
 
 
-	<p><strong>Date:</strong> 2025-10-23 (Thứ Năm)<br>
+	<p><strong>Date:</strong> 2025-10-23 (Thursday)<br>
 <strong>Status:</strong> &ldquo;Done&rdquo;</p>
 <hr>
 <h1 id="lecture-notes"><strong>Lecture Notes</strong></h1>
 <h2 id="clean-architecture-overview">Clean Architecture Overview</h2>
 <ul>
-<li>Tách rõ phần cấu hình, model, route và core logic để dễ mở rộng.</li>
-<li>Giữ <code>main.py</code> nhẹ: chỉ khởi tạo app, load config, mount router.</li>
-<li>Dùng Pydantic model để chuẩn hóa request/response, đảm bảo contract khớp OpenAPI.</li>
+<li>Separate config, models, routes, and core logic to simplify scaling.</li>
+<li>Keep <code>main.py</code> lightweight—only boot the app, load config, and mount routers.</li>
+<li>Use Pydantic models to standardize request/response shapes so the contract matches OpenAPI.</li>
 </ul>
 <pre tabindex="0"><code>backend/
 ├── main.py
@@ -1540,30 +1540,30 @@
 │   └── books.py
 └── services/
     └── books.py
-</code></pre><h2 id="cấu-hình--dependency">Cấu hình &amp; Dependency</h2>
+</code></pre><h2 id="configuration--dependencies">Configuration &amp; Dependencies</h2>
 <ul>
-<li><code>core/config.py</code> đọc biến môi trường, gom cấu hình CORS, API prefix, debug flag.</li>
-<li>Sử dụng dependency injection của FastAPI để truyền service layer vào router.</li>
-<li>Cho phép thay thế datasource (in-memory → PostgreSQL) mà không đổi giao diện hàm.</li>
+<li><code>core/config.py</code> reads environment variables and centralizes CORS, API prefixes, and debug flags.</li>
+<li>Use FastAPI’s dependency injection to pass the service layer into routers.</li>
+<li>Enables swapping data sources (in-memory → PostgreSQL) without changing function contracts.</li>
 </ul>
 <h2 id="cors--api-stability">CORS &amp; API Stability</h2>
 <ul>
-<li>CORS chỉ mở origin cần thiết (<code>http://localhost:3000</code> khi dev).</li>
-<li>Bật <code>allow_methods=[&quot;GET&quot;]</code> cho slice đầu tiên để giảm bề mặt tấn công.</li>
-<li>Đảm bảo <code>/openapi.json</code> luôn trả về được để công cụ contract testing sử dụng.</li>
+<li>Restrict CORS to required origins (<code>http://localhost:3000</code> during development).</li>
+<li>Allow only <code>GET</code> for the first slice to shrink the attack surface.</li>
+<li>Keep <code>/openapi.json</code> accessible so contract-testing tools can pull the spec.</li>
 </ul>
 <h2 id="start-simple-refactor-later">Start Simple, Refactor Later</h2>
 <ul>
-<li>Bắt đầu bằng in-memory repository để demo nhanh, sau đó bổ sung DB thật.</li>
-<li>Document rõ TODO để tránh quên khi chuyển sang sprint tiếp theo.</li>
-<li>Logging tối giản, tập trung vào lỗi quan trọng (timeout, data mismatch).</li>
+<li>Begin with an in-memory repository for fast demos, then add a real database.</li>
+<li>Document TODOs clearly to avoid losing them between sprints.</li>
+<li>Keep logging minimal and focus on critical faults (timeouts, data mismatches).</li>
 </ul>
 <hr>
 <h1 id="hands-on-labs"><strong>Hands-On Labs</strong></h1>
 <ul>
-<li>Refactor <code>main.py</code> chỉ giữ việc khởi tạo và router registration.</li>
-<li>Viết service layer <code>get_book_detail(id)</code> với dữ liệu giả lấy từ spec.</li>
-<li>Cấu hình <code>CORSMiddleware</code> khớp với URL của frontend mock và production.</li>
+<li>Refactor <code>main.py</code> so it only handles app bootstrapping and router registration.</li>
+<li>Build the <code>get_book_detail(id)</code> service layer using spec-driven fake data.</li>
+<li>Configure <code>CORSMiddleware</code> to match the frontend mock and production URLs.</li>
 </ul>
 
 
@@ -2716,19 +2716,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1762687274"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1762687274"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762687274"></script>
-    <script src="../../../js/jquery.sticky.js?1762687274"></script>
-    <script src="../../../js/featherlight.min.js?1762687274"></script>
-    <script src="../../../js/highlight.pack.js?1762687274"></script>
+    <script src="../../../js/clipboard.min.js?1762688266"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1762688266"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762688266"></script>
+    <script src="../../../js/jquery.sticky.js?1762688266"></script>
+    <script src="../../../js/featherlight.min.js?1762688266"></script>
+    <script src="../../../js/highlight.pack.js?1762688266"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1762687274"></script>
-    <script src="../../../js/learn.js?1762687274"></script>
-    <script src="../../../js/hugo-learn.js?1762687274"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1762688266"></script>
+    <script src="../../../js/learn.js?1762688266"></script>
+    <script src="../../../js/hugo-learn.js?1762688266"></script>
 
-    <link href="../../../mermaid/mermaid.css?1762687274" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1762687274"></script>
+    <link href="../../../mermaid/mermaid.css?1762688266" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1762688266"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

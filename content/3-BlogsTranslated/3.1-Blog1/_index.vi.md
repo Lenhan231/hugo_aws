@@ -1,6 +1,13 @@
+---
+title: "Tăng tốc luồng dữ liệu và AI của bạn bằng cách kết nối đến Amazon SageMaker Unified Studio từ Visual Studio Code"
+weight: 1
+chapter: false
+pre: " <b> 3.1. </b> "
+---
+
 # **Tăng tốc luồng dữ liệu và AI của bạn bằng cách kết nối đến Amazon SageMaker Unified Studio từ Visual Studio Code** 
 
- bởi Lauren Mullennex, Anagha Barve, Anchit Gupta, và Bhargava Varadharajan vào ngày 12 THÁNG 9 2025 trong [Amazon SageMaker AI](https://aws.amazon.com/blogs/big-data/category/artificial-intelligence/sagemaker/amazon-sagemaker-ai/), [Amazon SageMaker Unified Studio](https://aws.amazon.com/blogs/big-data/category/analytics/amazon-sagemaker-unified-studio/), [Announcements](https://aws.amazon.com/blogs/big-data/category/post-types/announcements/), [Intermediate (200)](https://aws.amazon.com/blogs/big-data/category/learning-levels/intermediate-200/), [Technical How-to](https://aws.amazon.com/blogs/big-data/category/post-types/technical-how-to/)
+bởi Lauren Mullennex, Anagha Barve, Anchit Gupta, và Bhargava Varadharajan vào ngày 12 THÁNG 9 2025 trong [Amazon SageMaker AI](https://aws.amazon.com/blogs/big-data/category/artificial-intelligence/sagemaker/amazon-sagemaker-ai/), [Amazon SageMaker Unified Studio](https://aws.amazon.com/blogs/big-data/category/analytics/amazon-sagemaker-unified-studio/), [Announcements](https://aws.amazon.com/blogs/big-data/category/post-types/announcements/), [Intermediate (200)](https://aws.amazon.com/blogs/big-data/category/learning-levels/intermediate-200/), [Technical How-to](https://aws.amazon.com/blogs/big-data/category/post-types/technical-how-to/)
 
 Các nhà phát triển và kỹ sư học máy ([ML](https://aws.amazon.com/ai/machine-learning/)) giờ đây có thể kết nối trực tiếp tới [Amazon SageMaker Unified Studio](https://aws.amazon.com/sagemaker/unified-studio/) từ trình soạn thảo Visual Studio Code (VS Code) cục bộ của họ. Với khả năng này, bạn có thể giữ nguyên quy trình phát triển hiện có và [cấu hình môi trường phát triển tích hợp](https://aws.amazon.com/what-is/ide/) (IDE) cá nhân hóa, đồng thời truy cập các dịch vụ phân tích [AWS](https://aws.amazon.com/training/learn-about/machine-learning/) và [trí tuệ nhân tạo & máy học (AI/ML)](https://aws.amazon.com/training/learn-about/machine-learning/) trong một môi trường phát triển dữ liệu và AI hợp nhất. Sự tích hợp này cung cấp truy cập liền mạch từ môi trường phát triển cục bộ của bạn đến cơ sở hạ tầng có thể mở rộng để chạy xử lý dữ liệu, phân tích SQL và các luồng công việc ML. Bằng cách kết nối IDE cục bộ của bạn với SageMaker Unified Studio, bạn có thể tối ưu hóa luồng phát triển dữ liệu và AI mà không làm gián đoạn các thực tiễn phát triển đã thiết lập.
 

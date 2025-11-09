@@ -5,26 +5,26 @@ chapter: false
 pre: "<b> 1.7. </b>"
 ---
 
-**Week:** 2025-10-20 đến 2025-10-24  
+**Week:** 2025-10-20 to 2025-10-24  
 **Status:** "Done"  
 
 ---
 
-## Tổng quan tuần 7
+## Week 7 Overview
 
-Tuần này hoàn thiện vertical slice 0 cho dự án Ebook Demo, tập trung vào contract-first development và tự động hóa kiểm thử.
+This week delivered vertical slice 0 for the Ebook Demo project, emphasizing contract-first development and automated testing to enable an end-to-end demo.
 
-### Nội dung chính
+### Key Topics
 
-- Vertical Slice Architecture & phạm vi slice 0
-- Contract-first development với OpenAPI + Prism mock
+- Vertical Slice Architecture and the scope of slice 0
+- Contract-first development with OpenAPI + Prism mocks
 - Next.js 16 App Router & Server Components
-- FastAPI clean architecture và cấu hình CORS
-- Schemathesis contract testing & retrospective
+- FastAPI clean architecture and CORS configuration
+- Schemathesis contract testing and retrospective learnings
 
-### Labs thực hành
+### Hands-on Labs
 
-- Checklist demo vertical slice 0
-- Mock API với Prism và kết nối Next.js
-- Refactor backend FastAPI theo clean architecture
-- Chạy Schemathesis và cập nhật workflow chuẩn
+- Demo checklist for vertical slice 0
+- Mock API with Prism and connect it to Next.js
+- Refactor FastAPI backend following clean architecture
+- Run Schemathesis and update the validated workflow

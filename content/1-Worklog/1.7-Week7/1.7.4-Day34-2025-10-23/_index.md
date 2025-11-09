@@ -5,7 +5,7 @@ chapter: false
 pre: "<b> 1.7.4. </b>"
 ---
 
-**Date:** 2025-10-23 (Thứ Năm)  
+**Date:** 2025-10-23 (Thursday)  
 **Status:** "Done"  
 
 ---
@@ -14,9 +14,9 @@ pre: "<b> 1.7.4. </b>"
 
 ## Clean Architecture Overview
 
-- Tách rõ phần cấu hình, model, route và core logic để dễ mở rộng.
-- Giữ `main.py` nhẹ: chỉ khởi tạo app, load config, mount router.
-- Dùng Pydantic model để chuẩn hóa request/response, đảm bảo contract khớp OpenAPI.
+- Separate config, models, routes, and core logic to simplify scaling.
+- Keep `main.py` lightweight—only boot the app, load config, and mount routers.
+- Use Pydantic models to standardize request/response shapes so the contract matches OpenAPI.
 
 ```
 backend/
@@ -31,28 +31,28 @@ backend/
     └── books.py
 ```
 
-## Cấu hình & Dependency
+## Configuration & Dependencies
 
-- `core/config.py` đọc biến môi trường, gom cấu hình CORS, API prefix, debug flag.
-- Sử dụng dependency injection của FastAPI để truyền service layer vào router.
-- Cho phép thay thế datasource (in-memory → PostgreSQL) mà không đổi giao diện hàm.
+- `core/config.py` reads environment variables and centralizes CORS, API prefixes, and debug flags.
+- Use FastAPI’s dependency injection to pass the service layer into routers.
+- Enables swapping data sources (in-memory → PostgreSQL) without changing function contracts.
 
 ## CORS & API Stability
 
-- CORS chỉ mở origin cần thiết (`http://localhost:3000` khi dev).
-- Bật `allow_methods=["GET"]` cho slice đầu tiên để giảm bề mặt tấn công.
-- Đảm bảo `/openapi.json` luôn trả về được để công cụ contract testing sử dụng.
+- Restrict CORS to required origins (`http://localhost:3000` during development).
+- Allow only `GET` for the first slice to shrink the attack surface.
+- Keep `/openapi.json` accessible so contract-testing tools can pull the spec.
 
 ## Start Simple, Refactor Later
 
-- Bắt đầu bằng in-memory repository để demo nhanh, sau đó bổ sung DB thật.
-- Document rõ TODO để tránh quên khi chuyển sang sprint tiếp theo.
-- Logging tối giản, tập trung vào lỗi quan trọng (timeout, data mismatch).
+- Begin with an in-memory repository for fast demos, then add a real database.
+- Document TODOs clearly to avoid losing them between sprints.
+- Keep logging minimal and focus on critical faults (timeouts, data mismatches).
 
 ---
 
 # **Hands-On Labs**
 
-- Refactor `main.py` chỉ giữ việc khởi tạo và router registration.
-- Viết service layer `get_book_detail(id)` với dữ liệu giả lấy từ spec.
-- Cấu hình `CORSMiddleware` khớp với URL của frontend mock và production.
+- Refactor `main.py` so it only handles app bootstrapping and router registration.
+- Build the `get_book_detail(id)` service layer using spec-driven fake data.
+- Configure `CORSMiddleware` to match the frontend mock and production URLs.

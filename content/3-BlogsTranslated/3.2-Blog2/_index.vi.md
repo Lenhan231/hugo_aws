@@ -1,8 +1,15 @@
+---
+title: "Thông báo Amazon EC2 M4 và M4 Pro Mac instances"
+weight: 2
+chapter: false
+pre: " <b> 3.2. </b> "
+---
+
 # **Thông báo Amazon EC2 M4 và M4 Pro Mac instances**
 
- bởi [Sébastien Stormacq](https://aws.amazon.com/blogs/aws/author/stormacq/) vào ngày 12 THÁNG 9 2025 trong [Amazon EC2 Mac Instances](https://aws.amazon.com/blogs/aws/category/compute/amazon-ec2-mac-instances/), [Launch](https://aws.amazon.com/blogs/aws/category/news/launch/), [News](https://aws.amazon.com/blogs/aws/category/news/) [Permalink](https://aws.amazon.com/blogs/aws/announcing-amazon-ec2-m4-and-m4-pro-mac-instances/)  [Comments](https://aws.amazon.com/blogs/aws/announcing-amazon-ec2-m4-and-m4-pro-mac-instances/#Comments)   
- Permalink Comments Share  
- Voiced by Polly
+bởi [Sébastien Stormacq](https://aws.amazon.com/blogs/aws/author/stormacq/) vào ngày 12 THÁNG 9 2025 trong [Amazon EC2 Mac Instances](https://aws.amazon.com/blogs/aws/category/compute/amazon-ec2-mac-instances/), [Launch](https://aws.amazon.com/blogs/aws/category/news/launch/), [News](https://aws.amazon.com/blogs/aws/category/news/) [Permalink](https://aws.amazon.com/blogs/aws/announcing-amazon-ec2-m4-and-m4-pro-mac-instances/)  [Comments](https://aws.amazon.com/blogs/aws/announcing-amazon-ec2-m4-and-m4-pro-mac-instances/#Comments)   
+Permalink Comments Share  
+Voiced by Polly
 
 Là người đã sử dụng macOS từ năm 2001 và các [Amazon EC2 Mac instances](https://aws.amazon.com/ec2/instance-types/mac/) từ khi chúng ra mắt 4 năm trước, tôi đã giúp nhiều khách hàng mở rộng các pipeline tích hợp & phân phối liên tục (CI/CD) trên AWS. Hôm nay, tôi rất hào hứng chia sẻ rằng các instance Amazon EC2 **M4** và **M4 Pro Mac** hiện đã khả dụng chính thức.
 

@@ -15,21 +15,21 @@
     <title>Day 33 - Next.js App Router :: Internship Report</title>
 
     
-    <link href="../../../css/nucleus.css?1762687274" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1762687274" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1762687274" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1762687274" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1762687274" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1762687274" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1762687274" rel="stylesheet">
-    <link href="../../../css/theme.css?1762687274" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1762687274" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1762688266" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1762688266" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1762688266" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1762688266" rel="stylesheet">
+    <link href="../../../css/theme.css?1762688266" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1762688266" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1762687274" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1762688266" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1762687274"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1762688266"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1523,15 +1523,15 @@
 
 
 
-	<p><strong>Date:</strong> 2025-10-22 (Thứ Tư)<br>
+	<p><strong>Date:</strong> 2025-10-22 (Wednesday)<br>
 <strong>Status:</strong> &ldquo;Done&rdquo;</p>
 <hr>
 <h1 id="lecture-notes"><strong>Lecture Notes</strong></h1>
 <h2 id="nextjs-16-app-router">Next.js 16 App Router</h2>
 <ul>
-<li>Tận dụng <strong>Server Components</strong> để fetch data trực tiếp từ server và tránh bundle dư thừa.</li>
-<li>Route <code>/app/books/[id]/page.tsx</code> xử lý data fetching, trả UI đã được render sẵn.</li>
-<li><code>generateMetadata</code> cung cấp SEO meta dựa trên dữ liệu sách.</li>
+<li>Leverage <strong>Server Components</strong> to fetch data directly on the server and avoid bloated bundles.</li>
+<li>The <code>/app/books/[id]/page.tsx</code> route handles data fetching and returns a pre-rendered UI.</li>
+<li><code>generateMetadata</code> supplies SEO meta tags based on the book payload.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#75715e">// app/books/[id]/page.tsx
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">getBook</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@/lib/api&#34;</span>;
@@ -1543,28 +1543,28 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="error--not-found-handling">Error &amp; Not Found Handling</h3>
 <ul>
-<li>Chỉ cần <code>not-found.tsx</code> cho case không tìm được sách → coi như expected flow.</li>
-<li>Không dùng <code>error.tsx</code> để tránh double handling; các lỗi còn lại log ở backend.</li>
-<li>Giữ UX nhất quán: hiển thị CTA quay lại danh sách và hotline hỗ trợ.</li>
+<li>Only <code>not-found.tsx</code> is needed for missing books—treat it as an expected branch.</li>
+<li>Skip <code>error.tsx</code> to avoid double handling; log unexpected issues on the backend.</li>
+<li>Keep UX consistent with a CTA back to the listing page plus a support hotline.</li>
 </ul>
 <h2 id="environment--config">Environment &amp; Config</h2>
 <ul>
-<li>Sử dụng biến môi trường rõ ràng: <code>NEXT_PUBLIC_API_URL</code> cho frontend, <code>API_URL</code> cho route handlers.</li>
-<li>Đảm bảo <code>.env.example</code> cập nhật khi thêm biến mới.</li>
-<li>Chuyển logic build URL vào helper (<code>lib/api.ts</code>) để tránh lặp.</li>
+<li>Use explicit environment variables: <code>NEXT_PUBLIC_API_URL</code> for the frontend and <code>API_URL</code> for route handlers.</li>
+<li>Keep <code>.env.example</code> in sync whenever a new variable is introduced.</li>
+<li>Centralize URL construction in <code>lib/api.ts</code> to prevent duplication.</li>
 </ul>
 <h2 id="insight">Insight</h2>
 <ul>
-<li>Server Components giảm latency đáng kể khi render detail page.</li>
-<li>App Router giúp cấu trúc thư mục rõ ràng, dễ chia nhỏ khi thêm slice mới.</li>
-<li>Khi mock API, dùng fetch trực tiếp từ Prism, chỉ cần đổi base URL là xong.</li>
+<li>Server Components noticeably reduce latency when rendering detail pages.</li>
+<li>The App Router enforces a clear folder structure, making it easier to split new slices.</li>
+<li>When pointing to the mock API, fetch directly from Prism by swapping the base URL.</li>
 </ul>
 <hr>
 <h1 id="hands-on-labs"><strong>Hands-On Labs</strong></h1>
 <ul>
-<li>Tạo <code>not-found.tsx</code> tùy biến với CTA điều hướng.</li>
-<li>Viết helper <code>getBook(id)</code> tái sử dụng cho server components và tests.</li>
-<li>Kiểm tra build <code>npm run lint &amp;&amp; npm run build</code> đảm bảo cấu hình Next.js sạch.</li>
+<li>Create a custom <code>not-found.tsx</code> with navigation CTAs.</li>
+<li>Implement a reusable <code>getBook(id)</code> helper for server components and tests.</li>
+<li>Run <code>npm run lint &amp;&amp; npm run build</code> to ensure the Next.js configuration stays clean.</li>
 </ul>
 
 
@@ -2717,19 +2717,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1762687274"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1762687274"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762687274"></script>
-    <script src="../../../js/jquery.sticky.js?1762687274"></script>
-    <script src="../../../js/featherlight.min.js?1762687274"></script>
-    <script src="../../../js/highlight.pack.js?1762687274"></script>
+    <script src="../../../js/clipboard.min.js?1762688266"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1762688266"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762688266"></script>
+    <script src="../../../js/jquery.sticky.js?1762688266"></script>
+    <script src="../../../js/featherlight.min.js?1762688266"></script>
+    <script src="../../../js/highlight.pack.js?1762688266"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1762687274"></script>
-    <script src="../../../js/learn.js?1762687274"></script>
-    <script src="../../../js/hugo-learn.js?1762687274"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1762688266"></script>
+    <script src="../../../js/learn.js?1762688266"></script>
+    <script src="../../../js/hugo-learn.js?1762688266"></script>
 
-    <link href="../../../mermaid/mermaid.css?1762687274" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1762687274"></script>
+    <link href="../../../mermaid/mermaid.css?1762688266" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1762688266"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

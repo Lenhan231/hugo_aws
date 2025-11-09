@@ -15,21 +15,21 @@
     <title>Day 35 - Contract Testing &amp; Retrospective :: Internship Report</title>
 
     
-    <link href="../../../css/nucleus.css?1762687250" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1762687250" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1762687250" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1762687250" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1762687250" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1762687250" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1762687250" rel="stylesheet">
-    <link href="../../../css/theme.css?1762687250" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1762687250" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1762688266" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1762688266" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1762688266" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1762688266" rel="stylesheet">
+    <link href="../../../css/theme.css?1762688266" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1762688266" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1762687250" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1762688266" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1762687250"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1762688266"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1492,13 +1492,13 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li><a href="#contract-testing-với-schemathesis">Contract Testing với Schemathesis</a>
+    <li><a href="#contract-testing-with-schemathesis">Contract Testing with Schemathesis</a>
       <ul>
-        <li><a href="#lợi-ích">Lợi ích</a></li>
+        <li><a href="#benefits">Benefits</a></li>
       </ul>
     </li>
     <li><a href="#mistakes--fixes">Mistakes &amp; Fixes</a></li>
-    <li><a href="#workflow-chuẩn-đã-validate">Workflow Chuẩn Đã Validate</a></li>
+    <li><a href="#validated-workflow">Validated Workflow</a></li>
     <li><a href="#key-insights">Key Insights</a></li>
   </ul>
 </nav></div>
@@ -1524,78 +1524,78 @@
 
 
 
-	<p><strong>Date:</strong> 2025-10-24 (Thứ Sáu)<br>
+	<p><strong>Date:</strong> 2025-10-24 (Friday)<br>
 <strong>Status:</strong> &ldquo;Done&rdquo;</p>
 <hr>
 <h1 id="lecture-notes"><strong>Lecture Notes</strong></h1>
-<h2 id="contract-testing-với-schemathesis">Contract Testing với Schemathesis</h2>
+<h2 id="contract-testing-with-schemathesis">Contract Testing with Schemathesis</h2>
 <ul>
-<li>Dùng lệnh <code>schemathesis run --checks all --workers 4 --url http://127.0.0.1:8000/openapi.yaml</code> để tạo test tự động.</li>
-<li>Schemathesis sinh nhiều tình huống ngẫu nhiên (happy path, edge cases, missing fields).</li>
-<li>Giúp đảm bảo backend không trả sai schema khi frontend chuyển sang gọi API thật.</li>
+<li>Run <code>schemathesis run --checks all --workers 4 --url http://127.0.0.1:8000/openapi.yaml</code> to auto-generate tests.</li>
+<li>Schemathesis explores random scenarios (happy paths, edge cases, missing fields).</li>
+<li>Ensures the backend doesn’t break the schema when the frontend switches to the real API.</li>
 </ul>
-<h3 id="lợi-ích">Lợi ích</h3>
+<h3 id="benefits">Benefits</h3>
 <ul>
-<li>Không cần viết tay test case phức tạp.</li>
-<li>Giảm rủi ro mismatch sau khi refactor.</li>
-<li>Hoạt động như quality gate trong pipeline CI.</li>
+<li>Eliminates the need to handcraft complex test cases.</li>
+<li>Reduces mismatch risk after refactors.</li>
+<li>Acts as a quality gate inside the CI pipeline.</li>
 </ul>
 <h2 id="mistakes--fixes">Mistakes &amp; Fixes</h2>
 <table>
   <thead>
       <tr>
           <th>Mistake</th>
-          <th>Nguyên nhân</th>
-          <th>Cách khắc phục</th>
+          <th>Root Cause</th>
+          <th>Fix</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>Tạo cả <code>error.tsx</code> và <code>not-found.tsx</code></td>
-          <td>Redundant</td>
-          <td>Giữ lại <code>not-found.tsx</code> thôi</td>
+          <td>Added both <code>error.tsx</code> and <code>not-found.tsx</code></td>
+          <td>Redundant handling</td>
+          <td>Keep only <code>not-found.tsx</code></td>
       </tr>
       <tr>
-          <td>Dùng <code>--base-url</code> trong Schemathesis</td>
-          <td>Lệnh sai</td>
-          <td>Dùng <code>--url</code> đúng chuẩn</td>
+          <td>Used <code>--base-url</code> in Schemathesis</td>
+          <td>Wrong CLI option</td>
+          <td>Use the correct <code>--url</code> flag</td>
       </tr>
       <tr>
-          <td>Timeout khi load <code>/openapi.json</code></td>
-          <td>CORS hoặc chậm</td>
-          <td>Dùng file YAML trực tiếp</td>
+          <td>Timeout on <code>/openapi.json</code></td>
+          <td>CORS or slow resp</td>
+          <td>Point Schemathesis to the YAML file</td>
       </tr>
       <tr>
-          <td>Over-engineer backend</td>
-          <td>Quá nhiều file sớm</td>
-          <td>Bắt đầu đơn giản, refactor sau</td>
+          <td>Over-engineered backend</td>
+          <td>Too many files early</td>
+          <td>Start simple and refactor later</td>
       </tr>
   </tbody>
 </table>
-<h2 id="workflow-chuẩn-đã-validate">Workflow Chuẩn Đã Validate</h2>
+<h2 id="validated-workflow">Validated Workflow</h2>
 <pre tabindex="0"><code>1. Define Contract (OpenAPI)
 2. Mock API (Prism)
-3. Build Frontend với mock data
-4. Implement Backend theo spec
-5. Switch sang real API
+3. Build Frontend with mock data
+4. Implement Backend according to the spec
+5. Switch to the real API
 6. Contract Testing (Schemathesis)
 </code></pre><ul>
-<li>Hỗ trợ phát triển song song giữa team frontend và backend.</li>
-<li>Giảm xung đột, tăng tốc demo và giữ chất lượng ổn định.</li>
+<li>Enables frontend and backend teams to work in parallel.</li>
+<li>Reduces conflicts, accelerates demos, and keeps quality stable.</li>
 </ul>
 <h2 id="key-insights">Key Insights</h2>
 <ol>
-<li>Contract-first development giữ spec đồng bộ và giảm lỗi integration.</li>
-<li>Vertical slice cho phép release từng phần, nhận feedback sớm.</li>
-<li>Automation (Prism, Schemathesis) giúp giảm effort test thủ công.</li>
-<li>Bắt đầu đơn giản, refactor dần khi cần mở rộng.</li>
+<li>Contract-first development keeps specs aligned and shrinks integration bugs.</li>
+<li>Vertical slices make it possible to release in increments and gather early feedback.</li>
+<li>Automation (Prism, Schemathesis) cuts manual testing effort.</li>
+<li>Start simple and refactor gradually as scope grows.</li>
 </ol>
 <hr>
 <h1 id="hands-on-labs"><strong>Hands-On Labs</strong></h1>
 <ul>
-<li>Chạy Schemathesis với spec mới nhất và ghi nhận kết quả.</li>
-<li>Cập nhật README workflow cho team tham khảo.</li>
-<li>Chuẩn bị backlog cho vertical slice tiếp theo dựa trên feedback demo.</li>
+<li>Run Schemathesis with the latest spec and capture the results.</li>
+<li>Refresh the README workflow so the whole team can follow it.</li>
+<li>Prepare the backlog for the next vertical slice based on demo feedback.</li>
 </ul>
 
 
@@ -2748,19 +2748,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1762687250"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1762687250"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762687250"></script>
-    <script src="../../../js/jquery.sticky.js?1762687250"></script>
-    <script src="../../../js/featherlight.min.js?1762687250"></script>
-    <script src="../../../js/highlight.pack.js?1762687250"></script>
+    <script src="../../../js/clipboard.min.js?1762688266"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1762688266"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762688266"></script>
+    <script src="../../../js/jquery.sticky.js?1762688266"></script>
+    <script src="../../../js/featherlight.min.js?1762688266"></script>
+    <script src="../../../js/highlight.pack.js?1762688266"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1762687250"></script>
-    <script src="../../../js/learn.js?1762687250"></script>
-    <script src="../../../js/hugo-learn.js?1762687250"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1762688266"></script>
+    <script src="../../../js/learn.js?1762688266"></script>
+    <script src="../../../js/hugo-learn.js?1762688266"></script>
 
-    <link href="../../../mermaid/mermaid.css?1762687250" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1762687250"></script>
+    <link href="../../../mermaid/mermaid.css?1762688266" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1762688266"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

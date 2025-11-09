@@ -5,7 +5,7 @@ chapter: false
 pre: "<b> 1.7.3. </b>"
 ---
 
-**Date:** 2025-10-22 (Thứ Tư)  
+**Date:** 2025-10-22 (Wednesday)  
 **Status:** "Done"  
 
 ---
@@ -14,9 +14,9 @@ pre: "<b> 1.7.3. </b>"
 
 ## Next.js 16 App Router
 
-- Tận dụng **Server Components** để fetch data trực tiếp từ server và tránh bundle dư thừa.
-- Route `/app/books/[id]/page.tsx` xử lý data fetching, trả UI đã được render sẵn.
-- `generateMetadata` cung cấp SEO meta dựa trên dữ liệu sách.
+- Leverage **Server Components** to fetch data directly on the server and avoid bloated bundles.
+- The `/app/books/[id]/page.tsx` route handles data fetching and returns a pre-rendered UI.
+- `generateMetadata` supplies SEO meta tags based on the book payload.
 
 ```tsx
 // app/books/[id]/page.tsx
@@ -31,26 +31,26 @@ export default async function BookDetail({ params }) {
 
 ### Error & Not Found Handling
 
-- Chỉ cần `not-found.tsx` cho case không tìm được sách → coi như expected flow.
-- Không dùng `error.tsx` để tránh double handling; các lỗi còn lại log ở backend.
-- Giữ UX nhất quán: hiển thị CTA quay lại danh sách và hotline hỗ trợ.
+- Only `not-found.tsx` is needed for missing books—treat it as an expected branch.
+- Skip `error.tsx` to avoid double handling; log unexpected issues on the backend.
+- Keep UX consistent with a CTA back to the listing page plus a support hotline.
 
 ## Environment & Config
 
-- Sử dụng biến môi trường rõ ràng: `NEXT_PUBLIC_API_URL` cho frontend, `API_URL` cho route handlers.
-- Đảm bảo `.env.example` cập nhật khi thêm biến mới.
-- Chuyển logic build URL vào helper (`lib/api.ts`) để tránh lặp.
+- Use explicit environment variables: `NEXT_PUBLIC_API_URL` for the frontend and `API_URL` for route handlers.
+- Keep `.env.example` in sync whenever a new variable is introduced.
+- Centralize URL construction in `lib/api.ts` to prevent duplication.
 
 ## Insight
 
-- Server Components giảm latency đáng kể khi render detail page.
-- App Router giúp cấu trúc thư mục rõ ràng, dễ chia nhỏ khi thêm slice mới.
-- Khi mock API, dùng fetch trực tiếp từ Prism, chỉ cần đổi base URL là xong.
+- Server Components noticeably reduce latency when rendering detail pages.
+- The App Router enforces a clear folder structure, making it easier to split new slices.
+- When pointing to the mock API, fetch directly from Prism by swapping the base URL.
 
 ---
 
 # **Hands-On Labs**
 
-- Tạo `not-found.tsx` tùy biến với CTA điều hướng.
-- Viết helper `getBook(id)` tái sử dụng cho server components và tests.
-- Kiểm tra build `npm run lint && npm run build` đảm bảo cấu hình Next.js sạch.
+- Create a custom `not-found.tsx` with navigation CTAs.
+- Implement a reusable `getBook(id)` helper for server components and tests.
+- Run `npm run lint && npm run build` to ensure the Next.js configuration stays clean.

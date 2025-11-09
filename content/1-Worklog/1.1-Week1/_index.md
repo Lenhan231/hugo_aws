@@ -5,24 +5,24 @@ chapter: false
 pre: "<b> 1.1. </b>"
 ---
 
-**Week:** 2025-09-08 đến 2025-09-12  
+**Week:** 2025-09-08 to 2025-09-12  
 **Status:** "Done"  
 
 ---
 
-## Tổng quan tuần 1
+## Week 1 Overview
 
-Tuần này tập trung vào các khái niệm cơ bản về Cloud Computing, AWS Infrastructure, và các công cụ quản lý AWS.
+This week covered cloud computing fundamentals, AWS global infrastructure, and the core management tooling offered by AWS.
 
-### Nội dung chính
+### Key Topics
 
-- Giới thiệu Cloud Computing và lợi ích
+- Introduction to Cloud Computing and its benefits
 - AWS Global Infrastructure (Regions, AZs, Edge Locations)
 - AWS Management Tools (Console, CLI, SDK)
-- Cost Optimization và Support Plans
-- AWS Well-Architected Framework
+- Cost Optimization approaches and Support Plans
+- AWS Well-Architected Framework pillars
 
-### Labs thực hành
+### Hands-on Labs
 
 - Lab 01: AWS Account & IAM Setup
 - Lab 07: AWS Budgets & Cost Management

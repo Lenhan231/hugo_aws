@@ -1,3 +1,10 @@
+---
+title: "Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD"
+weight: 3
+chapter: false
+pre: " <b> 3.3. </b> "
+---
+
 # **Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD**
 
 bởi Suyash Nadkarni và Dylan Souvage vào ngày 12 THÁNG 9 2025 trong [Amazon EC2](https://aws.amazon.com/blogs/compute/category/compute/amazon-ec2/), [Best Practices](https://aws.amazon.com/blogs/compute/category/post-types/best-practices/), [Expert (400)](https://aws.amazon.com/blogs/compute/category/learning-levels/expert-400/), [Technical](https://aws.amazon.com/blogs/compute/category/post-types/technical-how-to/)

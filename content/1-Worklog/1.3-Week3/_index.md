@@ -5,25 +5,25 @@ chapter: false
 pre: "<b> 1.3. </b>"
 ---
 
-**Week:** 2025-09-22 đến 2025-09-26  
+**Week:** 2025-09-22 to 2025-09-26  
 **Status:** "Done"  
 
 ---
 
-## Tổng quan tuần 3
+## Week 3 Overview
 
-Tuần này tập trung vào các dịch vụ Compute của AWS, đặc biệt là Amazon EC2 và các dịch vụ liên quan.
+This week highlighted AWS compute services, especially Amazon EC2 and supporting capabilities for scaling, storage, and pricing.
 
-### Nội dung chính
+### Key Topics
 
-- Amazon EC2 và Instance Types
-- AMI và Backup Strategies
-- EBS và Instance Store
-- EC2 Auto Scaling
-- EC2 Pricing Options
-- Amazon Lightsail, EFS, FSx
+- Amazon EC2 and instance families
+- AMIs and backup strategies
+- EBS volumes vs. Instance Store
+- EC2 Auto Scaling patterns
+- EC2 pricing models
+- Amazon Lightsail, EFS, and FSx
 
-### Labs thực hành
+### Hands-on Labs
 
 - Lab 01: AWS Account & IAM Setup
 - Lab 07: AWS Budgets & Cost Management

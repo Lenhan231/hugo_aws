@@ -5,26 +5,26 @@ chapter: false
 pre: "<b> 1.4. </b>"
 ---
 
-**Week:** 2025-09-29 đến 2025-10-03  
+**Week:** 2025-09-29 to 2025-10-03  
 **Status:** "Done"  
 
 ---
 
-## Tổng quan tuần 4
+## Week 4 Overview
 
-Tuần này tập trung vào các dịch vụ lưu trữ của AWS, từ S3 object storage đến các giải pháp hybrid storage.
+This week deep-dived into AWS storage services, ranging from S3 object storage to hybrid storage integrations.
 
-### Nội dung chính
+### Key Topics
 
-- Amazon S3 và Storage Classes
-- S3 Static Website Hosting
-- S3 Glacier for Archival
+- Amazon S3 and storage classes
+- S3 static website hosting
+- S3 Glacier for archival workloads
 - AWS Snow Family
 - AWS Storage Gateway
-- Disaster Recovery Strategies
+- Disaster Recovery strategies
 - AWS Backup
 
-### Labs thực hành
+### Hands-on Labs
 
 - Lab 13: AWS Backup
 - Lab 14: AWS VM Import/Export

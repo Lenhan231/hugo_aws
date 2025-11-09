@@ -5,16 +5,16 @@ chapter: false
 pre: "<b> 1.5. </b>"
 ---
 
-**Week:** 2025-10-06 đến 2025-10-10  
+**Week:** 2025-10-06 to 2025-10-10  
 **Status:** "Done"  
 
 ---
 
-## Tổng quan tuần 5
+## Week 5 Overview
 
-Tuần này tập trung vào bảo mật và quản lý danh tính trên AWS.
+This week concentrated on AWS security and identity management foundations.
 
-### Nội dung chính
+### Key Topics
 
 - Shared Responsibility Model
 - AWS IAM (Users, Groups, Roles, Policies)
@@ -24,7 +24,7 @@ Tuần này tập trung vào bảo mật và quản lý danh tính trên AWS.
 - AWS KMS
 - AWS Security Hub
 
-### Labs thực hành
+### Hands-on Labs
 
 - Lab 18: AWS Security Hub
 - Lab 22: AWS Lambda Automation with Slack

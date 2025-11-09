@@ -5,7 +5,7 @@ chapter: false
 pre: "<b> 1.7.1. </b>"
 ---
 
-**Date:** 2025-10-20 (Thứ Hai)  
+**Date:** 2025-10-20 (Monday)  
 **Status:** "Done"  
 
 ---
@@ -16,43 +16,43 @@ pre: "<b> 1.7.1. </b>"
 
 ### Ebook Demo – Vertical Slice 0
 
-- Mục tiêu: demo tính năng **xem chi tiết sách** end-to-end trước khi phát triển toàn bộ hệ thống.
-- Cách tiếp cận: **Vertical Slice Architecture** để xây từng lát cắt hoàn chỉnh thay vì làm theo tầng.
-- Lợi ích: demo được ngay, phát hiện lỗi sớm, tạo nhịp phối hợp giữa frontend/backend.
+- **Goal:** deliver an end-to-end demo of the book-detail experience before scaling the full system.
+- **Approach:** adopt a **Vertical Slice Architecture** so every slice is built as a complete feature instead of layer-by-layer.
+- **Benefits:** immediate demos, earlier bug discovery, and tighter coordination between frontend and backend.
 
-### Kiến trúc Slice
+### Slice Architecture
 
 ```
 User → Frontend → API → Database → Response → UI
 ```
 
-- Mỗi lát cắt bao gồm UI, API contract, backend logic và dữ liệu giả để trình diễn.
-- Cho phép thay thế từng thành phần mà không ảnh hưởng đến toàn bộ hệ thống.
+- Each slice bundles UI, API contracts, backend logic, and demo data.
+- Components can be swapped independently without breaking the rest of the system.
 
 ## Vertical Slice Architecture
 
-### Nguyên tắc chính
+### Core Principles
 
-- Phát triển feature theo luồng người dùng, không tách biệt tầng.
-- Giữ scope nhỏ để **demo nhanh** và nhận feedback sớm.
-- Rõ ràng trách nhiệm của từng slice, giúp mở rộng dễ dàng.
+- Build features around the user journey instead of isolated layers.
+- Keep the scope tight so each slice can **demo quickly** and gather feedback.
+- Define slice ownership clearly to ease future extensions.
 
-### Lợi ích
+### Benefits
 
-- Tăng tốc đóng gói giá trị: có thể show cho stakeholder ngay.
-- Giảm rủi ro integration vì mỗi slice tự kiểm chứng.
-- Cho phép phát triển song song giữa các slice khác nhau.
+- Accelerates value delivery—you can show stakeholders right away.
+- Lowers integration risk because every slice self-validates.
+- Enables multiple slices to progress in parallel.
 
 ## Key Insights
 
-- Vertical slice đóng vai trò nền tảng trước khi mở rộng sang các feature khác.
-- Mỗi slice cần có checklist rõ ràng (UI hoàn thiện, contract chuẩn, backend trả dữ liệu đúng).
-- Coi slice như “mini product” với vòng đời riêng giúp giữ chất lượng.
+- Vertical slices act as the foundation before expanding to additional features.
+- Each slice needs a clear checklist (finished UI, validated contract, accurate backend responses).
+- Treat every slice like a “mini product” with its own lifecycle to keep quality high.
 
 ---
 
 # **Hands-On Labs**
 
-- Xác định phạm vi slice 0 (luồng xem chi tiết sách, data tối thiểu).
-- Vẽ sơ đồ luồng dữ liệu và xác định boundary giữa frontend/backend.
-- Chuẩn hóa checklist demo (contract, mock, UI, backend).
+- Define the scope of slice 0 (book-detail flow, minimum viable data).
+- Draw the data-flow diagram and nail down the frontend/backend boundary.
+- Standardize the demo checklist (contract, mock, UI, backend).

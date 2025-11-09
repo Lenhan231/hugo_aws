@@ -5,7 +5,7 @@ chapter: false
 pre: "<b> 1.7.2. </b>"
 ---
 
-**Date:** 2025-10-21 (Thứ Ba)  
+**Date:** 2025-10-21 (Tuesday)  
 **Status:** "Done"  
 
 ---
@@ -14,13 +14,13 @@ pre: "<b> 1.7.2. </b>"
 
 ## Contract-First Development
 
-### Quy trình 5 bước
+### 5-Step Workflow
 
-1. Viết OpenAPI spec để định nghĩa contract.  
-2. Chia sẻ spec cho cả frontend và backend như **Single Source of Truth**.  
-3. Frontend dựng UI với mock data dựa trên contract.  
-4. Backend implement API bám sát schema (status code, payload).  
-5. Chạy contract testing để đảm bảo backend tuân thủ spec.
+1. Write the OpenAPI spec to define the contract.  
+2. Share the spec as the **single source of truth** for both frontend and backend.  
+3. Let the frontend build UI against mock data derived from the contract.  
+4. Implement the backend API to match the schema (status codes, payloads).  
+5. Run contract testing to confirm the backend adheres to the spec.
 
 ```yaml
 paths:
@@ -32,38 +32,38 @@ paths:
           $ref: "#/components/responses/BookDetail"
 ```
 
-### Lợi ích
+### Benefits
 
-- Hạn chế mismatch API vì mọi người xem chung một spec.
-- Documentation, mock server, test script đều sinh tự động.
-- Dễ review và cập nhật version của API trước khi triển khai thật.
+- Minimizes API mismatches because everyone references the same spec.
+- Documentation, mock servers, and test scripts can be generated automatically.
+- Makes it easy to review and version the API before real deployment.
 
 ### Insight
 
-> Contract trước code giúp giảm ~80% lỗi integration khi hai team làm song song.
+> Defining the contract before coding cuts ~80% of integration issues when teams work in parallel.
 
-## Mock API với Prism
+## Mock APIs with Prism
 
-- Prism dùng OpenAPI để sinh response giả, cho phép frontend test UI sớm.
-- Hỗ trợ nhiều scenario (200, 404, 500) chỉ bằng cách gán example trong spec.
-- Giúp giữ nhịp làm việc khi backend chưa xong hoặc đang refactor.
+- Prism reads OpenAPI specs to return mock responses so the frontend can test UI early.
+- Multiple scenarios (200, 404, 500) are supported by attaching examples to the spec.
+- Keeps delivery on track even when the backend is unfinished or in refactor mode.
 
-### Khi nên dùng
+### When to Use It
 
-- Sprint đầu tiên của vertical slice.  
-- Cần trình diễn flow mà chưa có dữ liệu thật.  
-- Muốn viết test tự động cho UI dựa trên contract.
+- The first sprint of a vertical slice.  
+- Need to showcase a flow without production data yet.  
+- Want automated UI tests based on the contract.
 
-## Ghi chú vận hành
+## Operational Notes
 
-- Chạy Prism ở `localhost:4010`, trỏ Next.js đến mock qua `NEXT_PUBLIC_API_URL`.
-- Đảm bảo CORS headers trong mock giống với backend sản xuất.
-- Luôn commit spec trước khi mock để mọi người dùng đúng phiên bản.
+- Run Prism on `localhost:4010` and point Next.js to the mock via `NEXT_PUBLIC_API_URL`.
+- Mirror production CORS headers in the mock responses.
+- Always commit the spec before mocking so everyone uses the same version.
 
 ---
 
 # **Hands-On Labs**
 
-- Thiết lập OpenAPI spec cho endpoint `/books/{id}`.
-- Khởi chạy Prism mock server và kiểm tra flow trên UI.
-- Viết checklist review contract (status code, schema, example data).
+- Define the OpenAPI spec for the `/books/{id}` endpoint.
+- Launch the Prism mock server and verify the UI flow.
+- Write a contract review checklist (status codes, schema, sample data).

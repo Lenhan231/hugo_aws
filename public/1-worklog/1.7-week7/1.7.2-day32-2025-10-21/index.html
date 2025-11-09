@@ -15,21 +15,21 @@
     <title>Day 32 - Contract-First &amp; Mocking :: Internship Report</title>
 
     
-    <link href="../../../css/nucleus.css?1762687273" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1762687273" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1762687273" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1762687273" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1762687273" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1762687273" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1762687273" rel="stylesheet">
-    <link href="../../../css/theme.css?1762687273" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1762687273" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1762688266" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1762688266" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1762688266" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1762688266" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1762688266" rel="stylesheet">
+    <link href="../../../css/theme.css?1762688266" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1762688266" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1762687273" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1762688266" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1762687273"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1762688266"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1494,17 +1494,17 @@
   <ul>
     <li><a href="#contract-first-development">Contract-First Development</a>
       <ul>
-        <li><a href="#quy-trình-5-bước">Quy trình 5 bước</a></li>
-        <li><a href="#lợi-ích">Lợi ích</a></li>
+        <li><a href="#5-step-workflow">5-Step Workflow</a></li>
+        <li><a href="#benefits">Benefits</a></li>
         <li><a href="#insight">Insight</a></li>
       </ul>
     </li>
-    <li><a href="#mock-api-với-prism">Mock API với Prism</a>
+    <li><a href="#mock-apis-with-prism">Mock APIs with Prism</a>
       <ul>
-        <li><a href="#khi-nên-dùng">Khi nên dùng</a></li>
+        <li><a href="#when-to-use-it">When to Use It</a></li>
       </ul>
     </li>
-    <li><a href="#ghi-chú-vận-hành">Ghi chú vận hành</a></li>
+    <li><a href="#operational-notes">Operational Notes</a></li>
   </ul>
 </nav></div>
 </div>
@@ -1529,18 +1529,18 @@
 
 
 
-	<p><strong>Date:</strong> 2025-10-21 (Thứ Ba)<br>
+	<p><strong>Date:</strong> 2025-10-21 (Tuesday)<br>
 <strong>Status:</strong> &ldquo;Done&rdquo;</p>
 <hr>
 <h1 id="lecture-notes"><strong>Lecture Notes</strong></h1>
 <h2 id="contract-first-development">Contract-First Development</h2>
-<h3 id="quy-trình-5-bước">Quy trình 5 bước</h3>
+<h3 id="5-step-workflow">5-Step Workflow</h3>
 <ol>
-<li>Viết OpenAPI spec để định nghĩa contract.</li>
-<li>Chia sẻ spec cho cả frontend và backend như <strong>Single Source of Truth</strong>.</li>
-<li>Frontend dựng UI với mock data dựa trên contract.</li>
-<li>Backend implement API bám sát schema (status code, payload).</li>
-<li>Chạy contract testing để đảm bảo backend tuân thủ spec.</li>
+<li>Write the OpenAPI spec to define the contract.</li>
+<li>Share the spec as the <strong>single source of truth</strong> for both frontend and backend.</li>
+<li>Let the frontend build UI against mock data derived from the contract.</li>
+<li>Implement the backend API to match the schema (status codes, payloads).</li>
+<li>Run contract testing to confirm the backend adheres to the spec.</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">paths</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">/books/{id}:</span>
@@ -1549,40 +1549,40 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">responses</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;200&#34;</span>:
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">$ref</span>: <span style="color:#e6db74">&#34;#/components/responses/BookDetail&#34;</span>
-</span></span></code></pre></div><h3 id="lợi-ích">Lợi ích</h3>
+</span></span></code></pre></div><h3 id="benefits">Benefits</h3>
 <ul>
-<li>Hạn chế mismatch API vì mọi người xem chung một spec.</li>
-<li>Documentation, mock server, test script đều sinh tự động.</li>
-<li>Dễ review và cập nhật version của API trước khi triển khai thật.</li>
+<li>Minimizes API mismatches because everyone references the same spec.</li>
+<li>Documentation, mock servers, and test scripts can be generated automatically.</li>
+<li>Makes it easy to review and version the API before real deployment.</li>
 </ul>
 <h3 id="insight">Insight</h3>
 <blockquote>
-<p>Contract trước code giúp giảm ~80% lỗi integration khi hai team làm song song.</p>
+<p>Defining the contract before coding cuts ~80% of integration issues when teams work in parallel.</p>
 </blockquote>
-<h2 id="mock-api-với-prism">Mock API với Prism</h2>
+<h2 id="mock-apis-with-prism">Mock APIs with Prism</h2>
 <ul>
-<li>Prism dùng OpenAPI để sinh response giả, cho phép frontend test UI sớm.</li>
-<li>Hỗ trợ nhiều scenario (200, 404, 500) chỉ bằng cách gán example trong spec.</li>
-<li>Giúp giữ nhịp làm việc khi backend chưa xong hoặc đang refactor.</li>
+<li>Prism reads OpenAPI specs to return mock responses so the frontend can test UI early.</li>
+<li>Multiple scenarios (200, 404, 500) are supported by attaching examples to the spec.</li>
+<li>Keeps delivery on track even when the backend is unfinished or in refactor mode.</li>
 </ul>
-<h3 id="khi-nên-dùng">Khi nên dùng</h3>
+<h3 id="when-to-use-it">When to Use It</h3>
 <ul>
-<li>Sprint đầu tiên của vertical slice.</li>
-<li>Cần trình diễn flow mà chưa có dữ liệu thật.</li>
-<li>Muốn viết test tự động cho UI dựa trên contract.</li>
+<li>The first sprint of a vertical slice.</li>
+<li>Need to showcase a flow without production data yet.</li>
+<li>Want automated UI tests based on the contract.</li>
 </ul>
-<h2 id="ghi-chú-vận-hành">Ghi chú vận hành</h2>
+<h2 id="operational-notes">Operational Notes</h2>
 <ul>
-<li>Chạy Prism ở <code>localhost:4010</code>, trỏ Next.js đến mock qua <code>NEXT_PUBLIC_API_URL</code>.</li>
-<li>Đảm bảo CORS headers trong mock giống với backend sản xuất.</li>
-<li>Luôn commit spec trước khi mock để mọi người dùng đúng phiên bản.</li>
+<li>Run Prism on <code>localhost:4010</code> and point Next.js to the mock via <code>NEXT_PUBLIC_API_URL</code>.</li>
+<li>Mirror production CORS headers in the mock responses.</li>
+<li>Always commit the spec before mocking so everyone uses the same version.</li>
 </ul>
 <hr>
 <h1 id="hands-on-labs"><strong>Hands-On Labs</strong></h1>
 <ul>
-<li>Thiết lập OpenAPI spec cho endpoint <code>/books/{id}</code>.</li>
-<li>Khởi chạy Prism mock server và kiểm tra flow trên UI.</li>
-<li>Viết checklist review contract (status code, schema, example data).</li>
+<li>Define the OpenAPI spec for the <code>/books/{id}</code> endpoint.</li>
+<li>Launch the Prism mock server and verify the UI flow.</li>
+<li>Write a contract review checklist (status codes, schema, sample data).</li>
 </ul>
 
 
@@ -2735,19 +2735,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1762687273"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1762687273"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762687273"></script>
-    <script src="../../../js/jquery.sticky.js?1762687273"></script>
-    <script src="../../../js/featherlight.min.js?1762687273"></script>
-    <script src="../../../js/highlight.pack.js?1762687273"></script>
+    <script src="../../../js/clipboard.min.js?1762688266"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1762688266"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762688266"></script>
+    <script src="../../../js/jquery.sticky.js?1762688266"></script>
+    <script src="../../../js/featherlight.min.js?1762688266"></script>
+    <script src="../../../js/highlight.pack.js?1762688266"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1762687273"></script>
-    <script src="../../../js/learn.js?1762687273"></script>
-    <script src="../../../js/hugo-learn.js?1762687273"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1762688266"></script>
+    <script src="../../../js/learn.js?1762688266"></script>
+    <script src="../../../js/hugo-learn.js?1762688266"></script>
 
-    <link href="../../../mermaid/mermaid.css?1762687273" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1762687273"></script>
+    <link href="../../../mermaid/mermaid.css?1762688266" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1762688266"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

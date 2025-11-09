@@ -5,59 +5,59 @@ chapter: false
 pre: "<b> 1.7.5. </b>"
 ---
 
-**Date:** 2025-10-24 (Thứ Sáu)  
+**Date:** 2025-10-24 (Friday)  
 **Status:** "Done"  
 
 ---
 
 # **Lecture Notes**
 
-## Contract Testing với Schemathesis
+## Contract Testing with Schemathesis
 
-- Dùng lệnh `schemathesis run --checks all --workers 4 --url http://127.0.0.1:8000/openapi.yaml` để tạo test tự động.
-- Schemathesis sinh nhiều tình huống ngẫu nhiên (happy path, edge cases, missing fields).
-- Giúp đảm bảo backend không trả sai schema khi frontend chuyển sang gọi API thật.
+- Run `schemathesis run --checks all --workers 4 --url http://127.0.0.1:8000/openapi.yaml` to auto-generate tests.
+- Schemathesis explores random scenarios (happy paths, edge cases, missing fields).
+- Ensures the backend doesn’t break the schema when the frontend switches to the real API.
 
-### Lợi ích
+### Benefits
 
-- Không cần viết tay test case phức tạp.
-- Giảm rủi ro mismatch sau khi refactor.
-- Hoạt động như quality gate trong pipeline CI.
+- Eliminates the need to handcraft complex test cases.
+- Reduces mismatch risk after refactors.
+- Acts as a quality gate inside the CI pipeline.
 
 ## Mistakes & Fixes
 
-| Mistake                               | Nguyên nhân        | Cách khắc phục                 |
-| ------------------------------------- | ------------------ | ------------------------------ |
-| Tạo cả `error.tsx` và `not-found.tsx` | Redundant          | Giữ lại `not-found.tsx` thôi   |
-| Dùng `--base-url` trong Schemathesis  | Lệnh sai           | Dùng `--url` đúng chuẩn        |
-| Timeout khi load `/openapi.json`      | CORS hoặc chậm     | Dùng file YAML trực tiếp       |
-| Over-engineer backend                 | Quá nhiều file sớm | Bắt đầu đơn giản, refactor sau |
+| Mistake                               | Root Cause        | Fix                               |
+| ------------------------------------- | ----------------- | ---------------------------------- |
+| Added both `error.tsx` and `not-found.tsx` | Redundant handling | Keep only `not-found.tsx`          |
+| Used `--base-url` in Schemathesis     | Wrong CLI option  | Use the correct `--url` flag       |
+| Timeout on `/openapi.json`            | CORS or slow resp | Point Schemathesis to the YAML file |
+| Over-engineered backend               | Too many files early | Start simple and refactor later  |
 
-## Workflow Chuẩn Đã Validate
+## Validated Workflow
 
 ```
 1. Define Contract (OpenAPI)
 2. Mock API (Prism)
-3. Build Frontend với mock data
-4. Implement Backend theo spec
-5. Switch sang real API
+3. Build Frontend with mock data
+4. Implement Backend according to the spec
+5. Switch to the real API
 6. Contract Testing (Schemathesis)
 ```
 
-- Hỗ trợ phát triển song song giữa team frontend và backend.
-- Giảm xung đột, tăng tốc demo và giữ chất lượng ổn định.
+- Enables frontend and backend teams to work in parallel.
+- Reduces conflicts, accelerates demos, and keeps quality stable.
 
 ## Key Insights
 
-1. Contract-first development giữ spec đồng bộ và giảm lỗi integration.  
-2. Vertical slice cho phép release từng phần, nhận feedback sớm.  
-3. Automation (Prism, Schemathesis) giúp giảm effort test thủ công.  
-4. Bắt đầu đơn giản, refactor dần khi cần mở rộng.
+1. Contract-first development keeps specs aligned and shrinks integration bugs.  
+2. Vertical slices make it possible to release in increments and gather early feedback.  
+3. Automation (Prism, Schemathesis) cuts manual testing effort.  
+4. Start simple and refactor gradually as scope grows.
 
 ---
 
 # **Hands-On Labs**
 
-- Chạy Schemathesis với spec mới nhất và ghi nhận kết quả.
-- Cập nhật README workflow cho team tham khảo.
-- Chuẩn bị backlog cho vertical slice tiếp theo dựa trên feedback demo.
+- Run Schemathesis with the latest spec and capture the results.
+- Refresh the README workflow so the whole team can follow it.
+- Prepare the backlog for the next vertical slice based on demo feedback.

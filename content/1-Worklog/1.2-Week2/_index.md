@@ -5,24 +5,24 @@ chapter: false
 pre: "<b> 1.2. </b>"
 ---
 
-**Week:** 2025-09-15 đến 2025-09-19  
+**Week:** 2025-09-15 to 2025-09-19  
 **Status:** "Done"  
 
 ---
 
-## Tổng quan tuần 2
+## Week 2 Overview
 
-Tuần này tập trung vào các dịch vụ mạng của AWS, từ VPC cơ bản đến các giải pháp kết nối nâng cao.
+This week focused on AWS networking services, spanning foundational VPC concepts through enterprise-grade connectivity patterns.
 
-### Nội dung chính
+### Key Topics
 
-- Amazon VPC và Subnets
-- Security Groups và NACLs
-- Internet Gateway, NAT Gateway
-- VPC Peering và Transit Gateway
+- Amazon VPC and subnet design
+- Security Groups and NACLs
+- Internet Gateway and NAT Gateway
+- VPC Peering and Transit Gateway
 - Elastic Load Balancing (ALB, NLB, GWLB)
 
-### Labs thực hành
+### Hands-on Labs
 
 - Lab 03: Amazon VPC & Networking Basics
 - Lab 10: Hybrid DNS (Route 53 Resolver)

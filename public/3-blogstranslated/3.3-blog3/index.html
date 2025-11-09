@@ -12,24 +12,24 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD :: Internship Report</title>
+    <title>Tuning Guide for AMD-based Amazon EC2 Instances :: Internship Report</title>
 
     
-    <link href="../../css/nucleus.css?1762687083" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1762687083" rel="stylesheet">
-    <link href="../../css/hybrid.css?1762687083" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1762687083" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1762687083" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1762687083" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1762687083" rel="stylesheet">
-    <link href="../../css/theme.css?1762687083" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1762687083" rel="stylesheet">
+    <link href="../../css/nucleus.css?1762689896" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1762689896" rel="stylesheet">
+    <link href="../../css/hybrid.css?1762689896" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1762689896" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1762689896" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1762689896" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1762689896" rel="stylesheet">
+    <link href="../../css/theme.css?1762689896" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1762689896" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1762687083" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1762689896" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1762687083"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1762689896"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -930,7 +930,7 @@
             
 <li
   data-nav-id="/3-blogstranslated/3.1-blog1/"
-  title="Tăng tốc luồng dữ liệu và AI của bạn bằng cách kết nối đến Amazon SageMaker Unified Studio từ Visual Studio Code"
+  title="Accelerate Your Data and AI Flow by Connecting Amazon SageMaker Unified Studio to Visual Studio Code"
   class="dd-item 
         
         
@@ -938,7 +938,7 @@
         "
 >
   <a href="../../3-blogstranslated/3.1-blog1/">
-     <b> 3.1. </b> Tăng tốc luồng dữ liệu và AI của bạn bằng cách kết nối đến Amazon SageMaker Unified Studio từ Visual Studio Code 
+     <b> 3.1. </b> Accelerate Your Data and AI Flow by Connecting Amazon SageMaker Unified Studio to Visual Studio Code 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -948,7 +948,7 @@
             
 <li
   data-nav-id="/3-blogstranslated/3.2-blog2/"
-  title="Thông báo Amazon EC2 M4 và M4 Pro Mac instances"
+  title="Announcing Amazon EC2 M4 and M4 Pro Mac Instances"
   class="dd-item 
         
         
@@ -956,7 +956,7 @@
         "
 >
   <a href="../../3-blogstranslated/3.2-blog2/">
-     <b> 3.2. </b> Thông báo Amazon EC2 M4 và M4 Pro Mac instances 
+     <b> 3.2. </b> Announcing Amazon EC2 M4 and M4 Pro Mac Instances 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -966,7 +966,7 @@
             
 <li
   data-nav-id="/3-blogstranslated/3.3-blog3/"
-  title="Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD"
+  title="Tuning Guide for AMD-based Amazon EC2 Instances"
   class="dd-item 
         
         active
@@ -974,7 +974,7 @@
         "
 >
   <a href="../../3-blogstranslated/3.3-blog3/">
-     <b> 3.3. </b> Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD 
+     <b> 3.3. </b> Tuning Guide for AMD-based Amazon EC2 Instances 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -1472,7 +1472,7 @@
             
           
           
-            <a href='../../'>Internship Report</a> > <a href='../../3-blogstranslated/'>Translated Blogs</a> > Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD
+            <a href='../../'>Internship Report</a> > <a href='../../3-blogstranslated/'>Translated Blogs</a> > Tuning Guide for AMD-based Amazon EC2 Instances
           
         
           
@@ -1486,21 +1486,20 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#choose-the-right-amd-epyc-instance-family"><strong>Choose the right AMD EPYC instance family</strong></a></li>
+    <li><a href="#optimize-amd-epyc-based-amazon-ec2-instances"><strong>Optimize AMD EPYC-based Amazon EC2 instances</strong></a>
       <ul>
-        <li><a href="#chọn-loại-instance-amazon-ec2-dùng-amd-epyc-phù-hợp"><strong>Chọn loại instance Amazon EC2 dùng AMD EPYC phù hợp</strong></a></li>
-        <li><a href="#tối-ưu-hóa-các-instance-amazon-ec2-dùng-amd-epyc"><strong>Tối ưu hóa các instance Amazon EC2 dùng AMD EPYC</strong></a></li>
         <li><a href="#cpu-optimizations"><strong>CPU optimizations</strong></a></li>
-        <li><a href="#sử-dụng-bộ-nhớ-đệm-l3"><strong>Sử dụng bộ nhớ đệm L3</strong></a></li>
-        <li><a href="#tối-ưu-container-docker"><strong>Tối ưu container Docker</strong></a></li>
-        <li><a href="#thiết-lập-governor-tần-số-cpu"><strong>Thiết lập governor tần số CPU</strong></a></li>
-        <li><a href="#dùng-flag-compiler-kiến-trúc-cụ-thể"><strong>Dùng flag compiler kiến trúc cụ thể</strong></a></li>
-        <li><a href="#khi-nào-bật-avx512-và-vnni"><strong>Khi nào bật AVX‑512 và VNNI</strong></a></li>
-        <li><a href="#thư-viện-tối-ưu-cpu-của-amd-amd-optimizing-cpu-libraries--aocl"><strong>Thư viện tối ưu CPU của AMD (AMD Optimizing CPU Libraries – AOCL)</strong></a></li>
-        <li><a href="#cấu-hình-aocl"><strong>Cấu hình AOCL</strong></a></li>
-        <li><a href="#kết-luận"><strong>Kết luận</strong></a></li>
+        <li><a href="#use-the-l3-cache-effectively"><strong>Use the L3 cache effectively</strong></a></li>
+        <li><a href="#optimize-docker-containers"><strong>Optimize Docker containers</strong></a></li>
+        <li><a href="#set-the-cpu-frequency-governor"><strong>Set the CPU frequency governor</strong></a></li>
+        <li><a href="#use-architecture-specific-compiler-flags"><strong>Use architecture-specific compiler flags</strong></a></li>
+        <li><a href="#when-to-enable-avx-512-and-vnni"><strong>When to enable AVX-512 and VNNI</strong></a></li>
+        <li><a href="#amd-optimizing-cpu-libraries-aocl"><strong>AMD Optimizing CPU Libraries (AOCL)</strong></a></li>
+        <li><a href="#configure-aocl"><strong>Configure AOCL</strong></a></li>
       </ul>
     </li>
+    <li><a href="#conclusion"><strong>Conclusion</strong></a></li>
   </ul>
 </nav></div>
 </div>
@@ -1517,7 +1516,7 @@
           
             <h1>
               
-              Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD
+              Tuning Guide for AMD-based Amazon EC2 Instances
             </h1>
           
 
@@ -1525,186 +1524,129 @@
 
 
 
-	<h1 id="hướng-dẫn-tinh-chỉnh-cho-amazon-ec2-instances-dùng-amd"><strong>Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD</strong></h1>
-<p>bởi Suyash Nadkarni và Dylan Souvage vào ngày 12 THÁNG 9 2025 trong <a href="https://aws.amazon.com/blogs/compute/category/compute/amazon-ec2/">Amazon EC2</a>, <a href="https://aws.amazon.com/blogs/compute/category/post-types/best-practices/">Best Practices</a>, <a href="https://aws.amazon.com/blogs/compute/category/learning-levels/expert-400/">Expert (400)</a>, <a href="https://aws.amazon.com/blogs/compute/category/post-types/technical-how-to/">Technical</a></p>
-<p>Khi các tổ chức di chuyển nhiều khối lượng công việc quan trọng sang đám mây, tối ưu hóa về <strong>giá — hiệu suất (price-performance)</strong> trở thành một cân nhắc chủ chốt. Các instance <a href="https://aws.amazon.com/pm/ec2/">Amazon Elastic Compute Cloud</a>(Amazon EC2) sử dụng bộ xử lý <a href="https://aws.amazon.com/ec2/amd/">AMD EPYC</a>  đem lại mật độ lõi cao, băng thông bộ nhớ lớn và các tính năng bảo mật được hỗ trợ phần cứng, khiến chúng trở thành một lựa chọn mạnh mẽ cho nhiều loại khối lượng công việc tính toán, bộ nhớ hoặc I/O. Trong bài viết này, chúng tôi giải thích cách chọn loại instance Amazon EC2 dựa trên AMD phù hợp và mô tả các kỹ thuật điều chỉnh có thể giúp người dùng cải thiện hiệu quả khối lượng công việc. Cho dù bạn đang chạy mô phỏng, phân tích quy mô lớn hoặc các khối lượng inference, bài viết này cung cấp hướng dẫn thực tiễn để tối ưu hóa instance Amazon EC2 dùng AMD.</p>
-<p>Amazon EC2 cung cấp instances AMD dựa trên nhiều thế hệ AMD EPYC. Bài viết tập trung vào chiến lược tối ưu cho thế hệ 3 và 4, vốn tăng cường khả năng cho workload tính toán và bộ nhớ chuyên sâu.</p>
+	<h1 id="tuning-guide-for-amd-based-amazon-ec2-instances"><strong>Tuning Guide for AMD-based Amazon EC2 Instances</strong></h1>
+<p>By Suyash Nadkarni and Dylan Souvage — September 12, 2025 · <a href="https://aws.amazon.com/blogs/compute/category/compute/amazon-ec2/">Amazon EC2</a> · <a href="https://aws.amazon.com/blogs/compute/category/post-types/best-practices/">Best Practices</a> · <a href="https://aws.amazon.com/blogs/compute/category/learning-levels/expert-400/">Expert (400)</a> · <a href="https://aws.amazon.com/blogs/compute/category/post-types/technical-how-to/">Technical How-to</a></p>
+<p>As organizations move more mission-critical workloads to the cloud, optimizing <strong>price-performance</strong> becomes essential. <a href="https://aws.amazon.com/pm/ec2/">Amazon EC2</a> instances powered by <a href="https://aws.amazon.com/ec2/amd/">AMD EPYC</a> processors offer high core density, large memory bandwidth, and hardware-enabled security features, making them a strong fit for compute-, memory-, or I/O-intensive applications. This post explains how to choose the right AMD-based Amazon EC2 instance family and describes tuning techniques that improve workload efficiency—whether you run simulations, large-scale analytics, or inference jobs.</p>
+<p>Amazon EC2 offers AMD options across multiple EPYC generations. We focus on optimization strategies for 3rd- and 4th-generation processors, which are designed for compute- and memory-heavy workloads.</p>
 <ul>
-<li>
-<p>Thế hệ 3 (<a href="https://aws.amazon.com/ec2/instance-types/m6a/">M6a</a>, <a href="https://aws.amazon.com/ec2/instance-types/r6a/">R6a</a>, <a href="https://aws.amazon.com/ec2/instance-types/c6a/">C6a</a>, <a href="https://aws.amazon.com/ec2/instance-types/hpc6a/">Hpc6a</a>): Cân bằng tính toán, bộ nhớ và lưu trữ — phù hợp với phân tích dữ liệu, máy chủ web và tính toán hiệu năng cao.</p>
-</li>
-<li>
-<p>Thế hệ thứ 4 (<a href="https://aws.amazon.com/ec2/instance-types/m7a/">M7a</a>, <a href="https://aws.amazon.com/ec2/instance-types/r7a/">R7a</a>, <a href="https://aws.amazon.com/ec2/instance-types/c7a/">C7a</a>, <a href="https://aws.amazon.com/ec2/instance-types/hpc7a/">Hpc7a</a>): Cung cấp hiệu suất tốt hơn tới 50% so với các thế hệ AMD trước đó. Các instance này giới thiệu hỗ trợ AVX‑512, bộ nhớ DDR5 và Simultaneous Multithreading (SMT) bị tắt; SMT là công nghệ cho phép một lõi vật lý chạy nhiều luồng cùng lúc; với SMT bị tắt, mỗi vCPU (virtual CPU) ánh xạ trực tiếp đến một lõi vật lý, điều này có thể cải thiện tính cô lập và nhất quán trong khối lượng công việc.</p>
-</li>
+<li><strong>Generation 3</strong> (<a href="https://aws.amazon.com/ec2/instance-types/m6a/">M6a</a>, <a href="https://aws.amazon.com/ec2/instance-types/r6a/">R6a</a>, <a href="https://aws.amazon.com/ec2/instance-types/c6a/">C6a</a>, <a href="https://aws.amazon.com/ec2/instance-types/hpc6a/">Hpc6a</a>): Balanced compute, memory, and storage—ideal for analytics, web servers, and HPC.</li>
+<li><strong>Generation 4</strong> (<a href="https://aws.amazon.com/ec2/instance-types/m7a/">M7a</a>, <a href="https://aws.amazon.com/ec2/instance-types/r7a/">R7a</a>, <a href="https://aws.amazon.com/ec2/instance-types/c7a/">C7a</a>, <a href="https://aws.amazon.com/ec2/instance-types/hpc7a/">Hpc7a</a>): Up to 50% more performance than prior AMD generations, with AVX-512 support, DDR5 memory, and Simultaneous Multithreading (SMT) disabled so each vCPU maps to a physical core for better isolation.</li>
 </ul>
-<h3 id="chọn-loại-instance-amazon-ec2-dùng-amd-epyc-phù-hợp"><strong>Chọn loại instance Amazon EC2 dùng AMD EPYC phù hợp</strong></h3>
-<p>Việc chọn loại instance Amazon EC2 dùng AMD EPYC phù hợp bắt đầu bằng việc hiểu cách ứng dụng của bạn sử dụng tài nguyên tính toán (compute), bộ nhớ, lưu trữ và mạng. Mỗi instance family được tối ưu hóa cho những đặc tính khối lượng công việc nhất định.</p>
-<p><strong>Khối lượng công việc tính toán</strong></p>
-<p>Những khối lượng này liên quan tới các phép tính quy mô lớn, mô phỏng, hoặc mã hóa, và thường cần thông lượng CPU cao và hỗ trợ tập lệnh nâng cao.</p>
+<h2 id="choose-the-right-amd-epyc-instance-family"><strong>Choose the right AMD EPYC instance family</strong></h2>
+<p>Selecting the correct AMD EPYC instance begins with understanding how your application consumes compute, memory, storage, and network resources. Each family is tailored to a specific profile.</p>
+<p><strong>Compute-intensive workloads</strong> — large-scale numerical calculations, simulations, or encoding that require high CPU throughput and advanced instruction support.</p>
 <ul>
-<li>
-<p>Khuyến nghị: C7a, Hpc7a, C6a, Hpc6a</p>
-</li>
-<li>
-<p>Tình huống dùng: điện toán khoa học, mô hình tài chính, chuyển mã media, mã hóa, inference ML</p>
-</li>
+<li>Recommended: C7a, Hpc7a, C6a, Hpc6a</li>
+<li>Use cases: scientific computing, financial modeling, media transcoding, encryption, ML inference</li>
 </ul>
-<p><strong>Big Data &amp; Analytics</strong></p>
-<p>Ứng dụng xử lý và phân tích tập dữ liệu lớn hưởng lợi từ băng thông bộ nhớ cao và tỷ lệ tính toán‑bộ nhớ cân bằng.</p>
+<p><strong>Big Data &amp; Analytics</strong> — large data processing and analytics that benefit from high memory bandwidth and balanced compute-to-memory ratios.</p>
 <ul>
-<li>
-<p>Khuyến nghị: R7a, M7a, R6a, M6a</p>
-</li>
-<li>
-<p>Tình huống dùng: xử lý luồng, phân tích thời gian thực, công cụ business intelligence, caching phân tán</p>
-</li>
+<li>Recommended: R7a, M7a, R6a, M6a</li>
+<li>Use cases: stream processing, real-time analytics, BI tools, distributed caching</li>
 </ul>
-<p><strong>Khối lượng công việc cơ sở dữ liệu</strong></p>
-<p>Công việc database thường cần hiệu suất bộ nhớ ổn định và throughput I/O cao cho các hoạt động đọc/ghi.</p>
+<p><strong>Database workloads</strong> — relational, NoSQL, or in-memory databases that need consistent memory performance and high I/O throughput.</p>
 <ul>
-<li>
-<p>Khuyến nghị: R7a, M7a, R6a, M6a</p>
-</li>
-<li>
-<p>Tình huống dùng: database quan hệ (MySQL, PostgreSQL), NoSQL (MongoDB, Cassandra), database trong bộ nhớ (Redis)</p>
-</li>
+<li>Recommended: R7a, M7a, R6a, M6a</li>
+<li>Use cases: MySQL, PostgreSQL, MongoDB, Cassandra, Redis</li>
 </ul>
-<p><strong>Web và máy chủ ứng dụng</strong></p>
-<p>Những ứng dụng này xử lý các tải yêu cầu biến đổi và hưởng lợi từ sự cân bằng giữa tính toán, bộ nhớ và hiệu năng mạng.</p>
+<p><strong>Web and application servers</strong> — variable request workloads that need balanced compute, memory, and networking.</p>
 <ul>
-<li>
-<p>Khuyến nghị: C7a, M7a, C6a, M6a</p>
-</li>
-<li>
-<p>Tình huống dùng: máy chủ web, hệ quản lý nội dung, nền tảng e‑commerce, các điểm cuối API</p>
-</li>
+<li>Recommended: C7a, M7a, C6a, M6a</li>
+<li>Use cases: web servers, CMS platforms, e-commerce sites, API endpoints</li>
 </ul>
-<p><strong>AI/ML trên CPU</strong></p>
-<p>Các tác vụ ML không cần GPU — như inference hoặc tiền xử lý — có thể chạy hiệu quả trên các instance dựa CPU.</p>
+<p><strong>AI/ML on CPU</strong> — ML tasks that do not require GPUs (such as inference or preprocessing).</p>
 <ul>
-<li>
-<p>Khuyến nghị: M7a, R7a, C7a</p>
-</li>
-<li>
-<p>Tình huống dùng: inference mô hình, xử lý ngôn ngữ tự nhiên, thị giác máy tính, hệ gợi ý</p>
-</li>
+<li>Recommended: C7a, Hpc7a, M7a</li>
+<li>Use cases: fluid dynamics, genomics, seismic analysis, engineering simulations</li>
 </ul>
-<p><strong>High Performance Computing</strong></p>
-<p>Những khối lượng công việc này cần nhiều lõi, băng thông bộ nhớ cao và mạng độ trễ thấp cho các tính toán liên kết chặt chẽ.</p>
-<ul>
-<li>
-<p>Khuyến nghị: Hpc7a, Hpc6a, R7a, M7a</p>
-</li>
-<li>
-<p>Tình huống dùng: động lực chất lỏng, genomics, phân tích địa chấn, mô phỏng kỹ thuật</p>
-</li>
-</ul>
-<p>Việc phù hợp hóa loại instance với nhu cầu khối lượng công việc giúp cung cấp hiệu suất dự đoán được và hiệu quả chi phí. Các dịch vụ như <a href="https://aws.amazon.com/ec2/autoscaling/">Amazon EC2 Auto Scaling</a> và <a href="https://aws.amazon.com/compute-optimizer/">AWS Compute Optimizer</a> có thể hỗ trợ trong việc lựa chọn instance và ra quyết định scale liên tục.</p>
-<h3 id="tối-ưu-hóa-các-instance-amazon-ec2-dùng-amd-epyc"><strong>Tối ưu hóa các instance Amazon EC2 dùng AMD EPYC</strong></h3>
-<p>Các instance EC2 dùng bộ xử lý AMD EPYC thế hệ thứ 4 vận hành với kiến trúc “chiplet modular”, như minh họa trong hình dưới đây. Mỗi bộ xử lý bao gồm nhiều <strong>Core Complex Dies (CCD)</strong>, và mỗi CCD chứa một hoặc nhiều tổ hợp lõi (core complexes, gọi là CCX). Một CCX gom tối đa tám lõi vật lý, mỗi lõi có 1 MB bộ nhớ đệm L2 riêng và tám lõi đó cùng chia sẻ 32 MB bộ nhớ đệm L3. Các CCD này được kết nối với một die I/O trung tâm, chịu trách nhiệm quản lý bộ nhớ và liên kết giữa các chip.<br>
+<p>Matching the instance to the workload provides predictable performance and cost efficiency. Services like <a href="https://aws.amazon.com/ec2/autoscaling/">Amazon EC2 Auto Scaling</a> and <a href="https://aws.amazon.com/compute-optimizer/">AWS Compute Optimizer</a> can help with sizing and continuous scaling decisions.</p>
+<h2 id="optimize-amd-epyc-based-amazon-ec2-instances"><strong>Optimize AMD EPYC-based Amazon EC2 instances</strong></h2>
+<p>4th-generation AMD EPYC processors use a modular “chiplet” architecture. Each CPU is composed of multiple <strong>Core Complex Dies (CCD)</strong>, and each CCD contains one or more core complexes (CCX). A CCX bundles up to eight physical cores; each core includes 1 MB of private L2 cache, and the eight cores share 32 MB of L3 cache. The CCDs connect to a central I/O die that manages memory and inter-chip links.<br>
 <img src="#ZgotmplZ" alt=""><br>
-(Biểu đồ 1: Sơ đồ của die CPU ‘Zen 4’ với 8 lõi mỗi die)</p>
-<p>Kiến trúc module của các bộ xử lý AMD EPYC thế hệ thứ 4 cho phép các instance như m7a.24xlarge và m7a.48xlarge hỗ trợ số lượng lõi cao — lên đến 96 lõi vật lý mỗi socket. Ví dụ:</p>
+(Die diagram: Zen 4 CPU with eight cores per die)</p>
+<p>This modular design lets instances such as <code>m7a.24xlarge</code> and <code>m7a.48xlarge</code> expose very high core counts—up to 96 physical cores per socket. For example:</p>
 <ul>
-<li>
-<p>m7a.24xlarge cung cấp 96 lõi vật lý từ một socket đơn</p>
-</li>
-<li>
-<p>m7a.48xlarge trải rộng hai socket, cung cấp 192 lõi vật lý</p>
-</li>
+<li><code>m7a.24xlarge</code> delivers 96 physical cores from a single socket.</li>
+<li><code>m7a.48xlarge</code> spans two sockets for 192 physical cores.</li>
 </ul>
-<p>Hiểu cách các kích cỡ instance của EC2 ánh xạ tới bố cục bộ xử lý vật lý có thể giúp bạn tối ưu hóa hiệu suất và tính nhất quán bộ nhớ đệm (cache). Những khối lượng công việc liên quan tới truy cập bộ nhớ chia sẻ hoặc đồng bộ hóa luồng — như HPC hoặc database trong bộ nhớ — có thể hưởng lợi khi chọn kích cỡ instance giảm thiểu giao tiếp giữa socket và tận dụng hiệu quả bộ nhớ đệm L3.</p>
+<p>Understanding how EC2 instance sizes map to the underlying processor layout helps you optimize cache locality. Workloads that rely on shared-memory access or thread synchronization—such as HPC or in-memory databases—benefit from choosing sizes that minimize cross-socket communication and maximize L3-cache locality.</p>
 <p><img src="#ZgotmplZ" alt=""></p>
-<p>(Biểu đồ 2: Bố cục CPU ‘EPYC Chiplet’)</p>
-<p>Các instance EC2 dùng AMD EPYC thế hệ thứ 4 hoạt động với SMT bị tắt. Trong cấu hình này, mỗi vCPU ánh xạ trực tiếp tới một lõi vật lý, loại bỏ chia sẻ tài nguyên như đơn vị thực thi và bộ nhớ đệm giữa các luồng “chị/em”. Thiết kế này có thể giảm nhiễu nội lõi và giúp cung cấp hiệu suất ổn định hơn cho các khối lượng công việc nhất định. Người dùng có thể cô lập luồng ở cấp lõi và quan sát độ biến thiên thấp hơn và thông lượng ổn định hơn cho các khối lượng như HPC, inference ML và database giao dịch.</p>
+<p>(BLOCK diagram: EPYC chiplet layout)</p>
+<p>4th-generation AMD EPYC instances run with SMT disabled, so each vCPU maps directly to a physical core. This eliminates resource sharing between sibling threads (execution units, caches, etc.) and can reduce intra-core interference. The result is lower jitter and more consistent throughput for HPC, ML inference, and transactional database workloads.</p>
 <h3 id="cpu-optimizations"><strong>CPU optimizations</strong></h3>
-<p>Các công cụ như <a href="https://htop.dev/">htop</a> giúp xác định mẫu sử dụng CPU, trung bình tải hệ thống, và tiêu thụ tài nguyên theo tiến trình. Việc sử dụng CPU nên được đánh giá trong ngữ cảnh khối lượng công việc và yêu cầu hiệu năng. Nếu mức sử dụng liên tục đạt 100%, điều đó có thể chỉ ra rằng khối lượng công việc bị <strong>CPU-bound</strong> và chưa được cân bằng tối ưu. Trước khi thay đổi kích thước instance, bật Auto Scaling, hoặc chuyển đổi giữa các gia đình instance, cần thực hiện đánh giá các cơ hội tuning có thể cải thiện hiệu suất mà không thay đổi hạ tầng. Trung bình tải (load averages) vượt thường xuyên hơn số lượng vCPU cũng có thể là dấu hiệu bão hòa tính toán và có thể yêu cầu tối ưu tiếp.</p>
-<h3 id="sử-dụng-bộ-nhớ-đệm-l3"><strong>Sử dụng bộ nhớ đệm L3</strong></h3>
-<p><a href="https://www.techtarget.com/searchstorage/definition/cache-memory">L3 cache</a> là lớp nhớ nhanh chia sẻ được sử dụng bởi một nhóm lõi CPU. Trên EC2 dựa AMD, các lõi được tổ chức thành các <strong>slice bộ nhớ đệm L3</strong>, mỗi slice được chia sẻ bởi một tập hợp lõi trên cùng một socket. Các luồng được lập lịch trong cùng slice có thể truy cập dữ liệu chia sẻ hiệu quả hơn, giảm độ trễ bộ nhớ. Trên các instance AMD thế hệ 4 như m7a.2xlarge hoặc r7a.2xlarge, tất cả vCPU thường ánh xạ tới các lõi nằm trong cùng một slice L3, đảm bảo tính nhất quán địa phương bộ nhớ đệm. Đối với các kích cỡ lớn hơn (ví dụ m7a.8xlarge trở lên), <strong>thread pinning</strong> — gán các luồng tới lõi vật lý cụ thể — có thể giúp duy trì tính địa phương này. Thread pinning có thể giảm biến động hiệu suất trong các khối lượng với mẫu truy cập bộ nhớ chia sẻ thường xuyên.</p>
-<p>Bạn có thể pin luồng với lệnh:</p>
-<p><strong>taskset -c 0-3 ./your_application</strong></p>
-<p>Ví dụ này pin ứng dụng của bạn vào các lõi CPU 0 đến 3. Để xác định lõi nào chia sẻ cùng vùng bộ nhớ đệm L3, sử dụng các công cụ như lscpu hoặc lstopo để kiểm tra topology CPU hệ thống. Gom các luồng liên quan vào các lõi cùng chia sẻ L3 cache có thể cải thiện tính nhất quán hiệu suất cho các khối lượng có truy cập bộ nhớ chia sẻ.</p>
-<h3 id="tối-ưu-container-docker"><strong>Tối ưu container Docker</strong></h3>
-<p>Trong môi trường container chạy trên các instance EC2 dựa AMD, điều chỉnh các thiết lập liên quan CPU có thể cải thiện tính nhất quán và hiệu quả khối lượng công việc — đặc biệt cho các ứng dụng tính toán nặng hoặc nhạy độ trễ. Mặc dù cấu hình mặc định hoạt động cho nhiều kịch bản tổng quát, một số workload có thể lợi từ việc kiểm soát rõ ràng cách phân bổ tài nguyên CPU. Theo mặc định, runtime container như <a href="https://docs.docker.com/engine/containers/resource_constraints/">Docker</a> cho phép hệ điều hành lập lịch container trên bất kỳ lõi CPU nào sẵn có. Việc này có thể dẫn đến biến thiên hiệu suất khi container di chuyển giữa các lõi không chia sẻ cache. Để giảm biến thiên và cải thiện hiệu quả cache, container có thể được pin vào các lõi cụ thể bằng flag --cpuset-cpus.</p>
-<p><strong>docker run --cpuset-cpus=&ldquo;1,3&rdquo; my-container</strong></p>
-<p>Thiết lập này giới hạn container chỉ dùng các lõi đã chỉ định. Trong ví dụ này, lõi 1 và 3 được dùng để minh hoạ. Lựa chọn lõi thực tế nên dựa trên topology CPU để đảm bảo lập lịch hiệu quả bộ nhớ đệm. Pin container vào các lõi chia sẻ bộ nhớ đệm L3 có thể giảm overhead lập lịch và cải thiện tính nhất quán cho các workload có mẫu truy cập bộ nhớ chia sẻ.</p>
-<h3 id="thiết-lập-governor-tần-số-cpu"><strong>Thiết lập governor tần số CPU</strong></h3>
-<p>Một số hệ điều hành điều chỉnh tần số CPU động để tiết kiệm điện. Thông thường điều này được kiểm soát bởi thiết lập gọi là <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/processor_state_control.html">CPU frequency governor</a>. Mặc dù hành vi này hiệu quả cho các workload tổng quát, nó có thể gây độ trễ hoặc biến thiên hiệu suất trong môi trường nhạy với tính toán. Với các workload cần hiệu suất CPU ổn định cao — như xử lý dữ liệu thông lượng lớn, mô phỏng, hoặc ứng dụng thời gian thực — chúng tôi khuyến nghị đặt governor của CPU về <strong>performance mode</strong>. Điều này đảm bảo CPU chạy ở tần số tối đa khi chịu tải, tránh thời gian tăng tốc từ trạng thái năng lượng thấp.</p>
-<p>Bạn có thể áp dụng thiết lập này trên các instance bare metal hoặc <a href="https://aws.amazon.com/ec2/dedicated-hosts/">Amazon EC2 Dedicated Hosts</a> bằng lệnh:</p>
-<p><strong>sudo cpupower frequency-set -g performance</strong></p>
-<p>Trước khi áp dụng, hãy cân nhắc benchmark hiệu suất workload với các governor khác (như ondemand hoặc schedutil) để đảm bảo rằng chế độ performance mang lại lợi ích đo được mà không đánh đổi điện năng không cần thiết.</p>
-<h3 id="dùng-flag-compiler-kiến-trúc-cụ-thể"><strong>Dùng flag compiler kiến trúc cụ thể</strong></h3>
-<p>Khi biên dịch các ứng dụng C hoặc C++ nhạy hiệu suất, các flag kiến trúc cụ thể như -march=znverX có thể mở khóa tối ưu hóa dành riêng cho AMD EPYC, bao gồm cải thiện vectorization và hiệu suất số thực. Dù điều này có lợi cho workload tính toán nặng, nó có thể giảm tính di động giữa các kiến trúc. Để cân bằng giữa hiệu suất và tính linh hoạt, cân nhắc dùng phát hiện tính năng thời chạy (runtime feature detection) và dispatching — cách nhiều thư viện tối ưu dùng để thích ứng hành vi dựa trên CPU nền tảng.</p>
-<p>Trước khi dùng các flag này, xác minh rằng phiên bản compiler của bạn hỗ trợ chúng và đảm bảo kiến trúc instance EC2 đích phù hợp với flag chỉ định. Ví dụ, một binary biên dịch với -march=znver4 có thể lỗi chạy với lỗi “illegal instruction” (SIGILL) nếu chạy trên các instance thế hệ trước như M5a. Bảng dưới đây mô tả các flag phù hợp và phiên bản compiler tối thiểu hỗ trợ cho mỗi thế hệ AMD EPYC:</p>
+<p>Tools like <a href="https://htop.dev/">htop</a> reveal CPU usage patterns, system load averages, and per-process resource consumption. Evaluate CPU utilization in the context of workload requirements. Sustained utilization near 100% may indicate the workload is <strong>CPU-bound</strong>. Before resizing instances, enabling Auto Scaling, or switching families, analyze tuning opportunities that improve performance without infrastructure changes. Load averages that frequently exceed the vCPU count also signal saturation.</p>
+<h3 id="use-the-l3-cache-effectively"><strong>Use the L3 cache effectively</strong></h3>
+<p><a href="https://www.techtarget.com/searchstorage/definition/cache-memory">L3 cache</a> is a fast shared cache accessible by a group of cores. On AMD-based EC2 instances, cores are grouped into <strong>L3 cache slices</strong> shared by a subset of cores on the same socket. Threads scheduled within the same slice access shared data more efficiently, reducing memory latency. On 4th-generation instances such as <code>m7a.2xlarge</code> or <code>r7a.2xlarge</code>, all vCPUs often map to cores within the same L3 slice. For larger sizes (<code>m7a.8xlarge</code> and above), <strong>thread pinning</strong>—assigning threads to specific physical cores—helps maintain locality and lowers performance variability.</p>
+<pre tabindex="0"><code>taskset -c 0-3 ./your_application
+</code></pre><p>Use <code>lscpu</code> or <code>lstopo</code> to inspect the CPU topology and group related threads onto cores that share L3 cache.</p>
+<h3 id="optimize-docker-containers"><strong>Optimize Docker containers</strong></h3>
+<p>By default, container runtimes such as <a href="https://docs.docker.com/engine/containers/resource_constraints/">Docker</a> allow the OS scheduler to move containers across any CPU core. That flexibility can introduce variability when containers bounce between cores that do not share cache. Pin containers to specific cores with <code>--cpuset-cpus</code> to improve cache efficiency and reduce jitter:</p>
+<pre tabindex="0"><code>docker run --cpuset-cpus=&#34;1,3&#34; my-container
+</code></pre><p>Choose cores based on the CPU topology so that containers stay on cores sharing the same L3 slice.</p>
+<h3 id="set-the-cpu-frequency-governor"><strong>Set the CPU frequency governor</strong></h3>
+<p>Some operating systems dynamically scale CPU frequency to save power via the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/processor_state_control.html">CPU frequency governor</a>. For latency-sensitive or compute-bound workloads, switch to <strong>performance</strong> mode so the CPU runs at max frequency under load:</p>
+<pre tabindex="0"><code>sudo cpupower frequency-set -g performance
+</code></pre><p>Benchmark with other governors (such as <code>ondemand</code> or <code>schedutil</code>) to confirm the performance mode delivers measurable gains without excessive power usage.</p>
+<h3 id="use-architecture-specific-compiler-flags"><strong>Use architecture-specific compiler flags</strong></h3>
+<p>When compiling C/C++ applications, architecture flags such as <code>-march=znverX</code> enable AMD EPYC–specific optimizations (vectorization, floating-point throughput, etc.). Ensure that the compiler and target instance generation match the flag; binaries built with <code>-march=znver4</code> will raise SIGILL on older instances like M5a.</p>
 <table>
   <thead>
       <tr>
-          <th>Thế hệ AMD EPYC</th>
-          <th>Flag -march</th>
-          <th>Phiên bản GCC tối thiểu</th>
-          <th>Phiên bản LLVM/Clang tối thiểu</th>
+          <th>AMD EPYC generation</th>
+          <th><code>-march</code> flag</th>
+          <th>Minimum GCC version</th>
+          <th>Minimum LLVM/Clang version</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>Thế hệ 4 (ví dụ M7a)</td>
-          <td>znver4</td>
+          <td>Generation 4 (M7a)</td>
+          <td><code>znver4</code></td>
           <td>GCC 12</td>
           <td>Clang 15</td>
       </tr>
       <tr>
-          <td>Thế hệ 3 (ví dụ M6a)</td>
-          <td>znver3</td>
+          <td>Generation 3 (M6a)</td>
+          <td><code>znver3</code></td>
           <td>GCC 11</td>
           <td>Clang 13</td>
       </tr>
       <tr>
-          <td>Thế hệ 2 (ví dụ M5a)</td>
-          <td>znver2</td>
+          <td>Generation 2 (M5a)</td>
+          <td><code>znver2</code></td>
           <td>GCC 9</td>
           <td>Clang 11</td>
       </tr>
   </tbody>
 </table>
-<p>Các flag sau được hỗ trợ cho GCC 11+ hoặc LLVM Clang 13+:</p>
+<p>Supported flags (GCC 11+ / Clang 13+):</p>
 <ul>
-<li>
-<p>Cho EPYC thế hệ 4 (M7a, R7a, C7a, Hpc7a): -march=znver4</p>
-</li>
-<li>
-<p>Cho EPYC thế hệ 3 (M6a, R6a, C6a): -march=znver3</p>
-</li>
-<li>
-<p>Cho EPYC thế hệ 2 (M5a, R5a, C5a): -march=znver2</p>
-</li>
+<li>Generation 4 (M7a, R7a, C7a, Hpc7a): <code>-march=znver4</code></li>
+<li>Generation 3 (M6a, R6a, C6a): <code>-march=znver3</code></li>
+<li>Generation 2 (M5a, R5a, C5a): <code>-march=znver2</code></li>
 </ul>
-<h3 id="khi-nào-bật-avx512-và-vnni"><strong>Khi nào bật AVX‑512 và VNNI</strong></h3>
-<p>Các instance EC2 dùng AMD EPYC thế hệ 4 hỗ trợ các tập lệnh SIMD tiên tiến như AVX2, AVX‑512 và VNNI. Những tập lệnh này có thể cải thiện thông lượng cho các workload vector nặng như inference ML, xử lý hình ảnh hoặc mô phỏng khoa học. Tuy nhiên, những flag này là đặc trưng theo thế hệ — việc cố chạy các binary được biên dịch với AVX‑512 trên instance không hỗ trợ (ví dụ thế hệ 2 như M5a) có thể gây lỗi thời gian chạy như “illegal instruction” (SIGILL).</p>
-<p>Khi biên dịch mã C hoặc C++:</p>
-<p><strong>gcc -mavx2 -mavx512f -O2 your_program.c -o your_program</strong></p>
-<p>Để hiểu rõ hơn tối ưu hóa nào được áp dụng, dùng:</p>
-<p><strong>-ftree-vectorizer-verbose=2 -fopt-info-vec-missed</strong></p>
-<p>Cách này giúp xác định các vòng lặp hưởng lợi từ vectorization và những vòng lặp không. Chỉ bật các tối ưu hóa này nếu workload của bạn hưởng lợi và bạn đã xác thực tính tương thích với thế hệ instance đang dùng. Tránh áp dụng flag AVX một cách bừa bãi, vì có thể làm giảm tính di động và tăng độ phức tạp binary.</p>
-<h3 id="thư-viện-tối-ưu-cpu-của-amd-amd-optimizing-cpu-libraries--aocl"><strong>Thư viện tối ưu CPU của AMD (AMD Optimizing CPU Libraries – AOCL)</strong></h3>
-<p>Thư viện <a href="https://www.amd.com/en/developer/aocl.html">AMD Optimizing CPU Libraries (AOCL)</a> cung cấp các thư viện toán học được tinh chỉnh hiệu năng dành riêng cho các bộ xử lý AMD EPYC. Những thư viện này bao gồm các triển khai tối ưu của các hàm hay dùng trong khoa học, kỹ thuật và workload ML. Bạn có thể liên kết ứng dụng của bạn với AOCL để sử dụng các tối ưu phần cứng mà không cần viết lại mã. AOCL gồm các thư viện cho toán vector, scalar, tạo số ngẫu nhiên, FFT, BLAS và LAPACK, trong số những cái khác.</p>
-<h3 id="cấu-hình-aocl"><strong>Cấu hình AOCL</strong></h3>
-<p>Gán biến môi trường AOCL_ROOT trỏ tới thư mục cài đặt:</p>
-<p><strong>export AOCL_ROOT=/path/to/aocl</strong></p>
-<p>Biên dịch ứng dụng với đường dẫn include và library tương ứng:</p>
-<p><strong>gcc -I$AOCL_ROOT/include -L$AOCL_ROOT/lib -lamdlibm -lm your_program.c -o your_program</strong></p>
-<p>Tối ưu toán vector và scalar: bạn có thể bật các tuning vector hóa hay scalar cụ thể cho workload:</p>
-<p><strong># Tối ưu toán vector</strong><br>
-<strong>gcc -lamdlibm -fveclib=AMDLIBM -lm your_program.c -o your_program</strong></p>
-<p><strong># Toán scalar nhanh hơn</strong><br>
-<strong>gcc -lamdlibm -fsclrlib=AMDLIBM -lamdlibmfast -lm your_program.c -o your_program</strong></p>
-<p>Profiling runtime AOCL<br>
-AOCL hỗ trợ profiling runtime, giúp các nhà phát triển xác định các phép toán nào chiếm thời gian thực thi lớn. Để bật profiling:</p>
-<p><strong>export AOCL_PROFILE=1</strong><br>
-<strong>./your_program</strong></p>
-<p>Sau khi chạy, một file báo cáo tên aocl_profile_report.txt được sinh ra. Nó cung cấp phân tích theo hàm gồm số lần gọi, thời gian thực thi và việc sử dụng luồng. Các nhà phát triển có thể dùng nó để tập trung tối ưu hóa vào các phần có ảnh hưởng cao nhất.</p>
-<h3 id="kết-luận"><strong>Kết luận</strong></h3>
-<p>Bài viết này khảo sát cách chọn các loại instance Amazon EC2 dựa AMD phù hợp với đặc điểm khối lượng công việc, và cách áp dụng các kỹ thuật điều chỉnh tập trung vào việc sử dụng CPU, định vị luồng, hiệu quả cache và tối ưu thư viện toán học. Những phương pháp này đặc biệt quan trọng với khối lượng công việc bị giới hạn bởi CPU hoặc nhạy độ trễ, nơi hiệu suất ổn định là thiết yếu.</p>
-<p>Sẵn sàng bắt đầu? Đăng nhập <a href="https://aws.amazon.com/console/">AWS Management Console</a>  và khởi động các instance Amazon EC2 dùng AMD EPYC để bắt tay vào tối ưu hóa workload của bạn ngay hôm nay.</p>
+<h3 id="when-to-enable-avx-512-and-vnni"><strong>When to enable AVX-512 and VNNI</strong></h3>
+<p>4th-generation AMD EPYC instances support SIMD instruction sets such as AVX2, AVX-512, and VNNI. These can boost throughput for vector-heavy workloads (ML inference, image processing, scientific simulations). Only enable them on generations that support the instructions to avoid SIGILL errors on older hardware.</p>
+<pre tabindex="0"><code>gcc -mavx2 -mavx512f -O2 your_program.c -o your_program
+# Investigate vectorization:
+-ftree-vectorizer-verbose=2 -fopt-info-vec-missed
+</code></pre><h3 id="amd-optimizing-cpu-libraries-aocl"><strong>AMD Optimizing CPU Libraries (AOCL)</strong></h3>
+<p><a href="https://www.amd.com/en/developer/aocl.html">AMD Optimizing CPU Libraries (AOCL)</a> provide tuned math routines—vector, scalar, RNG, FFT, BLAS, LAPACK, and more—built specifically for AMD EPYC processors. Link your application against AOCL to leverage hardware optimizations without rewriting code.</p>
+<h3 id="configure-aocl"><strong>Configure AOCL</strong></h3>
+<pre tabindex="0"><code>export AOCL_ROOT=/path/to/aocl
+
+gcc -I$AOCL_ROOT/include -L$AOCL_ROOT/lib -lamdlibm -lm your_program.c -o your_program
+# Vector math
+gcc -lamdlibm -fveclib=AMDLIBM -lm your_program.c -o your_program
+# Faster scalar math
+gcc -lamdlibm -fsclrlib=AMDLIBM -lamdlibmfast -lm your_program.c -o your_program
+
+export AOCL_PROFILE=1
+./your_program
+</code></pre><p>Profiling generates <code>aocl_profile_report.txt</code>, which lists call counts, execution time, and thread usage so you can focus optimization on the hottest routines.</p>
+<h2 id="conclusion"><strong>Conclusion</strong></h2>
+<p>We showed how to match AMD-based Amazon EC2 instance families to workload characteristics and how to apply tuning techniques focused on CPU utilization, thread placement, cache efficiency, and math libraries. These practices are especially valuable for CPU-bound or latency-sensitive workloads where consistent performance is critical.</p>
+<p>Ready to get started? Sign in to the <a href="https://aws.amazon.com/console/">AWS Management Console</a> and launch AMD EPYC–powered Amazon EC2 instances to begin optimizing your workloads today.</p>
 <p>TAGS: <a href="https://aws.amazon.com/blogs/compute/tag/amd/">AMD</a></p>
 
 
@@ -2843,7 +2785,7 @@ AOCL hỗ trợ profiling runtime, giúp các nhà phát triển xác định c�
 	 
 	 
 		
-			<a class="nav nav-prev" href="../../3-blogstranslated/3.2-blog2/" title="Thông báo Amazon EC2 M4 và M4 Pro Mac instances"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="../../3-blogstranslated/3.2-blog2/" title="Announcing Amazon EC2 M4 and M4 Pro Mac Instances"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="../../4-eventparticipated/" title="Events Participated" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -2856,19 +2798,19 @@ AOCL hỗ trợ profiling runtime, giúp các nhà phát triển xác định c�
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1762687083"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1762687083"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1762687083"></script>
-    <script src="../../js/jquery.sticky.js?1762687083"></script>
-    <script src="../../js/featherlight.min.js?1762687083"></script>
-    <script src="../../js/highlight.pack.js?1762687083"></script>
+    <script src="../../js/clipboard.min.js?1762689896"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1762689896"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1762689896"></script>
+    <script src="../../js/jquery.sticky.js?1762689896"></script>
+    <script src="../../js/featherlight.min.js?1762689896"></script>
+    <script src="../../js/highlight.pack.js?1762689896"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1762687083"></script>
-    <script src="../../js/learn.js?1762687083"></script>
-    <script src="../../js/hugo-learn.js?1762687083"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1762689896"></script>
+    <script src="../../js/learn.js?1762689896"></script>
+    <script src="../../js/hugo-learn.js?1762689896"></script>
 
-    <link href="../../mermaid/mermaid.css?1762687083" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1762687083"></script>
+    <link href="../../mermaid/mermaid.css?1762689896" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1762689896"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
