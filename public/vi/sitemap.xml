@@ -146,6 +146,18 @@
                 href="http://localhost:1313/vi/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/"
                 />
   </url><url>
+    <loc>http://localhost:1313/vi/3-blogstranslated/3.1-blog1/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/3-blogstranslated/3.1-blog1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/3-blogstranslated/3.1-blog1/"
+                />
+  </url><url>
     <loc>http://localhost:1313/vi/1-worklog/1.1-week1/</loc>
     <xhtml:link
                 rel="alternate"
@@ -302,6 +314,18 @@
                 href="http://localhost:1313/vi/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/"
                 />
   </url><url>
+    <loc>http://localhost:1313/vi/3-blogstranslated/3.2-blog2/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/3-blogstranslated/3.2-blog2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/3-blogstranslated/3.2-blog2/"
+                />
+  </url><url>
     <loc>http://localhost:1313/vi/1-worklog/1.2-week2/</loc>
     <xhtml:link
                 rel="alternate"
@@ -314,16 +338,16 @@
                 href="http://localhost:1313/vi/1-worklog/1.2-week2/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/3-blogstranslated/</loc>
+    <loc>http://localhost:1313/vi/3-blogstranslated/3.3-blog3/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/3-blogstranslated/"
+                href="http://localhost:1313/3-blogstranslated/3.3-blog3/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="http://localhost:1313/vi/3-blogstranslated/"
+                href="http://localhost:1313/vi/3-blogstranslated/3.3-blog3/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/</loc>
@@ -420,6 +444,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/vi/1-worklog/1.7-week7/1.7.3-day33-2025-10-22/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/vi/3-blogstranslated/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/3-blogstranslated/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/3-blogstranslated/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/5-workshop/5.3-s3-vpc/</loc>
@@ -768,42 +804,6 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/vi/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/3-blogstranslated/3.1-blog1/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/3-blogstranslated/3.1-blog1/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/3-blogstranslated/3.1-blog1/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/3-blogstranslated/3.2-blog2/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/3-blogstranslated/3.2-blog2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/3-blogstranslated/3.2-blog2/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/3-blogstranslated/3.3-blog3/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/3-blogstranslated/3.3-blog3/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/3-blogstranslated/3.3-blog3/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/categories/</loc>

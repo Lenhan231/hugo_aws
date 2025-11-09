@@ -2,7 +2,7 @@
   id="sidebar"
   class="{{if $.Site.Params.showVisitedLinks }}showVisitedLinks{{end}}"
 >
-  {{ $currentNode := . }} {{ $showvisitedlinks := .Site.Params.showVisitedLinks}}
+  {{ $currentNode := . }} {{ $showvisitedlinks := .Site.Params.showVisitedLinks}} {{ $isMultilingual := gt (len .Site.Languages) 1 }}
   <div id="header-wrapper">
     <div id="header">{{ partial "logo.html" . }}</div>
     {{if not .Site.Params.disableSearch}} {{ partial "search.html" . }} {{end}}
@@ -34,11 +34,11 @@
         {{end}}
       </ul>
     </section>
-  {{end}} {{ if or (.Site.IsMultiLingual) $showvisitedlinks }}
+  {{end}} {{ if or ($isMultilingual) $showvisitedlinks }}
     <section id="prefooter">
       <hr />
       <ul>
-  {{ if and (.Site.IsMultiLingual) (not
+  {{ if and ($isMultilingual) (not
   .Site.Params.DisableLanguageSwitchingButton)}}
         <li>
           <a class="padding">
