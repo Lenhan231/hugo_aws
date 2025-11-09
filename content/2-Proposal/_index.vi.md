@@ -41,7 +41,7 @@ Xây dựng một pipeline serverless trên AWS: Người dùng tải lên qua 
 ### **B. Luồng xử lý yêu cầu**
 ![B) Request flow](/images/Request_flow.jpeg)
 
-### **AWS Services Used**
+### **Dịch vụ AWS Sử Dụng**
 
 | Dịch vụ | Vai trò chính | Hoạt động cụ thể |
 | --- | --- | --- |
@@ -59,21 +59,21 @@ Xây dựng một pipeline serverless trên AWS: Người dùng tải lên qua 
 > 
 - Tìm kiếm đơn giản theo trường (VD: tên sách, tác giả), sử dụng **DynamoDB GSIs** cho các thuộc tính này và query theo GSI.
 
-### **Component Design**
+### **Luồng xử lý yêu cầu**
 
 - **User Upload:** Presigned PUT tới S3 thư mục `uploads/`.
 - **Admin Approval:** Lambda copy file từ `uploads/` sang `public/books/` khi được duyệt.
 - **Reader Security:** CloudFront sử dụng **Origin Access Control (OAC)** để chặn truy cập trực tiếp S3 và chỉ cho phép đọc qua **Signed URL** (ngắn hạn) do Lambda tạo ra.
 
-### **Search Architecture**
+### **Kiến trúc tìm kiếm**
 
-- **Simple Search:**
+- **Tìm kiếm đơn giản:**
     - Thiết kế **GSI** cho `title` và `author` (ví dụ: `GSI1: PK=TITLE#{normalizedTitle}, SK=BOOK#{bookId}`; `GSI2: PK=AUTHOR#{normalizedAuthor}, SK=BOOK#{bookId}`).
     - Thêm endpoint `GET /search?title=...&author=...` để query theo GSI thay vì `Scan`.
 
 ![Search Architecture](/images/SearchArchitecture.jpeg)
 
-### **Admin Authorization**
+### **Phân quyền Admin**
 
 - Sử dụng **Cognito User Groups** với một nhóm `Admins` trong User Pool.
 - Khi Admin đăng nhập, JWT sẽ chứa `cognito:groups: ["Admins"]`.
@@ -82,9 +82,9 @@ Xây dựng một pipeline serverless trên AWS: Người dùng tải lên qua 
 
 ---
 
-## **4. Technical Implementation**
+## **4. Triển khai Kỹ Thuật**
 
-### **Implementation Phases**
+### **Triển khai**
 
 1. **Thiết kế & IaC (Infra-as-Code):** Xây dựng các stack CDK (Cognito, DDB, S3, Amplify, Lambda, API).
 2. **Flow Upload & Duyệt:** Triển khai Presigned PUT, lưu metadata (trạng thái `pending`), và logic Admin duyệt (copy file).
@@ -93,7 +93,7 @@ Xây dựng một pipeline serverless trên AWS: Người dùng tải lên qua 
 5. **Search:**
     - MVP: thêm GSI cho `title`, `author` và endpoint `GET /search` query theo GSI.
 
-### **Technical Requirements**
+### **Yêu cầu Kỹ Thuật**
 
 - Sử dụng **CDK** để định nghĩa toàn bộ hạ tầng.
 - API Gateway phải là **HTTP API** để tối ưu chi phí.
@@ -102,11 +102,11 @@ Xây dựng một pipeline serverless trên AWS: Người dùng tải lên qua 
 
 ---
 
-## **5. Timeline & Milestones**
+## **5. Lộ trình và các mốc tiến độ**
 
 ---
 
-### Project Timeline
+### Lộ trình Dự án
 
 ### Nền tảng & Xác thực (Tuần 1-2)
 
@@ -196,7 +196,7 @@ Dưới đây là ước tính chi phí hàng tháng **nghiêm ngặt** (giả
 | 9 | **Amazon Route 53** | Asia Pacific (Singapore) | **0.90** | 1 Hosted Zone + DNS queries |
 |  |  |  | **≈ 9.80 USD / month** | **No Free Tier applied** |
 
-### **Infrastructure Costs**
+### **Chi phí hạ tầng**
 
 Mô hình chi phí này cho thấy sự hiệu quả của kiến trúc serverless: chi phí tập trung chủ yếu vào **giá trị mang lại cho người dùng** (Cognito MAU) thay vì trả tiền cho "máy chủ chờ" (idle servers).
 
@@ -230,7 +230,7 @@ Mô hình chi phí này cho thấy sự hiệu quả của kiến trúc serverle
 
 ### **Kế hoạch ứng phó**
 
-Nếu chi phí tăng vượt ngân sách, có thể tạm thời giới hạn người dùng mới thông qua hệ thống mời (Invite-Only) để kiểm soát MAU Cognito và tối ưu hóa file.
+Nếu chi phí tăng vượt ngân sách, có thể tạm thời giới hạn người dùng mới thông qua hệ thống mời để kiểm soát MAU Cognito và tối ưu hóa file.
 
 ---
 
