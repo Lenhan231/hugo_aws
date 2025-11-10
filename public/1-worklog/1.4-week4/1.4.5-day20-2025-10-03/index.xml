@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Day 20 - AWS Backup &amp; FSx on Internship Report</title>
-    <link>http://localhost:1313/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/</link>
+    <link>http://localhost:1313/hugo_aws/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/</link>
     <description>Recent content in Day 20 - AWS Backup &amp; FSx on Internship Report</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/hugo_aws/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -1,4 +1,4 @@
-baseURL = "https://hugo-aws.vercel.app/"
+baseURL = "https://lenhan231.github.io/hugo_aws/"
 title = "hugo_aws"
 relativeURLs = true
 canonifyURLs = true
