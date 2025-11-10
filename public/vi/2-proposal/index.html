@@ -15,21 +15,21 @@
     <title>Proposal :: Báo cáo thực tập</title>
 
     
-    <link href="../../css/nucleus.css?1762699370" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1762699370" rel="stylesheet">
-    <link href="../../css/hybrid.css?1762699370" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1762699370" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1762699370" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1762699370" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1762699370" rel="stylesheet">
-    <link href="../../css/theme.css?1762699370" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1762699370" rel="stylesheet">
+    <link href="../../css/nucleus.css?1762766379" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1762766379" rel="stylesheet">
+    <link href="../../css/hybrid.css?1762766379" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1762766379" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1762766379" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1762766379" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1762766379" rel="stylesheet">
+    <link href="../../css/theme.css?1762766379" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1762766379" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1762699370" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1762766379" rel="stylesheet">
     
-    <link href="../../css/custom.css?1762699370" rel="stylesheet">
+    <link href="../../css/custom.css?1762766379" rel="stylesheet">
 
-    <script src="../../js/jquery-3.3.1.min.js?1762699370"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1762766379"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1492,21 +1492,21 @@
       <ul>
         <li><a href="#a-high-level"><strong>A. High-level</strong></a></li>
         <li><a href="#b-luồng-xử-lý-yêu-cầu"><strong>B. Luồng xử lý yêu cầu</strong></a></li>
-        <li><a href="#aws-services-used"><strong>AWS Services Used</strong></a></li>
-        <li><a href="#component-design"><strong>Component Design</strong></a></li>
-        <li><a href="#search-architecture"><strong>Search Architecture</strong></a></li>
-        <li><a href="#admin-authorization"><strong>Admin Authorization</strong></a></li>
+        <li><a href="#dịch-vụ-aws-sử-dụng"><strong>Dịch vụ AWS Sử Dụng</strong></a></li>
+        <li><a href="#luồng-xử-lý-yêu-cầu"><strong>Luồng xử lý yêu cầu</strong></a></li>
+        <li><a href="#kiến-trúc-tìm-kiếm"><strong>Kiến trúc tìm kiếm</strong></a></li>
+        <li><a href="#phân-quyền-admin"><strong>Phân quyền Admin</strong></a></li>
       </ul>
     </li>
-    <li><a href="#4-technical-implementation"><strong>4. Technical Implementation</strong></a>
+    <li><a href="#4-triển-khai-kỹ-thuật"><strong>4. Triển khai Kỹ Thuật</strong></a>
       <ul>
-        <li><a href="#implementation-phases"><strong>Implementation Phases</strong></a></li>
-        <li><a href="#technical-requirements"><strong>Technical Requirements</strong></a></li>
+        <li><a href="#triển-khai"><strong>Triển khai</strong></a></li>
+        <li><a href="#yêu-cầu-kỹ-thuật"><strong>Yêu cầu Kỹ Thuật</strong></a></li>
       </ul>
     </li>
-    <li><a href="#5-timeline--milestones"><strong>5. Timeline &amp; Milestones</strong></a>
+    <li><a href="#5-lộ-trình-và-các-mốc-tiến-độ"><strong>5. Lộ trình và các mốc tiến độ</strong></a>
       <ul>
-        <li><a href="#project-timeline">Project Timeline</a></li>
+        <li><a href="#lộ-trình-dự-án">Lộ trình Dự án</a></li>
         <li><a href="#nền-tảng--xác-thực-tuần-1-2">Nền tảng &amp; Xác thực (Tuần 1-2)</a></li>
         <li><a href="#luồng-upload--duyệt-tuần-2-3">Luồng Upload &amp; Duyệt (Tuần 2-3)</a></li>
         <li><a href="#luồng-đọc--tìm-kiếm-tuần-3-4">Luồng Đọc &amp; Tìm kiếm (Tuần 3-4)</a></li>
@@ -1515,7 +1515,7 @@
     </li>
     <li><a href="#6-budget-estimation"><strong>6. Budget Estimation</strong></a>
       <ul>
-        <li><a href="#infrastructure-costs"><strong>Infrastructure Costs</strong></a></li>
+        <li><a href="#chi-phí-hạ-tầng"><strong>Chi phí hạ tầng</strong></a></li>
       </ul>
     </li>
     <li><a href="#7-đánh-giá-rủi-ro"><strong>7. Đánh giá rủi ro</strong></a>
@@ -1560,7 +1560,7 @@
 <p>Dự án <strong>Thư Viện Online</strong> nhằm xây dựng một nền tảng serverless, <strong>chi phí thấp</strong> để lưu trữ và phân phối nội dung (PDF/ePub) cho một nhóm người dùng nhỏ (ban đầu <strong>~100 người, n</strong>hóm người dùng gồm sinh viên/lab cần chia sẻ tài liệu nghiên cứu nội bộ có kiểm duyệt). Giải pháp này ưu tiên tính bảo mật, quy trình duyệt nội dung (Admin Approval), và chi phí vận hành <strong>minh bạch, tuyến tính</strong> khi mở rộng. Kiến trúc sử dụng <strong>AWS Serverless</strong> hoàn toàn (Amplify, Cognito, API Gateway, Lambda, S3, CloudFront, DynamoDB). Chi phí dự kiến cho MVP (không tính Free Tier) <strong>≈ $9.80/tháng</strong>, đảm bảo khả năng mở rộng lên 5.000 đến 50.000 người dùng với chi phí dễ dự đoán.</p>
 <h2 id="2-vấn-đề"><strong>2. Vấn đề</strong></h2>
 <h3 id="vấn-đề-là-gì"><strong>Vấn đề là gì?</strong></h3>
-<p>Tài liệu và sách bị phân tán; thiếu một hệ thống <strong>truyền tải nội dung an toàn</strong> và có <strong>kiểm soát truy cập</strong>; quy trình thêm hoặc <strong>kiểm duyệt nội dung</strong> tốn thời gian và nhiều vấn đề liên quan đến pháp lý**.**</p>
+<p>Tài liệu và sách bị phân tán; thiếu một hệ thống <strong>truyền tải nội dung an toàn</strong> và có <strong>kiểm soát truy cập</strong>; quy trình thêm hoặc <strong>kiểm duyệt nội dung</strong> tốn thời gian và nhiều vấn đề liên quan đến pháp lý.</p>
 <h3 id="giải-pháp">Giải pháp</h3>
 <p>Xây dựng một pipeline serverless trên AWS: Người dùng tải lên qua <strong>Presigned PUT URL</strong> (tới S3 tạm); Admin phê duyệt → Lambda di chuyển file đến thư mục công khai (nhưng được bảo vệ); Người đọc truy cập qua <strong>Signed GET URL</strong> (từ CloudFront/CDN) để đảm bảo tốc độ và kiểm soát truy cập.</p>
 <h3 id="lợi-ích-và-tỷ-suất-hoàn-vốn">Lợi ích và Tỷ suất hoàn vốn</h3>
@@ -1574,7 +1574,7 @@
 <p><img src="../../images/Architect.jpeg" alt="A) High level"></p>
 <h3 id="b-luồng-xử-lý-yêu-cầu"><strong>B. Luồng xử lý yêu cầu</strong></h3>
 <p><img src="../../images/Request_flow.jpeg" alt="B) Request flow"></p>
-<h3 id="aws-services-used"><strong>AWS Services Used</strong></h3>
+<h3 id="dịch-vụ-aws-sử-dụng"><strong>Dịch vụ AWS Sử Dụng</strong></h3>
 <table>
   <thead>
       <tr>
@@ -1637,15 +1637,15 @@
 <ul>
 <li>Tìm kiếm đơn giản theo trường (VD: tên sách, tác giả), sử dụng <strong>DynamoDB GSIs</strong> cho các thuộc tính này và query theo GSI.</li>
 </ul>
-<h3 id="component-design"><strong>Component Design</strong></h3>
+<h3 id="luồng-xử-lý-yêu-cầu"><strong>Luồng xử lý yêu cầu</strong></h3>
 <ul>
 <li><strong>User Upload:</strong> Presigned PUT tới S3 thư mục <code>uploads/</code>.</li>
 <li><strong>Admin Approval:</strong> Lambda copy file từ <code>uploads/</code> sang <code>public/books/</code> khi được duyệt.</li>
 <li><strong>Reader Security:</strong> CloudFront sử dụng <strong>Origin Access Control (OAC)</strong> để chặn truy cập trực tiếp S3 và chỉ cho phép đọc qua <strong>Signed URL</strong> (ngắn hạn) do Lambda tạo ra.</li>
 </ul>
-<h3 id="search-architecture"><strong>Search Architecture</strong></h3>
+<h3 id="kiến-trúc-tìm-kiếm"><strong>Kiến trúc tìm kiếm</strong></h3>
 <ul>
-<li><strong>Simple Search:</strong>
+<li><strong>Tìm kiếm đơn giản:</strong>
 <ul>
 <li>Thiết kế <strong>GSI</strong> cho <code>title</code> và <code>author</code> (ví dụ: <code>GSI1: PK=TITLE#{normalizedTitle}, SK=BOOK#{bookId}</code>; <code>GSI2: PK=AUTHOR#{normalizedAuthor}, SK=BOOK#{bookId}</code>).</li>
 <li>Thêm endpoint <code>GET /search?title=...&amp;author=...</code> để query theo GSI thay vì <code>Scan</code>.</li>
@@ -1653,7 +1653,7 @@
 </li>
 </ul>
 <p><img src="../../images/SearchArchitecture.jpeg" alt="Search Architecture"></p>
-<h3 id="admin-authorization"><strong>Admin Authorization</strong></h3>
+<h3 id="phân-quyền-admin"><strong>Phân quyền Admin</strong></h3>
 <ul>
 <li>Sử dụng <strong>Cognito User Groups</strong> với một nhóm <code>Admins</code> trong User Pool.</li>
 <li>Khi Admin đăng nhập, JWT sẽ chứa <code>cognito:groups: [&quot;Admins&quot;]</code>.</li>
@@ -1661,8 +1661,8 @@
 <li>Có thể dùng <strong>JWT Authorizer (API Gateway HTTP API)</strong> để xác thực, phần phân quyền chi tiết xử lý trong Lambda dựa trên claim.</li>
 </ul>
 <hr>
-<h2 id="4-technical-implementation"><strong>4. Technical Implementation</strong></h2>
-<h3 id="implementation-phases"><strong>Implementation Phases</strong></h3>
+<h2 id="4-triển-khai-kỹ-thuật"><strong>4. Triển khai Kỹ Thuật</strong></h2>
+<h3 id="triển-khai"><strong>Triển khai</strong></h3>
 <ol>
 <li><strong>Thiết kế &amp; IaC (Infra-as-Code):</strong> Xây dựng các stack CDK (Cognito, DDB, S3, Amplify, Lambda, API).</li>
 <li><strong>Flow Upload &amp; Duyệt:</strong> Triển khai Presigned PUT, lưu metadata (trạng thái <code>pending</code>), và logic Admin duyệt (copy file).</li>
@@ -1674,7 +1674,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="technical-requirements"><strong>Technical Requirements</strong></h3>
+<h3 id="yêu-cầu-kỹ-thuật"><strong>Yêu cầu Kỹ Thuật</strong></h3>
 <ul>
 <li>Sử dụng <strong>CDK</strong> để định nghĩa toàn bộ hạ tầng.</li>
 <li>API Gateway phải là <strong>HTTP API</strong> để tối ưu chi phí.</li>
@@ -1682,9 +1682,9 @@
 <li>S3 Bucket Policy phải <strong>chặn truy cập công khai</strong> và chỉ cho phép CloudFront OAC.</li>
 </ul>
 <hr>
-<h2 id="5-timeline--milestones"><strong>5. Timeline &amp; Milestones</strong></h2>
+<h2 id="5-lộ-trình-và-các-mốc-tiến-độ"><strong>5. Lộ trình và các mốc tiến độ</strong></h2>
 <hr>
-<h3 id="project-timeline">Project Timeline</h3>
+<h3 id="lộ-trình-dự-án">Lộ trình Dự án</h3>
 <h3 id="nền-tảng--xác-thực-tuần-1-2">Nền tảng &amp; Xác thực (Tuần 1-2)</h3>
 <p>Mục tiêu là thiết lập hạ tầng và cho phép người dùng đăng nhập.</p>
 <ul>
@@ -1884,7 +1884,7 @@
       </tr>
   </tbody>
 </table>
-<h3 id="infrastructure-costs"><strong>Infrastructure Costs</strong></h3>
+<h3 id="chi-phí-hạ-tầng"><strong>Chi phí hạ tầng</strong></h3>
 <p>Mô hình chi phí này cho thấy sự hiệu quả của kiến trúc serverless: chi phí tập trung chủ yếu vào <strong>giá trị mang lại cho người dùng</strong> (Cognito MAU) thay vì trả tiền cho &ldquo;máy chủ chờ&rdquo; (idle servers).</p>
 <hr>
 <h2 id="7-đánh-giá-rủi-ro"><strong>7. Đánh giá rủi ro</strong></h2>
@@ -3107,19 +3107,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1762699370"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1762699370"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1762699370"></script>
-    <script src="../../js/jquery.sticky.js?1762699370"></script>
-    <script src="../../js/featherlight.min.js?1762699370"></script>
-    <script src="../../js/highlight.pack.js?1762699370"></script>
+    <script src="../../js/clipboard.min.js?1762766379"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1762766379"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1762766379"></script>
+    <script src="../../js/jquery.sticky.js?1762766379"></script>
+    <script src="../../js/featherlight.min.js?1762766379"></script>
+    <script src="../../js/highlight.pack.js?1762766379"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1762699370"></script>
-    <script src="../../js/learn.js?1762699370"></script>
-    <script src="../../js/hugo-learn.js?1762699370"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1762766379"></script>
+    <script src="../../js/learn.js?1762766379"></script>
+    <script src="../../js/hugo-learn.js?1762766379"></script>
 
-    <link href="../../mermaid/mermaid.css?1762699370" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1762699370"></script>
+    <link href="../../mermaid/mermaid.css?1762766379" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1762766379"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

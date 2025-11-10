@@ -15,16 +15,6 @@ pre: "<b> 1. </b>"
 
 Worklog được tổ chức theo **tuần**, mỗi tuần gồm **5 ngày làm việc** (Thứ Hai đến Thứ Sáu).
 
-### Tiến độ
-
-- ✅ **Tuần 1** (8–12/9): Nền tảng Điện toán Đám mây  
-- ✅ **Tuần 2** (15–19/9): Dịch vụ Mạng AWS  
-- ✅ **Tuần 3** (22–26/9): Dịch vụ Tính toán AWS  
-- ✅ **Tuần 4** (29/9–3/10): Dịch vụ Lưu trữ AWS  
-- ✅ **Tuần 5** (6–10/10): Bảo mật & Danh tính AWS  
-- ✅ **Tuần 6** (13–17/10): Dịch vụ Cơ sở dữ liệu AWS  
-- 🔄 **Tuần 7** (20–22/10): Chủ đề Nâng cao (3 ngày)
-
 ### Nội dung chính
 
 1. **Nền tảng Điện toán Đám mây**

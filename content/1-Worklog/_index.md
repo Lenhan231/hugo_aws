@@ -15,16 +15,6 @@ This worklog documents the AWS learning journey starting from **September 8, 202
 
 The worklog is organized by **weeks**, with each week consisting of **five working days** (Monday to Friday).
 
-### Progress
-
-- ✅ **Week 1** (Sep 8–12): Cloud Computing Fundamentals  
-- ✅ **Week 2** (Sep 15–19): AWS Networking Services  
-- ✅ **Week 3** (Sep 22–26): AWS Compute Services  
-- ✅ **Week 4** (Sep 29–Oct 3): AWS Storage Services  
-- ✅ **Week 5** (Oct 6–10): AWS Security & Identity  
-- ✅ **Week 6** (Oct 13–17): AWS Database Services  
-- 🔄 **Week 7** (Oct 20–22): Advanced Topics (3 days)
-
 ### Main Topics
 
 1. **Cloud Computing Fundamentals**
