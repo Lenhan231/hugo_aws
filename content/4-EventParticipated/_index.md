@@ -6,39 +6,34 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** for your report, including this warning.
-{{% /notice %}}
+Throughout my internship, I had the opportunity to participate in several impactful events that enriched my professional journey with valuable insights and memorable experiences.
 
-> In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
-> 
-> Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
-> * Event name
-> * Date and time
-> * Location (if applicable)
-> * Your role in the event (attendee, event support, speaker, etc.)
-> * A brief description of the event’s content and main activities
-> * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
-> * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
+### [Event 1](4.1-Event1/)
 
-During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+&emsp;**Event Name:** Vietnam Cloud Day 2025: Ho Chi Minh City Connect Edition for Builders
 
-### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+&emsp;**Date & Time:** 09:00 – 17:00 VNT, Thursday, September 18, 2025
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+&emsp;**Location:** 36th Floor, 2 Hai Trieu Street, Sai Gon Ward, Ho Chi Minh City
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+&emsp;**Role:** Attendee
 
-&emsp;**Role:** Attendee  
+&emsp;**Description:** Vietnam Cloud Day 2025 was a comprehensive AWS event featuring keynote addresses from government speakers, AWS executives, and industry leaders. The event included two main tracks: a live telecast track with keynotes and panel discussions on GenAI revolution and executive leadership, and breakout tracks covering topics such as unified data foundations for AI/analytics, GenAI adoption roadmaps, AI-driven development lifecycle, securing GenAI applications, and AI agents for productivity. The event showcased AWS's latest services and strategic initiatives for AI and cloud modernization.
+
+&emsp;**Outcomes:** Gained insights into enterprise-scale AI adoption strategies, learned about AWS services for data foundation and GenAI implementation, and understood best practices for securing AI applications and modernizing legacy systems.
 
 ---
 
-### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+### [Event 2](4.2-Event2/)
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+&emsp;**Event Name:** AWS GenAI Builder Club - AI-Driven Development Life Cycle: Reimagining Software Engineering
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+&emsp;**Date & Time:** 14:00 (2:00 PM), Friday, October 3, 2025
 
-&emsp;**Role:** Attendee  
+&emsp;**Location:** AWS Event Hall, L26 Bitexco Tower, Ho Chi Minh City
+
+&emsp;**Role:** Attendee
+
+&emsp;**Description:** This AWS GenAI Builder Club session focused on the AI-Driven Development Lifecycle (AI-DLC), exploring how generative AI transforms software development from architecture through deployment and maintenance. The session featured demonstrations of Amazon Q Developer and Kiro, showcasing how AI can automate undifferentiated heavy lifting tasks and enable developers to focus on higher-value, creative work. The agenda included an overview of AI-DLC concepts, Amazon Q Developer capabilities, and hands-on Kiro demonstrations.
+
+&emsp;**Outcomes:** Learned practical applications of AI in the software development lifecycle, gained hands-on experience with Amazon Q Developer and Kiro tools, and understood how to integrate AI as a central collaborator in development processes to increase productivity and code quality.  

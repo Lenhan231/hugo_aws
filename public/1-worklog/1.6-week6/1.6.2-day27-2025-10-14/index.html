@@ -3,7 +3,7 @@
   <head><script src="/hugo_aws/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo_aws/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Hugo 0.123.7">
     <meta
   name="description"
   content=""
@@ -15,21 +15,21 @@
     <title>Day 27 - Amazon RDS &amp; Aurora :: Internship Report</title>
 
     
-    <link href="../../../css/nucleus.css?1762767413" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1762767413" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1762767413" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1762767413" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1762767413" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1762767413" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1762767413" rel="stylesheet">
-    <link href="../../../css/theme.css?1762767413" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1762767413" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1764688644" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1764688644" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1764688644" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1764688644" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1764688644" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1764688644" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1764688644" rel="stylesheet">
+    <link href="../../../css/theme.css?1764688644" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1764688644" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1762767413" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1764688644" rel="stylesheet">
     
-    <link href="../../../css/custom.css?1762767413" rel="stylesheet">
+    <link href="../../../css/custom.css?1764688644" rel="stylesheet">
 
-    <script src="../../../js/jquery-3.3.1.min.js?1762767413"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1764688644"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1544,7 +1544,7 @@
 <li>An <strong>RDBMS</strong> stores data in related tables (rows/columns), enforces integrity constraints, uses SQL, and provides ACID guarantees.</li>
 <li>Popular engines: Oracle, MySQL, SQL Server, PostgreSQL, IBM Db2.</li>
 </ul>
-<p><img src="../../../images/1-Worklog/Week6/image%204.png" alt="image"></p>
+<p><img alt="image" src="../../../images/1-Worklog/Week6/image%204.png"></p>
 <h3 id="nosql-overview">NoSQL Overview</h3>
 <ul>
 <li><strong>NoSQL</strong> systems target un/semistructured data with high scalability and performance.</li>
@@ -1558,15 +1558,15 @@
 </li>
 <li>Traits: schema flexibility, horizontal scaling, big-data friendliness, CAP-oriented designs.</li>
 </ul>
-<p><img src="../../../images/1-Worklog/Week6/image%205.png" alt="image"></p>
+<p><img alt="image" src="../../../images/1-Worklog/Week6/image%205.png"></p>
 <h4 id="rdbms-vs-nosql-high-level">RDBMS vs. NoSQL (high-level)</h4>
-<p><img src="../../../images/1-Worklog/Week6/image%206.png" alt="image"></p>
+<p><img alt="image" src="../../../images/1-Worklog/Week6/image%206.png"></p>
 <h3 id="oltp-vs-olap">OLTP vs. OLAP</h3>
 <ul>
 <li><strong>OLTP</strong>: many small, concurrent transactions; normalized data; short queries; index-heavy.</li>
 <li><strong>OLAP</strong>: complex analytics over large historical datasets; star/snowflake schemas; read-heavy.</li>
 </ul>
-<p><img src="../../../images/1-Worklog/Week6/image%207.png" alt="image"></p>
+<p><img alt="image" src="../../../images/1-Worklog/Week6/image%207.png"></p>
 <hr>
 <h2 id="amazon-rds--aurora">Amazon RDS &amp; Aurora</h2>
 <h3 id="amazon-relational-database-service-rds">Amazon Relational Database Service (RDS)</h3>
@@ -1582,8 +1582,8 @@
 </ul>
 </li>
 </ul>
-<p><img src="../../../images/1-Worklog/Week6/image%208.png" alt="image">
-<img src="../../../images/1-Worklog/Week6/image%209.png" alt="image"></p>
+<p><img alt="image" src="../../../images/1-Worklog/Week6/image%208.png">
+<img alt="image" src="../../../images/1-Worklog/Week6/image%209.png"></p>
 <p><strong>RDS Features:</strong></p>
 <ul>
 <li><strong>Automated Backups:</strong> Point-in-time recovery up to 35 days</li>
@@ -1596,7 +1596,7 @@
 <hr>
 <h3 id="amazon-aurora">Amazon Aurora</h3>
 <p>Cloud-native, MySQL/PostgreSQL-compatible relational database re-architected for AWS.</p>
-<p><img src="../../../images/1-Worklog/Week6/image%2010.png" alt="image"></p>
+<p><img alt="image" src="../../../images/1-Worklog/Week6/image%2010.png"></p>
 <ul>
 <li>Highlights:
 <ul>
@@ -1608,8 +1608,8 @@
 </ul>
 </li>
 </ul>
-<p><img src="../../../images/1-Worklog/Week6/image%2011.png" alt="image">
-<img src="../../../images/1-Worklog/Week6/image%2012.png" alt="image"></p>
+<p><img alt="image" src="../../../images/1-Worklog/Week6/image%2011.png">
+<img alt="image" src="../../../images/1-Worklog/Week6/image%2012.png"></p>
 <p><strong>Aurora Features:</strong></p>
 <ul>
 <li><strong>Aurora Replicas:</strong> Up to 15 read replicas with sub-10ms lag</li>
@@ -1621,40 +1621,40 @@
 </ul>
 <p><strong>Aurora vs RDS:</strong></p>
 <table>
-  <thead>
-      <tr>
-          <th>Feature</th>
-          <th>Aurora</th>
-          <th>RDS</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Performance</td>
-          <td>5x MySQL, 3x PostgreSQL</td>
-          <td>Standard</td>
-      </tr>
-      <tr>
-          <td>Storage</td>
-          <td>Auto-scaling to 128 TB</td>
-          <td>Manual scaling</td>
-      </tr>
-      <tr>
-          <td>Replicas</td>
-          <td>Up to 15</td>
-          <td>Up to 5 (MySQL)</td>
-      </tr>
-      <tr>
-          <td>Failover</td>
-          <td>&lt; 30 seconds</td>
-          <td>1-2 minutes</td>
-      </tr>
-      <tr>
-          <td>Backtrack</td>
-          <td>Yes</td>
-          <td>No</td>
-      </tr>
-  </tbody>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Aurora</th>
+<th>RDS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Performance</td>
+<td>5x MySQL, 3x PostgreSQL</td>
+<td>Standard</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>Auto-scaling to 128 TB</td>
+<td>Manual scaling</td>
+</tr>
+<tr>
+<td>Replicas</td>
+<td>Up to 15</td>
+<td>Up to 5 (MySQL)</td>
+</tr>
+<tr>
+<td>Failover</td>
+<td>&lt; 30 seconds</td>
+<td>1-2 minutes</td>
+</tr>
+<tr>
+<td>Backtrack</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
 </table>
 <hr>
 <h1 id="hands-on-labs"><strong>Hands-On Labs</strong></h1>
@@ -2826,19 +2826,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1762767413"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1762767413"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762767413"></script>
-    <script src="../../../js/jquery.sticky.js?1762767413"></script>
-    <script src="../../../js/featherlight.min.js?1762767413"></script>
-    <script src="../../../js/highlight.pack.js?1762767413"></script>
+    <script src="../../../js/clipboard.min.js?1764688644"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1764688644"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1764688644"></script>
+    <script src="../../../js/jquery.sticky.js?1764688644"></script>
+    <script src="../../../js/featherlight.min.js?1764688644"></script>
+    <script src="../../../js/highlight.pack.js?1764688644"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1762767413"></script>
-    <script src="../../../js/learn.js?1762767413"></script>
-    <script src="../../../js/hugo-learn.js?1762767413"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1764688644"></script>
+    <script src="../../../js/learn.js?1764688644"></script>
+    <script src="../../../js/hugo-learn.js?1764688644"></script>
 
-    <link href="../../../mermaid/mermaid.css?1762767413" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1762767413"></script>
+    <link href="../../../mermaid/mermaid.css?1764688644" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1764688644"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

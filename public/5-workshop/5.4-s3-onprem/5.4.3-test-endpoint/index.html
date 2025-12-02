@@ -3,7 +3,7 @@
   <head><script src="/hugo_aws/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo_aws/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Hugo 0.123.7">
     <meta
   name="description"
   content=""
@@ -15,21 +15,21 @@
     <title>Test the Interface Endpoint :: Internship Report</title>
 
     
-    <link href="../../../css/nucleus.css?1762767413" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1762767413" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1762767413" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1762767413" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1762767413" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1762767413" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1762767413" rel="stylesheet">
-    <link href="../../../css/theme.css?1762767413" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1762767413" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1764688645" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1764688645" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1764688645" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1764688645" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1764688645" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1764688645" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1764688645" rel="stylesheet">
+    <link href="../../../css/theme.css?1764688645" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1764688645" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1762767413" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1764688645" rel="stylesheet">
     
-    <link href="../../../css/custom.css?1762767413" rel="stylesheet">
+    <link href="../../../css/custom.css?1764688645" rel="stylesheet">
 
-    <script src="../../../js/jquery-3.3.1.min.js?1762767413"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1764688645"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1530,7 +1530,7 @@
 <p>Click the name of newly created endpoint: s3-interface-endpoint. Click details and save the regional DNS name of the endpoint (the first one) to your text-editor for later use.</p>
 </li>
 </ol>
-<p><img src="../../../images/5-Workshop/5.4-S3-onprem/dns.png" alt="dns name"></p>
+<p><img alt="dns name" src="../../../images/5-Workshop/5.4-S3-onprem/dns.png"></p>
 <h4 id="connect-to-ec2-instance-in-vpc-on-prem">Connect to EC2 instance in &ldquo;VPC On-prem&rdquo;</h4>
 <ol>
 <li>
@@ -1540,7 +1540,7 @@
 <p>Click <strong>Start Session</strong>, and select the EC2 instance named <strong>Test-Interface-Endpoint</strong>. This EC2 instance is running in &ldquo;VPC On-prem&rdquo; and will be used to test connectivty to Amazon S3 through the Interface endpoint we just created. Session Manager will open a new browser tab with a shell prompt: <strong>sh-4.2 $</strong></p>
 </li>
 </ol>
-<p><img src="../../../images/5-Workshop/5.4-S3-onprem/start-session.png" alt="Start session"></p>
+<p><img alt="Start session" src="../../../images/5-Workshop/5.4-S3-onprem/start-session.png"></p>
 <ol start="3">
 <li>
 <p>Change to the ssm-user&rsquo;s home directory with command &ldquo;cd ~&rdquo;</p>
@@ -1550,7 +1550,7 @@
 </li>
 </ol>
 <pre tabindex="0"><code>fallocate -l 1G testfile2.xyz
-</code></pre><p><img src="../../../images/5-Workshop/5.4-S3-onprem/cli1.png" alt="user"></p>
+</code></pre><p><img alt="user" src="../../../images/5-Workshop/5.4-S3-onprem/cli1.png"></p>
 <ol start="5">
 <li>Copy file to the same S3 bucket we created in section 3.2</li>
 </ol>
@@ -1560,7 +1560,7 @@
 <li>Do not include the leading &rsquo; * &rsquo; when copying/pasting the regional DNS name.</li>
 <li>Provide your S3 bucket name created earlier</li>
 </ul>
-<p><img src="../../../images/5-Workshop/5.4-S3-onprem/cli2.png" alt="copy file"></p>
+<p><img alt="copy file" src="../../../images/5-Workshop/5.4-S3-onprem/cli2.png"></p>
 <p>Now the file has been added to your S3 bucket. Let check your S3 bucket in the next step.</p>
 <h4 id="check-object-in-s3-bucket">Check Object in S3 bucket</h4>
 <ol>
@@ -1568,7 +1568,7 @@
 <li>Click Buckets</li>
 <li>Click the name of your bucket and you will see testfile2.xyz has been added to your bucket</li>
 </ol>
-<p><img src="../../../images/5-Workshop/5.4-S3-onprem/check-bucket.png" alt="check bucket"></p>
+<p><img alt="check bucket" src="../../../images/5-Workshop/5.4-S3-onprem/check-bucket.png"></p>
 
 
 
@@ -2723,19 +2723,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1762767413"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1762767413"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762767413"></script>
-    <script src="../../../js/jquery.sticky.js?1762767413"></script>
-    <script src="../../../js/featherlight.min.js?1762767413"></script>
-    <script src="../../../js/highlight.pack.js?1762767413"></script>
+    <script src="../../../js/clipboard.min.js?1764688645"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1764688645"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1764688645"></script>
+    <script src="../../../js/jquery.sticky.js?1764688645"></script>
+    <script src="../../../js/featherlight.min.js?1764688645"></script>
+    <script src="../../../js/highlight.pack.js?1764688645"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1762767413"></script>
-    <script src="../../../js/learn.js?1762767413"></script>
-    <script src="../../../js/hugo-learn.js?1762767413"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1764688645"></script>
+    <script src="../../../js/learn.js?1764688645"></script>
+    <script src="../../../js/hugo-learn.js?1764688645"></script>
 
-    <link href="../../../mermaid/mermaid.css?1762767413" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1762767413"></script>
+    <link href="../../../mermaid/mermaid.css?1764688645" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1764688645"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
