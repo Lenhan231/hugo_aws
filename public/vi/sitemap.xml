@@ -14,30 +14,6 @@
                 href="http://localhost:1313/hugo_aws/vi/5-workshop/5.4-s3-onprem/5.4.1-prepare/"
                 />
   </url><url>
-    <loc>http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.1-event1/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/hugo_aws/4-eventparticipated/4.1-event1/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.1-event1/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.2-event2/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/hugo_aws/4-eventparticipated/4.2-event2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.2-event2/"
-                />
-  </url><url>
     <loc>http://localhost:1313/hugo_aws/vi/5-workshop/5.1-workshop-overview/</loc>
     <xhtml:link
                 rel="alternate"
@@ -132,6 +108,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/hugo_aws/vi/1-worklog/1.7-week7/1.7.1-day31-2025-10-20/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.1-event1/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/hugo_aws/4-eventparticipated/4.1-event1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.1-event1/"
                 />
   </url><url>
     <loc>http://localhost:1313/hugo_aws/vi/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/</loc>
@@ -300,6 +288,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/hugo_aws/vi/2-proposal/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.2-event2/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/hugo_aws/4-eventparticipated/4.2-event2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.2-event2/"
                 />
   </url><url>
     <loc>http://localhost:1313/hugo_aws/vi/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/</loc>

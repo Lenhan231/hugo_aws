@@ -122,18 +122,6 @@
                 href="http://localhost:1313/hugo_aws/4-eventparticipated/4.1-event1/"
                 />
   </url><url>
-    <loc>http://localhost:1313/hugo_aws/4-eventparticipated/4.2-event2/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.2-event2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/hugo_aws/4-eventparticipated/4.2-event2/"
-                />
-  </url><url>
     <loc>http://localhost:1313/hugo_aws/</loc>
     <xhtml:link
                 rel="alternate"
@@ -300,6 +288,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://localhost:1313/hugo_aws/1-worklog/1.7-week7/1.7.2-day32-2025-10-21/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/hugo_aws/4-eventparticipated/4.2-event2/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.2-event2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/hugo_aws/4-eventparticipated/4.2-event2/"
                 />
   </url><url>
     <loc>http://localhost:1313/hugo_aws/5-workshop/5.2-prerequiste/</loc>

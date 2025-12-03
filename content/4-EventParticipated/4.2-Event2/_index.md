@@ -1,126 +1,338 @@
 ---
-title: "Event 2"
-
-weight: 1
+title: "Event 2 - AWS GenAI Builder Club: AI-Driven Development Life Cycle"
+weight: 2
 chapter: false
-pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+## AWS GenAI Builder Club: AI-Driven Development Life Cycle - Reimagining Software Engineering
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+**Date & Time:** Friday, October 3, 2025 | 14:00 (2:00 PM)
 
-### Event Objectives
+**Location:** AWS Event Hall, L26 Bitexco Tower, Ho Chi Minh City
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+**Instructors:** Toan Huynh & My Nguyen
 
-### Speakers
+**Coordinators:** Diem My, Dai Truong, Dinh Nguyen
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+---
 
-### Key Highlights
+## Event Overview
 
-#### Identifying the drawbacks of legacy application architecture
+This AWS GenAI Builder Club session explored the AI-Driven Development Lifecycle (AI-DLC), a transformative approach to software engineering that integrates AI as a central collaborator throughout the entire development process. The session featured hands-on demonstrations of Amazon Q Developer and Kiro, showcasing practical applications of AI in modern software development.
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+---
 
-#### Transitioning to modern application architecture – Microservices
+## Agenda
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+| Time | Session | Instructor |
+|---|---|---|
+| 14:00 - 14:15 | Welcoming | - |
+| 14:15 - 15:30 | AI-Driven Development Life Cycle Overview & Amazon Q Developer Demonstration | Toan Huynh |
+| 15:30 - 15:45 | Break | - |
+| 15:45 - 16:30 | Kiro Demonstration | My Nguyen |
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+---
 
-#### Domain-Driven Design (DDD)
+## Key Concepts & Learnings
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+### 1. AI-Driven Development Lifecycle (AI-DLC) Overview
 
-#### Event-Driven Architecture
+#### Core Philosophy
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+The AI-Driven Development Lifecycle represents a fundamental shift in how software is built. Rather than treating AI as an afterthought or simple code completion tool, AI-DLC embeds AI as an intelligent partner throughout the entire development process.
 
-#### Compute Evolution
+**Key Principles:**
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+- **You Are in Control** - AI is your assistant, not your manager. You must maintain decision-making authority over the project direction and implementation details.
 
-#### Amazon Q Developer
+- **AI as Collaborator, Not Replacement** - AI should ask critical questions about your project requirements, architecture, and goals. The collaboration should be bidirectional, with you guiding the AI's suggestions.
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+- **Plan Before Implementation** - Always create a comprehensive plan before diving into code. AI can help generate this plan, but you must review, validate, and refine it.
 
-### Key Takeaways
+#### The Development Workflow
 
-#### Design Mindset
+**Step 1: Create a Project Plan**
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+- Define clear project requirements and scope
+- Ask AI to generate a plan based on your specifications
+- Review the plan critically and request modifications
+- Ensure the plan is detailed and unambiguous
 
-#### Technical Architecture
+**Step 2: Break Down into User Stories**
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+- Convert the plan into user stories with clear acceptance criteria
+- Divide large scope into smaller, manageable units
+- Each unit becomes a mini-project that can be assigned to team members
+- Estimate timelines for each unit (though be cautious of over-estimation)
 
-#### Modernization Strategy
+**Step 3: Define Technology Stack**
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+- Clearly specify the technologies, frameworks, and tools to be used
+- Instead of telling AI "don't implement this," tell it "implement this way"
+- Positive direction yields higher success rates than negative constraints
 
-### Applying to Work
+**Step 4: Detailed Requirements & Design**
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- Write requirements with precision and clarity
+- Collaborate with AI to create detailed specifications
+- Define data models, API contracts, and system architecture
+- Create design documents before implementation begins
 
-### Event Experience
+**Step 5: Implementation & Verification**
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+- Implement features according to the plan
+- Use mob development approach (team works together on code)
+- Verify all output code as a team
+- Conduct code reviews and quality checks
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+**Step 6: Testing & Deployment**
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+- Move through environments: Development (Dev) → Testing (QA) → User Acceptance Testing (UAT) → Production (Prod)
+- Ensure quality gates at each stage
+- Validate functionality before production release
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+#### Critical Success Factors
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+- **Create a Plan First** - Don't expect AI to handle everything. Always start with a clear plan.
+- **Review Regularly** - Continuously review AI suggestions and outputs. High error rates are possible.
+- **You Are the Manager** - Your value lies in code validation and project management, not in writing every line of code.
+- **Ask Clarifying Questions** - Ensure AI understands your project context by asking it critical questions about requirements, architecture, and goals.
+- **Use Prompt Templates** - Create structured prompts that include user context, user stories, and specific requirements to get clearer AI responses.
+- **Export Plans to Files** - Have AI generate plans as files you can save, review, and modify. This creates a living document for future reference.
+- **Be Polite to AI** - Maintain respectful communication with AI tools. Good rapport may help in future interactions (and it's just good practice!).
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+---
 
-#### Some event photos
-*Add your event photos here*  
+### 2. Amazon Q Developer Demonstration
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+#### What is Amazon Q Developer?
+
+Amazon Q Developer is an AI-powered assistant that transforms the software development lifecycle (SDLC) through agentic capabilities across multiple platforms:
+
+- **AWS Console** - Helps with infrastructure and service configuration
+- **IDE (Integrated Development Environment)** - Provides code generation and optimization suggestions
+- **CLI (Command Line Interface)** - Assists with command generation and automation
+- **DevSecOps Platforms** - Integrates security practices into the development workflow
+
+#### Key Capabilities
+
+**Code Generation & Quality**
+
+- Accelerates code generation with AI-powered suggestions
+- Improves code quality through intelligent recommendations
+- Maintains seamless integration with existing workflows
+- Understands complex codebases and suggests optimizations
+
+**Documentation & Testing**
+
+- Automatically generates comprehensive documentation
+- Creates unit tests with minimal manual effort
+- Significantly improves code maintainability and reliability
+- Reduces boilerplate and repetitive coding tasks
+
+**Intelligent Collaboration**
+
+- Acts as an intelligent collaborator leveraging large language models
+- Combines deep AWS service knowledge with coding expertise
+- Helps developers accelerate development cycles
+- Enhances code quality and strengthens security posture
+
+**Automation Across Development Lifecycle**
+
+- Automates routine tasks across the entire development lifecycle
+- Reduces manual, repetitive work
+- Allows developers to focus on higher-value, creative tasks
+- Improves overall productivity and efficiency
+
+#### Best Practices for Using Amazon Q Developer
+
+1. **Provide Clear Context** - Give Q detailed information about your project, architecture, and requirements
+2. **Use Specific Prompts** - Instead of vague requests, provide specific, detailed prompts with examples
+3. **Review Suggestions** - Always review Q's suggestions before implementing them
+4. **Iterate and Refine** - If the first suggestion isn't perfect, refine your prompt and try again
+5. **Leverage AWS Knowledge** - Take advantage of Q's deep understanding of AWS services and best practices
+
+---
+
+### 3. Kiro Demonstration
+
+#### What is Kiro?
+
+Kiro is an agentic IDE (Integrated Development Environment) developed by Amazon Web Services that bridges the gap between rapid AI-powered prototyping and production-ready software development. It's currently in public preview.
+
+#### Core Philosophy
+
+Kiro embodies the principle that AI should enhance developer productivity while maintaining professional standards, clear structure, comprehensive testing, documentation, and long-term maintainability.
+
+#### Key Features
+
+**Spec-Driven Development**
+
+- When you submit a requirement (e.g., "add a product rating system"), Kiro converts it into:
+  - User stories with clear acceptance criteria
+  - Design documentation
+  - Task lists and implementation plans
+  - Structured specifications before code generation
+
+**Agent Hooks & Automation**
+
+- Automatically triggers tasks based on events:
+  - File saves trigger documentation updates
+  - Commits trigger test generation
+  - Specific actions trigger performance optimization
+  - Reduces manual, repetitive work
+
+**Steering & Project Context**
+
+- Create steering files (markdown) to describe:
+  - Project structure and organization
+  - Coding standards and conventions
+  - Desired architecture patterns
+  - Team guidelines and best practices
+- Helps Kiro understand your project context deeply
+
+**Multi-File Analysis & Intent Understanding**
+
+- Analyzes multiple files simultaneously
+- Understands functional goals across the codebase
+- Makes changes aligned with overall project objectives
+- Goes beyond simple code completion
+
+**VS Code Integration**
+
+- Built on VS Code's open-source foundation
+- Import settings, themes, and extensions from VS Code
+- Familiar interface for existing VS Code users
+- Seamless transition for developers
+
+**Flexible AI Model Selection**
+
+- Currently uses Claude Sonnet 4 as default
+- "Auto" mode combines multiple models based on context
+- Balance between quality and cost
+- Flexibility to choose different models for different tasks
+
+#### Advantages of Using Kiro
+
+**Increased Transparency & Control**
+
+- Start with specifications before code generation
+- Review and validate specs before implementation
+- Reduce hallucinated code or misaligned implementations
+- Maintain clear traceability from requirements to code
+
+**Reduced Boilerplate & Repetitive Tasks**
+
+- Agent hooks automate documentation generation
+- Automatic unit test creation
+- Automatic information updates
+- Frees developers for higher-value work
+
+**Security & Privacy**
+
+- Most code operations happen locally
+- Data only sent externally with explicit permission
+- Maintains control over sensitive information
+
+**Extensibility & Flexibility**
+
+- Integrates external tools via MCP (Model Context Protocol)
+- Supports multiple AI models
+- Not locked into a single AI environment
+- Adaptable to different team workflows
+
+#### Limitations & Considerations
+
+- **Preview Status** - Still in public preview; stability and features may change
+- **Complex Projects** - May struggle with deep contextual understanding in highly complex projects
+- **Supervision Required** - Users still need to oversee and validate AI decisions
+- **Future Pricing** - Expected pricing tiers:
+  - Free: ~50 tasks/month
+  - Pro: ~1,000 tasks/month
+  - Pro+: ~3,000 tasks/month
+
+#### When to Use Kiro
+
+- You want an AI + programming workflow that maintains professionalism and clear structure
+- Building rapid prototypes but concerned about production sustainability
+- Exploring how AI can become a true programming colleague, not just a code suggestion tool
+- You need spec-driven development with automated documentation and testing
+
+---
+
+## Common Pitfalls When Using AI in Development
+
+### 1. Expecting AI to Handle Everything
+
+**Problem:** Many developers expect AI to complete entire projects autonomously.
+
+**Solution:** Always create a plan first and review regularly. AI is a tool to enhance productivity, not replace developer judgment.
+
+### 2. High Error Rates
+
+**Problem:** AI can make mistakes, especially in complex scenarios.
+
+**Solution:** Implement regular review cycles. Validate all AI-generated code before deployment.
+
+### 3. Lack of Clear Requirements
+
+**Problem:** Vague or unclear requirements lead to vague AI outputs.
+
+**Solution:** Write requirements with precision. Collaborate with AI to create detailed specifications before implementation.
+
+### 4. Negative Constraints Instead of Positive Direction
+
+**Problem:** Telling AI "don't do this" is less effective than "do this."
+
+**Solution:** Use positive, specific instructions. Higher success rates come from clear positive direction.
+
+### 5. Insufficient Project Context
+
+**Problem:** AI doesn't understand your project's unique requirements and constraints.
+
+**Solution:** Create steering files, provide detailed context, and ask AI critical questions about your project.
+
+### 6. Treating AI as a Manager
+
+**Problem:** Letting AI make all decisions about project direction and architecture.
+
+**Solution:** Remember: **You are the manager.** Your value lies in code validation and project oversight, not in writing every line of code.
+
+---
+
+## Key Takeaways
+
+1. **AI is Your Assistant** - Maintain control over project decisions and implementation direction
+
+2. **Plan First, Code Second** - Always create a comprehensive plan before implementation
+
+3. **Collaboration Over Automation** - AI should ask questions and collaborate, not just execute commands
+
+4. **Clear Requirements Matter** - Precision in requirements leads to better AI outputs
+
+5. **Regular Review is Essential** - Don't expect AI to be perfect; review and validate continuously
+
+6. **You Are the Code Manager** - Your value is in validation and oversight, not in writing every line
+
+7. **Use Structured Prompts** - Templates with context, user stories, and requirements yield better results
+
+8. **Export Plans to Files** - Create living documents you can reference and modify
+
+9. **Positive Direction Works Better** - Tell AI what to do, not what to avoid
+
+10. **Experience Matters** - Use these tools hands-on to understand their capabilities and limitations
+
+---
+
+## Recommended Tools & Resources
+
+- **Amazon Q Developer** - AI-powered development assistant integrated with AWS services
+- **Kiro IDE** - Spec-driven development environment with AI collaboration
+- **AWS CodeWhisperer** - Code generation and optimization tool
+- **MCP (Model Context Protocol)** - Framework for integrating external tools and services
+
+---
+
+## Conclusion
+
+The AI-Driven Development Lifecycle represents a new paradigm in software engineering where AI and humans collaborate as equals. Success requires clear planning, regular review, precise requirements, and maintaining developer control over project direction. Tools like Amazon Q Developer and Kiro are enabling this new workflow, but they work best when developers understand their capabilities and limitations, and maintain their role as project managers and code validators.
