@@ -3,7 +3,7 @@
   <head><script src="/hugo_aws/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo_aws/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="generator" content="Hugo 0.152.2">
     <meta
   name="description"
   content=""
@@ -15,21 +15,21 @@
     <title>Proposal :: Báo cáo thực tập</title>
 
     
-    <link href="../../css/nucleus.css?1764734214" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1764734214" rel="stylesheet">
-    <link href="../../css/hybrid.css?1764734214" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1764734214" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1764734214" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1764734214" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1764734214" rel="stylesheet">
-    <link href="../../css/theme.css?1764734214" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1764734214" rel="stylesheet">
+    <link href="../../css/nucleus.css?1764861018" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1764861018" rel="stylesheet">
+    <link href="../../css/hybrid.css?1764861018" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1764861018" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1764861018" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1764861018" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1764861018" rel="stylesheet">
+    <link href="../../css/theme.css?1764861018" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1764861018" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1764734214" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1764861018" rel="stylesheet">
     
-    <link href="../../css/custom.css?1764734214" rel="stylesheet">
+    <link href="../../css/custom.css?1764861018" rel="stylesheet">
 
-    <script src="../../js/jquery-3.3.1.min.js?1764734214"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1764861018"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1571,65 +1571,65 @@
 <hr>
 <h2 id="3-kiến-trúc-giải-pháp"><strong>3. Kiến trúc giải pháp</strong></h2>
 <h3 id="a-high-level"><strong>A. High-level</strong></h3>
-<p><img alt="A) High level" src="../../images/Architect.jpeg"></p>
+<p><img src="../../images/Architect.jpeg" alt="A) High level"></p>
 <h3 id="b-luồng-xử-lý-yêu-cầu"><strong>B. Luồng xử lý yêu cầu</strong></h3>
-<p><img alt="B) Request flow" src="../../images/Request_flow.jpeg"></p>
+<p><img src="../../images/Request_flow.jpeg" alt="B) Request flow"></p>
 <h3 id="dịch-vụ-aws-sử-dụng"><strong>Dịch vụ AWS Sử Dụng</strong></h3>
 <table>
-<thead>
-<tr>
-<th>Dịch vụ</th>
-<th>Vai trò chính</th>
-<th>Hoạt động cụ thể</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Amplify Hosting</strong></td>
-<td>CI/CD + FE Hosting</td>
-<td>Build &amp; Deploy Next.js, quản lý domain</td>
-</tr>
-<tr>
-<td><strong>Cognito</strong></td>
-<td>Authentication</td>
-<td>Đăng ký/Đăng nhập, cấp JWT, refresh token</td>
-</tr>
-<tr>
-<td><strong>API Gateway</strong></td>
-<td>Entry point API</td>
-<td>Nhận request, xác thực JWT, route đến Lambda</td>
-</tr>
-<tr>
-<td><strong>Lambda</strong></td>
-<td>Business Logic</td>
-<td>Xử lý upload, duyệt, tạo signed URL, ghi metadata</td>
-</tr>
-<tr>
-<td><strong>S3</strong></td>
-<td>Object Storage</td>
-<td>Lưu file gốc, file đã duyệt, được download qua Cloudfront Signed URL</td>
-</tr>
-<tr>
-<td><strong>CloudFront</strong></td>
-<td>CDN</td>
-<td>Phân phối nhanh nội dung, chặn direct access qua OAC</td>
-</tr>
-<tr>
-<td><strong>DynamoDB</strong></td>
-<td>Database</td>
-<td>Lưu metadata (tên sách, uploader, trạng thái duyệt)</td>
-</tr>
-<tr>
-<td><strong>Route 53</strong></td>
-<td>DNS</td>
-<td>Trỏ domain đến Amplify Hosting, API Gateway, CloudFront</td>
-</tr>
-<tr>
-<td><strong>CloudWatch</strong></td>
-<td>Monitoring</td>
-<td>Lưu log Lambda, cảnh báo lỗi hoặc chi phí bất thường</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Dịch vụ</th>
+          <th>Vai trò chính</th>
+          <th>Hoạt động cụ thể</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Amplify Hosting</strong></td>
+          <td>CI/CD + FE Hosting</td>
+          <td>Build &amp; Deploy Next.js, quản lý domain</td>
+      </tr>
+      <tr>
+          <td><strong>Cognito</strong></td>
+          <td>Authentication</td>
+          <td>Đăng ký/Đăng nhập, cấp JWT, refresh token</td>
+      </tr>
+      <tr>
+          <td><strong>API Gateway</strong></td>
+          <td>Entry point API</td>
+          <td>Nhận request, xác thực JWT, route đến Lambda</td>
+      </tr>
+      <tr>
+          <td><strong>Lambda</strong></td>
+          <td>Business Logic</td>
+          <td>Xử lý upload, duyệt, tạo signed URL, ghi metadata</td>
+      </tr>
+      <tr>
+          <td><strong>S3</strong></td>
+          <td>Object Storage</td>
+          <td>Lưu file gốc, file đã duyệt, được download qua Cloudfront Signed URL</td>
+      </tr>
+      <tr>
+          <td><strong>CloudFront</strong></td>
+          <td>CDN</td>
+          <td>Phân phối nhanh nội dung, chặn direct access qua OAC</td>
+      </tr>
+      <tr>
+          <td><strong>DynamoDB</strong></td>
+          <td>Database</td>
+          <td>Lưu metadata (tên sách, uploader, trạng thái duyệt)</td>
+      </tr>
+      <tr>
+          <td><strong>Route 53</strong></td>
+          <td>DNS</td>
+          <td>Trỏ domain đến Amplify Hosting, API Gateway, CloudFront</td>
+      </tr>
+      <tr>
+          <td><strong>CloudWatch</strong></td>
+          <td>Monitoring</td>
+          <td>Lưu log Lambda, cảnh báo lỗi hoặc chi phí bất thường</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p>Tìm kiếm (Search):</p>
@@ -1652,7 +1652,7 @@
 </ul>
 </li>
 </ul>
-<p><img alt="Search Architecture" src="../../images/SearchArchitecture.jpeg"></p>
+<p><img src="../../images/SearchArchitecture.jpeg" alt="Search Architecture"></p>
 <h3 id="phân-quyền-admin"><strong>Phân quyền Admin</strong></h3>
 <ul>
 <li>Sử dụng <strong>Cognito User Groups</strong> với một nhóm <code>Admins</code> trong User Pool.</li>
@@ -1795,94 +1795,94 @@
 <p>You can find the budget estimation on the: <a href="https://calculator.aws/#/estimate?id=45ebafb3c3a0ff07b7c21970b2287f1a06f2a460">AWS Pricing Calculator</a></p>
 <p>Dưới đây là ước tính chi phí hàng tháng <strong>nghiêm ngặt</strong> (giả định không áp dụng AWS Free Tier) tại quy mô MVP (100 người dùng).</p>
 <table>
-<thead>
-<tr>
-<th>#</th>
-<th>AWS Service</th>
-<th>Region</th>
-<th>Monthly (USD)</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td><strong>Amazon CloudFront</strong></td>
-<td>Asia Pacific (Singapore)</td>
-<td><strong>0.86</strong></td>
-<td>10 GB data egress + 10 000 HTTPS requests</td>
-</tr>
-<tr>
-<td>1</td>
-<td><strong>AWS Amplify</strong></td>
-<td>Asia Pacific (Singapore)</td>
-<td><strong>1.31</strong></td>
-<td>100 build min + 0.5 GB storage + 2 GB served</td>
-</tr>
-<tr>
-<td>2</td>
-<td><strong>Amazon API Gateway</strong></td>
-<td>Asia Pacific (Singapore)</td>
-<td><strong>0.01</strong></td>
-<td>~10 000 HTTP API calls/tháng</td>
-</tr>
-<tr>
-<td>3</td>
-<td><strong>AWS Lambda</strong></td>
-<td>Asia Pacific (Singapore)</td>
-<td><strong>0.00</strong></td>
-<td>128 MB RAM × 100 ms × 10 000 invokes</td>
-</tr>
-<tr>
-<td>4</td>
-<td><strong>Amazon S3 (Standard)</strong></td>
-<td>Asia Pacific (Singapore)</td>
-<td><strong>0.05</strong></td>
-<td>2 GB object storage for books/images</td>
-</tr>
-<tr>
-<td>5</td>
-<td><strong>Data Transfer</strong></td>
-<td>Asia Pacific (Singapore)</td>
-<td><strong>0.00</strong></td>
-<td>Included in CloudFront cost</td>
-</tr>
-<tr>
-<td>6</td>
-<td><strong>DynamoDB (On-Demand)</strong></td>
-<td>Asia Pacific (Singapore)</td>
-<td><strong>0.03</strong></td>
-<td>Light metadata table (0.1 GB, few reads/writes)</td>
-</tr>
-<tr>
-<td>7</td>
-<td><strong>Amazon Cognito</strong></td>
-<td>Asia Pacific (Singapore)</td>
-<td><strong>5.00</strong></td>
-<td>100 MAU, Advanced Security enabled</td>
-</tr>
-<tr>
-<td>8</td>
-<td><strong>Amazon CloudWatch</strong></td>
-<td>Asia Pacific (Singapore)</td>
-<td><strong>1.64</strong></td>
-<td>5 metrics + 0.1 GB logs/tháng</td>
-</tr>
-<tr>
-<td>9</td>
-<td><strong>Amazon Route 53</strong></td>
-<td>Asia Pacific (Singapore)</td>
-<td><strong>0.90</strong></td>
-<td>1 Hosted Zone + DNS queries</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>≈ 9.80 USD / month</strong></td>
-<td><strong>No Free Tier applied</strong></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>#</th>
+          <th>AWS Service</th>
+          <th>Region</th>
+          <th>Monthly (USD)</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td><strong>Amazon CloudFront</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.86</strong></td>
+          <td>10 GB data egress + 10 000 HTTPS requests</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td><strong>AWS Amplify</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>1.31</strong></td>
+          <td>100 build min + 0.5 GB storage + 2 GB served</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><strong>Amazon API Gateway</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.01</strong></td>
+          <td>~10 000 HTTP API calls/tháng</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><strong>AWS Lambda</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.00</strong></td>
+          <td>128 MB RAM × 100 ms × 10 000 invokes</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td><strong>Amazon S3 (Standard)</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.05</strong></td>
+          <td>2 GB object storage for books/images</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td><strong>Data Transfer</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.00</strong></td>
+          <td>Included in CloudFront cost</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td><strong>DynamoDB (On-Demand)</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.03</strong></td>
+          <td>Light metadata table (0.1 GB, few reads/writes)</td>
+      </tr>
+      <tr>
+          <td>7</td>
+          <td><strong>Amazon Cognito</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>5.00</strong></td>
+          <td>100 MAU, Advanced Security enabled</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td><strong>Amazon CloudWatch</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>1.64</strong></td>
+          <td>5 metrics + 0.1 GB logs/tháng</td>
+      </tr>
+      <tr>
+          <td>9</td>
+          <td><strong>Amazon Route 53</strong></td>
+          <td>Asia Pacific (Singapore)</td>
+          <td><strong>0.90</strong></td>
+          <td>1 Hosted Zone + DNS queries</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><strong>≈ 9.80 USD / month</strong></td>
+          <td><strong>No Free Tier applied</strong></td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="chi-phí-hạ-tầng"><strong>Chi phí hạ tầng</strong></h3>
 <p>Mô hình chi phí này cho thấy sự hiệu quả của kiến trúc serverless: chi phí tập trung chủ yếu vào <strong>giá trị mang lại cho người dùng</strong> (Cognito MAU) thay vì trả tiền cho &ldquo;máy chủ chờ&rdquo; (idle servers).</p>
@@ -1890,35 +1890,35 @@
 <h2 id="7-đánh-giá-rủi-ro"><strong>7. Đánh giá rủi ro</strong></h2>
 <h3 id="ma-trận-rủi-ro"><strong>Ma trận rủi ro</strong></h3>
 <table>
-<thead>
-<tr>
-<th>Rủi ro</th>
-<th>Tác động</th>
-<th>Chiến lược giảm thiểu</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Chi phí tăng khi user đột biến</td>
-<td>Cao</td>
-<td>Giới hạn MAU, cache metadata qua CloudFront</td>
-</tr>
-<tr>
-<td>Upload lạm dụng</td>
-<td>Trung bình</td>
-<td>Giới hạn ≤ 50MB/file, xóa auto sau 72h</td>
-</tr>
-<tr>
-<td>File loại giả mạo/độc hại</td>
-<td>Trung bình</td>
-<td>S3 Event → Lambda xác thực MIME (magic bytes)</td>
-</tr>
-<tr>
-<td>Giám sát quá tải</td>
-<td>Thấp</td>
-<td>CloudWatch alert, log 14 ngày</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Rủi ro</th>
+          <th>Tác động</th>
+          <th>Chiến lược giảm thiểu</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Chi phí tăng khi user đột biến</td>
+          <td>Cao</td>
+          <td>Giới hạn MAU, cache metadata qua CloudFront</td>
+      </tr>
+      <tr>
+          <td>Upload lạm dụng</td>
+          <td>Trung bình</td>
+          <td>Giới hạn ≤ 50MB/file, xóa auto sau 72h</td>
+      </tr>
+      <tr>
+          <td>File loại giả mạo/độc hại</td>
+          <td>Trung bình</td>
+          <td>S3 Event → Lambda xác thực MIME (magic bytes)</td>
+      </tr>
+      <tr>
+          <td>Giám sát quá tải</td>
+          <td>Thấp</td>
+          <td>CloudWatch alert, log 14 ngày</td>
+      </tr>
+  </tbody>
 </table>
 <h3 id="chiến-lược-giảm-thiểu"><strong>Chiến lược giảm thiểu</strong></h3>
 <ul>
@@ -3107,19 +3107,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1764734214"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1764734214"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1764734214"></script>
-    <script src="../../js/jquery.sticky.js?1764734214"></script>
-    <script src="../../js/featherlight.min.js?1764734214"></script>
-    <script src="../../js/highlight.pack.js?1764734214"></script>
+    <script src="../../js/clipboard.min.js?1764861018"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1764861018"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1764861018"></script>
+    <script src="../../js/jquery.sticky.js?1764861018"></script>
+    <script src="../../js/featherlight.min.js?1764861018"></script>
+    <script src="../../js/highlight.pack.js?1764861018"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1764734214"></script>
-    <script src="../../js/learn.js?1764734214"></script>
-    <script src="../../js/hugo-learn.js?1764734214"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1764861018"></script>
+    <script src="../../js/learn.js?1764861018"></script>
+    <script src="../../js/hugo-learn.js?1764861018"></script>
 
-    <link href="../../mermaid/mermaid.css?1764734214" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1764734214"></script>
+    <link href="../../mermaid/mermaid.css?1764861018" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1764861018"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -3,7 +3,7 @@
   <head><script src="/hugo_aws/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo_aws/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="generator" content="Hugo 0.152.2">
     <meta
   name="description"
   content=""
@@ -15,21 +15,21 @@
     <title>Kiểm tra Gateway Endpoint :: Báo cáo thực tập</title>
 
     
-    <link href="../../../../css/nucleus.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/fontawesome-all.min.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/hybrid.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/featherlight.min.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/perfect-scrollbar.min.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/atom-one-dark-reasonable.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/theme.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/hugo-theme.css?1764734214" rel="stylesheet">
+    <link href="../../../../css/nucleus.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/fontawesome-all.min.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/hybrid.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/featherlight.min.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/perfect-scrollbar.min.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/atom-one-dark-reasonable.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/theme.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/hugo-theme.css?1764861018" rel="stylesheet">
     
-    <link href="../../../../css/theme-workshop.css?1764734214" rel="stylesheet">
+    <link href="../../../../css/theme-workshop.css?1764861018" rel="stylesheet">
     
-    <link href="../../../../css/custom.css?1764734214" rel="stylesheet">
+    <link href="../../../../css/custom.css?1764861018" rel="stylesheet">
 
-    <script src="../../../../js/jquery-3.3.1.min.js?1764734214"></script>
+    <script src="../../../../js/jquery-3.3.1.min.js?1764861018"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1526,23 +1526,23 @@
 <li>Đi đến S3 management console</li>
 <li>Trong Bucket console, chọn <strong>Create bucket</strong></li>
 </ol>
-<p><img alt="Create bucket" src="../../../../images/5-Workshop/5.3-S3-vpc/create-bucket.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/create-bucket.png" alt="Create bucket"></p>
 <ol start="3">
 <li>Trong Create bucket console</li>
 </ol>
 <ul>
 <li>Đặt tên bucket: chọn 1 tên mà không bị trùng trong phạm vi toàn cầu (gợi ý: lab&lt;số-lab&gt;&lt;tên-bạn&gt;)</li>
 </ul>
-<p><img alt="Bucket name" src="../../../../images/5-Workshop/5.3-S3-vpc/bucket-name.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/bucket-name.png" alt="Bucket name"></p>
 <ul>
 <li>Giữ nguyên giá trị của các fields khác (default)</li>
 <li>Kéo chuột xuống và chọn <strong>Create bucket</strong></li>
 </ul>
-<p><img alt="Create" src="../../../../images/5-Workshop/5.3-S3-vpc/create-button.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/create-button.png" alt="Create"></p>
 <ul>
 <li>Tạo thành công S3 bucket</li>
 </ul>
-<p><img alt="Success" src="../../../../images/5-Workshop/5.3-S3-vpc/bucket-success.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/bucket-success.png" alt="Success"></p>
 <h4 id="kết-nối-với-ec2-bằng-session-manager">Kết nối với EC2 bằng session manager</h4>
 <ul>
 <li>
@@ -1555,11 +1555,11 @@
 <ol>
 <li>Trong AWS Management Console, gõ Systems Manager trong ô tìm kiếm và nhấn Enter:</li>
 </ol>
-<p><img alt="system manager" src="../../../../images/5-Workshop/5.3-S3-vpc/sm.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/sm.png" alt="system manager"></p>
 <ol start="2">
 <li>Từ <strong>Systems Manager</strong> menu, tìm <strong>Node Management</strong> ở thanh bên trái và chọn <strong>Session Manager</strong>:</li>
 </ol>
-<p><img alt="system manager" src="../../../../images/5-Workshop/5.3-S3-vpc/sm1.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/sm1.png" alt="system manager"></p>
 <ol start="3">
 <li>Click Start Session, và chọn EC2 instance tên <strong>Test-Gateway-Endpoint</strong>.
 
@@ -1572,23 +1572,23 @@
 </div>
 </li>
 </ol>
-<p><img alt="Start session" src="../../../../images/5-Workshop/5.3-S3-vpc/start-session.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/start-session.png" alt="Start session"></p>
 <p>Session Manager sẽ mở browser tab mới với shell prompt: sh-4.2 $</p>
-<p><img alt="Success" src="../../../../images/5-Workshop/5.3-S3-vpc/start-session-success.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/start-session-success.png" alt="Success"></p>
 <p>Bạn đã bắt đầu phiên kết nối đến EC2 trong VPC Cloud thành công. Trong bước tiếp theo, chúng ta sẽ tạo một  S3 bucket và một tệp trong đó.</p>
 <h4 id="create-a-file-and-upload-to-s3-bucket">Create a file and upload to s3 bucket</h4>
 <ol>
 <li>Đổi về ssm-user&rsquo;s thư mục bằng lệnh &ldquo;cd ~&rdquo;</li>
 </ol>
-<p><img alt="Change user&rsquo;s dir" src="../../../../images/5-Workshop/5.3-S3-vpc/cli1.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/cli1.png" alt="Change user’s dir"></p>
 <ol start="2">
 <li>Tạo 1 file để kiểm tra bằng lệnh &ldquo;fallocate -l 1G testfile.xyz&rdquo;, 1 file tên &ldquo;testfile.xyz&rdquo; có kích thước 1GB sẽ được tạo.</li>
 </ol>
-<p><img alt="Create file" src="../../../../images/5-Workshop/5.3-S3-vpc/cli-file.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/cli-file.png" alt="Create file"></p>
 <ol start="3">
 <li>Tải file mình vừa tạo lên S3 với lệnh &ldquo;aws s3 cp testfile.xyz s3://your-bucket-name&rdquo;. Thay your-bucket-name bằng tên S3 bạn đã tạo.</li>
 </ol>
-<p><img alt="Uploaded" src="../../../../images/5-Workshop/5.3-S3-vpc/uploaded.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/uploaded.png" alt="Uploaded"></p>
 <p>Bạn đã tải thành công tệp lên bộ chứa S3 của mình. Bây giờ bạn có thể kết thúc session.</p>
 <h4 id="kiểm-tra-object-trong-s3-bucket">Kiểm tra object trong S3 bucket</h4>
 <ol>
@@ -1596,7 +1596,7 @@
 <li>Click tên s3 bucket của bạn</li>
 <li>Trong Bucket console, bạn sẽ thấy tệp bạn đã tải lên S3 bucket của mình</li>
 </ol>
-<p><img alt="Check S3" src="../../../../images/5-Workshop/5.3-S3-vpc/check-s3-bucket.png"></p>
+<p><img src="../../../../images/5-Workshop/5.3-S3-vpc/check-s3-bucket.png" alt="Check S3"></p>
 <h4 id="tóm-tắt">Tóm tắt</h4>
 <p>Chúc mừng bạn đã hoàn thành truy cập S3 từ VPC. Trong phần này, bạn đã tạo gateway endpoint cho Amazon S3 và sử dụng AWS CLI để tải file lên. Quá trình tải lên hoạt động vì gateway endpoint cho phép giao tiếp với S3 mà không cần Internet gateway gắn vào &ldquo;VPC Cloud&rdquo;. Điều này thể hiện chức năng của gateway endpoint như một đường dẫn an toàn đến S3 mà không cần đi qua pub    lic Internet.</p>
 
@@ -2753,19 +2753,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../../js/clipboard.min.js?1764734214"></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1764734214"></script>
-    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1764734214"></script>
-    <script src="../../../../js/jquery.sticky.js?1764734214"></script>
-    <script src="../../../../js/featherlight.min.js?1764734214"></script>
-    <script src="../../../../js/highlight.pack.js?1764734214"></script>
+    <script src="../../../../js/clipboard.min.js?1764861018"></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1764861018"></script>
+    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1764861018"></script>
+    <script src="../../../../js/jquery.sticky.js?1764861018"></script>
+    <script src="../../../../js/featherlight.min.js?1764861018"></script>
+    <script src="../../../../js/highlight.pack.js?1764861018"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../../js/modernizr.custom-3.6.0.js?1764734214"></script>
-    <script src="../../../../js/learn.js?1764734214"></script>
-    <script src="../../../../js/hugo-learn.js?1764734214"></script>
+    <script src="../../../../js/modernizr.custom-3.6.0.js?1764861018"></script>
+    <script src="../../../../js/learn.js?1764861018"></script>
+    <script src="../../../../js/hugo-learn.js?1764861018"></script>
 
-    <link href="../../../../mermaid/mermaid.css?1764734214" rel="stylesheet" />
-    <script src="../../../../mermaid/mermaid.js?1764734214"></script>
+    <link href="../../../../mermaid/mermaid.css?1764861018" rel="stylesheet" />
+    <script src="../../../../mermaid/mermaid.js?1764861018"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -4,7 +4,7 @@
     <title>Categories on Báo cáo thực tập</title>
     <link>http://localhost:1313/hugo_aws/vi/categories/</link>
     <description>Recent content in Categories on Báo cáo thực tập</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>vi</language>
     <atom:link href="http://localhost:1313/hugo_aws/vi/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>

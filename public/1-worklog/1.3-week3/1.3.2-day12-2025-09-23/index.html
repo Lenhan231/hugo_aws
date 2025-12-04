@@ -3,7 +3,7 @@
   <head><script src="/hugo_aws/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo_aws/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="generator" content="Hugo 0.152.2">
     <meta
   name="description"
   content=""
@@ -15,21 +15,21 @@
     <title>Day 12 - EC2 Storage &amp; Backup :: Internship Report</title>
 
     
-    <link href="../../../css/nucleus.css?1764734214" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1764734214" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1764734214" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1764734214" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1764734214" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1764734214" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1764734214" rel="stylesheet">
-    <link href="../../../css/theme.css?1764734214" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1764734214" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1764861014" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1764861014" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1764861014" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1764861014" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1764861014" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1764861014" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1764861014" rel="stylesheet">
+    <link href="../../../css/theme.css?1764861014" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1764861014" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1764734214" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1764861014" rel="stylesheet">
     
-    <link href="../../../css/custom.css?1764734214" rel="stylesheet">
+    <link href="../../../css/custom.css?1764861014" rel="stylesheet">
 
-    <script src="../../../js/jquery-3.3.1.min.js?1764734214"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1764861014"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1540,7 +1540,7 @@
 </li>
 <li><strong>AMI Backup</strong> captures the full EC2 configuration as an image.</li>
 </ul>
-<p><img alt="image" src="../../../images/1-Worklog/Week3/image%201.png"></p>
+<p><img src="../../../images/1-Worklog/Week3/image%201.png" alt="image"></p>
 <p><strong>Snapshot Best Practices:</strong></p>
 <ul>
 <li>Schedule regular snapshots</li>
@@ -1560,7 +1560,7 @@
 <li>Replaces passwords for better security.</li>
 <li><strong>Important:</strong> If you lose your private key, AWS cannot recover it.</li>
 </ul>
-<p><img alt="image" src="../../../images/1-Worklog/Week3/image%202.png"></p>
+<p><img src="../../../images/1-Worklog/Week3/image%202.png" alt="image"></p>
 <p><strong>Key Pair Management:</strong></p>
 <ul>
 <li>Create key pairs in AWS or import your own</li>
@@ -1588,43 +1588,43 @@
 <li>Create snapshots for backup or cross-region copy</li>
 <li>Automatically replicated within an AZ</li>
 </ul>
-<p><img alt="image" src="../../../images/1-Worklog/Week3/image%203.png"></p>
+<p><img src="../../../images/1-Worklog/Week3/image%203.png" alt="image"></p>
 <p><strong>EBS Volume Comparison:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Use Case</th>
-<th>Max IOPS</th>
-<th>Max Throughput</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>gp3</td>
-<td>General purpose</td>
-<td>16,000</td>
-<td>1,000 MB/s</td>
-</tr>
-<tr>
-<td>io2</td>
-<td>High performance</td>
-<td>64,000</td>
-<td>1,000 MB/s</td>
-</tr>
-<tr>
-<td>st1</td>
-<td>Big data</td>
-<td>500</td>
-<td>500 MB/s</td>
-</tr>
-<tr>
-<td>sc1</td>
-<td>Cold storage</td>
-<td>250</td>
-<td>250 MB/s</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>Type</th>
+          <th>Use Case</th>
+          <th>Max IOPS</th>
+          <th>Max Throughput</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>gp3</td>
+          <td>General purpose</td>
+          <td>16,000</td>
+          <td>1,000 MB/s</td>
+      </tr>
+      <tr>
+          <td>io2</td>
+          <td>High performance</td>
+          <td>64,000</td>
+          <td>1,000 MB/s</td>
+      </tr>
+      <tr>
+          <td>st1</td>
+          <td>Big data</td>
+          <td>500</td>
+          <td>500 MB/s</td>
+      </tr>
+      <tr>
+          <td>sc1</td>
+          <td>Cold storage</td>
+          <td>250</td>
+          <td>250 MB/s</td>
+      </tr>
+  </tbody>
 </table>
 
 
@@ -2777,19 +2777,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1764734214"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1764734214"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1764734214"></script>
-    <script src="../../../js/jquery.sticky.js?1764734214"></script>
-    <script src="../../../js/featherlight.min.js?1764734214"></script>
-    <script src="../../../js/highlight.pack.js?1764734214"></script>
+    <script src="../../../js/clipboard.min.js?1764861014"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1764861014"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1764861014"></script>
+    <script src="../../../js/jquery.sticky.js?1764861014"></script>
+    <script src="../../../js/featherlight.min.js?1764861014"></script>
+    <script src="../../../js/highlight.pack.js?1764861014"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1764734214"></script>
-    <script src="../../../js/learn.js?1764734214"></script>
-    <script src="../../../js/hugo-learn.js?1764734214"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1764861014"></script>
+    <script src="../../../js/learn.js?1764861014"></script>
+    <script src="../../../js/hugo-learn.js?1764861014"></script>
 
-    <link href="../../../mermaid/mermaid.css?1764734214" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1764734214"></script>
+    <link href="../../../mermaid/mermaid.css?1764861014" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1764861014"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

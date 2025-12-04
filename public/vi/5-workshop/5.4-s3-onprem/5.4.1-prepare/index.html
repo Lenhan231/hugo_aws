@@ -3,7 +3,7 @@
   <head><script src="/hugo_aws/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo_aws/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.123.7">
+    <meta name="generator" content="Hugo 0.152.2">
     <meta
   name="description"
   content=""
@@ -15,21 +15,21 @@
     <title>Chuẩn bị tài nguyên :: Báo cáo thực tập</title>
 
     
-    <link href="../../../../css/nucleus.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/fontawesome-all.min.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/hybrid.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/featherlight.min.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/perfect-scrollbar.min.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/atom-one-dark-reasonable.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/theme.css?1764734214" rel="stylesheet">
-    <link href="../../../../css/hugo-theme.css?1764734214" rel="stylesheet">
+    <link href="../../../../css/nucleus.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/fontawesome-all.min.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/hybrid.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/featherlight.min.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/perfect-scrollbar.min.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/atom-one-dark-reasonable.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/theme.css?1764861018" rel="stylesheet">
+    <link href="../../../../css/hugo-theme.css?1764861018" rel="stylesheet">
     
-    <link href="../../../../css/theme-workshop.css?1764734214" rel="stylesheet">
+    <link href="../../../../css/theme-workshop.css?1764861018" rel="stylesheet">
     
-    <link href="../../../../css/custom.css?1764734214" rel="stylesheet">
+    <link href="../../../../css/custom.css?1764861018" rel="stylesheet">
 
-    <script src="../../../../js/jquery-3.3.1.min.js?1764734214"></script>
+    <script src="../../../../js/jquery-3.3.1.min.js?1764861018"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1534,12 +1534,12 @@
 <li>Một Route 53 Inbound Resolver endpoint cho phép &ldquo;VPC Cloud&rdquo; giải quyết các yêu cầu resolve DNS gửi đến Private Hosted Zone</li>
 <li>Một Route 53 Outbound Resolver endpoint cho phép &ldquo;VPC On-prem&rdquo; chuyển tiếp các yêu cầu DNS cho S3 sang &ldquo;VPC Cloud&rdquo;</li>
 </ul>
-<p><img alt="route 53 diagram" src="../../../../images/5-Workshop/5.4-S3-onprem/route53.png"></p>
+<p><img src="../../../../images/5-Workshop/5.4-S3-onprem/route53.png" alt="route 53 diagram"></p>
 <ol>
-<li>Click link sau để mở <a href="https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&stackName=PLOnpremSetup">AWS CloudFormation console</a>. Mẫu yêu cầu sẽ được tải sẵn vào menu. Chấp nhận tất cả mặc định và nhấp vào Tạo stack.</li>
+<li>Click link sau để mở <a href="https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&amp;stackName=PLOnpremSetup">AWS CloudFormation console</a>. Mẫu yêu cầu sẽ được tải sẵn vào menu. Chấp nhận tất cả mặc định và nhấp vào Tạo stack.</li>
 </ol>
-<p><img alt="Create stack" src="../../../../images/5-Workshop/5.4-S3-onprem/create-stack.png"></p>
-<p><img alt="Button" src="../../../../images/5-Workshop/5.4-S3-onprem/create-stack-button.png"></p>
+<p><img src="../../../../images/5-Workshop/5.4-S3-onprem/create-stack.png" alt="Create stack"></p>
+<p><img src="../../../../images/5-Workshop/5.4-S3-onprem/create-stack-button.png" alt="Button"></p>
 <p>Có thể mất vài phút để triển khai stack hoàn tất. Bạn có thể tiếp tục với bước tiếp theo mà không cần đợi quá trình triển khai kết thúc.</p>
 <h4 id="cập-nhật-bảng-định-tuyến-private-on-premise">Cập nhật bảng định tuyến private on-premise</h4>
 <p>Workshop này sử dụng StrongSwan VPN chạy trên EC2 instance để mô phỏng khả năng kết nối giữa trung tâm dữ liệu truyền thống và môi trường cloud AWS. Hầu hết các thành phần bắt buộc đều được cung cấp trước khi bạn bắt đầu. Để hoàn tất cấu hình VPN, bạn sẽ sửa đổi bảng định tuyến &ldquo;VPC on-prem&rdquo; để hướng lưu lượng đến cloud đi qua StrongSwan VPN instance.</p>
@@ -1551,7 +1551,7 @@
 <p>Chọn instance tên infra-vpngw-test. Từ Details tab, copy Instance ID và paste vào text editor của bạn để sử dụng ở những bước tiếp theo</p>
 </li>
 </ol>
-<p><img alt="ec2 id" src="../../../../images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png"></p>
+<p><img src="../../../../images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png" alt="ec2 id"></p>
 <ol start="3">
 <li>
 <p>Đi đến VPC menu bằng cách gõ &ldquo;VPC&rdquo; vào Search box</p>
@@ -1560,7 +1560,7 @@
 <p>Click vào Route Tables, chọn RT Private On-prem route table, chọn Routes tab, và click Edit Routes.</p>
 </li>
 </ol>
-<p><img alt="rt" src="../../../../images/5-Workshop/5.4-S3-onprem/rt.png"></p>
+<p><img src="../../../../images/5-Workshop/5.4-S3-onprem/rt.png" alt="rt"></p>
 <ol start="5">
 <li>Click Add route.</li>
 </ol>
@@ -1568,7 +1568,7 @@
 <li>Destination: CIDR block của Cloud VPC</li>
 <li>Target: ID của infra-vpngw-test instance (bạn đã lưu lại ở bước trên)</li>
 </ul>
-<p><img alt="add route" src="../../../../images/5-Workshop/5.4-S3-onprem/add-route.png"></p>
+<p><img src="../../../../images/5-Workshop/5.4-S3-onprem/add-route.png" alt="add route"></p>
 <ol start="6">
 <li>Click Save changes</li>
 </ol>
@@ -2723,19 +2723,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../../js/clipboard.min.js?1764734214"></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1764734214"></script>
-    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1764734214"></script>
-    <script src="../../../../js/jquery.sticky.js?1764734214"></script>
-    <script src="../../../../js/featherlight.min.js?1764734214"></script>
-    <script src="../../../../js/highlight.pack.js?1764734214"></script>
+    <script src="../../../../js/clipboard.min.js?1764861018"></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1764861018"></script>
+    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1764861018"></script>
+    <script src="../../../../js/jquery.sticky.js?1764861018"></script>
+    <script src="../../../../js/featherlight.min.js?1764861018"></script>
+    <script src="../../../../js/highlight.pack.js?1764861018"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../../js/modernizr.custom-3.6.0.js?1764734214"></script>
-    <script src="../../../../js/learn.js?1764734214"></script>
-    <script src="../../../../js/hugo-learn.js?1764734214"></script>
+    <script src="../../../../js/modernizr.custom-3.6.0.js?1764861018"></script>
+    <script src="../../../../js/learn.js?1764861018"></script>
+    <script src="../../../../js/hugo-learn.js?1764861018"></script>
 
-    <link href="../../../../mermaid/mermaid.css?1764734214" rel="stylesheet" />
-    <script src="../../../../mermaid/mermaid.js?1764734214"></script>
+    <link href="../../../../mermaid/mermaid.css?1764861018" rel="stylesheet" />
+    <script src="../../../../mermaid/mermaid.js?1764861018"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
