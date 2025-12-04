@@ -1,89 +1,268 @@
 ---
-title: "Ngày 40 - Nhận Dạng Ý Định Tìm Kiếm & Túi Từ"
+title: "Ngày 40 - Đánh Giá MT & Chiến Lược Decoding"
 weight: 5
 chapter: false
 pre: "<b> 1.8.5. </b>"
 ---
 
 **Ngày:** 2025-10-31 (Thứ Sáu)  
-**Trạng Thái:** "Xong"  
+**Trạng Thái:** "Hoàn Thành"  
 
 ---
 
-# **Công Cụ Nhận Dạng Ý Định Tìm Kiếm**
+# **Điểm BLEU – Đánh Giá Dựa Trên Precision**
 
-## Ví Dụ: Tìm Kiếm Bàn Cà Phê
+**BLEU (Bilingual Evaluation Understudy)** là thuật toán được thiết kế để đánh giá chất lượng dịch máy.
 
-Khi ai đó tìm kiếm **"glass coffee tables"** (bàn cà phê mặt kính), công cụ nhận dạng ý định thực hiện các bước sau:
+## Cách BLEU Hoạt Động
 
-### Bước 1: Phân Tích Truy Vấn
-Hệ thống xác định các thuật ngữ chính:
-- **"glass"** → Thuộc tính chất liệu
-- **"coffee tables"** → Danh mục sản phẩm
-- **"tables"** → Loại đối tượng
+**Khái Niệm Cốt Lõi:** So sánh bản dịch ứng viên với một hoặc nhiều bản dịch tham chiếu (thường là bản dịch của con người)
 
-### Bước 2: Ánh Xạ Ngữ Nghĩa
-Thuật ngữ **"glass"** được ánh xạ tới thuộc tính **'Top Material'** (Chất Liệu Bề Mặt) trong danh mục bàn cà phê thông qua sự hiểu biết ngữ nghĩa và các mô hình tìm kiếm lịch sử.
-
-### Bước 3: Lọc & Xếp Hạng Kết Quả
-Công cụ tìm kiếm chỉ dẫn truy vấn đến danh mục bàn cà phê với:
-- **Top Material:** glass (được lọc)
-- Kết quả xếp hạng theo tính liên quan, đánh giá và phổ biến
-
-### Bước 4: Trả Về Kết Quả
-Người dùng thấy các bàn cà phê cụ thể với mặt kính, cải thiện độ chính xác tìm kiếm và sự hài lòng của người dùng.
+**Phạm Vi Điểm:** 0 đến 1
+- Gần 1 = bản dịch tốt hơn
+- Gần 0 = bản dịch tệ hơn
 
 ---
 
-# **Nền Tảng Mô Hình Túi Từ (BoW)**
+## Tính Toán Điểm BLEU
 
-## Túi Từ là gì?
+### BLEU Vanilla (Có Vấn Đề)
 
-Mô hình **Túi Từ** là một kỹ thuật nền tảng trong NLP mà:
-- Chuyển đổi văn bản thành **biểu diễn vectơ**
-- Đếm **tần suất** của mỗi từ
-- **Bỏ qua thứ tự từ** và ngữ pháp
-- Tập trung vào **sự hiện diện và tần suất của từ**
+**Ví Dụ:**
+- Ứng viên: "I I am I"
+- Tham chiếu 1: "Eunice said I'm hungry"
+- Tham chiếu 2: "He said I'm hungry"
 
-## Quá Trình BoW:
+**Quy Trình:**
+1. Đếm có bao nhiêu từ của ứng viên xuất hiện trong bất kỳ tham chiếu nào
+2. Chia cho tổng số từ của ứng viên
 
-### 1. Tokenization
-Chia văn bản thành các từ riêng lẻ:
-- "I love machine learning" → ["I", "love", "machine", "learning"]
+Kết quả: 4/4 = **1.0** (điểm hoàn hảo!)
 
-### 2. Xây Dựng Từ Vựng
-Tạo danh sách duy nhất của tất cả các từ trên các tài liệu
+**Vấn Đề:** Bản dịch này tệ nhưng lại được điểm hoàn hảo! Một mô hình chỉ xuất ra các từ phổ biến sẽ đạt điểm tốt.
 
-### 3. Tạo Vectơ
-Biểu diễn mỗi tài liệu dưới dạng vectơ trong đó:
-- Mỗi vị trí = một từ duy nhất
-- Mỗi giá trị = tần suất hoặc sự hiện diện (0/1)
+---
 
-### 4. Ví Dụ Vectơ:
+### BLEU Được Sửa Đổi (Tốt Hơn)
+
+**Thay Đổi Chính:** Sau khi khớp một từ, **loại bỏ nó** khỏi tham chiếu
+
+**Ví Dụ Tương Tự:**
+1. "I" (đầu tiên) → khớp → loại bỏ "I" khỏi tham chiếu → đếm = 1
+2. "I" (thứ hai) → không còn khớp → đếm = 1
+3. "am" → khớp → loại bỏ "am" → đếm = 2
+4. "I" (thứ ba) → không còn khớp → đếm = 2
+
+Kết quả: 2/4 = **0.5** (thực tế hơn!)
+
+---
+
+## Hạn Chế của BLEU
+
+**❌ Không xem xét ý nghĩa ngữ nghĩa**
+- Chỉ kiểm tra khớp từ
+
+**❌ Không xem xét cấu trúc câu**
+- "Ate I was hungry because" vs "I ate because I was hungry"
+- Cả hai đều được điểm giống nhau!
+
+**✅ Vẫn là metric được áp dụng rộng rãi nhất** mặc dù có hạn chế
+
+---
+
+# **Điểm ROUGE – Đánh Giá Dựa Trên Recall**
+
+**ROUGE (Recall-Oriented Understudy for Gisting Evaluation)**
+
+## BLEU vs ROUGE
+
+| Metric | Tập Trung | Tính Toán |
+|--------|-----------|-----------|
+| BLEU | Precision | Bao nhiêu từ ứng viên có trong tham chiếu? |
+| ROUGE | Recall | Bao nhiêu từ tham chiếu có trong ứng viên? |
+
+---
+
+## Tính Toán Điểm ROUGE-N
+
+**Ví Dụ:**
+- Ứng viên: "I I am I"
+- Tham chiếu 1: "Younes said I am hungry" (5 từ)
+- Tham chiếu 2: "He said I'm hungry" (5 từ)
+
+**Quy Trình cho Tham chiếu 1:**
+1. "Younes" → không khớp → đếm = 0
+2. "said" → không khớp → đếm = 0
+3. "I" → khớp → đếm = 1
+4. "am" → khớp → đếm = 2
+5. "hungry" → không khớp → đếm = 2
+
+Điểm ROUGE cho Ref 1: 2/5 = **0.4**
+
+**Nếu có nhiều tham chiếu:** Tính cho mỗi cái, lấy giá trị lớn nhất
+
+---
+
+# **Điểm F1 – Kết Hợp BLEU và ROUGE**
+
+Vì BLEU = precision và ROUGE = recall, chúng ta có thể tính **điểm F1**:
+
+**Công Thức:**
 ```
-Tài Liệu: "machine learning is great"
-Từ Vựng: [machine, learning, is, great, I, love]
-Vectơ: [1, 1, 1, 1, 0, 0]
+F1 = 2 × (Precision × Recall) / (Precision + Recall)
+F1 = 2 × (BLEU × ROUGE) / (BLEU + ROUGE)
 ```
 
-## Ưu Điểm:
-- Đơn giản và dễ hiểu
-- Tính toán nhanh
-- Hoạt động tốt cho phân loại văn bản
-- Hiệu quả tốt làm điểm cơ sở cho nhiều tác vụ NLP
-
-## Hạn Chế:
-- Mất thông tin về thứ tự từ
-- Không nắm bắt ngữ nghĩa hoặc bối cảnh
-- Xử lý các từ hiếm và phổ biến như nhau
-- Gặp khó khăn với các từ đồng nghĩa
+**Ví Dụ:**
+- BLEU = 0.5
+- ROUGE = 0.4
+- F1 = 2 × (0.5 × 0.4) / (0.5 + 0.4) = 4/9 ≈ **0.44**
 
 ---
 
-# **Tóm Tắt**
+# **Beam Search Decoding**
 
-Tuần này bao gồm các nền tảng ngôn ngữ học của NLP và các ứng dụng thực tế. Những điểm chính:
-- NLP cho phép máy tính hiểu ngôn ngữ con người
-- Các thành phần ngôn ngữ cốt lõi (từ âm vị học đến thực dụng) tạo thành nền tảng
-- Các ứng dụng thực tế bao gồm tìm kiếm, dịch và hệ thống hội thoại
-- Túi Từ là điểm khởi đầu đơn giản nhưng hiệu quả cho xử lý văn bản
+**Vấn Đề:** Chọn từ có xác suất cao nhất ở mỗi bước không đảm bảo chuỗi tốt nhất tổng thể
+
+**Giải Pháp:** Beam search tìm các chuỗi có khả năng cao nhất trên một cửa sổ cố định
+
+## Cách Beam Search Hoạt Động
+
+**Độ Rộng Beam (B):** Số lượng chuỗi cần giữ ở mỗi bước
+
+### Quy Trình:
+
+#### Bước 1: Bắt đầu với SOS token
+Lấy xác suất cho từ đầu tiên:
+- I: 0.5
+- am: 0.4
+- hungry: 0.1
+
+Giữ top B=2: **"I"** và **"am"**
+
+#### Bước 2: Tính Xác Suất Có Điều Kiện
+Cho "I":
+- I am: 0.5 × 0.5 = 0.25
+- I I: 0.5 × 0.1 = 0.05
+
+Cho "am":
+- am I: 0.4 × 0.7 = 0.28
+- am hungry: 0.4 × 0.2 = 0.08
+
+Giữ top B=2: **"am I"** (0.28) và **"I am"** (0.25)
+
+#### Bước 3: Lặp Lại
+Tiếp tục cho đến khi tất cả B chuỗi đạt EOS token
+
+#### Bước 4: Chọn Tốt Nhất
+Chọn chuỗi có xác suất tổng thể cao nhất
+
+---
+
+## Đặc Điểm Beam Search
+
+**Ưu Điểm:**
+- Tốt hơn greedy decoding (B=1)
+- Tìm các chuỗi tốt hơn toàn cục
+- Được sử dụng rộng rãi trong production
+
+**Nhược Điểm:**
+- Tốn bộ nhớ (lưu trữ B chuỗi)
+- Tốn kém về mặt tính toán (chạy mô hình B lần mỗi bước)
+- Phạt các chuỗi dài (tích của nhiều xác suất)
+
+**Giải Pháp cho Chuỗi Dài:**
+Chuẩn hóa theo độ dài: chia xác suất cho số từ
+
+---
+
+# **Minimum Bayes Risk (MBR) Decoding**
+
+**Khái Niệm:** Tạo nhiều mẫu và tìm sự đồng thuận
+
+## Quy Trình MBR:
+
+### Bước 1: Tạo Nhiều Mẫu
+Tạo ~30 mẫu ngẫu nhiên từ mô hình
+
+### Bước 2: So Sánh Tất Cả Các Cặp
+Với mỗi mẫu, so sánh với tất cả các mẫu khác sử dụng metric tương tự (ví dụ: ROUGE)
+
+### Bước 3: Tính Độ Tương Tự Trung Bình
+Với mỗi ứng viên, tính độ tương tự trung bình với tất cả các ứng viên khác
+
+### Bước 4: Chọn Tốt Nhất
+Chọn mẫu có **độ tương tự trung bình cao nhất** (rủi ro thấp nhất)
+
+---
+
+## Công Thức MBR
+
+```
+E* = argmax_E [ trung bình ROUGE(E, E') cho tất cả E' ]
+```
+
+Trong đó:
+- E = bản dịch ứng viên
+- E' = tất cả các ứng viên khác
+- Mục tiêu: Tìm E tối đa hóa ROUGE trung bình với mọi E'
+
+---
+
+## Ví Dụ MBR (4 Ứng Viên)
+
+**Bước 1:** Tính điểm ROUGE theo cặp
+- ROUGE(C1, C2), ROUGE(C1, C3), ROUGE(C1, C4)
+- Trung bình = R1
+
+**Bước 2:** Lặp lại cho C2, C3, C4
+- Lấy R2, R3, R4
+
+**Bước 3:** Chọn cao nhất
+- Chọn ứng viên có max(R1, R2, R3, R4)
+
+---
+
+## Đặc Điểm MBR
+
+**Ưu Điểm:**
+- Chính xác hơn về mặt ngữ cảnh so với random sampling
+- Tìm bản dịch đồng thuận
+- Có thể vượt trội beam search
+
+**Nhược Điểm:**
+- Yêu cầu tạo nhiều mẫu (tốn kém)
+- Yêu cầu so sánh O(n²)
+
+**Khi Nào Sử Dụng:**
+- Khi cần bản dịch chất lượng cao
+- Khi chi phí tính toán chấp nhận được
+- Khi đầu ra beam search không nhất quán
+
+---
+
+# **Tóm Tắt: Các Chiến Lược Decoding**
+
+| Phương Pháp | Mô Tả | Ưu Điểm | Nhược Điểm |
+|-------------|-------|---------|------------|
+| **Greedy** | Chọn xác suất cao nhất mỗi bước | Nhanh, đơn giản | Chuỗi không tối ưu |
+| **Beam Search** | Giữ top-B chuỗi | Chất lượng tốt hơn | Chi phí bộ nhớ + tính toán |
+| **Random Sampling** | Lấy mẫu từ phân phối | Đầu ra đa dạng | Chất lượng không nhất quán |
+| **MBR** | Đồng thuận từ các mẫu | Chất lượng cao | Rất tốn kém |
+
+---
+
+# **Tóm Tắt Các Metric Đánh Giá**
+
+| Metric | Loại | Tập Trung | Tốt Nhất Cho |
+|--------|------|-----------|--------------|
+| **BLEU** | Precision | Ứng viên → Tham chiếu | MT chung |
+| **ROUGE** | Recall | Tham chiếu → Ứng viên | Tóm tắt |
+| **F1** | Trung bình điều hòa | Cả precision & recall | Cái nhìn cân bằng |
+
+**Lưu Ý Quan Trọng:** Tất cả các metric này:
+- ❌ Không xem xét ngữ nghĩa
+- ❌ Không xem xét cấu trúc câu
+- ✅ Chỉ đếm khớp n-gram
+
+**Thay Thế Hiện Đại:** Sử dụng các metric neural hoặc đánh giá của con người cho các ứng dụng quan trọng!

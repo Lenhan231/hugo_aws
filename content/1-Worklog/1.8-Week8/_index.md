@@ -1,32 +1,51 @@
 ---
-title: "Week 8 - Natural Language Processing Foundations"
+title: "Week 8 - Natural Language Processing & Deep Learning"
 weight: 8
 chapter: false
 pre: "<b> 1.8. </b>"
 ---
 
 **Week:** 2025-10-27 to 2025-10-31  
-**Status:** "In Progress"  
+**Status:** "Done"  
 
 ---
 
 ## Week 8 Overview
 
-This week focuses on Natural Language Processing (NLP) foundations, covering the linguistic and computational aspects essential for building NLP systems. We explore the Bag of Words approach and the core linguistic components that form the backbone of modern text processing.
+This week provides a comprehensive deep-dive into Natural Language Processing (NLP), covering linguistic foundations, modern NLP applications, sequence-to-sequence architectures, and evaluation methodologies. From understanding phonetics to implementing machine translation systems, this week bridges theory and practice in NLP.
 
 ### Key Topics
 
-- What is Natural Language Processing?
-- Core linguistic components (Phonetics, Phonology, Morphology, Syntax, Semantics, Pragmatics)
-- Text preprocessing and tokenization
-- Bag of Words (BoW) model fundamentals
-- NLP applications and real-world use cases
-- Intent recognition and semantic search
+#### Linguistic Foundations
+- Core components: Phonetics, Phonology, Morphology, Syntax, Semantics, Pragmatics
+- Understanding how language structure informs NLP design
+
+#### NLP Applications
+- Search engines and intent recognition
+- Online advertising with NER and relationship extraction
+- Voice assistants and speech recognition
+- Chatbots with NLU/NLG pipelines
+- Machine translation systems
+- Text summarization (extractive & abstractive)
+
+#### Deep Learning Architectures
+- Seq2seq models with encoder-decoder architecture
+- LSTM deep dive: forget gate, input gate, cell state, output gate
+- Attention mechanism and self-attention
+- Neural Machine Translation (NMT) implementation
+
+#### Evaluation & Decoding
+- BLEU score (precision-based)
+- ROUGE score (recall-based)
+- F1 score for MT evaluation
+- Beam search decoding
+- Minimum Bayes Risk (MBR) sampling
 
 ### Hands-on Labs
 
-- Text tokenization and normalization
-- Building a Bag of Words representation
-- Morphological analysis and stemming/lemmatization
-- Implementing basic text classification with BoW
-- Semantic similarity measurements
+- Building voicebot and chatbot workflows
+- Implementing LSTM for sequence modeling
+- Creating encoder-decoder with attention
+- Neural machine translation end-to-end
+- Evaluating translation quality with BLEU/ROUGE
+- Implementing beam search and MBR
