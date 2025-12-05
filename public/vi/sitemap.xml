@@ -110,6 +110,18 @@
                 href="http://localhost:1313/hugo_aws/vi/1-worklog/1.7-week7/1.7.1-day31-2025-10-20/"
                 />
   </url><url>
+    <loc>http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/1.8.1-day36-2025-10-27/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/hugo_aws/1-worklog/1.8-week8/1.8.1-day36-2025-10-27/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/1.8.1-day36-2025-10-27/"
+                />
+  </url><url>
     <loc>http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.1-event1/</loc>
     <xhtml:link
                 rel="alternate"
@@ -276,6 +288,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/hugo_aws/vi/1-worklog/1.7-week7/1.7.2-day32-2025-10-21/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/1.8.2-day37-2025-10-28/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/hugo_aws/1-worklog/1.8-week8/1.8.2-day37-2025-10-28/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/1.8.2-day37-2025-10-28/"
                 />
   </url><url>
     <loc>http://localhost:1313/hugo_aws/vi/2-proposal/</loc>
@@ -446,6 +470,18 @@
                 href="http://localhost:1313/hugo_aws/vi/1-worklog/1.7-week7/1.7.3-day33-2025-10-22/"
                 />
   </url><url>
+    <loc>http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/1.8.3-day38-2025-10-29/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/hugo_aws/1-worklog/1.8-week8/1.8.3-day38-2025-10-29/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/1.8.3-day38-2025-10-29/"
+                />
+  </url><url>
     <loc>http://localhost:1313/hugo_aws/vi/3-blogstranslated/</loc>
     <xhtml:link
                 rel="alternate"
@@ -590,6 +626,18 @@
                 href="http://localhost:1313/hugo_aws/vi/1-worklog/1.7-week7/1.7.4-day34-2025-10-23/"
                 />
   </url><url>
+    <loc>http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/1.8.4-day39-2025-10-30/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/hugo_aws/1-worklog/1.8-week8/1.8.4-day39-2025-10-30/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/1.8.4-day39-2025-10-30/"
+                />
+  </url><url>
     <loc>http://localhost:1313/hugo_aws/vi/5-workshop/5.4-s3-onprem/</loc>
     <xhtml:link
                 rel="alternate"
@@ -698,6 +746,18 @@
                 href="http://localhost:1313/hugo_aws/vi/1-worklog/1.7-week7/1.7.5-day35-2025-10-24/"
                 />
   </url><url>
+    <loc>http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/1.8.5-day40-2025-10-31/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/hugo_aws/1-worklog/1.8-week8/1.8.5-day40-2025-10-31/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/1.8.5-day40-2025-10-31/"
+                />
+  </url><url>
     <loc>http://localhost:1313/hugo_aws/vi/1-worklog/1.5-week5/</loc>
     <xhtml:link
                 rel="alternate"
@@ -804,6 +864,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/hugo_aws/vi/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/hugo_aws/1-worklog/1.8-week8/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/hugo_aws/vi/1-worklog/1.8-week8/"
                 />
   </url><url>
     <loc>http://localhost:1313/hugo_aws/vi/categories/</loc>
