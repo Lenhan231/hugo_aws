@@ -1,0 +1,3826 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/hugo_aws/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo_aws/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta
+  name="description"
+  content=""
+/>
+<meta name="author" content="thienlh@thienlu.com" />
+
+    <link rel="icon" href="../../../images/favicon.png" type="image/png">
+
+    <title>Day 50 - Fine-tuning &amp; Real-World Applications :: Internship Report</title>
+
+    
+    <link href="../../../css/nucleus.css?1764943967" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1764943967" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1764943967" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1764943967" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1764943967" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1764943967" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1764943967" rel="stylesheet">
+    <link href="../../../css/theme.css?1764943967" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1764943967" rel="stylesheet">
+    
+    <link href="../../../css/theme-workshop.css?1764943967" rel="stylesheet">
+    
+    <link href="../../../css/custom.css?1764943967" rel="stylesheet">
+
+    <script src="../../../js/jquery-3.3.1.min.js?1764943967"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+    </style>
+    
+    
+
+  </head>
+  <body class="" data-url="../../../1-worklog/1.10-week10/1.10.5-day50-2025-11-14/">
+    <nav
+  id="sidebar"
+  class="showVisitedLinks"
+>
+    
+  <div id="header-wrapper">
+    <div id="header"><a id="logo" href="../../../">
+  <svg
+    id="Layer_1"
+    data-name="Layer 1"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 60 30"
+    width="30%"
+  >
+    <defs>
+      <style>
+        .cls-1 {
+          fill: #fff;
+        }
+        .cls-2 {
+          fill: #f90;
+          fill-rule: evenodd;
+        }
+      </style>
+    </defs>
+    <title>AWS-Logo_White-Color</title>
+    <path
+      class="cls-1"
+      d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"
+    ></path>
+  </svg>
+</a>
+</div>
+    
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+               
+<li
+  data-nav-id="/1-worklog/"
+  title="Worklog - AWS Learning Journey"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="../../../1-worklog/">
+    <b> 1. </b>Worklog - AWS Learning Journey 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.1-week1/"
+  title="Week 1 - Cloud Computing Fundamentals"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.1-week1/">
+    <b> 1.1. </b>Week 1 - Cloud Computing Fundamentals 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.1-week1/1.1.1-day01-2025-09-08/"
+  title="Day 01 - Introduction to Cloud Computing"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.1-week1/1.1.1-day01-2025-09-08/">
+    <b> 1.1.1. </b>Day 01 - Introduction to Cloud Computing 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.1-week1/1.1.2-day02-2025-09-09/"
+  title="Day 02 - AWS Global Infrastructure"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.1-week1/1.1.2-day02-2025-09-09/">
+    <b> 1.1.2. </b>Day 02 - AWS Global Infrastructure 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.1-week1/1.1.3-day03-2025-09-10/"
+  title="Day 03 - AWS Management Tools"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.1-week1/1.1.3-day03-2025-09-10/">
+    <b> 1.1.3. </b>Day 03 - AWS Management Tools 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.1-week1/1.1.4-day04-2025-09-11/"
+  title="Day 04 - Cost Optimization on AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.1-week1/1.1.4-day04-2025-09-11/">
+    <b> 1.1.4. </b>Day 04 - Cost Optimization on AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.1-week1/1.1.5-day05-2025-09-12/"
+  title="Day 05 - AWS Well-Architected Framework"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.1-week1/1.1.5-day05-2025-09-12/">
+    <b> 1.1.5. </b>Day 05 - AWS Well-Architected Framework 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.2-week2/"
+  title="Week 2 - AWS Networking Services"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.2-week2/">
+    <b> 1.2. </b>Week 2 - AWS Networking Services 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.2-week2/1.2.1-day06-2025-09-15/"
+  title="Day 06 - Amazon VPC Fundamentals"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.2-week2/1.2.1-day06-2025-09-15/">
+    <b> 1.2.1. </b>Day 06 - Amazon VPC Fundamentals 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.2-week2/1.2.2-day07-2025-09-16/"
+  title="Day 07 - VPC Routing &amp; Network Interfaces"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.2-week2/1.2.2-day07-2025-09-16/">
+    <b> 1.2.2. </b>Day 07 - VPC Routing &amp; Network Interfaces 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.2-week2/1.2.3-day08-2025-09-17/"
+  title="Day 08 - VPC Security &amp; Flow Logs"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.2-week2/1.2.3-day08-2025-09-17/">
+    <b> 1.2.3. </b>Day 08 - VPC Security &amp; Flow Logs 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.2-week2/1.2.4-day09-2025-09-18/"
+  title="Day 09 - VPC Connectivity &amp; Load Balancing"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.2-week2/1.2.4-day09-2025-09-18/">
+    <b> 1.2.4. </b>Day 09 - VPC Connectivity &amp; Load Balancing 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.2-week2/1.2.5-day10-2025-09-19/"
+  title="Day 10 - Elastic Load Balancing"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.2-week2/1.2.5-day10-2025-09-19/">
+    <b> 1.2.5. </b>Day 10 - Elastic Load Balancing 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.3-week3/"
+  title="Week 3 - AWS Compute Services"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.3-week3/">
+    <b> 1.3. </b>Week 3 - AWS Compute Services 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.3-week3/1.3.1-day11-2025-09-22/"
+  title="Day 11 - Amazon EC2 Fundamentals"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.3-week3/1.3.1-day11-2025-09-22/">
+    <b> 1.3.1. </b>Day 11 - Amazon EC2 Fundamentals 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.3-week3/1.3.2-day12-2025-09-23/"
+  title="Day 12 - EC2 Storage &amp; Backup"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.3-week3/1.3.2-day12-2025-09-23/">
+    <b> 1.3.2. </b>Day 12 - EC2 Storage &amp; Backup 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.3-week3/1.3.3-day13-2025-09-24/"
+  title="Day 13 - Instance Store &amp; User Data"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.3-week3/1.3.3-day13-2025-09-24/">
+    <b> 1.3.3. </b>Day 13 - Instance Store &amp; User Data 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.3-week3/1.3.4-day14-2025-09-25/"
+  title="Day 14 - EC2 Auto Scaling"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.3-week3/1.3.4-day14-2025-09-25/">
+    <b> 1.3.4. </b>Day 14 - EC2 Auto Scaling 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.3-week3/1.3.5-day15-2025-09-26/"
+  title="Day 15 - Lightsail, EFS &amp; FSx"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.3-week3/1.3.5-day15-2025-09-26/">
+    <b> 1.3.5. </b>Day 15 - Lightsail, EFS &amp; FSx 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.4-week4/"
+  title="Week 4 - AWS Storage Services"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.4-week4/">
+    <b> 1.4. </b>Week 4 - AWS Storage Services 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.4-week4/1.4.1-day16-2025-09-29/"
+  title="Day 16 - Amazon S3 Fundamentals"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.4-week4/1.4.1-day16-2025-09-29/">
+    <b> 1.4.1. </b>Day 16 - Amazon S3 Fundamentals 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.4-week4/1.4.2-day17-2025-09-30/"
+  title="Day 17 - S3 Advanced Features"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.4-week4/1.4.2-day17-2025-09-30/">
+    <b> 1.4.2. </b>Day 17 - S3 Advanced Features 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.4-week4/1.4.3-day18-2025-10-01/"
+  title="Day 18 - AWS Snow Family &amp; Hybrid Storage"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.4-week4/1.4.3-day18-2025-10-01/">
+    <b> 1.4.3. </b>Day 18 - AWS Snow Family &amp; Hybrid Storage 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.4-week4/1.4.4-day19-2025-10-02/"
+  title="Day 19 - Disaster Recovery on AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.4-week4/1.4.4-day19-2025-10-02/">
+    <b> 1.4.4. </b>Day 19 - Disaster Recovery on AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/"
+  title="Day 20 - AWS Backup &amp; FSx"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.4-week4/1.4.5-day20-2025-10-03/">
+    <b> 1.4.5. </b>Day 20 - AWS Backup &amp; FSx 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.5-week5/"
+  title="Week 5 - AWS Security &amp; Identity"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.5-week5/">
+    <b> 1.5. </b>Week 5 - AWS Security &amp; Identity 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.5-week5/1.5.1-day21-2025-10-06/"
+  title="Day 21 - Shared Responsibility &amp; IAM Basics"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.5-week5/1.5.1-day21-2025-10-06/">
+    <b> 1.5.1. </b>Day 21 - Shared Responsibility &amp; IAM Basics 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.5-week5/1.5.2-day22-2025-10-07/"
+  title="Day 22 - IAM Policies &amp; Roles"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.5-week5/1.5.2-day22-2025-10-07/">
+    <b> 1.5.2. </b>Day 22 - IAM Policies &amp; Roles 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.5-week5/1.5.3-day23-2025-10-08/"
+  title="Day 23 - Amazon Cognito &amp; Organizations"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.5-week5/1.5.3-day23-2025-10-08/">
+    <b> 1.5.3. </b>Day 23 - Amazon Cognito &amp; Organizations 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.5-week5/1.5.4-day24-2025-10-09/"
+  title="Day 24 - SCPs, Identity Center &amp; KMS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.5-week5/1.5.4-day24-2025-10-09/">
+    <b> 1.5.4. </b>Day 24 - SCPs, Identity Center &amp; KMS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.5-week5/1.5.5-day25-2025-10-10/"
+  title="Day 25 - AWS Security Hub &amp; Automation"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.5-week5/1.5.5-day25-2025-10-10/">
+    <b> 1.5.5. </b>Day 25 - AWS Security Hub &amp; Automation 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.6-week6/"
+  title="Week 6 - AWS Database Services"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.6-week6/">
+    <b> 1.6. </b>Week 6 - AWS Database Services 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.6-week6/1.6.1-day26-2025-10-13/"
+  title="Day 26 - Database Fundamentals"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.6-week6/1.6.1-day26-2025-10-13/">
+    <b> 1.6.1. </b>Day 26 - Database Fundamentals 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.6-week6/1.6.2-day27-2025-10-14/"
+  title="Day 27 - Amazon RDS &amp; Aurora"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.6-week6/1.6.2-day27-2025-10-14/">
+    <b> 1.6.2. </b>Day 27 - Amazon RDS &amp; Aurora 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.6-week6/1.6.3-day28-2025-10-15/"
+  title="Day 28 - Amazon Redshift"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.6-week6/1.6.3-day28-2025-10-15/">
+    <b> 1.6.3. </b>Day 28 - Amazon Redshift 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.6-week6/1.6.4-day29-2025-10-16/"
+  title="Day 29 - Amazon ElastiCache"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.6-week6/1.6.4-day29-2025-10-16/">
+    <b> 1.6.4. </b>Day 29 - Amazon ElastiCache 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.6-week6/1.6.5-day30-2025-10-17/"
+  title="Day 30 - Database Migration &amp; Best Practices"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.6-week6/1.6.5-day30-2025-10-17/">
+    <b> 1.6.5. </b>Day 30 - Database Migration &amp; Best Practices 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.7-week7/"
+  title="Week 7 - Vertical Slice Delivery"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.7-week7/">
+    <b> 1.7. </b>Week 7 - Vertical Slice Delivery 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.7-week7/1.7.1-day31-2025-10-20/"
+  title="Day 31 - Vertical Slice Kickoff"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.7-week7/1.7.1-day31-2025-10-20/">
+    <b> 1.7.1. </b>Day 31 - Vertical Slice Kickoff 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.7-week7/1.7.2-day32-2025-10-21/"
+  title="Day 32 - Contract-First &amp; Mocking"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.7-week7/1.7.2-day32-2025-10-21/">
+    <b> 1.7.2. </b>Day 32 - Contract-First &amp; Mocking 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.7-week7/1.7.3-day33-2025-10-22/"
+  title="Day 33 - Next.js App Router"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.7-week7/1.7.3-day33-2025-10-22/">
+    <b> 1.7.3. </b>Day 33 - Next.js App Router 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.7-week7/1.7.4-day34-2025-10-23/"
+  title="Day 34 - FastAPI Clean Architecture"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.7-week7/1.7.4-day34-2025-10-23/">
+    <b> 1.7.4. </b>Day 34 - FastAPI Clean Architecture 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.7-week7/1.7.5-day35-2025-10-24/"
+  title="Day 35 - Contract Testing &amp; Retrospective"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.7-week7/1.7.5-day35-2025-10-24/">
+    <b> 1.7.5. </b>Day 35 - Contract Testing &amp; Retrospective 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.8-week8/"
+  title="Week 8 - Natural Language Processing &amp; Deep Learning"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.8-week8/">
+    <b> 1.8. </b>Week 8 - Natural Language Processing &amp; Deep Learning 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.8-week8/1.8.1-day36-2025-10-27/"
+  title="Day 36 - NLP Foundations &amp; Applications"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.8-week8/1.8.1-day36-2025-10-27/">
+    <b> 1.8.1. </b>Day 36 - NLP Foundations &amp; Applications 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.8-week8/1.8.2-day37-2025-10-28/"
+  title="Day 37 - Voice Search &amp; Chatbot Architecture"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.8-week8/1.8.2-day37-2025-10-28/">
+    <b> 1.8.2. </b>Day 37 - Voice Search &amp; Chatbot Architecture 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.8-week8/1.8.3-day38-2025-10-29/"
+  title="Day 38 - Seq2seq Models &amp; LSTM Deep Dive"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.8-week8/1.8.3-day38-2025-10-29/">
+    <b> 1.8.3. </b>Day 38 - Seq2seq Models &amp; LSTM Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.8-week8/1.8.4-day39-2025-10-30/"
+  title="Day 39 - NMT &amp; Text Summarization"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.8-week8/1.8.4-day39-2025-10-30/">
+    <b> 1.8.4. </b>Day 39 - NMT &amp; Text Summarization 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.8-week8/1.8.5-day40-2025-10-31/"
+  title="Day 40 - MT Evaluation &amp; Decoding Strategies"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.8-week8/1.8.5-day40-2025-10-31/">
+    <b> 1.8.5. </b>Day 40 - MT Evaluation &amp; Decoding Strategies 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.9-week9/"
+  title="Week 9 - Transformer Architecture &amp; Implementation"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.9-week9/">
+    <b> 1.9. </b>Week 9 - Transformer Architecture &amp; Implementation 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.9-week9/1.9.1-day41-2025-11-03/"
+  title="Day 41 - RNN Problems &amp; Why Transformers Are Needed"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.9-week9/1.9.1-day41-2025-11-03/">
+    <b> 1.9.1. </b>Day 41 - RNN Problems &amp; Why Transformers Are Needed 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.9-week9/1.9.2-day42-2025-11-04/"
+  title="Day 42 - Transformer Architecture Overview"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.9-week9/1.9.2-day42-2025-11-04/">
+    <b> 1.9.2. </b>Day 42 - Transformer Architecture Overview 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.9-week9/1.9.3-day43-2025-11-05/"
+  title="Day 43 - Scaled Dot-Product Attention Deep Dive"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.9-week9/1.9.3-day43-2025-11-05/">
+    <b> 1.9.3. </b>Day 43 - Scaled Dot-Product Attention Deep Dive 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.9-week9/1.9.4-day44-2025-11-06/"
+  title="Day 44 - Attention Types: Self, Masked, and Encoder-Decoder"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.9-week9/1.9.4-day44-2025-11-06/">
+    <b> 1.9.4. </b>Day 44 - Attention Types: Self, Masked, and Encoder-Decoder 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.9-week9/1.9.5-day45-2025-11-07/"
+  title="Day 45 - Transformer Decoder &amp; GPT2 Implementation"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.9-week9/1.9.5-day45-2025-11-07/">
+    <b> 1.9.5. </b>Day 45 - Transformer Decoder &amp; GPT2 Implementation 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.10-week10/"
+  title="Week 10 - Transfer Learning, BERT &amp; T5"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.10-week10/">
+    <b> 1.10. </b>Week 10 - Transfer Learning, BERT &amp; T5 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/1-worklog/1.10-week10/1.10.1-day46-2025-11-10/"
+  title="Day 46 - Transfer Learning Fundamentals"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.10-week10/1.10.1-day46-2025-11-10/">
+    <b> 1.10.1. </b>Day 46 - Transfer Learning Fundamentals 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.10-week10/1.10.2-day47-2025-11-11/"
+  title="Day 47 - BERT Architecture"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.10-week10/1.10.2-day47-2025-11-11/">
+    <b> 1.10.2. </b>Day 47 - BERT Architecture 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.10-week10/1.10.3-day48-2025-11-12/"
+  title="Day 48 - BERT Pre-training Objectives"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.10-week10/1.10.3-day48-2025-11-12/">
+    <b> 1.10.3. </b>Day 48 - BERT Pre-training Objectives 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.10-week10/1.10.4-day49-2025-11-13/"
+  title="Day 49 - T5: Text-to-Text Transfer Transformer"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../1-worklog/1.10-week10/1.10.4-day49-2025-11-13/">
+    <b> 1.10.4. </b>Day 49 - T5: Text-to-Text Transfer Transformer 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/1-worklog/1.10-week10/1.10.5-day50-2025-11-14/"
+  title="Day 50 - Fine-tuning &amp; Real-World Applications"
+  class="dd-item 
+        
+        active
+        
+        "
+>
+  <a href="../../../1-worklog/1.10-week10/1.10.5-day50-2025-11-14/">
+    <b> 1.10.5. </b>Day 50 - Fine-tuning &amp; Real-World Applications 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/2-proposal/"
+  title="Proposal"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../2-proposal/">
+     <b> 2. </b> Proposal 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/3-blogstranslated/"
+  title="Translated Blogs"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../3-blogstranslated/">
+     <b> 3. </b> Translated Blogs 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/3-blogstranslated/3.1-blog1/"
+  title="Accelerate Your Data and AI Flow by Connecting Amazon SageMaker Unified Studio to Visual Studio Code"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../3-blogstranslated/3.1-blog1/">
+     <b> 3.1. </b> Accelerate Your Data and AI Flow by Connecting Amazon SageMaker Unified Studio to Visual Studio Code 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/3-blogstranslated/3.2-blog2/"
+  title="Announcing Amazon EC2 M4 and M4 Pro Mac Instances"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../3-blogstranslated/3.2-blog2/">
+     <b> 3.2. </b> Announcing Amazon EC2 M4 and M4 Pro Mac Instances 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/3-blogstranslated/3.3-blog3/"
+  title="Tuning Guide for AMD-based Amazon EC2 Instances"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../3-blogstranslated/3.3-blog3/">
+     <b> 3.3. </b> Tuning Guide for AMD-based Amazon EC2 Instances 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/4-eventparticipated/"
+  title="Events Participated"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../4-eventparticipated/">
+     <b> 4. </b> Events Participated 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/4-eventparticipated/4.1-event1/"
+  title="Event 1 - Vietnam Cloud Day 2025"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../4-eventparticipated/4.1-event1/">
+    Event 1 - Vietnam Cloud Day 2025 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/4-eventparticipated/4.2-event2/"
+  title="Event 2 - AWS GenAI Builder Club: AI-Driven Development Life Cycle"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../4-eventparticipated/4.2-event2/">
+    Event 2 - AWS GenAI Builder Club: AI-Driven Development Life Cycle 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/5-workshop/"
+  title="Workshop"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/">
+     <b> 5. </b> Workshop 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/5-workshop/5.1-workshop-overview/"
+  title="Introduction"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.1-workshop-overview/">
+     <b> 5.1. </b> Introduction 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/5-workshop/5.2-prerequiste/"
+  title="Prerequiste"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.2-prerequiste/">
+     <b> 5.2. </b> Prerequiste 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/5-workshop/5.3-s3-vpc/"
+  title="Access S3 from VPC"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.3-s3-vpc/">
+     <b> 5.3. </b> Access S3 from VPC 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/"
+  title="Create a gateway endpoint"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.3-s3-vpc/5.3.1-create-gwe/">
+     <b> 5.3.1 </b> Create a gateway endpoint 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/"
+  title="Test the Gateway Endpoint"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.3-s3-vpc/5.3.2-test-gwe/">
+     <b> 5.3.2 </b> Test the Gateway Endpoint 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/5-workshop/5.4-s3-onprem/"
+  title="Access S3 from on-premises"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.4-s3-onprem/">
+     <b> 5.4. </b> Access S3 from on-premises 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/5-workshop/5.4-s3-onprem/5.4.1-prepare/"
+  title="Prepare the environment"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.4-s3-onprem/5.4.1-prepare/">
+     <b> 5.4.1 </b> Prepare the environment 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/"
+  title="Create an S3 Interface endpoint"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/">
+     <b> 5.4.2 </b> Create an S3 Interface endpoint 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/"
+  title="Test the Interface Endpoint"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/">
+     <b> 5.4.3 </b> Test the Interface Endpoint 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/"
+  title="On-premises DNS Simulation"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/">
+     <b> 5.4.4 </b> On-premises DNS Simulation 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/5-workshop/5.5-policy/"
+  title="VPC Endpoint Policies"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.5-policy/">
+     <b> 5.5. </b> VPC Endpoint Policies 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/5-workshop/5.6-cleanup/"
+  title="Clean up"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../5-workshop/5.6-cleanup/">
+     <b> 5.6. </b> Clean up 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/6-self-evaluation/"
+  title="Self-Assessment"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../6-self-evaluation/">
+     <b> 6. </b> Self-Assessment 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/7-feedback/"
+  title="Sharing and Feedback"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../7-feedback/">
+     <b> 7. </b> Sharing and Feedback 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+    </ul>
+
+     
+    <section id="shortcuts">
+      <h3>
+        More
+      </h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"
+            ><i class='fab fa-facebook'></i> AWS Study Group</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+   
+    <section id="prefooter">
+      <hr />
+      <ul>
+  
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = this.value;">
+                       
+                <option
+                  id="en"
+                  value="http://localhost:1313/hugo_aws/1-worklog/1.10-week10/1.10.5-day50-2025-11-14/"
+                  selected
+                >
+                  English
+                </option>
+                            
+                <option
+                  id="vi"
+                  value="http://localhost:1313/hugo_aws/vi/1-worklog/1.10-week10/1.10.5-day50-2025-11-14/"
+                >
+                  Tiếng Việt
+                </option>
+                   
+              </select>
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="255px"
+                height="255px"
+                viewBox="0 0 255 255"
+                style="enable-background: new 0 0 255 255"
+                xml:space="preserve"
+              >
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+         
+        <li>
+          <a class="padding" href="#" data-clear-history-toggle=""
+            ><i class="fas fa-history fa-fw"></i> Clear History</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer"><left>
+    
+    <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0"
+        title="Migrate" Alt="web counter" border="0" /></a> <br>
+    <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0"
+        title="Total CLoud Journey" Alt="web counter" border="0" />
+
+</left>
+<left>
+    <br>
+    <br>
+    <b>Last Updated</b><br>
+    <i>
+        <span id="lastUpdated" style="color:orange;"></span>
+    </i>
+
+    <script>
+        
+        const today = new Date();
+        
+        const formattedDate = today.toLocaleDateString('en-GB');
+        
+        document.getElementById('lastUpdated').textContent = formattedDate;
+    </script>
+</left>
+<left>
+    <br>
+    <br>
+    <b> Team </b> <br>
+
+    <i> <a href="https://www.facebook.com/groups/660548818043427" style="color:orange">First Cloud Journey </a> <br>
+
+    </i>
+</left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script></section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../../'>Internship Report</a> > <a href='../../../1-worklog/'>Worklog - AWS Learning Journey</a> > <a href='../../../1-worklog/1.10-week10/'>Week 10 - Transfer Learning, BERT & T5</a> > Day 50 - Fine-tuning & Real-World Applications
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+  <div class="wrapper"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-big-picture">The Big Picture</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#strategy-1-full-fine-tuning">Strategy 1: Full Fine-tuning</a></li>
+    <li><a href="#strategy-2-layer-freezing">Strategy 2: Layer Freezing</a></li>
+    <li><a href="#strategy-3-progressive-unfreezing">Strategy 3: Progressive Unfreezing</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#learning-rate">Learning Rate</a></li>
+    <li><a href="#batch-size">Batch Size</a></li>
+    <li><a href="#number-of-epochs">Number of Epochs</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#1-sentiment-analysis">1. Sentiment Analysis</a></li>
+    <li><a href="#2-named-entity-recognition-ner">2. Named Entity Recognition (NER)</a></li>
+    <li><a href="#3-question-answering">3. Question Answering</a></li>
+    <li><a href="#4-text-summarization">4. Text Summarization</a></li>
+    <li><a href="#5-semantic-textual-similarity">5. Semantic Textual Similarity</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#-pitfall-1-learning-rate-too-high">❌ Pitfall 1: Learning Rate Too High</a></li>
+    <li><a href="#-pitfall-2-too-few-epochs">❌ Pitfall 2: Too Few Epochs</a></li>
+    <li><a href="#-pitfall-3-overfitting-on-small-data">❌ Pitfall 3: Overfitting on Small Data</a></li>
+    <li><a href="#-pitfall-4-not-doing-hyperparameter-tuning">❌ Pitfall 4: Not Doing Hyperparameter Tuning</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#model-size-vs-speed">Model Size vs Speed</a></li>
+    <li><a href="#optimization-techniques">Optimization Techniques</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#complete-pipeline">Complete Pipeline</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#comparison">Comparison</a></li>
+  </ul>
+</nav></div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Day 50 - Fine-tuning &amp; Real-World Applications
+            </h1>
+          
+
+        
+
+
+
+	<p><strong>Date:</strong> 2025-11-14 (Friday)<br>
+<strong>Status:</strong> &ldquo;Done&rdquo;</p>
+<hr>
+<h1 id="week-10-complete-from-theory-to-production"><strong>Week 10 Complete: From Theory to Production</strong></h1>
+<p>You now understand transfer learning, BERT, and T5. This final day covers <strong>how to actually deploy these models.</strong></p>
+<hr>
+<h1 id="fine-tuning-the-art-and-science"><strong>Fine-tuning: The Art and Science</strong></h1>
+<h2 id="the-big-picture">The Big Picture</h2>
+<pre tabindex="0"><code>Pre-trained Model (e.g., BERT-base)
+├─ Already knows English
+├─ Already understands grammar
+├─ Already has some world knowledge
+└─ Can be adapted to specific tasks!
+
+Add Classification Head
+├─ Simple: Take [CLS] token representation
+├─ Add: Dense layer (768 → hidden_size)
+├─ Add: Classification layer (hidden_size → num_classes)
+└─ Result: Task-specific model
+
+Fine-tune on your data
+├─ Movie reviews: 5,000 examples
+├─ Training time: 2-3 hours on single GPU
+├─ Results: 94-96% accuracy
+└─ Deploy!
+</code></pre><hr>
+<h1 id="fine-tuning-strategies"><strong>Fine-tuning Strategies</strong></h1>
+<h2 id="strategy-1-full-fine-tuning">Strategy 1: Full Fine-tuning</h2>
+<p><strong>Update all parameters</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Pseudocode</span>
+</span></span><span style="display:flex;"><span>pretrained_model <span style="color:#f92672">=</span> load_bert_base()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># No frozen layers!</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> batch <span style="color:#f92672">in</span> training_data:
+</span></span><span style="display:flex;"><span>        logits <span style="color:#f92672">=</span> pretrained_model(batch)
+</span></span><span style="display:flex;"><span>        loss <span style="color:#f92672">=</span> classification_loss(logits, batch<span style="color:#f92672">.</span>labels)
+</span></span><span style="display:flex;"><span>        loss<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>        optimizer<span style="color:#f92672">.</span>step()
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Results: Best performance</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Time: 3+ hours on GPU</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Memory: Requires gradients for all 110M params</span>
+</span></span></code></pre></div><p><strong>When to use:</strong></p>
+<ul>
+<li>Large dataset (10,000+ examples)</li>
+<li>Sufficient compute (GPU/TPU)</li>
+<li>Task very different from pre-training</li>
+</ul>
+<hr>
+<h2 id="strategy-2-layer-freezing">Strategy 2: Layer Freezing</h2>
+<p><strong>Freeze early layers, fine-tune later layers</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Freeze first 10 layers</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> param <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>bert<span style="color:#f92672">.</span>encoder<span style="color:#f92672">.</span>layer[:<span style="color:#ae81ff">10</span>]<span style="color:#f92672">.</span>parameters():
+</span></span><span style="display:flex;"><span>    param<span style="color:#f92672">.</span>requires_grad <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fine-tune layers 11-12 and classification head</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> param <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>bert<span style="color:#f92672">.</span>encoder<span style="color:#f92672">.</span>layer[<span style="color:#ae81ff">10</span>:]<span style="color:#f92672">.</span>parameters():
+</span></span><span style="display:flex;"><span>    param<span style="color:#f92672">.</span>requires_grad <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Results: Fast, good performance</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Time: 1-2 hours on GPU</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Memory: Only gradients for 2 layers + head</span>
+</span></span></code></pre></div><p><strong>When to use:</strong></p>
+<ul>
+<li>Medium dataset (1,000-10,000 examples)</li>
+<li>Limited compute</li>
+<li>Task somewhat different from pre-training</li>
+</ul>
+<hr>
+<h2 id="strategy-3-progressive-unfreezing">Strategy 3: Progressive Unfreezing</h2>
+<p><strong>Gradually unfreeze layers from top to bottom</strong></p>
+<pre tabindex="0"><code>Epoch 1: Only fine-tune classification head
+├─ Freeze: All 12 layers
+├─ Train: Classification head
+└─ Learning rate: 1e-3
+
+Epoch 2: Unfreeze last 1 layer
+├─ Freeze: Layers 0-10
+├─ Train: Layer 11 + head
+└─ Learning rate: 1e-4
+
+Epoch 3: Unfreeze last 2 layers
+├─ Freeze: Layers 0-9
+├─ Train: Layers 10-11 + head
+└─ Learning rate: 1e-4
+
+...Continue until all unfrozen
+
+Results: Often best performance!
+Time: 5+ hours, but worth it for important tasks
+</code></pre><hr>
+<h1 id="hyperparameter-selection"><strong>Hyperparameter Selection</strong></h1>
+<h2 id="learning-rate">Learning Rate</h2>
+<pre tabindex="0"><code>General Guidelines:
+
+For full fine-tuning:
+├─ Start with: 5e-5 (very small!)
+├─ Try: 2e-5, 3e-5, 5e-5, 1e-4
+└─ Don&#39;t use: Learning rates &gt; 1e-4 (catastrophic forgetting)
+
+For layer freezing:
+├─ Frozen layers: No learning rate (not updated)
+├─ Fine-tuned layers: 1e-4 - 1e-3
+└─ Classification head: Can use slightly higher
+
+Why so small?
+├─ Pre-trained weights are already good
+├─ Don&#39;t want to destroy the knowledge
+├─ Small changes are safer
+</code></pre><h2 id="batch-size">Batch Size</h2>
+<pre tabindex="0"><code>Batch Size Impact:
+
+Small batches (8-16):
+├─ Pros: Works with limited memory
+├─ Cons: Noisier gradients, unstable
+├─ Use when: Small GPU (&lt; 8GB VRAM)
+
+Medium batches (32):
+├─ Pros: Good balance
+├─ Cons: Moderate memory usage
+├─ Use when: Standard GPU (8-16GB VRAM)
+
+Large batches (64-256):
+├─ Pros: Stable training, better generalization
+├─ Cons: Requires lots of memory or gradient accumulation
+├─ Use when: TPUs, 24GB+ VRAM, or gradient accumulation
+</code></pre><h2 id="number-of-epochs">Number of Epochs</h2>
+<pre tabindex="0"><code>Classification Tasks:
+├─ Typical: 3-5 epochs
+├─ Why: Model converges quickly
+└─ Monitor: Stop early if validation stops improving
+
+Generation Tasks (T5):
+├─ Typical: 10-20 epochs
+├─ Why: More complex task, slower convergence
+└─ Monitor: Validation BLEU score
+
+Rule of thumb:
+├─ More data → Fewer epochs (e.g., 2 epochs for 100K examples)
+├─ Less data → More epochs (e.g., 5 epochs for 1K examples)
+</code></pre><hr>
+<h1 id="common-fine-tuning-applications"><strong>Common Fine-tuning Applications</strong></h1>
+<h2 id="1-sentiment-analysis">1. Sentiment Analysis</h2>
+<pre tabindex="0"><code>Task: Classify reviews as positive/negative
+
+Data: 5,000 movie reviews with labels
+├─ 80%: Training (4,000)
+├─ 20%: Validation (1,000)
+
+Fine-tuning:
+├─ Model: BERT-base
+├─ Epochs: 3
+├─ Batch size: 32
+├─ Learning rate: 2e-5
+├─ Training time: 30 minutes
+
+Results:
+├─ Accuracy: 94.2%
+├─ Precision: 94.5%
+├─ Recall: 93.9%
+└─ Much better than training from scratch (78%)!
+</code></pre><h2 id="2-named-entity-recognition-ner">2. Named Entity Recognition (NER)</h2>
+<pre tabindex="0"><code>Task: Identify people, places, organizations in text
+
+Example:
+&#34;John Smith works at Google in New York.&#34;
+Labels:  [B-PER, I-PER, O, O, B-ORG, O, B-LOC, I-LOC]
+
+Challenge: Token-level classification, not sentence-level
+
+Solution:
+├─ Get BERT token embeddings
+├─ Add linear layer for each token
+├─ Decode with CRF (Conditional Random Field)
+
+Fine-tuning time: 1-2 hours
+Performance: 92% F1 score
+</code></pre><h2 id="3-question-answering">3. Question Answering</h2>
+<pre tabindex="0"><code>Task: Find the answer span in a passage
+
+Input:
+Question: &#34;What is the capital of France?&#34;
+Passage: &#34;Paris is the capital and most populous city of France...&#34;
+
+Output:
+Answer: &#34;Paris&#34;
+
+How it works:
+├─ Encode question + passage together
+├─ For each token, predict: &#34;Is this the start of answer?&#34;
+├─ For each token, predict: &#34;Is this the end of answer?&#34;
+├─ Extract span between highest probability start and end
+
+Fine-tuning time: 2-3 hours
+Performance: 89% F1 on SQuAD
+</code></pre><h2 id="4-text-summarization">4. Text Summarization</h2>
+<pre tabindex="0"><code>Task: Condensing long documents
+
+Using T5:
+
+Input:
+&#34;The quick brown fox jumps over the lazy dog. 
+ This sentence contains all 26 letters of English alphabet.
+ It&#39;s often used as a test string in computers.&#34;
+
+Fine-tuning with T5:
+├─ Prefix: &#34;summarize:&#34;
+├─ Full training: 10-20 epochs
+├─ Batch size: 16
+├─ Learning rate: 5e-5
+
+Output:
+&#34;A pangram sentence commonly used in computing.&#34;
+
+Performance: ROUGE score of 35-40 (compared to 20-25 baseline)
+</code></pre><h2 id="5-semantic-textual-similarity">5. Semantic Textual Similarity</h2>
+<pre tabindex="0"><code>Task: Rate how similar two sentences are (0-5)
+
+Sentence A: &#34;The cat sat on the mat&#34;
+Sentence B: &#34;A feline rested on the rug&#34;
+Label: 4.5 (very similar)
+
+Fine-tuning:
+├─ Take [CLS] token from both sentences
+├─ Encode together
+├─ Regression head: Dense layer to output score (0-5)
+├─ Loss: Mean Squared Error (MSE)
+
+Results:
+├─ Correlation with human judgments: 0.88 (very good!)
+├─ Spearman correlation: 87%
+</code></pre><hr>
+<h1 id="fine-tuning-pitfalls-to-avoid"><strong>Fine-tuning Pitfalls to Avoid</strong></h1>
+<h2 id="-pitfall-1-learning-rate-too-high">❌ Pitfall 1: Learning Rate Too High</h2>
+<pre tabindex="0"><code>Problem: Model forgets pre-trained knowledge!
+
+Example:
+Learning rate: 1e-3
+After 1 epoch: Loss = 0.5 (good)
+After 2 epochs: Loss = 2.0 (terrible!)
+After 3 epochs: Loss = 5.0 (worse!)
+
+Why: Large updates destroy useful weights
+
+Solution:
+├─ Use learning rate 1-2 orders of magnitude smaller
+├─ Start with 2e-5, increase only if converges too slowly
+└─ Monitor: Validation loss should decrease
+</code></pre><h2 id="-pitfall-2-too-few-epochs">❌ Pitfall 2: Too Few Epochs</h2>
+<pre tabindex="0"><code>Problem: Model doesn&#39;t adapt to new task
+
+Example:
+Data: 5,000 examples
+Epochs: 1
+Performance: 88% accuracy
+
+Same model with 3 epochs:
+Performance: 94% accuracy!
+
+Why: 1 epoch = each example seen once
+     Not enough to learn task-specific patterns
+
+Solution:
+├─ Use at least 3-5 epochs
+├─ Monitor validation accuracy
+├─ Stop early when validation stops improving
+</code></pre><h2 id="-pitfall-3-overfitting-on-small-data">❌ Pitfall 3: Overfitting on Small Data</h2>
+<pre tabindex="0"><code>Problem: Model memorizes instead of generalizing
+
+Example:
+Training data: 100 examples
+Training accuracy: 99.8%
+Test accuracy: 72.0%
+
+Model memorized!
+
+Solutions:
+├─ Add dropout: Drop 10-20% of neurons randomly
+├─ Early stopping: Stop when validation accuracy plateaus
+├─ Data augmentation: Create more examples from existing ones
+├─ Reduce model size: Use BERT-small instead of BERT-large
+</code></pre><h2 id="-pitfall-4-not-doing-hyperparameter-tuning">❌ Pitfall 4: Not Doing Hyperparameter Tuning</h2>
+<pre tabindex="0"><code>Problem: Default hyperparameters aren&#39;t optimal
+
+Example:
+Default learning rate (1e-4): 92% accuracy
+Tuned learning rate (3e-5): 95% accuracy!
+
+Solution:
+├─ Try 3-5 different learning rates
+├─ Try 2-3 different batch sizes
+├─ Try 3-5 epochs
+├─ Run small validation set on each combination
+└─ Pick best combination for full training
+</code></pre><hr>
+<h1 id="deployment-considerations"><strong>Deployment Considerations</strong></h1>
+<h2 id="model-size-vs-speed">Model Size vs Speed</h2>
+<pre tabindex="0"><code>For Production Deployment:
+
+BERT-base (110M):
+├─ Model size: 440 MB
+├─ Inference time: 100-150 ms per example
+├─ Good accuracy
+└─ Can fit on most servers
+
+BERT-large (340M):
+├─ Model size: 1.3 GB
+├─ Inference time: 300-500 ms per example
+├─ Better accuracy
+└─ Need better hardware
+
+DistilBERT (40M):
+├─ Model size: 160 MB (60% smaller!)
+├─ Inference time: 30-50 ms (3x faster!)
+├─ Slightly lower accuracy (97% of BERT)
+└─ Perfect for mobile/edge devices!
+
+Decision tree:
+├─ Accuracy critical? → Use BERT-base or BERT-large
+├─ Speed critical? → Use DistilBERT or quantization
+├─ Balanced? → Use BERT-base
+</code></pre><h2 id="optimization-techniques">Optimization Techniques</h2>
+<pre tabindex="0"><code>Before Deployment:
+
+1. Quantization (8-bit instead of 32-bit):
+   ├─ Model size: 1/4 of original
+   ├─ Inference speed: 2-4x faster
+   └─ Accuracy: 95-99% of full precision
+
+2. Knowledge Distillation:
+   ├─ Train small model on outputs of large model
+   ├─ Size: 10x smaller
+   ├─ Speed: 10x faster
+   └─ Accuracy: 98% of teacher model
+
+3. Pruning:
+   ├─ Remove unimportant weights
+   ├─ Size: 30-50% smaller
+   ├─ Speed: 2-3x faster
+   └─ Accuracy: 98% of full model
+
+4. TorchScript/ONNX:
+   ├─ Compile model for production
+   ├─ Speed: 1.5-2x faster
+   └─ Framework-agnostic (TensorFlow, PyTorch, etc.)
+</code></pre><hr>
+<h1 id="real-world-example-building-a-sentiment-classifier"><strong>Real-World Example: Building a Sentiment Classifier</strong></h1>
+<h2 id="complete-pipeline">Complete Pipeline</h2>
+<pre tabindex="0"><code>Step 1: Prepare Data
+├─ Load: 5,000 movie reviews with labels
+├─ Split: 80% train, 20% test
+├─ Tokenize: Convert to BERT tokens
+└─ Dataloader: Create batches of 32
+
+Step 2: Load Pre-trained Model
+├─ Download BERT-base from HuggingFace
+├─ Add classification head: 768 → 2 (binary)
+└─ Move to GPU
+
+Step 3: Fine-tune
+├─ Optimizer: AdamW (best for transformers)
+├─ Learning rate: 2e-5
+├─ Epochs: 3
+├─ Train loop: Forward pass → Loss → Backward → Update
+
+Step 4: Evaluate
+├─ Validation accuracy: 94.2%
+├─ Test accuracy: 93.8%
+└─ Per-class metrics: Precision 94%, Recall 94%
+
+Step 5: Save &amp; Deploy
+├─ Save: model.pt, tokenizer, config.json
+├─ Test on new review: &#34;Best movie ever!&#34; → Positive ✓
+└─ Deploy to production!
+
+Total time: 2-3 hours
+Total cost: ~$2-5 on cloud GPU
+Performance: State-of-the-art!
+</code></pre><hr>
+<h1 id="the-transfer-learning-advantage"><strong>The Transfer Learning Advantage</strong></h1>
+<h2 id="comparison">Comparison</h2>
+<pre tabindex="0"><code>Baseline (Training from Scratch):
+├─ Training time: 2-4 weeks
+├─ Required data: 100,000+ examples
+├─ Accuracy: 82-85%
+├─ Cost: $1000-10000 in compute
+└─ Difficulty: Requires ML expertise
+
+Transfer Learning (BERT Fine-tuning):
+├─ Training time: 2-3 hours
+├─ Required data: 100-1000 examples
+├─ Accuracy: 92-95%
+├─ Cost: $1-10 in compute
+└─ Difficulty: Can use HuggingFace library!
+
+Speedup: 200-300x faster!
+Data reduction: 100x less data needed!
+Better results: 10-15% higher accuracy!
+</code></pre><hr>
+<h1 id="key-takeaways"><strong>Key Takeaways</strong></h1>
+<p>✅ <strong>Transfer learning is practical:</strong> Works great for real problems
+✅ <strong>Fine-tuning is simple:</strong> Add head + train 3-5 epochs
+✅ <strong>Learning rate matters:</strong> Use 1-2 orders of magnitude smaller
+✅ <strong>Avoid overfitting:</strong> Monitor validation, use early stopping
+✅ <strong>Consider deployment:</strong> Optimize for your constraints
+✅ <strong>HuggingFace is your friend:</strong> Use pre-trained models + library</p>
+<hr>
+<h1 id="your-nlp-journey"><strong>Your NLP Journey</strong></h1>
+<p>You&rsquo;ve learned:</p>
+<p><strong>Week 1-7 (Foundation):</strong> Basics, text processing, embeddings
+<strong>Week 8 (NLP Foundations):</strong> Linguistic fundamentals, voice search, seq2seq, attention
+<strong>Week 9 (Transformers):</strong> Self-attention, scaled dot-product, attention mechanisms, implementation
+<strong>Week 10 (Transfer Learning):</strong> Transfer learning, BERT, MLM, T5, fine-tuning</p>
+<p>From understanding language to building production systems!</p>
+<hr>
+<h1 id="next-steps"><strong>Next Steps</strong></h1>
+<p>To become an NLP expert:</p>
+<ol>
+<li><strong>Build projects:</strong> Fine-tune models on real data</li>
+<li><strong>Try different models:</strong> RoBERTa, ELECTRA, XLNet, GPT-2</li>
+<li><strong>Explore advanced techniques:</strong> Prompt tuning, in-context learning, RAG</li>
+<li><strong>Stay updated:</strong> Read papers, follow research (Papers with Code, Twitter)</li>
+<li><strong>Contribute:</strong> Open source NLP projects</li>
+</ol>
+<hr>
+<h1 id="resources"><strong>Resources</strong></h1>
+<ul>
+<li><strong>HuggingFace:</strong> <a href="https://huggingface.co/">https://huggingface.co/</a> (Models &amp; library)</li>
+<li><strong>BERT Paper:</strong> &ldquo;BERT: Pre-training of Deep Bidirectional Transformers&rdquo; (Devlin et al., 2018)</li>
+<li><strong>T5 Paper:</strong> &ldquo;Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer&rdquo; (Raffel et al., 2019)</li>
+<li><strong>Attention Paper:</strong> &ldquo;Attention Is All You Need&rdquo; (Vaswani et al., 2017)</li>
+</ul>
+<hr>
+<h1 id="congratulations"><strong>Congratulations!</strong></h1>
+<p>You&rsquo;ve completed 10 weeks of comprehensive NLP training. You now understand:</p>
+<ul>
+<li>How transformers work (math &amp; implementation)</li>
+<li>How transfer learning enables rapid development</li>
+<li>How to fine-tune models for specific tasks</li>
+<li>How to deploy models in production</li>
+</ul>
+<p><strong>Now go build something amazing!</strong> 🚀</p>
+<p>The future of NLP is not about building models from scratch—it&rsquo;s about creatively applying pre-trained models to solve real problems. You have the foundation to do exactly that.</p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../../1-worklog/1.10-week10/1.10.4-day49-2025-11-13/" title="Day 49 - T5: Text-to-Text Transfer Transformer"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../../2-proposal/" title="Proposal" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../../js/clipboard.min.js?1764943967"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1764943967"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1764943967"></script>
+    <script src="../../../js/jquery.sticky.js?1764943967"></script>
+    <script src="../../../js/featherlight.min.js?1764943967"></script>
+    <script src="../../../js/highlight.pack.js?1764943967"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1764943967"></script>
+    <script src="../../../js/learn.js?1764943967"></script>
+    <script src="../../../js/hugo-learn.js?1764943967"></script>
+
+    <link href="../../../mermaid/mermaid.css?1764943967" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1764943967"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function (i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    ((i[r] =
+      i[r] ||
+      function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+      (i[r].l = 1 * new Date()));
+    ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(
+    window,
+    document,
+    "script",
+    "https://www.google-analytics.com/analytics.js",
+    "ga",
+  );
+
+  ga("create", "UA-158079754-2", "auto");
+  ga("send", "pageview");
+</script>
+
+  </body>
+</html>
