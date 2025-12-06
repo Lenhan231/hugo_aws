@@ -88,12 +88,7 @@ pre: "<b> 1.2.5. </b>"
 
 ## Week 2 Summary
 
-Tuần này đã hoàn thành kiến thức về AWS Networking:
-
-✅ Amazon VPC và Subnets  
-✅ Security Groups và NACLs  
-✅ VPC Peering và Transit Gateway  
-✅ VPN và Direct Connect  
-✅ Elastic Load Balancing (ALB, NLB, GWLB)  
-
-**Labs completed:** 4 labs (VPC Basics, Hybrid DNS, VPC Peering, Transit Gateway)
+- Hoàn thiện các chủ đề mạng: VPC/Subnets, Security Groups/NACLs.  
+- Nắm kết nối liên VPC (Peering, Transit Gateway) và hybrid (VPN, Direct Connect).  
+- Tìm hiểu các loại Elastic Load Balancer (ALB, NLB, GWLB) và tính năng chính.  
+- Labs: VPC Basics, Hybrid DNS, VPC Peering, Transit Gateway.

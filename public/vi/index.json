@@ -84,6 +84,20 @@
 	"content": "Ngày: 2025-11-10 (Thứ Hai)\nTrạng Thái: \u0026ldquo;Hoàn thành\u0026rdquo;\nTransfer Learning: Vì sao quan trọng Huấn luyện truyền thống bắt đầu từ đầu cho mọi tác vụ. Transfer learning tái dùng mô hình đã tiền huấn luyện để hội tụ nhanh hơn, chính xác hơn và cần ít dữ liệu gán nhãn hơn.\nSo sánh quy trình Truyền thống: dữ liệu -\u0026gt; mô hình khởi tạo ngẫu nhiên -\u0026gt; train -\u0026gt; dự đoán Transfer: tiền huấn luyện trên corpora lớn -\u0026gt; tái dùng trọng số -\u0026gt; fine-tune trên tác vụ đích -\u0026gt; dự đoán [Dữ liệu lớn (không/ có nhãn)] --pre-train--\u0026gt; [Trọng số gốc] \\ fine-tune trên dữ liệu tác vụ --\u0026gt; deploy Hai cách tiếp cận Feature-based: dùng embedding đã huấn luyện như đặc trưng cố định; train head mới. Fine-tuning: cập nhật (một phần) trọng số gốc trên dữ liệu downstream. Lợi ích Hội tụ nhanh nhờ khởi động nóng. Dự đoán tốt hơn từ biểu diễn giàu ngữ cảnh. Cần ít dữ liệu gán nhãn; tận dụng tiền huấn luyện trên dữ liệu thô. Lưu ý chính Lệch miền: chọn dữ liệu tiền huấn luyện gần với miền đích nếu có thể. Quên thảm họa: dùng learning rate nhỏ hoặc đóng băng lớp đầu. Đánh giá: so sánh đóng băng vs. fine-tune toàn bộ để tránh overfit. Việc thực hành hôm nay Phác quy trình transfer cho bài QA của bạn (dữ liệu, model base, head, metric). Quyết định lớp nào đóng băng và lớp nào fine-tune. Lên plan thử nhanh: feature-based vs. fine-tune và so sánh kết quả. "
 },
 {
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.11-week11/1.11.1-day51-2025-11-17/",
+	"title": "Ngày 51 - Tổng quan Lambda Managed Instances",
+	"tags": [],
+	"description": "",
+	"content": "Ngày: 2025-11-17 (Thứ Hai)\nTrạng Thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nVì sao dùng LMI LMI giữ trải nghiệm Lambda nhưng cho chọn họ máy EC2, tận dụng SP/RI, bỏ cold start và cho phép multi-concurrency trên mỗi instance.\nKhi nên dùng Lưu lượng cao, ổn định cần chi phí dự báo Nhu cầu compute/memory/network đặc thù Muốn áp dụng pricing EC2 cho hàm Lambda Khi ở lại Lambda mặc định Traffic đột biến, khó dự đoán Hàm ngắn, thưa cần scale-to-zero Lợi ích nhanh Giữ cách đóng gói/runtimes Lambda Không cold start, công suất ổn định Kiểm soát chi phí qua SP/RI Ghi chú từ CNS382 Instance do AWS quản lý: thấy nhưng không SSH/chỉnh Lambda lo vòng đời, patch, routing Multi-concurrency thay đổi profile giá/hiệu năng "
+},
+{
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.12-week12/1.12.1-day56-2025-11-24/",
+	"title": "Ngày 56 - Dòng Nova &amp; Agent",
+	"tags": [],
+	"description": "",
+	"content": "Ngày: 2025-11-24 (Thứ Hai)\nTrạng Thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nĐiểm nhấn Nova 2 Sonic: speech-to-speech đa ngôn ngữ, giữ ngữ cảnh, điều khiển giọng nói Lite: reasoning nhanh/giá rẻ với context dài Omni (preview): đa phương thức (text/image/video/speech input) xuất text/image Forge: chương trình huấn luyện frontier model tùy biến trên hạ tầng Nova Agent cho UI \u0026amp; workflow Nova Act GA: agent trình duyệt (form, search, booking) hướng tới \u0026gt;90% độ tin cậy Việc cần làm Chọn một modality Nova để pilot (speech, đa phương thức, hoặc Lite) Định bộ đánh giá (độ trễ, chất lượng, chi phí) và kiểm tra an toàn/policy Kiểm tra quota/khu vực khả dụng "
+},
+{
 	"uri": "http://localhost:1313/hugo_aws/vi/4-eventparticipated/4.1-event1/",
 	"title": "Sự Kiện 1 - Vietnam Cloud Day 2025",
 	"tags": [],
@@ -113,10 +127,10 @@
 },
 {
 	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/",
-	"title": "Worklog - Hành Trình Học AWS",
+	"title": "Worklog - Hanh Trinh Hoc AWS",
 	"tags": [],
 	"description": "",
-	"content": "Worklog Tổng quan Đây là nhật ký học tập ghi lại hành trình học AWS bắt đầu từ ngày 8/9/2025.\nCấu trúc Worklog được tổ chức theo tuần, mỗi tuần gồm 5 ngày làm việc (Thứ Hai đến Thứ Sáu).\nNội dung chính Nền tảng Điện toán Đám mây\nKiến thức cơ bản về AWS, hạ tầng toàn cầu, công cụ quản lý Tối ưu chi phí, các gói hỗ trợ Bộ khung Well-Architected Framework Mạng (Networking)\nVPC, subnet, security group, NACL Cân bằng tải (ALB, NLB, GWLB) VPC Peering, Transit Gateway VPN, Direct Connect Tính toán (Compute)\nEC2, AMI, EBS, Instance Store Auto Scaling, mô hình định giá Lightsail, EFS, FSx Lưu trữ (Storage)\nS3, các lớp lưu trữ, Glacier Snow Family, Storage Gateway Khôi phục thảm họa, AWS Backup Bảo mật \u0026amp; Danh tính (Security \u0026amp; Identity)\nIAM, Cognito, Organizations KMS, Security Hub Identity Center (SSO) Cơ sở dữ liệu (Database)\nRDS, Aurora, Redshift ElastiCache, DMS Thực hành tốt trong quản lý cơ sở dữ liệu Chủ đề Nâng cao (Advanced Topics)\nServerless (Lambda) Containers (ECS, EKS, ECR) Giám sát hệ thống (CloudWatch, X-Ray, CloudTrail) "
+	"content": "Worklog Tong quan Worklog 12 tuan (5 ngay/tuan) bat dau 08/09/2025, tom luoc noi dung hoc de phuc vu danh gia: nen tang AWS, kien truc, va cac cap nhat GenAI/compute moi nhat tu re:Invent.\nAnh nhanh tung tuan Tuan 1: Nen tang dam may, ha tang toan cau, Well-Architected Tuan 2: Mang (VPC, SG/NACL, LB, TGW/peering, VPN/DC) Tuan 3: Tinh toan (EC2/AMI/EBS, scaling, gia, EFS/FSx) Tuan 4: Luu tru (S3 classes, Glacier, Snow, DR/Backup) Tuan 5: Bao mat \u0026amp; danh tinh (IAM, Org, KMS, Security Hub, SSO) Tuan 6: CSDL (RDS/Aurora/Redshift, ElastiCache, DMS) Tuan 7: Serverless \u0026amp; Containers (Lambda, ECS/EKS, ECR) Tuan 8: Giam sat \u0026amp; van hanh (CloudWatch, X-Ray, CloudTrail, cost/ops) Tuan 9: Kien truc Transformer, attention, encoder-decoder, GPT/BERT/T5 Tuan 10: Transfer learning, QA modes, BERT \u0026amp; T5 fine-tuning Tuan 11: Lambda Managed Instances (capacity provider, mang, scale, chi phi) Tuan 12: Thong bao re:Invent 2025 (Nova models, Bedrock, S3 Vectors, SageMaker serverless/elastic training, Graviton5, Trainium3) "
 },
 {
 	"uri": "http://localhost:1313/hugo_aws/vi/5-workshop/5.2-prerequiste/",
@@ -201,6 +215,20 @@
 	"tags": [],
 	"description": "",
 	"content": "Ngày: 2025-11-11 (Thứ Ba)\nTrạng Thái: \u0026ldquo;Hoàn thành\u0026rdquo;\nQA có ngữ cảnh vs. QA closed-book Cùng dùng transformer, nhưng khác ở dữ liệu đầu vào và cách đánh giá.\nCó ngữ cảnh (open book) Input: câu hỏi + đoạn văn hỗ trợ. Output: trích span hoặc sinh ngắn, bám sát ngữ cảnh. Train: span có nhãn (start/end) hoặc seq2seq kèm context. Lỗi thường gặp: sai span khi ngữ cảnh nhiễu. Closed-book Input: chỉ câu hỏi; model dựa vào kiến thức bên trong. Output: câu trả lời sinh ra không có context tường minh. Train: kiểu language modeling trên corpora lớn, fine-tune với QA pairs. Lỗi: bịa/hallucination; giảm bằng pre-train mạnh hoặc distillation. Chọn chế độ nào? Có thể cấp tài liệu lúc suy luận -\u0026gt; ưu tiên có ngữ cảnh (kiểm soát tốt, dễ trích dẫn). Bị giới hạn latency/lưu trữ -\u0026gt; closed-book nhẹ hơn nhưng rủi ro cao hơn. Đánh giá Có ngữ cảnh: Exact Match / F1 trên span; kiểm tra bám văn bản. Closed-book: BLEU/ROUGE + đánh giá factuality; cân nhắc thêm retrieval nếu lệch. Việc thực hành hôm nay Soạn ví dụ cho cả hai chế độ với dữ liệu miền của bạn. Định nghĩa metric theo chế độ (EM/F1 span vs. ROUGE/factuality). Liệt kê phương án retrieval để nâng closed-book lên open-book khi cần. "
+},
+{
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.11-week11/1.11.2-day52-2025-11-18/",
+	"title": "Ngày 52 - Thiết lập Capacity Provider",
+	"tags": [],
+	"description": "",
+	"content": "Ngày: 2025-11-18 (Thứ Ba)\nTrạng Thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nXây capacity provider Bước 1 cho LMI: định nghĩa lớp instance (capacity provider) với VPC, role và lựa chọn loại máy.\nThông tin bắt buộc IAM role cho phép Lambda launch/manage instance VPC config (subnet + SG) nơi instance LMI chạy Chọn loại máy Hỗ trợ: họ C/M/R đời mới (x86/AMD/Graviton), kích cỡ large+ Tùy biến: allow/deny list loại máy; đặt kiến trúc ARM nếu cần EBS: mã hóa mặc định; có thể dùng KMS của bạn Lưu ý mạng Dàn subnet qua 3 AZ cho sẵn sàng Tất cả egress/log đi qua ENI của instance; không cấu hình VPC ở mức function Đóng inbound SG; đảm bảo đường ra tới dependency/CloudWatch Guardrail Giới hạn max vCPU để chặn bùng chi phí Có thêm tham số scale ở mức provider khi cần "
+},
+{
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.12-week12/1.12.2-day57-2025-11-25/",
+	"title": "Ngày 57 - Bedrock &amp; AgentCore",
+	"tags": [],
+	"description": "",
+	"content": "Ngày: 2025-11-25 (Thứ Ba)\nTrạng Thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nCập nhật Bedrock Thêm model open-weight managed (Mistral Large 3, Ministral 3 3B/8B/14B và đối tác khác) Reinforcement fine-tuning: tuning theo phản hồi, cải thiện độ chính xác lớn mà không cần bộ nhãn lớn AgentCore Thêm policy control và quality monitoring cho agent Cải thiện bộ nhớ và hội thoại tự nhiên để triển khai an toàn hơn Việc cần làm Chọn model để đánh giá (latency/chi phí/chất lượng so với hiện tại) Lên thử nghiệm RFT cho tác vụ mục tiêu; định nghĩa tín hiệu phản hồi Xác định guardrail/policy trước khi bật AgentCore production "
 },
 {
 	"uri": "http://localhost:1313/hugo_aws/vi/2-proposal/",
@@ -322,6 +350,20 @@
 	"content": "Ngày: 2025-11-12 (Thứ Tư)\nTrạng Thái: \u0026ldquo;Hoàn thành\u0026rdquo;\nBERT học như thế nào BERT tiền huấn luyện với ngữ cảnh hai chiều, nên mỗi token nhìn được cả trái lẫn phải.\nMasked Language Modeling (MLM) Mask ngẫu nhiên ~15% token; dự đoán token gốc. Mục tiêu buộc embedding hiểu ngữ cảnh xung quanh. Input: learning from deep learning is like watching the sunset with my best [MASK] Target: friend Next Sentence Prediction (NSP) Nhiệm vụ: dự đoán câu B có theo sau câu A hay không. Hỗ trợ coherence mức câu, hữu ích cho QA và phân loại. Dùng cho downstream Bắt đầu từ trọng số đã pre-train. Cách A: đóng băng encoder, train head nhẹ (feature-based). Cách B: fine-tune encoder + head với learning rate nhỏ. Mẹo thực hành max_seq_length phải phù hợp dữ liệu; tài liệu dài cần chunk. Tránh quên thảm họa: unfreeze dần, lr nhỏ. Batch nhỏ? Dùng gradient accumulation để ổn định. Việc thực hành hôm nay Lập kế hoạch fine-tune BERT cho QA (dataset, max length, lr, epochs). Quyết định có đóng băng tầng thấp hay không dựa vào kích cỡ dữ liệu. Thêm checkpoint đánh giá (dev EM/F1) để dừng sớm khi overfit. "
 },
 {
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.11-week11/1.11.3-day53-2025-11-19/",
+	"title": "Ngày 53 - Hàm chạy trên LMI",
+	"tags": [],
+	"description": "",
+	"content": "Ngày: 2025-11-19 (Thứ Tư)\nTrạng Thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nTạo và publish hàm Tạo hàm như thường, gắn capacity provider và publish version để khởi tạo instance.\nTính năng hỗ trợ Đóng gói: ZIP hoặc OCI Runtime: Java, Python, Node, .NET Layers, extensions, function URL, response streaming, durable functions Timeout 15 phút (dài hơn nếu dùng durable) Thiết lập tài nguyên Memory/CPU ảnh hưởng lựa chọn instance Có multi-concurrency mỗi instance; cân đối throughput/chi phí Nhiều hàm có thể dùng chung một provider (pool dùng chung) Quy trình Tạo capacity provider (VPC, role, rule chọn máy) Tạo function kèm ARN provider Publish version để Lambda tạo instance và deploy execution environment "
+},
+{
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.12-week12/1.12.3-day58-2025-11-26/",
+	"title": "Ngày 58 - Vector &amp; dữ liệu riêng tư",
+	"tags": [],
+	"description": "",
+	"content": "Ngày: 2025-11-26 (Thứ Tư)\nTrạng Thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nLưu trữ vector \u0026amp; dữ liệu tổng hợp Amazon S3 Vectors GA: tới 2B vector/index, ~100ms truy vấn, chi phí thấp hơn DB chuyên dụng Clean Rooms sinh dữ liệu tổng hợp an toàn cho ML cộng tác Cân nhắc di chuyển Kích thước index vs. store hiện tại; sharding và đặt vùng Mục tiêu độ trễ truy vấn, ước tính chi phí so với vector DB đang dùng Mẫu truy cập và bảo mật khi chia sẻ dữ liệu Việc cần làm Thiết kế POC chuyển một bộ vector sang S3 Vectors; đo hiệu năng/chi phí Xác định dataset cần synthetic để dùng chung Đặt chính sách lưu trữ/mã hóa và truy cập cho dữ liệu vector "
+},
+{
 	"uri": "http://localhost:1313/hugo_aws/vi/3-blogstranslated/",
 	"title": "Translated Blogs",
 	"tags": [],
@@ -427,6 +469,20 @@
 	"content": "Ngày: 2025-11-13 (Thứ Năm)\nTrạng Thái: \u0026ldquo;Hoàn thành\u0026rdquo;\nMột mô hình, nhiều tác vụ T5 coi mọi thứ là text-to-text, nên cùng một mô hình xử lý QA, tóm tắt, dịch, phân loại thông qua prompt.\nPrompt hóa tác vụ Ví dụ: question: When is Pi Day? context: ... -\u0026gt; March 14 summarize: \u0026lt;bài viết\u0026gt; translate English to German: \u0026lt;câu\u0026gt; Định dạng thống nhất giúp mô hình chia sẻ biểu diễn giữa các nhiệm vụ. Quy mô dữ liệu Pre-train trên C4 (~800 GB) so với Wikipedia (~13 GB). Corpora lớn, sạch giúp tổng quát hóa tốt hơn. Lợi ích đa nhiệm Encoder-decoder dùng chung, chuyển giao giữa tác vụ tốt hơn. Cải thiện bài toán ít dữ liệu nhờ tín hiệu chéo tác vụ. Ghi chú thực tế Kiểm soát độ dài output bằng decoder max_length và repetition penalty. Với QA, prompt rõ ràng phần question và context. Fine-tune đa nhiệm: cân bằng tỉ lệ batch tránh một task lấn át. Việc thực hành hôm nay Soạn prompt cho QA và tóm tắt của bạn. Chọn kích thước model theo GPU (T5-small/base/large). Lập kế hoạch pha trộn tác vụ (tỉ lệ mỗi task) khi fine-tune. "
 },
 {
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.11-week11/1.11.4-day54-2025-11-20/",
+	"title": "Ngày 54 - Mạng &amp; quan sát",
+	"tags": [],
+	"description": "",
+	"content": "Ngày: 2025-11-20 (Thứ Năm)\nTrạng Thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nĐường đi lưu lượng và log Mọi traffic từ LMI đi qua ENI của instance trong VPC provider; cần thiết kế kết nối và monitoring phù hợp.\nEgress \u0026amp; đích Dependency phải truy cập được từ VPC provider (NAT/Transit/Peering/PrivateLink) Log CloudWatch cũng đi qua ENI; mở đường tới endpoint (public hoặc PrivateLink) Security Group Không cần inbound; giữ inbound đóng Outbound phải cover dependency và CloudWatch Quan sát Log CloudWatch như thường, miễn có đường kết nối Theo dõi metric instance (EC2 billing, vCPU) + Lambda (invokes, errors) Lưu ý Bỏ qua cấu hình VPC ở mức function cho LMI Giới hạn băng thông/ENI theo loại instance vẫn áp dụng "
+},
+{
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.12-week12/1.12.4-day59-2025-11-27/",
+	"title": "Ngày 59 - Nền tảng SageMaker AI",
+	"tags": [],
+	"description": "",
+	"content": "Ngày: 2025-11-27 (Thứ Năm)\nTrạng Thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nTraining serverless \u0026amp; resilient SageMaker AI serverless MLflow cho thử nghiệm nhanh (không cần hạ tầng, auto scale) HyperPod training thêm checkpointless recovery và elastic scaling theo tài nguyên Lợi ích Chu kỳ thử nghiệm nhanh hơn, không phải dựng cluster Giảm chi phí khôi phục lỗi; tận dụng tài nguyên không đồng nhất tốt hơn Việc cần làm Thiết lập workspace MLflow serverless cho thí nghiệm hiện tại Thử checkpointless/elastic training trên một model đại diện; ghi nhận chi phí/thời gian Cập nhật playbook MLOps với mode training và xử lý lỗi mới "
+},
+{
 	"uri": "http://localhost:1313/hugo_aws/vi/5-workshop/5.4-s3-onprem/",
 	"title": "Truy cập S3 từ môi trường truyền thống",
 	"tags": [],
@@ -511,6 +567,20 @@
 	"content": "Ngày: 2025-11-14 (Thứ Sáu)\nTrạng Thái: \u0026ldquo;Hoàn thành\u0026rdquo;\nCông thức fine-tuning Tập trung vào các nút chỉnh: đóng băng tầng nào, lên lịch learning rate ra sao, và đánh giá setup transfer như thế nào.\nĐóng băng vs. train Đóng băng tầng thấp khi dữ liệu ít hoặc miền gần pre-train. Mở dần (từ trên xuống) nếu accuracy đứng yên. Thêm head đặc thù (classification/span QA/seq2seq) và bắt đầu từ đó. Hyperparameter cơ bản Learning rate: 1e-5 đến 3e-5 cho fine-tune toàn encoder; cao hơn nếu đa phần đóng băng. Warmup: ~5-10% số bước để ổn định giai đoạn đầu. Max sequence length: khớp tác vụ; chunk tài liệu dài cho QA. Vòng đánh giá Theo dõi loss + metric (EM/F1 cho QA, ROUGE cho tóm tắt, accuracy/F1 cho phân loại). Early stop theo dev; giữ checkpoint tốt nhất, không chỉ checkpoint cuối. So sánh baseline feature-based vs. fine-tune full trên một tập nhỏ. Khi triển khai Distill hoặc quantize nếu cần giảm độ trễ. Cache tokenizer và quy tắc cắt/truncate để tránh lệch train/serve. Log prompt/input để debug hành vi closed-book vs. có ngữ cảnh. Việc thực hành hôm nay Chạy (hoặc lập kế hoạch) grid nhỏ: learning rate, chiến lược đóng băng, max length. Đánh giá trên tập dev và ghi nhận EM/F1 hoặc ROUGE. Quyết định bước hậu huấn luyện: distillation, quantization, hoặc caching. "
 },
 {
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.11-week11/1.11.5-day55-2025-11-21/",
+	"title": "Ngày 55 - Scaling &amp; vận hành",
+	"tags": [],
+	"description": "",
+	"content": "Ngày: 2025-11-21 (Thứ Sáu)\nTrạng Thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nScaling và kiểm soát chi phí Lên kế hoạch scale ở mức instance và multi-concurrency cho traffic ổn định nhưng giới hạn chi phí.\nGuardrail scale Giới hạn max vCPU cho capacity provider Chọn họ máy theo workload (compute/memory/network) Traffic ổn định: ưu tiên máy lớn + multi-concurrency; nếu quá biến động, cân nhắc ở lại Lambda mặc định Chi phí \u0026amp; giá Áp dụng Savings Plan/Reserved Instance cho công suất LMI Theo dõi sử dụng so với cam kết; điều chỉnh mix instance khi cần Checklist rollout Capacity provider đúng role/VPC/allowlist máy Function version đã publish; đường warm OK (không cold start) CloudWatch truy cập được; cảnh báo lỗi/độ trễ/concurrency Chạy benchmark so sánh LMI vs. Lambda mặc định cho workload của bạn "
+},
+{
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.12-week12/1.12.5-day60-2025-11-28/",
+	"title": "Ngày 60 - Compute mới",
+	"tags": [],
+	"description": "",
+	"content": "Ngày: 2025-11-28 (Thứ Sáu)\nTrạng Thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nGraviton5 và Trainium3 Graviton5: CPU thế hệ mới, giá/hiệu năng tốt hơn cho nhiều workload EC2 Trainium3 UltraServers (3nm): throughput train/inference cao hơn, chi phí thấp hơn Phân tích phù hợp Dịch vụ nào chuyển sang Graviton5 (web/app, xử lý dữ liệu) và mức tiết kiệm kỳ vọng Bài train/inference nào hưởng lợi từ Trainium3 so với GPU/CPU hiện tại Việc cần làm Chọn 1–2 dịch vụ benchmark Graviton5; theo dõi perf/chi phí Lập POC Trainium3 cho một model mục tiêu; so throughput và ngân sách Cập nhật kế hoạch capacity với họ máy và giá mới "
+},
+{
 	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.5-week5/",
 	"title": "Tuần 5 - Bảo mật &amp; Danh tính trên AWS",
 	"tags": [],
@@ -593,6 +663,20 @@
 	"tags": [],
 	"description": "",
 	"content": "Tuần: 2025-11-10 đến 2025-11-14\nTrạng thái: \u0026ldquo;Đang thực hiện\u0026rdquo;\nTổng quan Tuần 10 Tuần này tập trung vào transfer learning cho NLP và cách QA hiện đại tận dụng transformer tiền huấn luyện. Ta so sánh huấn luyện truyền thống với reuse đặc trưng và fine-tuning, rồi đi vào hai mô hình tiêu biểu: BERT (ngữ cảnh hai chiều) và T5 (text-to-text đa nhiệm), kèm cách thiết lập QA có ngữ cảnh vs. closed-book.\nChủ đề chính Nền tảng Transfer Learning Pipeline truyền thống vs. pipeline transfer Tái dùng trọng số tiền huấn luyện để hội tụ nhanh hơn So sánh feature-based với fine-tuning Lợi ích: nhanh hơn, chính xác hơn, ít dữ liệu nhãn Hai chế độ Question Answering QA có ngữ cảnh (trích span/sinh ngắn dựa vào đoạn văn) QA closed-book (sinh câu trả lời không có context) Ảnh hưởng của chất lượng tiền huấn luyện lên QA BERT và ngữ cảnh hai chiều Masked Language Modeling cho embedding ngữ cảnh Next Sentence Prediction cho coherence mức câu Dùng cả trái và phải để dự đoán token Ứng dụng: QA, sentiment, phân loại T5 đa nhiệm text-to-text Định dạng text-to-text cho nhiều tác vụ Prompt chung cho rating, QA, tóm tắt, dịch Mở rộng dữ liệu (C4 so với Wikipedia) Chuyển giao đa nhiệm để tổng quát hóa tốt hơn Chiến lược dữ liệu \u0026amp; huấn luyện Pha trộn dữ liệu có nhãn/không nhãn; self-supervised masking Đóng băng backbone vs. thêm head Công thức fine-tuning cho QA/tóm tắt/dịch Mục tiêu học tập Giải thích khi nào nên dùng transfer thay vì huấn luyện từ đầu Phân biệt reuse đặc trưng và fine-tuning toàn bộ So sánh QA có ngữ cảnh và QA closed-book Tóm lược cách BERT và T5 tiền huấn luyện và chuyển giao Nêu vì sao transfer giúp giảm dữ liệu nhãn và thời gian train Lịch trong tuần Ngày Trọng tâm Chủ đề 46 Giới thiệu Transfer Pipeline truyền thống vs. transfer, reuse trọng số, feature-based vs. fine-tuning, lợi ích 47 Question Answering QA có ngữ cảnh vs. closed-book, nhu cầu dữ liệu, cách đánh giá 48 BERT hai chiều Masked LM, NSP, tận dụng ngữ cảnh hai phía cho dự đoán token 49 Mô hình T5 Prompt text-to-text, chia sẻ đa nhiệm, mở rộng dữ liệu (C4 vs. Wikipedia) 50 Thực hành fine-tuning Đóng băng/lộ trình unfreeze, downstream: QA, tóm tắt, dịch Yêu cầu nền tảng Nắm vững kiến trúc transformer từ Tuần 9 Thoải mái với attention và luồng encoder-decoder Cơ bản PyTorch/TensorFlow để fine-tune Bước tiếp theo Đọc paper BERT và T5 để hiểu mục tiêu pre-train Fine-tune thử model BERT QA (kiểu SQuAD span) Thử prompt T5 cho QA, tóm tắt, sentiment So sánh hiệu năng feature-based vs. fine-tune trên dữ liệu của bạn "
+},
+{
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.11-week11/",
+	"title": "Tuần 11 - Lambda Managed Instances &amp; ghi chú re:Invent",
+	"tags": [],
+	"description": "",
+	"content": "Tuần: 2025-11-17 đến 2025-11-21\nTrạng thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nTổng quan Tuần 11 Tóm tắt session AWS re:Invent 2025 (CNS382) về Lambda Managed Instances (LMI): chạy hàm Lambda trên EC2 do Lambda quản lý, giữ nguyên trải nghiệm serverless nhưng chọn được loại máy, giá EC2, và loại bỏ cold start. Trọng tâm: khi nào chọn LMI vs. Lambda mặc định, cách cấu hình capacity provider, và lưu ý test/ops cho workload lưu lượng ổn định.\nChủ đề chính Vì sao LMI Giữ trải nghiệm Lambda nhưng tự chọn họ máy EC2 và tận dụng Savings Plan/Reserved Instance Không cold start, hỗ trợ multi-concurrency trên instance Dễ dự báo chi phí với traffic ổn định Kiến trúc \u0026amp; Thiết lập Capacity Provider: cấu hình VPC, loại máy (C/M/R, x86/Graviton), guardrail scaling Quy trình: tạo capacity provider -\u0026gt; tạo function gắn provider -\u0026gt; publish version để khởi tạo instance Vòng đời do Lambda quản lý: patch OS/runtime, routing/auto scaling; thấy instance nhưng không can thiệp được Mạng \u0026amp; Bảo mật Toàn bộ egress đi qua ENI của instance trong VPC provider; không cấu hình VPC ở mức function Đóng inbound SG; đảm bảo đường ra tới dependency/CloudWatch (Internet hoặc PrivateLink) Mặc định mã hóa EBS, có thể dùng KMS của bạn Tính năng hàm \u0026amp; Scaling Hỗ trợ ZIP/OCI; runtime Java/Python/Node/.NET; layers, extensions, function URL, response streaming, durable functions Memory/CPU quyết định chọn instance; có thể giới hạn/loại trừ loại máy Guardrail scaling ở mức instance (vd max vCPU) để kiểm soát chi phí Phù hợp \u0026amp; Đánh đổi Dùng LMI cho workload lưu lượng cao, ổn định, hoặc cần compute/memory/network đặc thù Giữ Lambda mặc định cho traffic đột biến, ngắn Multi-concurrency + billing kiểu EC2 thay đổi bức tranh cost/perf Mục tiêu học tập Nêu khi nào chọn LMI thay vì Lambda mặc định Cấu hình capacity provider (VPC, role, loại máy, guardrail) Mô tả mô hình mạng và đường log của LMI Ghép tính năng Lambda (đóng gói, runtime, URL, streaming, durable) với LMI Đặt giới hạn scale/chi phí và chọn họ máy phù hợp workload Lịch trong tuần Ngày Trọng tâm Chủ đề 51 Tổng quan \u0026amp; use case Lợi ích LMI, tận dụng giá EC2, khi nào không dùng 52 Capacity Provider VPC, IAM operator role, shortlist loại máy, KMS, guardrail 53 Hàm trên LMI Đóng gói/runtime, ánh xạ memory/CPU, multi-concurrency, publish version 54 Mạng \u0026amp; quan sát Đường egress, CloudWatch, SG, logging, monitoring 55 Scaling \u0026amp; vận hành Max vCPU, kế hoạch traffic ổn định, kiểm soát chi phí, checklist rollout Yêu cầu nền tảng Nắm trải nghiệm Lambda và transformer từ tuần trước Kiến thức cơ bản EC2/VPC, IAM, CloudWatch Hiểu Savings Plan/Reserved Instance cho EC2 Bước tiếp theo Phác capacity provider cho workload mục tiêu (VPC, shortlist instance, guardrail) Lập kế hoạch benchmark LMI vs. Lambda mặc định theo traffic mẫu Vẽ đường giám sát/log (CloudWatch endpoint, PrivateLink nếu cần) Quyết định dùng SP/RI và mục tiêu multi-concurrency cho từng hàm "
+},
+{
+	"uri": "http://localhost:1313/hugo_aws/vi/1-worklog/1.12-week12/",
+	"title": "Tuần 12 - Thông báo AWS re:Invent 2025",
+	"tags": [],
+	"description": "",
+	"content": "Tuần: 2025-11-24 đến 2025-11-28\nTrạng thái: \u0026ldquo;Kế hoạch\u0026rdquo;\nTổng quan Tuần 12 Tóm tắt re:Invent 2025: dòng Nova mới (speech-to-speech, đa phương thức, reasoning giá rẻ), Bedrock mở rộng (model open-weight, reinforcement fine-tuning), vector/AI hạ tầng (S3 Vectors GA), và phần cứng compute mới như Graviton5, Trainium3 UltraServers. Trọng tâm là lập kế hoạch áp dụng thực tế.\nChủ đề chính GenAI \u0026amp; Model Nova 2: Sonic (speech-to-speech), Lite (nhanh/rẻ), Omni (đa phương thức), Forge để huấn luyện frontier model tùy biến Nova Act cho agent UI ổn định; Bedrock AgentCore thêm policy/quality cho agent Bedrock bổ sung model open-weight (Mistral Large 3, Ministral 3) và reinforcement fine-tuning Vector \u0026amp; Dữ liệu Amazon S3 Vectors GA: tới 2B vector/index, ~100ms truy vấn, chi phí thấp hơn DB chuyên dụng Clean Rooms sinh dữ liệu tổng hợp bảo vệ riêng tư cho ML cộng tác Nền tảng AI Dev SageMaker AI với serverless MLflow; training checkpointless và elastic trên HyperPod Compute \u0026amp; Hardware Graviton5 CPU giá/hiệu năng tốt hơn trên EC2 Trainium3 UltraServers (3nm) cho train/inference nhanh và rẻ hơn Mục tiêu học tập Xác định launch AI/compute nào tác động tới workload hiện tại Lên pilot cho Nova và tính năng Bedrock mới Phác lộ trình chuyển sang S3 Vectors cho lưu trữ/search vector Đánh giá phù hợp Graviton5/Trainium3 cho mục tiêu cost/perf Lịch trong tuần Ngày Trọng tâm Chủ đề 56 Model mới Nova 2 (Sonic, Lite, Omni), Forge, Nova Act 57 Bedrock \u0026amp; Agent Model open-weight, reinforcement fine-tuning, AgentCore policy/quality 58 Vector \u0026amp; dữ liệu S3 Vectors GA, Clean Rooms synthetic, kế hoạch scale/chi phí 59 SageMaker Serverless MLflow, checkpointless \u0026amp; elastic training trên HyperPod 60 Compute mới Graviton5, Trainium3 UltraServers, checklist fit/migration Yêu cầu nền tảng Hiểu catalog Bedrock và khả năng agent Nắm kiến trúc vector search cơ bản Biết các họ EC2 và lựa chọn accelerator Bước tiếp theo Chọn 1 pilot cho Nova (speech/đa phương thức/reasoning) và lập kế hoạch đánh giá Lập POC chuyển sang S3 Vectors so với vector store hiện tại Đặt mục tiêu benchmark cho Graviton5/Trainium3 so với máy đang dùng Xác định yêu cầu governance/policy trước khi dùng AgentCore và Nova Act "
 },
 {
 	"uri": "http://localhost:1313/hugo_aws/vi/categories/",

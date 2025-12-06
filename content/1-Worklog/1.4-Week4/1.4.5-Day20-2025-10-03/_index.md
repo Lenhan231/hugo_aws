@@ -102,13 +102,6 @@ Centralized backup service for automating and governing data protection at scale
 
 ## Week 4 Summary
 
-Tuần này đã hoàn thành kiến thức về AWS Storage:
-
-✅ Amazon S3 và Storage Classes  
-✅ S3 Static Website và CORS  
-✅ AWS Snow Family  
-✅ AWS Storage Gateway  
-✅ Disaster Recovery Strategies  
-✅ AWS Backup  
-
-**Labs completed:** 5 labs (Backup, VM Import/Export, Storage Gateway, FSx, S3 & CloudFront)
+- Hoàn thiện chủ đề lưu trữ: S3 và các storage class, static website, CORS.  
+- Nắm Snow Family, Storage Gateway, phương án DR và AWS Backup.  
+- Labs: Backup, VM Import/Export, Storage Gateway, FSx, S3 & CloudFront.

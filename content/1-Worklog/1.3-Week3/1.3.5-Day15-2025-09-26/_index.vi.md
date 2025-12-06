@@ -117,12 +117,7 @@ pre: "<b> 1.3.5. </b>"
 
 ## Tổng kết Tuần 3
 
-Tuần này đã hoàn thành kiến thức về AWS Compute:
-
-✅ Amazon EC2 và các loại instance  
-✅ AMI, EBS, Instance Store  
-✅ EC2 Auto Scaling  
-✅ Các mô hình giá của EC2  
-✅ Lightsail, EFS, FSx  
-
-**Labs đã hoàn tất:** 3 labs (IAM Setup, Budgets, Support Plans)
+- EC2 và các loại instance; AMI, EBS, Instance Store.  
+- Auto Scaling và mô hình giá EC2.  
+- Dịch vụ liên quan: Lightsail, EFS, FSx.  
+- Labs: (ghi chú các lab thực hiện trong tuần).

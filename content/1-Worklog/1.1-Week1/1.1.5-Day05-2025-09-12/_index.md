@@ -79,12 +79,8 @@ pre: "<b> 1.1.5. </b>"
 
 ## Week 1 Summary
 
-Tuần này đã hoàn thành các kiến thức nền tảng về AWS:
-
-✅ Hiểu về Cloud Computing và lợi ích  
-✅ Nắm được AWS Global Infrastructure  
-✅ Biết cách sử dụng AWS Management Tools  
-✅ Học về Cost Optimization strategies  
-✅ Tìm hiểu AWS Well-Architected Framework  
-
-**Labs completed:** 3 labs (IAM Setup, Budgets, Support Plans)
+- Hoàn thiện nền tảng cloud, mô hình dịch vụ và lợi ích.  
+- Nắm được AWS Global Infrastructure và các công cụ quản trị.  
+- Hiểu lựa chọn Support Plans và chiến lược tối ưu chi phí.  
+- Nghiên cứu Well-Architected Framework và các trụ cột.  
+- Labs: IAM setup, AWS Budgets, Support Plans.

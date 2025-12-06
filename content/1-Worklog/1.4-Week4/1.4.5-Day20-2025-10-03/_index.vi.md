@@ -102,13 +102,6 @@ pre: "<b> 1.4.5. </b>"
 
 ## Tổng kết Tuần 4
 
-Tuần này đã hoàn tất các chủ đề về AWS Storage:
-
-✅ Amazon S3 và các lớp lưu trữ  
-✅ S3 Static Website và CORS  
-✅ AWS Snow Family  
-✅ AWS Storage Gateway  
-✅ Chiến lược Disaster Recovery  
-✅ AWS Backup  
-
-**Labs đã hoàn tất:** 5 labs (Backup, VM Import/Export, Storage Gateway, FSx, S3 & CloudFront)
+- S3 và các lớp lưu trữ; static website, CORS.  
+- Snow Family, Storage Gateway; chiến lược DR và AWS Backup.  
+- Labs: Backup, VM Import/Export, Storage Gateway, FSx, S3 & CloudFront.

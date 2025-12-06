@@ -9,46 +9,19 @@ pre: "<b> 1. </b>"
 
 ## Tổng quan
 
-Đây là nhật ký học tập ghi lại hành trình học **AWS** bắt đầu từ **ngày 8/9/2025**.
+Worklog 12 tuần (5 ngày/tuần) bắt đầu **08/09/2025**, tóm lược nội dung học phục vụ đánh giá: nền tảng AWS, kiến trúc, và các cập nhật GenAI/compute mới nhất từ re:Invent.
 
-### Cấu trúc
+### Ảnh nhanh từng tuần
 
-Worklog được tổ chức theo **tuần**, mỗi tuần gồm **5 ngày làm việc** (Thứ Hai đến Thứ Sáu).
-
-### Nội dung chính
-
-1. **Nền tảng Điện toán Đám mây**
-   - Kiến thức cơ bản về AWS, hạ tầng toàn cầu, công cụ quản lý  
-   - Tối ưu chi phí, các gói hỗ trợ  
-   - Bộ khung Well-Architected Framework  
-
-2. **Mạng (Networking)**
-   - VPC, subnet, security group, NACL  
-   - Cân bằng tải (ALB, NLB, GWLB)  
-   - VPC Peering, Transit Gateway  
-   - VPN, Direct Connect  
-
-3. **Tính toán (Compute)**
-   - EC2, AMI, EBS, Instance Store  
-   - Auto Scaling, mô hình định giá  
-   - Lightsail, EFS, FSx  
-
-4. **Lưu trữ (Storage)**
-   - S3, các lớp lưu trữ, Glacier  
-   - Snow Family, Storage Gateway  
-   - Khôi phục thảm họa, AWS Backup  
-
-5. **Bảo mật & Danh tính (Security & Identity)**
-   - IAM, Cognito, Organizations  
-   - KMS, Security Hub  
-   - Identity Center (SSO)  
-
-6. **Cơ sở dữ liệu (Database)**
-   - RDS, Aurora, Redshift  
-   - ElastiCache, DMS  
-   - Thực hành tốt trong quản lý cơ sở dữ liệu  
-
-7. **Chủ đề Nâng cao (Advanced Topics)**
-   - Serverless (Lambda)  
-   - Containers (ECS, EKS, ECR)  
-   - Giám sát hệ thống (CloudWatch, X-Ray, CloudTrail)
+- **Tuần 1:** Nền tảng đám mây, hạ tầng toàn cầu, Well-Architected  
+- **Tuần 2:** Mạng (VPC, SG/NACL, LB, TGW/peering, VPN/DC)  
+- **Tuần 3:** Tính toán (EC2/AMI/EBS, scaling, giá, EFS/FSx)  
+- **Tuần 4:** Lưu trữ (S3 classes, Glacier, Snow, DR/Backup)  
+- **Tuần 5:** Bảo mật & danh tính (IAM, Org, KMS, Security Hub, SSO)  
+- **Tuần 6:** CSDL (RDS/Aurora/Redshift, ElastiCache, DMS)  
+- **Tuần 7:** Serverless & Containers (Lambda, ECS/EKS, ECR)  
+- **Tuần 8:** Giám sát & vận hành (CloudWatch, X-Ray, CloudTrail, cost/ops)  
+- **Tuần 9:** Kiến trúc Transformer, attention, encoder-decoder, GPT/BERT/T5  
+- **Tuần 10:** Transfer learning, QA modes, BERT & T5 fine-tuning  
+- **Tuần 11:** Lambda Managed Instances (capacity provider, mạng, scale, chi phí)  
+- **Tuần 12:** Thông báo re:Invent 2025 (Nova models, Bedrock, S3 Vectors, SageMaker serverless/elastic training, Graviton5, Trainium3)

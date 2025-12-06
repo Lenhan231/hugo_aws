@@ -381,11 +381,8 @@ All use the same decoder architecture, just scaled up!
 
 # **Week 9 Summary**
 
-We covered:
-- ✅ Why transformers replaced RNNs
-- ✅ Complete transformer architecture
-- ✅ Scaled dot-product attention mechanics
-- ✅ Self, masked, and encoder-decoder attention
-- ✅ Implementation details and code
-
-**This is the foundation of modern NLP!** All state-of-the-art models (BERT, GPT, T5, Claude, ChatGPT) are based on transformer architecture.
+- Lý do transformer thay thế RNN: xử lý song song, giải quyết bottleneck và gradient.  
+- Kiến trúc tổng thể encoder–decoder và các biến thể.  
+- Cơ chế scaled dot-product attention và các loại attention (self, masked, encoder–decoder).  
+- Triển khai chi tiết các khối decoder và tính toán xác suất đầu ra.  
+- Nền tảng cho các mô hình hiện đại như BERT, GPT, T5.

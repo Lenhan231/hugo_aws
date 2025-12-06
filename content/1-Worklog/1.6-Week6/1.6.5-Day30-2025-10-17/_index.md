@@ -131,40 +131,19 @@ AWS DMS helps migrate databases to AWS quickly and securely with minimal downtim
 
 ## Week 6 Summary
 
-Tuần này đã hoàn thành kiến thức về AWS Database Services:
-
-✅ Database Fundamentals (RDBMS, NoSQL, OLTP vs OLAP)  
-✅ Amazon RDS & Aurora  
-✅ Amazon Redshift  
-✅ Amazon ElastiCache  
-✅ AWS Database Migration Service  
-
-**Labs completed:** 2 labs (RDS & EC2 Integration, Database Migration Service)
+- Hoàn thành nền tảng Database (RDBMS, NoSQL, OLTP vs OLAP).  
+- Dịch vụ chính: RDS/Aurora, Redshift, ElastiCache, DMS.  
+- Labs: RDS & EC2 Integration, Database Migration Service.
 
 ---
 
-## Tổng kết 6 tuần đầu (8/9 - 17/10/2025)
+## Tổng kết 6 tuần đầu (08/09 - 17/10/2025)
 
-**30 ngày làm việc đã hoàn thành:**
-
-### Week 1: Cloud Computing Fundamentals
-- AWS basics, infrastructure, management tools, cost optimization
-
-### Week 2: AWS Networking Services  
-- VPC, subnets, security groups, load balancing, hybrid connectivity
-
-### Week 3: AWS Compute Services
-- EC2, AMI, storage, auto scaling, pricing models
-
-### Week 4: AWS Storage Services
-- S3, Glacier, Snow Family, Storage Gateway, backup & DR
-
-### Week 5: AWS Security & Identity
-- IAM, Cognito, Organizations, KMS, Security Hub
-
-### Week 6: AWS Database Services
-- RDS, Aurora, Redshift, ElastiCache, DMS
-
-**Tổng số labs hoàn thành:** 25+ labs
-
-**Tiếp theo:** Tuần 7-8 sẽ bắt đầu từ ngày 20/10/2025 (Monday)
+- Week 1: Cloud fundamentals, infrastructure, management tools, cost optimization.  
+- Week 2: Networking (VPC, security controls, load balancing, hybrid connectivity).  
+- Week 3: Compute (EC2/AMI/storage, auto scaling, pricing models).  
+- Week 4: Storage (S3/Glacier, Snow Family, Storage Gateway, backup & DR).  
+- Week 5: Security & Identity (IAM, Cognito, Organizations/SCP, KMS, Security Hub).  
+- Week 6: Databases (RDS, Aurora, Redshift, ElastiCache, DMS).  
+- Labs hoàn thành: 25+ labs.  
+- Tiếp theo: Tuần 7–8 bắt đầu từ 20/10/2025.
