@@ -1,32 +1,24 @@
 ---
-title : "Clean up"
-
-weight : 6
-chapter : false
-pre : " <b> 5.6. </b> "
+title: "Clean up"
+weight: 6
+chapter: false
+pre: " <b> 5.6. </b> "
 ---
-Congratulations on completing this workshop! 
-In this workshop, you learned architecture patterns for accessing Amazon S3 without using the Public Internet. 
-+ By creating a gateway endpoint, you enabled direct communication between EC2 resources and Amazon S3, without traversing an Internet Gateway. 
-+ By creating an interface endpoint you extended S3 connectivity to resources running in your on-premises data center via AWS Site-to-Site VPN or Direct Connect. 
 
-#### clean up
-1. Navigate to Hosted Zones on the left side of Route 53 console. Click the name of *s3.us-east-1.amazonaws.com* zone. Click Delete and confirm deletion by typing delete. 
+## Cleanup Steps
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
+- Delete the API Gateway stage/API created for the workshop.  
+![image](/images/5-Workshop/5.6-Cleanup/api.png)
+- Delete the Lambda functions (Node.js, Python, suggest).  
+![image](/images/5-Workshop/5.6-Cleanup/lambda.png)
+- Remove IAM roles/policies created specifically for Lambda (if no longer needed).
+![image](/images/5-Workshop/5.6-Cleanup/iam_role.png)  
+- Check CloudWatch Log Groups, set short retention or delete.
+![image](/images/5-Workshop/5.6-Cleanup/cloudwatch.png)  
+- Ensure no remaining resources that incur costs (temporary S3 buckets, temporary Secrets if any).
 
-2. Disassociate the Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
+## Cost Notes
 
-4. Open the CloudFormation console  and delete the two CloudFormation Stacks that you created for this lab:
-+ PLOnpremSetup
-+ PLCloudSetup
-
-![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
-
-5. Delete S3 buckets
-+ Open S3 console
-+ Choose the bucket we created for the lab, click and confirm empty. Click delete and confirm delete.
-
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+- Lambda/Logs/API Gateway have low costs but should still be deleted after the lab.  
+- If you created additional resources (S3, KMS), confirm they have been deleted/retention set.
