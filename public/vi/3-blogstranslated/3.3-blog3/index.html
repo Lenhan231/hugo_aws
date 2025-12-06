@@ -1,87 +1,3531 @@
-<!doctype html><html lang=vi class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.152.2"><meta name=description content><meta name=author content="thienlh@thienlu.com"><link rel=icon href=../../../images/favicon.png type=image/png><title>Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD :: Báo cáo thực tập</title><link href=../../../css/nucleus.css?1764994110 rel=stylesheet><link href=../../../css/fontawesome-all.min.css?1764994110 rel=stylesheet><link href=../../../css/hybrid.css?1764994110 rel=stylesheet><link href=../../../css/featherlight.min.css?1764994110 rel=stylesheet><link href=../../../css/perfect-scrollbar.min.css?1764994110 rel=stylesheet><link href=../../../css/auto-complete.css?1764994110 rel=stylesheet><link href=../../../css/atom-one-dark-reasonable.css?1764994110 rel=stylesheet><link href=../../../css/theme.css?1764994110 rel=stylesheet><link href=../../../css/hugo-theme.css?1764994110 rel=stylesheet><link href=../../../css/theme-workshop.css?1764994110 rel=stylesheet><link href=../../../css/custom.css?1764994110 rel=stylesheet><script src=../../../js/jquery-3.3.1.min.js?1764994110></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=../../../vi/3-blogstranslated/3.3-blog3/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=../../../><svg id="Layer_1" data-name="Layer 1" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff}.cls-2{fill:#f90;fill-rule:evenodd}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09 10.85a4.7 4.7.0 00.19 1.48 7.73 7.73.0 00.54 1.19.77.77.0 01.12.38.64.64.0 01-.32.49l-1 .7a.83.83.0 01-.44.15.69.69.0 01-.49-.23 3.8 3.8.0 01-.6-.77q-.25-.42-.51-1a6.14 6.14.0 01-4.89 2.3 4.54 4.54.0 01-3.32-1.19 4.27 4.27.0 01-1.22-3.2 4.28 4.28.0 011.46-3.4A6.06 6.06.0 017.69 6.46a12.47 12.47.0 011.76.13q.92.13 1.91.36V5.73a3.65 3.65.0 00-.79-2.66A3.81 3.81.0 007.86 2.3a7.71 7.71.0 00-1.79.22 12.78 12.78.0 00-1.79.57 4.55 4.55.0 01-.58.22h-.26q-.35.0-.35-.52V2a1.09 1.09.0 01.12-.58 1.2 1.2.0 01.47-.35A10.88 10.88.0 015.77.32 10.19 10.19.0 018.36.0a6 6 0 014.35 1.35 5.49 5.49.0 011.38 4.09zM7.34 13.38a5.36 5.36.0 001.72-.31A3.63 3.63.0 0010.63 12 2.62 2.62.0 0011.19 11a5.63 5.63.0 00.16-1.44v-.7a14.35 14.35.0 00-1.53-.28 12.37 12.37.0 00-1.56-.1 3.84 3.84.0 00-2.47.67A2.34 2.34.0 005 11a2.35 2.35.0 00.61 1.76A2.4 2.4.0 007.34 13.38zm13.35 1.8a1 1 0 01-.64-.16 1.3 1.3.0 01-.35-.65L15.81 1.51a3 3 0 01-.15-.67.36.36.0 01.41-.41H17.7a1 1 0 01.65.16 1.4 1.4.0 01.33.65l2.79 11 2.59-11A1.17 1.17.0 0124.39.6a1.1 1.1.0 01.67-.16H26.4a1.1 1.1.0 01.67.16 1.17 1.17.0 01.32.65L30 12.39 32.88 1.25A1.39 1.39.0 0133.22.6a1 1 0 01.65-.16h1.54a.36.36.0 01.41.41 1.36 1.36.0 010 .26 3.64 3.64.0 01-.12.41l-4 12.86a1.3 1.3.0 01-.35.65 1 1 0 01-.64.16H29.25a1 1 0 01-.67-.17 1.26 1.26.0 01-.32-.67L25.67 3.64l-2.56 10.7a1.26 1.26.0 01-.32.67 1 1 0 01-.67.17zm21.36.44a11.28 11.28.0 01-2.56-.29 7.44 7.44.0 01-1.92-.67 1 1 0 01-.61-.93v-.84q0-.52.38-.52a.9.9.0 01.31.06l.42.17a8.77 8.77.0 001.83.58 9.78 9.78.0 002 .2 4.48 4.48.0 002.43-.55 1.76 1.76.0 00.86-1.57 1.61 1.61.0 00-.45-1.16A4.29 4.29.0 0043 9.22l-2.41-.76A5.15 5.15.0 0138 6.78a3.94 3.94.0 01-.83-2.41 3.7 3.7.0 01.45-1.85 4.47 4.47.0 011.19-1.37 5.27 5.27.0 011.7-.86A7.4 7.4.0 0142.6.0a8.87 8.87.0 011.12.07q.57.07 1.08.19t.95.26a4.27 4.27.0 01.7.29 1.59 1.59.0 01.49.41.94.94.0 01.15.55v.79q0 .52-.38.52a1.76 1.76.0 01-.64-.2 7.74 7.74.0 00-3.2-.64 4.37 4.37.0 00-2.21.47 1.6 1.6.0 00-.79 1.48 1.58 1.58.0 00.49 1.18 4.94 4.94.0 001.83.92L44.55 7a5.08 5.08.0 012.57 1.6A3.76 3.76.0 0147.9 11a4.21 4.21.0 01-.44 1.93 4.4 4.4.0 01-1.21 1.47 5.43 5.43.0 01-1.85.93A8.25 8.25.0 0142.05 15.62z"/><path class="cls-2" d="M45.19 23.81C39.72 27.85 31.78 30 25 30A36.64 36.64.0 01.22 20.57c-.51-.46-.06-1.09.56-.74A49.78 49.78.0 0025.53 26.4 49.23 49.23.0 0044.4 22.53C45.32 22.14 46.1 23.14 45.19 23.81z"/><path class="cls-2" d="M47.47 21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74 3.13-2.2 8.27-1.57 8.86-.83s-.16 5.89-3.09 8.35c-.45.38-.88.18-.68-.32C46.69 25.8 48.17 22.11 47.47 21.21z"/></svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=/vi/1-worklog/ title="Worklog - Hành Trình Học AWS" class=dd-item><a href=../../../vi/1-worklog/><b>1. </b>Worklog - Hành Trình Học AWS
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.1-week1/ title="Tuần 1 - Kiến thức Nền tảng Cloud Computing" class=dd-item><a href=../../../vi/1-worklog/1.1-week1/><b>1.1. </b>Tuần 1 - Kiến thức Nền tảng Cloud Computing
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.1-week1/1.1.1-day01-2025-09-08/ title="Ngày 01 - Giới thiệu về Điện toán Đám mây" class=dd-item><a href=../../../vi/1-worklog/1.1-week1/1.1.1-day01-2025-09-08/><b>1.1.1. </b>Ngày 01 - Giới thiệu về Điện toán Đám mây
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.1-week1/1.1.2-day02-2025-09-09/ title="Ngày 02 - Hạ tầng Toàn cầu của AWS" class=dd-item><a href=../../../vi/1-worklog/1.1-week1/1.1.2-day02-2025-09-09/><b>1.1.2. </b>Ngày 02 - Hạ tầng Toàn cầu của AWS
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.1-week1/1.1.3-day03-2025-09-10/ title="Ngày 03 - Công cụ Quản lý AWS" class=dd-item><a href=../../../vi/1-worklog/1.1-week1/1.1.3-day03-2025-09-10/><b>1.1.3. </b>Ngày 03 - Công cụ Quản lý AWS
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.1-week1/1.1.4-day04-2025-09-11/ title="Ngày 04 - Tối ưu Chi phí trên AWS" class=dd-item><a href=../../../vi/1-worklog/1.1-week1/1.1.4-day04-2025-09-11/><b>1.1.4. </b>Ngày 04 - Tối ưu Chi phí trên AWS
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.1-week1/1.1.5-day05-2025-09-12/ title="Ngày 05 - AWS Well-Architected Framework" class=dd-item><a href=../../../vi/1-worklog/1.1-week1/1.1.5-day05-2025-09-12/><b>1.1.5. </b>Ngày 05 - AWS Well-Architected Framework
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/1-worklog/1.2-week2/ title="Tuần 2 - Dịch vụ Mạng trên AWS" class=dd-item><a href=../../../vi/1-worklog/1.2-week2/><b>1.2. </b>Tuần 2 - Dịch vụ Mạng trên AWS
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.2-week2/1.2.1-day06-2025-09-15/ title="Ngày 06 - Kiến thức Cơ bản về Amazon VPC" class=dd-item><a href=../../../vi/1-worklog/1.2-week2/1.2.1-day06-2025-09-15/><b>1.2.1. </b>Ngày 06 - Kiến thức Cơ bản về Amazon VPC
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.2-week2/1.2.2-day07-2025-09-16/ title="Ngày 07 - Định tuyến VPC & Network Interface" class=dd-item><a href=../../../vi/1-worklog/1.2-week2/1.2.2-day07-2025-09-16/><b>1.2.2. </b>Ngày 07 - Định tuyến VPC & Network Interface
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.2-week2/1.2.3-day08-2025-09-17/ title="Ngày 08 - Bảo mật VPC & Flow Logs" class=dd-item><a href=../../../vi/1-worklog/1.2-week2/1.2.3-day08-2025-09-17/><b>1.2.3. </b>Ngày 08 - Bảo mật VPC & Flow Logs
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.2-week2/1.2.4-day09-2025-09-18/ title="Ngày 09 - Kết nối VPC & Cân bằng tải" class=dd-item><a href=../../../vi/1-worklog/1.2-week2/1.2.4-day09-2025-09-18/><b>1.2.4. </b>Ngày 09 - Kết nối VPC & Cân bằng tải
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.2-week2/1.2.5-day10-2025-09-19/ title="Ngày 10 - Elastic Load Balancing" class=dd-item><a href=../../../vi/1-worklog/1.2-week2/1.2.5-day10-2025-09-19/><b>1.2.5. </b>Ngày 10 - Elastic Load Balancing
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/1-worklog/1.3-week3/ title="Tuần 3 - Dịch vụ Compute trên AWS" class=dd-item><a href=../../../vi/1-worklog/1.3-week3/><b>1.3. </b>Tuần 3 - Dịch vụ Compute trên AWS
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.3-week3/1.3.1-day11-2025-09-22/ title="Ngày 11 - Kiến thức cơ bản về Amazon EC2" class=dd-item><a href=../../../vi/1-worklog/1.3-week3/1.3.1-day11-2025-09-22/><b>1.3.1. </b>Ngày 11 - Kiến thức cơ bản về Amazon EC2
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.3-week3/1.3.2-day12-2025-09-23/ title="Ngày 12 - Lưu trữ & Sao lưu cho EC2" class=dd-item><a href=../../../vi/1-worklog/1.3-week3/1.3.2-day12-2025-09-23/><b>1.3.2. </b>Ngày 12 - Lưu trữ & Sao lưu cho EC2
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.3-week3/1.3.3-day13-2025-09-24/ title="Ngày 13 - Instance Store & User Data" class=dd-item><a href=../../../vi/1-worklog/1.3-week3/1.3.3-day13-2025-09-24/><b>1.3.3. </b>Ngày 13 - Instance Store & User Data
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.3-week3/1.3.4-day14-2025-09-25/ title="Ngày 14 - EC2 Auto Scaling" class=dd-item><a href=../../../vi/1-worklog/1.3-week3/1.3.4-day14-2025-09-25/><b>1.3.4. </b>Ngày 14 - EC2 Auto Scaling
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.3-week3/1.3.5-day15-2025-09-26/ title="Ngày 15 - Lightsail, EFS & FSx" class=dd-item><a href=../../../vi/1-worklog/1.3-week3/1.3.5-day15-2025-09-26/><b>1.3.5. </b>Ngày 15 - Lightsail, EFS & FSx
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/1-worklog/1.4-week4/ title="Tuần 4 - Dịch vụ Lưu trữ trên AWS" class=dd-item><a href=../../../vi/1-worklog/1.4-week4/><b>1.4. </b>Tuần 4 - Dịch vụ Lưu trữ trên AWS
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.4-week4/1.4.1-day16-2025-09-29/ title="Ngày 16 - Kiến thức cơ bản về Amazon S3" class=dd-item><a href=../../../vi/1-worklog/1.4-week4/1.4.1-day16-2025-09-29/><b>1.4.1. </b>Ngày 16 - Kiến thức cơ bản về Amazon S3
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.4-week4/1.4.2-day17-2025-09-30/ title="Ngày 17 - Tính năng nâng cao của S3" class=dd-item><a href=../../../vi/1-worklog/1.4-week4/1.4.2-day17-2025-09-30/><b>1.4.2. </b>Ngày 17 - Tính năng nâng cao của S3
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.4-week4/1.4.3-day18-2025-10-01/ title="Ngày 18 - AWS Snow Family & Hybrid Storage" class=dd-item><a href=../../../vi/1-worklog/1.4-week4/1.4.3-day18-2025-10-01/><b>1.4.3. </b>Ngày 18 - AWS Snow Family & Hybrid Storage
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.4-week4/1.4.4-day19-2025-10-02/ title="Ngày 19 - Disaster Recovery trên AWS" class=dd-item><a href=../../../vi/1-worklog/1.4-week4/1.4.4-day19-2025-10-02/><b>1.4.4. </b>Ngày 19 - Disaster Recovery trên AWS
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/ title="Ngày 20 - AWS Backup & FSx" class=dd-item><a href=../../../vi/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/><b>1.4.5. </b>Ngày 20 - AWS Backup & FSx
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/1-worklog/1.5-week5/ title="Tuần 5 - Bảo mật & Danh tính trên AWS" class=dd-item><a href=../../../vi/1-worklog/1.5-week5/><b>1.5. </b>Tuần 5 - Bảo mật & Danh tính trên AWS
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.5-week5/1.5.1-day21-2025-10-06/ title="Ngày 21 - Shared Responsibility & Kiến thức IAM cơ bản" class=dd-item><a href=../../../vi/1-worklog/1.5-week5/1.5.1-day21-2025-10-06/><b>1.5.1. </b>Ngày 21 - Shared Responsibility & Kiến thức IAM cơ bản
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.5-week5/1.5.2-day22-2025-10-07/ title="Ngày 22 - IAM Policies & Roles" class=dd-item><a href=../../../vi/1-worklog/1.5-week5/1.5.2-day22-2025-10-07/><b>1.5.2. </b>Ngày 22 - IAM Policies & Roles
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.5-week5/1.5.3-day23-2025-10-08/ title="Ngày 23 - Amazon Cognito & Organizations" class=dd-item><a href=../../../vi/1-worklog/1.5-week5/1.5.3-day23-2025-10-08/><b>1.5.3. </b>Ngày 23 - Amazon Cognito & Organizations
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.5-week5/1.5.4-day24-2025-10-09/ title="Ngày 24 - SCPs, Identity Center & KMS" class=dd-item><a href=../../../vi/1-worklog/1.5-week5/1.5.4-day24-2025-10-09/><b>1.5.4. </b>Ngày 24 - SCPs, Identity Center & KMS
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.5-week5/1.5.5-day25-2025-10-10/ title="Ngày 25 - AWS Security Hub & Automation" class=dd-item><a href=../../../vi/1-worklog/1.5-week5/1.5.5-day25-2025-10-10/><b>1.5.5. </b>Ngày 25 - AWS Security Hub & Automation
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/1-worklog/1.6-week6/ title="Tuần 6 - AWS Database Services" class=dd-item><a href=../../../vi/1-worklog/1.6-week6/><b>1.6. </b>Tuần 6 - AWS Database Services
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.6-week6/1.6.1-day26-2025-10-13/ title="Ngày 26 - Kiến thức Cơ bản về Cơ sở dữ liệu" class=dd-item><a href=../../../vi/1-worklog/1.6-week6/1.6.1-day26-2025-10-13/><b>1.6.1. </b>Ngày 26 - Kiến thức Cơ bản về Cơ sở dữ liệu
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.6-week6/1.6.2-day27-2025-10-14/ title="Ngày 27 - Amazon RDS & Aurora" class=dd-item><a href=../../../vi/1-worklog/1.6-week6/1.6.2-day27-2025-10-14/><b>1.6.2. </b>Ngày 27 - Amazon RDS & Aurora
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.6-week6/1.6.3-day28-2025-10-15/ title="Ngày 28 - Amazon Redshift" class=dd-item><a href=../../../vi/1-worklog/1.6-week6/1.6.3-day28-2025-10-15/><b>1.6.3. </b>Ngày 28 - Amazon Redshift
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.6-week6/1.6.4-day29-2025-10-16/ title="Ngày 29 - Amazon ElastiCache" class=dd-item><a href=../../../vi/1-worklog/1.6-week6/1.6.4-day29-2025-10-16/><b>1.6.4. </b>Ngày 29 - Amazon ElastiCache
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.6-week6/1.6.5-day30-2025-10-17/ title="Ngày 30 - Database Migration & Best Practices" class=dd-item><a href=../../../vi/1-worklog/1.6-week6/1.6.5-day30-2025-10-17/><b>1.6.5. </b>Ngày 30 - Database Migration & Best Practices
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/1-worklog/1.7-week7/ title="Tuần 7 - Vertical Slice Delivery" class=dd-item><a href=../../../vi/1-worklog/1.7-week7/><b>1.7. </b>Tuần 7 - Vertical Slice Delivery
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.7-week7/1.7.1-day31-2025-10-20/ title="Ngày 31 - Khởi động Vertical Slice" class=dd-item><a href=../../../vi/1-worklog/1.7-week7/1.7.1-day31-2025-10-20/><b>1.7.1. </b>Ngày 31 - Khởi động Vertical Slice
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.7-week7/1.7.2-day32-2025-10-21/ title="Ngày 32 - Contract-First & Mocking" class=dd-item><a href=../../../vi/1-worklog/1.7-week7/1.7.2-day32-2025-10-21/><b>1.7.2. </b>Ngày 32 - Contract-First & Mocking
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.7-week7/1.7.3-day33-2025-10-22/ title="Ngày 33 - Next.js App Router" class=dd-item><a href=../../../vi/1-worklog/1.7-week7/1.7.3-day33-2025-10-22/><b>1.7.3. </b>Ngày 33 - Next.js App Router
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.7-week7/1.7.4-day34-2025-10-23/ title="Ngày 34 - FastAPI Clean Architecture" class=dd-item><a href=../../../vi/1-worklog/1.7-week7/1.7.4-day34-2025-10-23/><b>1.7.4. </b>Ngày 34 - FastAPI Clean Architecture
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.7-week7/1.7.5-day35-2025-10-24/ title="Ngày 35 - Contract Testing & Retrospective" class=dd-item><a href=../../../vi/1-worklog/1.7-week7/1.7.5-day35-2025-10-24/><b>1.7.5. </b>Ngày 35 - Contract Testing & Retrospective
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/1-worklog/1.8-week8/ title="Tuần 8 - Xử Lý Ngôn Ngữ Tự Nhiên & Deep Learning" class=dd-item><a href=../../../vi/1-worklog/1.8-week8/><b>1.8. </b>Tuần 8 - Xử Lý Ngôn Ngữ Tự Nhiên & Deep Learning
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.8-week8/1.8.1-day36-2025-10-27/ title="Ngày 36 - Nền Tảng NLP & Ứng Dụng" class=dd-item><a href=../../../vi/1-worklog/1.8-week8/1.8.1-day36-2025-10-27/><b>1.8.1. </b>Ngày 36 - Nền Tảng NLP & Ứng Dụng
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.8-week8/1.8.2-day37-2025-10-28/ title="Ngày 37 - Tìm Kiếm Giọng Nói & Kiến Trúc Chatbot" class=dd-item><a href=../../../vi/1-worklog/1.8-week8/1.8.2-day37-2025-10-28/><b>1.8.2. </b>Ngày 37 - Tìm Kiếm Giọng Nói & Kiến Trúc Chatbot
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.8-week8/1.8.3-day38-2025-10-29/ title="Ngày 38 - Mô Hình Seq2seq & LSTM Chi Tiết" class=dd-item><a href=../../../vi/1-worklog/1.8-week8/1.8.3-day38-2025-10-29/><b>1.8.3. </b>Ngày 38 - Mô Hình Seq2seq & LSTM Chi Tiết
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.8-week8/1.8.4-day39-2025-10-30/ title="Ngày 39 - NMT & Tóm Tắt Văn Bản" class=dd-item><a href=../../../vi/1-worklog/1.8-week8/1.8.4-day39-2025-10-30/><b>1.8.4. </b>Ngày 39 - NMT & Tóm Tắt Văn Bản
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.8-week8/1.8.5-day40-2025-10-31/ title="Ngày 40 - Đánh Giá MT & Chiến Lược Decoding" class=dd-item><a href=../../../vi/1-worklog/1.8-week8/1.8.5-day40-2025-10-31/><b>1.8.5. </b>Ngày 40 - Đánh Giá MT & Chiến Lược Decoding
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/1-worklog/1.9-week9/ title="Tuần 9 - Kiến Trúc & Triển Khai Transformer" class=dd-item><a href=../../../vi/1-worklog/1.9-week9/><b>1.9. </b>Tuần 9 - Kiến Trúc & Triển Khai Transformer
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.9-week9/1.9.1-day41-2025-11-03/ title="Ngày 41 - Vấn Đề RNN & Tại Sao Cần Transformers" class=dd-item><a href=../../../vi/1-worklog/1.9-week9/1.9.1-day41-2025-11-03/><b>1.9.1. </b>Ngày 41 - Vấn Đề RNN & Tại Sao Cần Transformers
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.9-week9/1.9.2-day42-2025-11-04/ title="Ngày 42 - Tổng Quan Kiến Trúc Transformer" class=dd-item><a href=../../../vi/1-worklog/1.9-week9/1.9.2-day42-2025-11-04/><b>1.9.2. </b>Ngày 42 - Tổng Quan Kiến Trúc Transformer
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.9-week9/1.9.3-day43-2025-11-05/ title="Ngày 43 - Sâu Hơn Về Scaled Dot-Product Attention" class=dd-item><a href=../../../vi/1-worklog/1.9-week9/1.9.3-day43-2025-11-05/><b>1.9.3. </b>Ngày 43 - Sâu Hơn Về Scaled Dot-Product Attention
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.9-week9/1.9.4-day44-2025-11-06/ title="Ngày 44 - Các Loại Attention: Self, Masked, Encoder-Decoder" class=dd-item><a href=../../../vi/1-worklog/1.9-week9/1.9.4-day44-2025-11-06/><b>1.9.4. </b>Ngày 44 - Các Loại Attention: Self, Masked, Encoder-Decoder
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.9-week9/1.9.5-day45-2025-11-07/ title="Ngày 45 - Decoder Transformer & Triển Khai GPT2" class=dd-item><a href=../../../vi/1-worklog/1.9-week9/1.9.5-day45-2025-11-07/><b>1.9.5. </b>Ngày 45 - Decoder Transformer & Triển Khai GPT2
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/1-worklog/1.10-week10/ title class=dd-item><a href=../../../vi/1-worklog/1.10-week10/><i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.10-week10/1.10.1-day46-2025-11-10/ title class=dd-item><a href=../../../vi/1-worklog/1.10-week10/1.10.1-day46-2025-11-10/><i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.10-week10/1.10.2-day47-2025-11-11/ title class=dd-item><a href=../../../vi/1-worklog/1.10-week10/1.10.2-day47-2025-11-11/><i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.10-week10/1.10.3-day48-2025-11-12/ title class=dd-item><a href=../../../vi/1-worklog/1.10-week10/1.10.3-day48-2025-11-12/><i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.10-week10/1.10.4-day49-2025-11-13/ title class=dd-item><a href=../../../vi/1-worklog/1.10-week10/1.10.4-day49-2025-11-13/><i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.10-week10/1.10.5-day50-2025-11-14/ title class=dd-item><a href=../../../vi/1-worklog/1.10-week10/1.10.5-day50-2025-11-14/><i class="fas fa-check read-icon"></i></a></li></ul></li></ul></li><li data-nav-id=/vi/2-proposal/ title=Proposal class=dd-item><a href=../../../vi/2-proposal/><b>2. </b>Proposal
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogstranslated/ title="Translated Blogs" class="dd-item
-parent"><a href=../../../vi/3-blogstranslated/><b>3. </b>Translated Blogs
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/3-blogstranslated/3.1-blog1/ title="Tăng tốc luồng dữ liệu và AI của bạn bằng cách kết nối đến Amazon SageMaker Unified Studio từ Visual Studio Code" class=dd-item><a href=../../../vi/3-blogstranslated/3.1-blog1/><b>3.1. </b>Tăng tốc luồng dữ liệu và AI của bạn bằng cách kết nối đến Amazon SageMaker Unified Studio từ Visual Studio Code
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogstranslated/3.2-blog2/ title="Thông báo Amazon EC2 M4 và M4 Pro Mac instances" class=dd-item><a href=../../../vi/3-blogstranslated/3.2-blog2/><b>3.2. </b>Thông báo Amazon EC2 M4 và M4 Pro Mac instances
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogstranslated/3.3-blog3/ title="Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD" class="dd-item
-active"><a href=../../../vi/3-blogstranslated/3.3-blog3/><b>3.3. </b>Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/4-eventparticipated/ title="Các Sự Kiện Tham Gia" class=dd-item><a href=../../../vi/4-eventparticipated/><b>4. </b>Các Sự Kiện Tham Gia
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/4-eventparticipated/4.1-event1/ title="Sự Kiện 1 - Vietnam Cloud Day 2025" class=dd-item><a href=../../../vi/4-eventparticipated/4.1-event1/>Sự Kiện 1 - Vietnam Cloud Day 2025
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/4-eventparticipated/4.2-event2/ title="Sự Kiện 2 - AWS GenAI Builder Club" class=dd-item><a href=../../../vi/4-eventparticipated/4.2-event2/>Sự Kiện 2 - AWS GenAI Builder Club
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/ title=Workshop class=dd-item><a href=../../../vi/5-workshop/><b>5. </b>Workshop
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.1-workshop-overview/ title="Giới thiệu" class=dd-item><a href=../../../vi/5-workshop/5.1-workshop-overview/><b>5.1. </b>Giới thiệu
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.2-prerequiste/ title="Các bước chuẩn bị" class=dd-item><a href=../../../vi/5-workshop/5.2-prerequiste/><b>5.2. </b>Các bước chuẩn bị
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.3-s3-vpc/ title="Truy cập S3 từ VPC" class=dd-item><a href=../../../vi/5-workshop/5.3-s3-vpc/><b>5.3. </b>Truy cập S3 từ VPC
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/ title="Tạo một Gateway Endpoint" class=dd-item><a href=../../../vi/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/><b>5.3.1 </b>Tạo một Gateway Endpoint
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/ title="Kiểm tra Gateway Endpoint" class=dd-item><a href=../../../vi/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/><b>5.3.2 </b>Kiểm tra Gateway Endpoint
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/5.4-s3-onprem/ title="Truy cập S3 từ môi trường truyền thống" class=dd-item><a href=../../../vi/5-workshop/5.4-s3-onprem/><b>5.4. </b>Truy cập S3 từ môi trường truyền thống
-<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.4-s3-onprem/5.4.1-prepare/ title="Chuẩn bị tài nguyên" class=dd-item><a href=../../../vi/5-workshop/5.4-s3-onprem/5.4.1-prepare/><b>5.4.1 </b>Chuẩn bị tài nguyên
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/ title="Tạo một S3 Interface endpoint" class=dd-item><a href=../../../vi/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/><b>5.4.2 </b>Tạo một S3 Interface endpoint
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/ title="Kiểm tra Interface Endpoint" class=dd-item><a href=../../../vi/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/><b>5.4.3 </b>Kiểm tra Interface Endpoint
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/ title="Mô phỏng On-premises DNS " class=dd-item><a href=../../../vi/5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/><b>5.4.4 </b>Mô phỏng On-premises DNS
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/5.5-policy/ title="VPC Endpoint Policies" class=dd-item><a href=../../../vi/5-workshop/5.5-policy/><b>5.5 </b>VPC Endpoint Policies
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.6-cleanup/ title="Dọn dẹp tài nguyên" class=dd-item><a href=../../../vi/5-workshop/5.6-cleanup/><b>5.6. </b>Dọn dẹp tài nguyên
-<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/6-self-evaluation/ title="Tự đánh giá" class=dd-item><a href=../../../vi/6-self-evaluation/><b>6. </b>Tự đánh giá
-<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/7-feedback/ title="Chia sẻ, đóng góp ý kiến" class=dd-item><a href=../../../vi/7-feedback/><b>7. </b>Chia sẻ, đóng góp ý kiến
-<i class="fas fa-check read-icon"></i></a></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=https://www.facebook.com/groups/awsstudygroupfcj/><i class='fab fa-facebook'></i> AWS Study Group</a></li></ul></section><section id=prefooter><hr><ul><li><a class=padding><i class="fas fa-language fa-fw"></i><div class=select-style><select id=select-language onchange="location=this.value"><option id=en value=https://lenhan231.github.io/hugo_aws/3-blogstranslated/3.3-blog3/>English</option><option id=vi value=https://lenhan231.github.io/hugo_aws/vi/3-blogstranslated/3.3-blog3/ selected>Tiếng Việt</option></select>
-<svg id="Capa_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="255" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255"><g><g id="arrow-drop-down"><polygon points="0,63.75 127.5,191.25 255,63.75"/></g></g></svg></div></a></li><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li></ul></section><section id=footer><left><b>Workshop</b><br><img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title=Migrate alt="web counter" border=0></a><br><b><a href=https://cloudjourney.awsstudygroup.com/>Cloud Journey</a></b><br><img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" alt="web counter" border=0>
-</left><left><br><br><b>Last Updated</b><br><i><span id=lastUpdated style=color:orange></span>
-</i><script>const today=new Date,formattedDate=today.toLocaleDateString("en-GB");document.getElementById("lastUpdated").textContent=formattedDate</script></left><left><br><br><b>Team</b><br><i><a href=https://www.facebook.com/groups/660548818043427 style=color:orange>First Cloud Journey</a><br></i></left><script async defer src=https://buttons.github.io/buttons.js></script></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i>
-</a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span>
-<span class=links><a href=../../../vi/>Week 7 Worklog</a> > <a href=../../../vi/3-blogstranslated/>Translated Blogs</a> > Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><ul><li><a href=#chọn-loại-instance-amazon-ec2-dùng-amd-epyc-phù-hợp><strong>Chọn loại instance Amazon EC2 dùng AMD EPYC phù hợp</strong></a></li><li><a href=#tối-ưu-hóa-các-instance-amazon-ec2-dùng-amd-epyc><strong>Tối ưu hóa các instance Amazon EC2 dùng AMD EPYC</strong></a></li><li><a href=#cpu-optimizations><strong>CPU optimizations</strong></a></li><li><a href=#sử-dụng-bộ-nhớ-đệm-l3><strong>Sử dụng bộ nhớ đệm L3</strong></a></li><li><a href=#tối-ưu-container-docker><strong>Tối ưu container Docker</strong></a></li><li><a href=#thiết-lập-governor-tần-số-cpu><strong>Thiết lập governor tần số CPU</strong></a></li><li><a href=#dùng-flag-compiler-kiến-trúc-cụ-thể><strong>Dùng flag compiler kiến trúc cụ thể</strong></a></li><li><a href=#khi-nào-bật-avx512-và-vnni><strong>Khi nào bật AVX‑512 và VNNI</strong></a></li><li><a href=#thư-viện-tối-ưu-cpu-của-amd-amd-optimizing-cpu-libraries--aocl><strong>Thư viện tối ưu CPU của AMD (AMD Optimizing CPU Libraries – AOCL)</strong></a></li><li><a href=#cấu-hình-aocl><strong>Cấu hình AOCL</strong></a></li><li><a href=#kết-luận><strong>Kết luận</strong></a></li></ul></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD</h1><h1 id=hướng-dẫn-tinh-chỉnh-cho-amazon-ec2-instances-dùng-amd><strong>Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD</strong></h1><p>bởi Suyash Nadkarni và Dylan Souvage vào ngày 12 THÁNG 9 2025 trong <a href=https://aws.amazon.com/blogs/compute/category/compute/amazon-ec2/>Amazon EC2</a>, <a href=https://aws.amazon.com/blogs/compute/category/post-types/best-practices/>Best Practices</a>, <a href=https://aws.amazon.com/blogs/compute/category/learning-levels/expert-400/>Expert (400)</a>, <a href=https://aws.amazon.com/blogs/compute/category/post-types/technical-how-to/>Technical</a></p><p>Khi các tổ chức di chuyển nhiều khối lượng công việc quan trọng sang đám mây, tối ưu hóa về <strong>giá — hiệu suất (price-performance)</strong> trở thành một cân nhắc chủ chốt. Các instance <a href=https://aws.amazon.com/pm/ec2/>Amazon Elastic Compute Cloud</a>(Amazon EC2) sử dụng bộ xử lý <a href=https://aws.amazon.com/ec2/amd/>AMD EPYC</a> đem lại mật độ lõi cao, băng thông bộ nhớ lớn và các tính năng bảo mật được hỗ trợ phần cứng, khiến chúng trở thành một lựa chọn mạnh mẽ cho nhiều loại khối lượng công việc tính toán, bộ nhớ hoặc I/O. Trong bài viết này, chúng tôi giải thích cách chọn loại instance Amazon EC2 dựa trên AMD phù hợp và mô tả các kỹ thuật điều chỉnh có thể giúp người dùng cải thiện hiệu quả khối lượng công việc. Cho dù bạn đang chạy mô phỏng, phân tích quy mô lớn hoặc các khối lượng inference, bài viết này cung cấp hướng dẫn thực tiễn để tối ưu hóa instance Amazon EC2 dùng AMD.</p><p>Amazon EC2 cung cấp instances AMD dựa trên nhiều thế hệ AMD EPYC. Bài viết tập trung vào chiến lược tối ưu cho thế hệ 3 và 4, vốn tăng cường khả năng cho workload tính toán và bộ nhớ chuyên sâu.</p><ul><li><p>Thế hệ 3 (<a href=https://aws.amazon.com/ec2/instance-types/m6a/>M6a</a>, <a href=https://aws.amazon.com/ec2/instance-types/r6a/>R6a</a>, <a href=https://aws.amazon.com/ec2/instance-types/c6a/>C6a</a>, <a href=https://aws.amazon.com/ec2/instance-types/hpc6a/>Hpc6a</a>): Cân bằng tính toán, bộ nhớ và lưu trữ — phù hợp với phân tích dữ liệu, máy chủ web và tính toán hiệu năng cao.</p></li><li><p>Thế hệ thứ 4 (<a href=https://aws.amazon.com/ec2/instance-types/m7a/>M7a</a>, <a href=https://aws.amazon.com/ec2/instance-types/r7a/>R7a</a>, <a href=https://aws.amazon.com/ec2/instance-types/c7a/>C7a</a>, <a href=https://aws.amazon.com/ec2/instance-types/hpc7a/>Hpc7a</a>): Cung cấp hiệu suất tốt hơn tới 50% so với các thế hệ AMD trước đó. Các instance này giới thiệu hỗ trợ AVX‑512, bộ nhớ DDR5 và Simultaneous Multithreading (SMT) bị tắt; SMT là công nghệ cho phép một lõi vật lý chạy nhiều luồng cùng lúc; với SMT bị tắt, mỗi vCPU (virtual CPU) ánh xạ trực tiếp đến một lõi vật lý, điều này có thể cải thiện tính cô lập và nhất quán trong khối lượng công việc.</p></li></ul><h3 id=chọn-loại-instance-amazon-ec2-dùng-amd-epyc-phù-hợp><strong>Chọn loại instance Amazon EC2 dùng AMD EPYC phù hợp</strong></h3><p>Việc chọn loại instance Amazon EC2 dùng AMD EPYC phù hợp bắt đầu bằng việc hiểu cách ứng dụng của bạn sử dụng tài nguyên tính toán (compute), bộ nhớ, lưu trữ và mạng. Mỗi instance family được tối ưu hóa cho những đặc tính khối lượng công việc nhất định.</p><p><strong>Khối lượng công việc tính toán</strong></p><p>Những khối lượng này liên quan tới các phép tính quy mô lớn, mô phỏng, hoặc mã hóa, và thường cần thông lượng CPU cao và hỗ trợ tập lệnh nâng cao.</p><ul><li><p>Khuyến nghị: C7a, Hpc7a, C6a, Hpc6a</p></li><li><p>Tình huống dùng: điện toán khoa học, mô hình tài chính, chuyển mã media, mã hóa, inference ML</p></li></ul><p><strong>Big Data & Analytics</strong></p><p>Ứng dụng xử lý và phân tích tập dữ liệu lớn hưởng lợi từ băng thông bộ nhớ cao và tỷ lệ tính toán‑bộ nhớ cân bằng.</p><ul><li><p>Khuyến nghị: R7a, M7a, R6a, M6a</p></li><li><p>Tình huống dùng: xử lý luồng, phân tích thời gian thực, công cụ business intelligence, caching phân tán</p></li></ul><p><strong>Khối lượng công việc cơ sở dữ liệu</strong></p><p>Công việc database thường cần hiệu suất bộ nhớ ổn định và throughput I/O cao cho các hoạt động đọc/ghi.</p><ul><li><p>Khuyến nghị: R7a, M7a, R6a, M6a</p></li><li><p>Tình huống dùng: database quan hệ (MySQL, PostgreSQL), NoSQL (MongoDB, Cassandra), database trong bộ nhớ (Redis)</p></li></ul><p><strong>Web và máy chủ ứng dụng</strong></p><p>Những ứng dụng này xử lý các tải yêu cầu biến đổi và hưởng lợi từ sự cân bằng giữa tính toán, bộ nhớ và hiệu năng mạng.</p><ul><li><p>Khuyến nghị: C7a, M7a, C6a, M6a</p></li><li><p>Tình huống dùng: máy chủ web, hệ quản lý nội dung, nền tảng e‑commerce, các điểm cuối API</p></li></ul><p><strong>AI/ML trên CPU</strong></p><p>Các tác vụ ML không cần GPU — như inference hoặc tiền xử lý — có thể chạy hiệu quả trên các instance dựa CPU.</p><ul><li><p>Khuyến nghị: M7a, R7a, C7a</p></li><li><p>Tình huống dùng: inference mô hình, xử lý ngôn ngữ tự nhiên, thị giác máy tính, hệ gợi ý</p></li></ul><p><strong>High Performance Computing</strong></p><p>Những khối lượng công việc này cần nhiều lõi, băng thông bộ nhớ cao và mạng độ trễ thấp cho các tính toán liên kết chặt chẽ.</p><ul><li><p>Khuyến nghị: Hpc7a, Hpc6a, R7a, M7a</p></li><li><p>Tình huống dùng: động lực chất lỏng, genomics, phân tích địa chấn, mô phỏng kỹ thuật</p></li></ul><p>Việc phù hợp hóa loại instance với nhu cầu khối lượng công việc giúp cung cấp hiệu suất dự đoán được và hiệu quả chi phí. Các dịch vụ như <a href=https://aws.amazon.com/ec2/autoscaling/>Amazon EC2 Auto Scaling</a> và <a href=https://aws.amazon.com/compute-optimizer/>AWS Compute Optimizer</a> có thể hỗ trợ trong việc lựa chọn instance và ra quyết định scale liên tục.</p><h3 id=tối-ưu-hóa-các-instance-amazon-ec2-dùng-amd-epyc><strong>Tối ưu hóa các instance Amazon EC2 dùng AMD EPYC</strong></h3><p>Các instance EC2 dùng bộ xử lý AMD EPYC thế hệ thứ 4 vận hành với kiến trúc “chiplet modular”, như minh họa trong hình dưới đây. Mỗi bộ xử lý bao gồm nhiều <strong>Core Complex Dies (CCD)</strong>, và mỗi CCD chứa một hoặc nhiều tổ hợp lõi (core complexes, gọi là CCX). Một CCX gom tối đa tám lõi vật lý, mỗi lõi có 1 MB bộ nhớ đệm L2 riêng và tám lõi đó cùng chia sẻ 32 MB bộ nhớ đệm L3. Các CCD này được kết nối với một die I/O trung tâm, chịu trách nhiệm quản lý bộ nhớ và liên kết giữa các chip.<br><img src=#ZgotmplZ alt><br>(Biểu đồ 1: Sơ đồ của die CPU ‘Zen 4’ với 8 lõi mỗi die)</p><p>Kiến trúc module của các bộ xử lý AMD EPYC thế hệ thứ 4 cho phép các instance như m7a.24xlarge và m7a.48xlarge hỗ trợ số lượng lõi cao — lên đến 96 lõi vật lý mỗi socket. Ví dụ:</p><ul><li><p>m7a.24xlarge cung cấp 96 lõi vật lý từ một socket đơn</p></li><li><p>m7a.48xlarge trải rộng hai socket, cung cấp 192 lõi vật lý</p></li></ul><p>Hiểu cách các kích cỡ instance của EC2 ánh xạ tới bố cục bộ xử lý vật lý có thể giúp bạn tối ưu hóa hiệu suất và tính nhất quán bộ nhớ đệm (cache). Những khối lượng công việc liên quan tới truy cập bộ nhớ chia sẻ hoặc đồng bộ hóa luồng — như HPC hoặc database trong bộ nhớ — có thể hưởng lợi khi chọn kích cỡ instance giảm thiểu giao tiếp giữa socket và tận dụng hiệu quả bộ nhớ đệm L3.</p><p><img src=#ZgotmplZ alt></p><p>(Biểu đồ 2: Bố cục CPU ‘EPYC Chiplet’)</p><p>Các instance EC2 dùng AMD EPYC thế hệ thứ 4 hoạt động với SMT bị tắt. Trong cấu hình này, mỗi vCPU ánh xạ trực tiếp tới một lõi vật lý, loại bỏ chia sẻ tài nguyên như đơn vị thực thi và bộ nhớ đệm giữa các luồng “chị/em”. Thiết kế này có thể giảm nhiễu nội lõi và giúp cung cấp hiệu suất ổn định hơn cho các khối lượng công việc nhất định. Người dùng có thể cô lập luồng ở cấp lõi và quan sát độ biến thiên thấp hơn và thông lượng ổn định hơn cho các khối lượng như HPC, inference ML và database giao dịch.</p><h3 id=cpu-optimizations><strong>CPU optimizations</strong></h3><p>Các công cụ như <a href=https://htop.dev/>htop</a> giúp xác định mẫu sử dụng CPU, trung bình tải hệ thống, và tiêu thụ tài nguyên theo tiến trình. Việc sử dụng CPU nên được đánh giá trong ngữ cảnh khối lượng công việc và yêu cầu hiệu năng. Nếu mức sử dụng liên tục đạt 100%, điều đó có thể chỉ ra rằng khối lượng công việc bị <strong>CPU-bound</strong> và chưa được cân bằng tối ưu. Trước khi thay đổi kích thước instance, bật Auto Scaling, hoặc chuyển đổi giữa các gia đình instance, cần thực hiện đánh giá các cơ hội tuning có thể cải thiện hiệu suất mà không thay đổi hạ tầng. Trung bình tải (load averages) vượt thường xuyên hơn số lượng vCPU cũng có thể là dấu hiệu bão hòa tính toán và có thể yêu cầu tối ưu tiếp.</p><h3 id=sử-dụng-bộ-nhớ-đệm-l3><strong>Sử dụng bộ nhớ đệm L3</strong></h3><p><a href=https://www.techtarget.com/searchstorage/definition/cache-memory>L3 cache</a> là lớp nhớ nhanh chia sẻ được sử dụng bởi một nhóm lõi CPU. Trên EC2 dựa AMD, các lõi được tổ chức thành các <strong>slice bộ nhớ đệm L3</strong>, mỗi slice được chia sẻ bởi một tập hợp lõi trên cùng một socket. Các luồng được lập lịch trong cùng slice có thể truy cập dữ liệu chia sẻ hiệu quả hơn, giảm độ trễ bộ nhớ. Trên các instance AMD thế hệ 4 như m7a.2xlarge hoặc r7a.2xlarge, tất cả vCPU thường ánh xạ tới các lõi nằm trong cùng một slice L3, đảm bảo tính nhất quán địa phương bộ nhớ đệm. Đối với các kích cỡ lớn hơn (ví dụ m7a.8xlarge trở lên), <strong>thread pinning</strong> — gán các luồng tới lõi vật lý cụ thể — có thể giúp duy trì tính địa phương này. Thread pinning có thể giảm biến động hiệu suất trong các khối lượng với mẫu truy cập bộ nhớ chia sẻ thường xuyên.</p><p>Bạn có thể pin luồng với lệnh:</p><p><strong>taskset -c 0-3 ./your_application</strong></p><p>Ví dụ này pin ứng dụng của bạn vào các lõi CPU 0 đến 3. Để xác định lõi nào chia sẻ cùng vùng bộ nhớ đệm L3, sử dụng các công cụ như lscpu hoặc lstopo để kiểm tra topology CPU hệ thống. Gom các luồng liên quan vào các lõi cùng chia sẻ L3 cache có thể cải thiện tính nhất quán hiệu suất cho các khối lượng có truy cập bộ nhớ chia sẻ.</p><h3 id=tối-ưu-container-docker><strong>Tối ưu container Docker</strong></h3><p>Trong môi trường container chạy trên các instance EC2 dựa AMD, điều chỉnh các thiết lập liên quan CPU có thể cải thiện tính nhất quán và hiệu quả khối lượng công việc — đặc biệt cho các ứng dụng tính toán nặng hoặc nhạy độ trễ. Mặc dù cấu hình mặc định hoạt động cho nhiều kịch bản tổng quát, một số workload có thể lợi từ việc kiểm soát rõ ràng cách phân bổ tài nguyên CPU. Theo mặc định, runtime container như <a href=https://docs.docker.com/engine/containers/resource_constraints/>Docker</a> cho phép hệ điều hành lập lịch container trên bất kỳ lõi CPU nào sẵn có. Việc này có thể dẫn đến biến thiên hiệu suất khi container di chuyển giữa các lõi không chia sẻ cache. Để giảm biến thiên và cải thiện hiệu quả cache, container có thể được pin vào các lõi cụ thể bằng flag --cpuset-cpus.</p><p><strong>docker run --cpuset-cpus=&ldquo;1,3&rdquo; my-container</strong></p><p>Thiết lập này giới hạn container chỉ dùng các lõi đã chỉ định. Trong ví dụ này, lõi 1 và 3 được dùng để minh hoạ. Lựa chọn lõi thực tế nên dựa trên topology CPU để đảm bảo lập lịch hiệu quả bộ nhớ đệm. Pin container vào các lõi chia sẻ bộ nhớ đệm L3 có thể giảm overhead lập lịch và cải thiện tính nhất quán cho các workload có mẫu truy cập bộ nhớ chia sẻ.</p><h3 id=thiết-lập-governor-tần-số-cpu><strong>Thiết lập governor tần số CPU</strong></h3><p>Một số hệ điều hành điều chỉnh tần số CPU động để tiết kiệm điện. Thông thường điều này được kiểm soát bởi thiết lập gọi là <a href=https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/processor_state_control.html>CPU frequency governor</a>. Mặc dù hành vi này hiệu quả cho các workload tổng quát, nó có thể gây độ trễ hoặc biến thiên hiệu suất trong môi trường nhạy với tính toán. Với các workload cần hiệu suất CPU ổn định cao — như xử lý dữ liệu thông lượng lớn, mô phỏng, hoặc ứng dụng thời gian thực — chúng tôi khuyến nghị đặt governor của CPU về <strong>performance mode</strong>. Điều này đảm bảo CPU chạy ở tần số tối đa khi chịu tải, tránh thời gian tăng tốc từ trạng thái năng lượng thấp.</p><p>Bạn có thể áp dụng thiết lập này trên các instance bare metal hoặc <a href=https://aws.amazon.com/ec2/dedicated-hosts/>Amazon EC2 Dedicated Hosts</a> bằng lệnh:</p><p><strong>sudo cpupower frequency-set -g performance</strong></p><p>Trước khi áp dụng, hãy cân nhắc benchmark hiệu suất workload với các governor khác (như ondemand hoặc schedutil) để đảm bảo rằng chế độ performance mang lại lợi ích đo được mà không đánh đổi điện năng không cần thiết.</p><h3 id=dùng-flag-compiler-kiến-trúc-cụ-thể><strong>Dùng flag compiler kiến trúc cụ thể</strong></h3><p>Khi biên dịch các ứng dụng C hoặc C++ nhạy hiệu suất, các flag kiến trúc cụ thể như -march=znverX có thể mở khóa tối ưu hóa dành riêng cho AMD EPYC, bao gồm cải thiện vectorization và hiệu suất số thực. Dù điều này có lợi cho workload tính toán nặng, nó có thể giảm tính di động giữa các kiến trúc. Để cân bằng giữa hiệu suất và tính linh hoạt, cân nhắc dùng phát hiện tính năng thời chạy (runtime feature detection) và dispatching — cách nhiều thư viện tối ưu dùng để thích ứng hành vi dựa trên CPU nền tảng.</p><p>Trước khi dùng các flag này, xác minh rằng phiên bản compiler của bạn hỗ trợ chúng và đảm bảo kiến trúc instance EC2 đích phù hợp với flag chỉ định. Ví dụ, một binary biên dịch với -march=znver4 có thể lỗi chạy với lỗi “illegal instruction” (SIGILL) nếu chạy trên các instance thế hệ trước như M5a. Bảng dưới đây mô tả các flag phù hợp và phiên bản compiler tối thiểu hỗ trợ cho mỗi thế hệ AMD EPYC:</p><table><thead><tr><th>Thế hệ AMD EPYC</th><th>Flag -march</th><th>Phiên bản GCC tối thiểu</th><th>Phiên bản LLVM/Clang tối thiểu</th></tr></thead><tbody><tr><td>Thế hệ 4 (ví dụ M7a)</td><td>znver4</td><td>GCC 12</td><td>Clang 15</td></tr><tr><td>Thế hệ 3 (ví dụ M6a)</td><td>znver3</td><td>GCC 11</td><td>Clang 13</td></tr><tr><td>Thế hệ 2 (ví dụ M5a)</td><td>znver2</td><td>GCC 9</td><td>Clang 11</td></tr></tbody></table><p>Các flag sau được hỗ trợ cho GCC 11+ hoặc LLVM Clang 13+:</p><ul><li><p>Cho EPYC thế hệ 4 (M7a, R7a, C7a, Hpc7a): -march=znver4</p></li><li><p>Cho EPYC thế hệ 3 (M6a, R6a, C6a): -march=znver3</p></li><li><p>Cho EPYC thế hệ 2 (M5a, R5a, C5a): -march=znver2</p></li></ul><h3 id=khi-nào-bật-avx512-và-vnni><strong>Khi nào bật AVX‑512 và VNNI</strong></h3><p>Các instance EC2 dùng AMD EPYC thế hệ 4 hỗ trợ các tập lệnh SIMD tiên tiến như AVX2, AVX‑512 và VNNI. Những tập lệnh này có thể cải thiện thông lượng cho các workload vector nặng như inference ML, xử lý hình ảnh hoặc mô phỏng khoa học. Tuy nhiên, những flag này là đặc trưng theo thế hệ — việc cố chạy các binary được biên dịch với AVX‑512 trên instance không hỗ trợ (ví dụ thế hệ 2 như M5a) có thể gây lỗi thời gian chạy như “illegal instruction” (SIGILL).</p><p>Khi biên dịch mã C hoặc C++:</p><p><strong>gcc -mavx2 -mavx512f -O2 your_program.c -o your_program</strong></p><p>Để hiểu rõ hơn tối ưu hóa nào được áp dụng, dùng:</p><p><strong>-ftree-vectorizer-verbose=2 -fopt-info-vec-missed</strong></p><p>Cách này giúp xác định các vòng lặp hưởng lợi từ vectorization và những vòng lặp không. Chỉ bật các tối ưu hóa này nếu workload của bạn hưởng lợi và bạn đã xác thực tính tương thích với thế hệ instance đang dùng. Tránh áp dụng flag AVX một cách bừa bãi, vì có thể làm giảm tính di động và tăng độ phức tạp binary.</p><h3 id=thư-viện-tối-ưu-cpu-của-amd-amd-optimizing-cpu-libraries--aocl><strong>Thư viện tối ưu CPU của AMD (AMD Optimizing CPU Libraries – AOCL)</strong></h3><p>Thư viện <a href=https://www.amd.com/en/developer/aocl.html>AMD Optimizing CPU Libraries (AOCL)</a> cung cấp các thư viện toán học được tinh chỉnh hiệu năng dành riêng cho các bộ xử lý AMD EPYC. Những thư viện này bao gồm các triển khai tối ưu của các hàm hay dùng trong khoa học, kỹ thuật và workload ML. Bạn có thể liên kết ứng dụng của bạn với AOCL để sử dụng các tối ưu phần cứng mà không cần viết lại mã. AOCL gồm các thư viện cho toán vector, scalar, tạo số ngẫu nhiên, FFT, BLAS và LAPACK, trong số những cái khác.</p><h3 id=cấu-hình-aocl><strong>Cấu hình AOCL</strong></h3><p>Gán biến môi trường AOCL_ROOT trỏ tới thư mục cài đặt:</p><p><strong>export AOCL_ROOT=/path/to/aocl</strong></p><p>Biên dịch ứng dụng với đường dẫn include và library tương ứng:</p><p><strong>gcc -I$AOCL_ROOT/include -L$AOCL_ROOT/lib -lamdlibm -lm your_program.c -o your_program</strong></p><p>Tối ưu toán vector và scalar: bạn có thể bật các tuning vector hóa hay scalar cụ thể cho workload:</p><p><strong># Tối ưu toán vector</strong><br><strong>gcc -lamdlibm -fveclib=AMDLIBM -lm your_program.c -o your_program</strong></p><p><strong># Toán scalar nhanh hơn</strong><br><strong>gcc -lamdlibm -fsclrlib=AMDLIBM -lamdlibmfast -lm your_program.c -o your_program</strong></p><p>Profiling runtime AOCL<br>AOCL hỗ trợ profiling runtime, giúp các nhà phát triển xác định các phép toán nào chiếm thời gian thực thi lớn. Để bật profiling:</p><p><strong>export AOCL_PROFILE=1</strong><br><strong>./your_program</strong></p><p>Sau khi chạy, một file báo cáo tên aocl_profile_report.txt được sinh ra. Nó cung cấp phân tích theo hàm gồm số lần gọi, thời gian thực thi và việc sử dụng luồng. Các nhà phát triển có thể dùng nó để tập trung tối ưu hóa vào các phần có ảnh hưởng cao nhất.</p><h3 id=kết-luận><strong>Kết luận</strong></h3><p>Bài viết này khảo sát cách chọn các loại instance Amazon EC2 dựa AMD phù hợp với đặc điểm khối lượng công việc, và cách áp dụng các kỹ thuật điều chỉnh tập trung vào việc sử dụng CPU, định vị luồng, hiệu quả cache và tối ưu thư viện toán học. Những phương pháp này đặc biệt quan trọng với khối lượng công việc bị giới hạn bởi CPU hoặc nhạy độ trễ, nơi hiệu suất ổn định là thiết yếu.</p><p>Sẵn sàng bắt đầu? Đăng nhập <a href=https://aws.amazon.com/console/>AWS Management Console</a> và khởi động các instance Amazon EC2 dùng AMD EPYC để bắt tay vào tối ưu hóa workload của bạn ngay hôm nay.</p><p>TAGS: <a href=https://aws.amazon.com/blogs/compute/tag/amd/>AMD</a></p><footer class=footline></footer></div></div><div id=navigation><a class="nav nav-prev" href=../../../vi/3-blogstranslated/3.2-blog2/ title="Thông báo Amazon EC2 M4 và M4 Pro Mac instances"><i class="fa fa-chevron-left"></i></a>
-<a class="nav nav-next" href=../../../vi/4-eventparticipated/ title="Các Sự Kiện Tham Gia" style=margin-right:0><i class="fa fa-chevron-right"></i></a></div></section><div style=left:-1e3px;overflow:scroll;position:absolute;top:-1e3px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=../../../js/clipboard.min.js?1764994110></script><script src=../../../js/perfect-scrollbar.min.js?1764994110></script><script src=../../../js/perfect-scrollbar.jquery.min.js?1764994110></script><script src=../../../js/jquery.sticky.js?1764994110></script><script src=../../../js/featherlight.min.js?1764994110></script><script src=../../../js/highlight.pack.js?1764994110></script><script>hljs.initHighlightingOnLoad()</script><script src=../../../js/modernizr.custom-3.6.0.js?1764994110></script><script src=../../../js/learn.js?1764994110></script><script src=../../../js/hugo-learn.js?1764994110></script><link href=../../../mermaid/mermaid.css?1764994110 rel=stylesheet><script src=../../../mermaid/mermaid.js?1764994110></script><script>mermaid.initialize({startOnLoad:!0})</script><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,(e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date),(i=t.createElement(n),a=t.getElementsByTagName(n)[0]),i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-158079754-2","auto"),ga("send","pageview")</script></body></html>
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/hugo_aws/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=hugo_aws/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta
+  name="description"
+  content=""
+/>
+<meta name="author" content="thienlh@thienlu.com" />
+
+    <link rel="icon" href="../../../images/favicon.png" type="image/png">
+
+    <title>Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD :: Báo cáo thực tập</title>
+
+    
+    <link href="../../../css/nucleus.css?1765002308" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1765002308" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1765002308" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1765002308" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1765002308" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1765002308" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1765002308" rel="stylesheet">
+    <link href="../../../css/theme.css?1765002308" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1765002308" rel="stylesheet">
+    
+    <link href="../../../css/theme-workshop.css?1765002308" rel="stylesheet">
+    
+    <link href="../../../css/custom.css?1765002308" rel="stylesheet">
+
+    <script src="../../../js/jquery-3.3.1.min.js?1765002308"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+    </style>
+    
+    
+
+  </head>
+  <body class="" data-url="../../../vi/3-blogstranslated/3.3-blog3/">
+    <nav
+  id="sidebar"
+  class="showVisitedLinks"
+>
+    
+  <div id="header-wrapper">
+    <div id="header"><a id="logo" href="../../../">
+  <svg
+    id="Layer_1"
+    data-name="Layer 1"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 60 30"
+    width="30%"
+  >
+    <defs>
+      <style>
+        .cls-1 {
+          fill: #fff;
+        }
+        .cls-2 {
+          fill: #f90;
+          fill-rule: evenodd;
+        }
+      </style>
+    </defs>
+    <title>AWS-Logo_White-Color</title>
+    <path
+      class="cls-1"
+      d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"
+    ></path>
+    <path
+      class="cls-2"
+      d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"
+    ></path>
+  </svg>
+</a>
+</div>
+    
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+               
+<li
+  data-nav-id="/vi/1-worklog/"
+  title="Worklog - Hành Trình Học AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/">
+    <b> 1. </b>Worklog - Hành Trình Học AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/"
+  title="Tuần 1 - Kiến thức Nền tảng Cloud Computing"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.1-week1/">
+    <b> 1.1. </b>Tuần 1 - Kiến thức Nền tảng Cloud Computing 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/1.1.1-day01-2025-09-08/"
+  title="Ngày 01 - Giới thiệu về Điện toán Đám mây"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.1-week1/1.1.1-day01-2025-09-08/">
+    <b> 1.1.1. </b>Ngày 01 - Giới thiệu về Điện toán Đám mây 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/1.1.2-day02-2025-09-09/"
+  title="Ngày 02 - Hạ tầng Toàn cầu của AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.1-week1/1.1.2-day02-2025-09-09/">
+    <b> 1.1.2. </b>Ngày 02 - Hạ tầng Toàn cầu của AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/1.1.3-day03-2025-09-10/"
+  title="Ngày 03 - Công cụ Quản lý AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.1-week1/1.1.3-day03-2025-09-10/">
+    <b> 1.1.3. </b>Ngày 03 - Công cụ Quản lý AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/1.1.4-day04-2025-09-11/"
+  title="Ngày 04 - Tối ưu Chi phí trên AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.1-week1/1.1.4-day04-2025-09-11/">
+    <b> 1.1.4. </b>Ngày 04 - Tối ưu Chi phí trên AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/1.1.5-day05-2025-09-12/"
+  title="Ngày 05 - AWS Well-Architected Framework"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.1-week1/1.1.5-day05-2025-09-12/">
+    <b> 1.1.5. </b>Ngày 05 - AWS Well-Architected Framework 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/"
+  title="Tuần 2 - Dịch vụ Mạng trên AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.2-week2/">
+    <b> 1.2. </b>Tuần 2 - Dịch vụ Mạng trên AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/1.2.1-day06-2025-09-15/"
+  title="Ngày 06 - Kiến thức Cơ bản về Amazon VPC"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.2-week2/1.2.1-day06-2025-09-15/">
+    <b> 1.2.1. </b>Ngày 06 - Kiến thức Cơ bản về Amazon VPC 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/1.2.2-day07-2025-09-16/"
+  title="Ngày 07 - Định tuyến VPC &amp; Network Interface"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.2-week2/1.2.2-day07-2025-09-16/">
+    <b> 1.2.2. </b>Ngày 07 - Định tuyến VPC &amp; Network Interface 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/1.2.3-day08-2025-09-17/"
+  title="Ngày 08 - Bảo mật VPC &amp; Flow Logs"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.2-week2/1.2.3-day08-2025-09-17/">
+    <b> 1.2.3. </b>Ngày 08 - Bảo mật VPC &amp; Flow Logs 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/1.2.4-day09-2025-09-18/"
+  title="Ngày 09 - Kết nối VPC &amp; Cân bằng tải"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.2-week2/1.2.4-day09-2025-09-18/">
+    <b> 1.2.4. </b>Ngày 09 - Kết nối VPC &amp; Cân bằng tải 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/1.2.5-day10-2025-09-19/"
+  title="Ngày 10 - Elastic Load Balancing"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.2-week2/1.2.5-day10-2025-09-19/">
+    <b> 1.2.5. </b>Ngày 10 - Elastic Load Balancing 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/"
+  title="Tuần 3 - Dịch vụ Compute trên AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.3-week3/">
+    <b> 1.3. </b>Tuần 3 - Dịch vụ Compute trên AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/1.3.1-day11-2025-09-22/"
+  title="Ngày 11 - Kiến thức cơ bản về Amazon EC2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.3-week3/1.3.1-day11-2025-09-22/">
+    <b> 1.3.1. </b>Ngày 11 - Kiến thức cơ bản về Amazon EC2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/1.3.2-day12-2025-09-23/"
+  title="Ngày 12 - Lưu trữ &amp; Sao lưu cho EC2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.3-week3/1.3.2-day12-2025-09-23/">
+    <b> 1.3.2. </b>Ngày 12 - Lưu trữ &amp; Sao lưu cho EC2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/1.3.3-day13-2025-09-24/"
+  title="Ngày 13 - Instance Store &amp; User Data"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.3-week3/1.3.3-day13-2025-09-24/">
+    <b> 1.3.3. </b>Ngày 13 - Instance Store &amp; User Data 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/1.3.4-day14-2025-09-25/"
+  title="Ngày 14 - EC2 Auto Scaling"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.3-week3/1.3.4-day14-2025-09-25/">
+    <b> 1.3.4. </b>Ngày 14 - EC2 Auto Scaling 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/1.3.5-day15-2025-09-26/"
+  title="Ngày 15 - Lightsail, EFS &amp; FSx"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.3-week3/1.3.5-day15-2025-09-26/">
+    <b> 1.3.5. </b>Ngày 15 - Lightsail, EFS &amp; FSx 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/"
+  title="Tuần 4 - Dịch vụ Lưu trữ trên AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.4-week4/">
+    <b> 1.4. </b>Tuần 4 - Dịch vụ Lưu trữ trên AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/1.4.1-day16-2025-09-29/"
+  title="Ngày 16 - Kiến thức cơ bản về Amazon S3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.4-week4/1.4.1-day16-2025-09-29/">
+    <b> 1.4.1. </b>Ngày 16 - Kiến thức cơ bản về Amazon S3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/1.4.2-day17-2025-09-30/"
+  title="Ngày 17 - Tính năng nâng cao của S3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.4-week4/1.4.2-day17-2025-09-30/">
+    <b> 1.4.2. </b>Ngày 17 - Tính năng nâng cao của S3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/1.4.3-day18-2025-10-01/"
+  title="Ngày 18 - AWS Snow Family &amp; Hybrid Storage"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.4-week4/1.4.3-day18-2025-10-01/">
+    <b> 1.4.3. </b>Ngày 18 - AWS Snow Family &amp; Hybrid Storage 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/1.4.4-day19-2025-10-02/"
+  title="Ngày 19 - Disaster Recovery trên AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.4-week4/1.4.4-day19-2025-10-02/">
+    <b> 1.4.4. </b>Ngày 19 - Disaster Recovery trên AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/"
+  title="Ngày 20 - AWS Backup &amp; FSx"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.4-week4/1.4.5-day20-2025-10-03/">
+    <b> 1.4.5. </b>Ngày 20 - AWS Backup &amp; FSx 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/"
+  title="Tuần 5 - Bảo mật &amp; Danh tính trên AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.5-week5/">
+    <b> 1.5. </b>Tuần 5 - Bảo mật &amp; Danh tính trên AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/1.5.1-day21-2025-10-06/"
+  title="Ngày 21 - Shared Responsibility &amp; Kiến thức IAM cơ bản"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.5-week5/1.5.1-day21-2025-10-06/">
+    <b> 1.5.1. </b>Ngày 21 - Shared Responsibility &amp; Kiến thức IAM cơ bản 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/1.5.2-day22-2025-10-07/"
+  title="Ngày 22 - IAM Policies &amp; Roles"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.5-week5/1.5.2-day22-2025-10-07/">
+    <b> 1.5.2. </b>Ngày 22 - IAM Policies &amp; Roles 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/1.5.3-day23-2025-10-08/"
+  title="Ngày 23 - Amazon Cognito &amp; Organizations"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.5-week5/1.5.3-day23-2025-10-08/">
+    <b> 1.5.3. </b>Ngày 23 - Amazon Cognito &amp; Organizations 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/1.5.4-day24-2025-10-09/"
+  title="Ngày 24 - SCPs, Identity Center &amp; KMS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.5-week5/1.5.4-day24-2025-10-09/">
+    <b> 1.5.4. </b>Ngày 24 - SCPs, Identity Center &amp; KMS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/1.5.5-day25-2025-10-10/"
+  title="Ngày 25 - AWS Security Hub &amp; Automation"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.5-week5/1.5.5-day25-2025-10-10/">
+    <b> 1.5.5. </b>Ngày 25 - AWS Security Hub &amp; Automation 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/"
+  title="Tuần 6 - AWS Database Services"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.6-week6/">
+    <b> 1.6. </b>Tuần 6 - AWS Database Services 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/1.6.1-day26-2025-10-13/"
+  title="Ngày 26 - Kiến thức Cơ bản về Cơ sở dữ liệu"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.6-week6/1.6.1-day26-2025-10-13/">
+    <b> 1.6.1. </b>Ngày 26 - Kiến thức Cơ bản về Cơ sở dữ liệu 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/1.6.2-day27-2025-10-14/"
+  title="Ngày 27 - Amazon RDS &amp; Aurora"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.6-week6/1.6.2-day27-2025-10-14/">
+    <b> 1.6.2. </b>Ngày 27 - Amazon RDS &amp; Aurora 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/1.6.3-day28-2025-10-15/"
+  title="Ngày 28 - Amazon Redshift"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.6-week6/1.6.3-day28-2025-10-15/">
+    <b> 1.6.3. </b>Ngày 28 - Amazon Redshift 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/1.6.4-day29-2025-10-16/"
+  title="Ngày 29 - Amazon ElastiCache"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.6-week6/1.6.4-day29-2025-10-16/">
+    <b> 1.6.4. </b>Ngày 29 - Amazon ElastiCache 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/1.6.5-day30-2025-10-17/"
+  title="Ngày 30 - Database Migration &amp; Best Practices"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.6-week6/1.6.5-day30-2025-10-17/">
+    <b> 1.6.5. </b>Ngày 30 - Database Migration &amp; Best Practices 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/"
+  title="Tuần 7 - Vertical Slice Delivery"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.7-week7/">
+    <b> 1.7. </b>Tuần 7 - Vertical Slice Delivery 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/1.7.1-day31-2025-10-20/"
+  title="Ngày 31 - Khởi động Vertical Slice"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.7-week7/1.7.1-day31-2025-10-20/">
+    <b> 1.7.1. </b>Ngày 31 - Khởi động Vertical Slice 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/1.7.2-day32-2025-10-21/"
+  title="Ngày 32 - Contract-First &amp; Mocking"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.7-week7/1.7.2-day32-2025-10-21/">
+    <b> 1.7.2. </b>Ngày 32 - Contract-First &amp; Mocking 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/1.7.3-day33-2025-10-22/"
+  title="Ngày 33 - Next.js App Router"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.7-week7/1.7.3-day33-2025-10-22/">
+    <b> 1.7.3. </b>Ngày 33 - Next.js App Router 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/1.7.4-day34-2025-10-23/"
+  title="Ngày 34 - FastAPI Clean Architecture"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.7-week7/1.7.4-day34-2025-10-23/">
+    <b> 1.7.4. </b>Ngày 34 - FastAPI Clean Architecture 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/1.7.5-day35-2025-10-24/"
+  title="Ngày 35 - Contract Testing &amp; Retrospective"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.7-week7/1.7.5-day35-2025-10-24/">
+    <b> 1.7.5. </b>Ngày 35 - Contract Testing &amp; Retrospective 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.8-week8/"
+  title="Tuần 8 - Xử Lý Ngôn Ngữ Tự Nhiên &amp; Deep Learning"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.8-week8/">
+    <b> 1.8. </b>Tuần 8 - Xử Lý Ngôn Ngữ Tự Nhiên &amp; Deep Learning 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.8-week8/1.8.1-day36-2025-10-27/"
+  title="Ngày 36 - Nền Tảng NLP &amp; Ứng Dụng"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.8-week8/1.8.1-day36-2025-10-27/">
+    <b> 1.8.1. </b>Ngày 36 - Nền Tảng NLP &amp; Ứng Dụng 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.8-week8/1.8.2-day37-2025-10-28/"
+  title="Ngày 37 - Tìm Kiếm Giọng Nói &amp; Kiến Trúc Chatbot"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.8-week8/1.8.2-day37-2025-10-28/">
+    <b> 1.8.2. </b>Ngày 37 - Tìm Kiếm Giọng Nói &amp; Kiến Trúc Chatbot 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.8-week8/1.8.3-day38-2025-10-29/"
+  title="Ngày 38 - Mô Hình Seq2seq &amp; LSTM Chi Tiết"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.8-week8/1.8.3-day38-2025-10-29/">
+    <b> 1.8.3. </b>Ngày 38 - Mô Hình Seq2seq &amp; LSTM Chi Tiết 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.8-week8/1.8.4-day39-2025-10-30/"
+  title="Ngày 39 - NMT &amp; Tóm Tắt Văn Bản"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.8-week8/1.8.4-day39-2025-10-30/">
+    <b> 1.8.4. </b>Ngày 39 - NMT &amp; Tóm Tắt Văn Bản 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.8-week8/1.8.5-day40-2025-10-31/"
+  title="Ngày 40 - Đánh Giá MT &amp; Chiến Lược Decoding"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.8-week8/1.8.5-day40-2025-10-31/">
+    <b> 1.8.5. </b>Ngày 40 - Đánh Giá MT &amp; Chiến Lược Decoding 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.9-week9/"
+  title="Tuần 9 - Kiến Trúc &amp; Triển Khai Transformer"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.9-week9/">
+    <b> 1.9. </b>Tuần 9 - Kiến Trúc &amp; Triển Khai Transformer 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.9-week9/1.9.1-day41-2025-11-03/"
+  title="Ngày 41 - Vấn Đề RNN &amp; Tại Sao Cần Transformers"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.9-week9/1.9.1-day41-2025-11-03/">
+    <b> 1.9.1. </b>Ngày 41 - Vấn Đề RNN &amp; Tại Sao Cần Transformers 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.9-week9/1.9.2-day42-2025-11-04/"
+  title="Ngày 42 - Tổng Quan Kiến Trúc Transformer"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.9-week9/1.9.2-day42-2025-11-04/">
+    <b> 1.9.2. </b>Ngày 42 - Tổng Quan Kiến Trúc Transformer 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.9-week9/1.9.3-day43-2025-11-05/"
+  title="Ngày 43 - Sâu Hơn Về Scaled Dot-Product Attention"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.9-week9/1.9.3-day43-2025-11-05/">
+    <b> 1.9.3. </b>Ngày 43 - Sâu Hơn Về Scaled Dot-Product Attention 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.9-week9/1.9.4-day44-2025-11-06/"
+  title="Ngày 44 - Các Loại Attention: Self, Masked, Encoder-Decoder"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.9-week9/1.9.4-day44-2025-11-06/">
+    <b> 1.9.4. </b>Ngày 44 - Các Loại Attention: Self, Masked, Encoder-Decoder 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.9-week9/1.9.5-day45-2025-11-07/"
+  title="Ngày 45 - Decoder Transformer &amp; Triển Khai GPT2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.9-week9/1.9.5-day45-2025-11-07/">
+    <b> 1.9.5. </b>Ngày 45 - Decoder Transformer &amp; Triển Khai GPT2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.10-week10/"
+  title="Tuần 10 - Transfer Learning, BERT &amp; T5"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.10-week10/">
+    <b> 1.10. </b>Tuần 10 - Transfer Learning, BERT &amp; T5 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.10-week10/1.10.1-day46-2025-11-10/"
+  title="Ngày 46 - Nền tảng Transfer Learning"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.10-week10/1.10.1-day46-2025-11-10/">
+    <b> 1.10.1. </b>Ngày 46 - Nền tảng Transfer Learning 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.10-week10/1.10.2-day47-2025-11-11/"
+  title="Ngày 47 - Hai chế độ Question Answering"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.10-week10/1.10.2-day47-2025-11-11/">
+    <b> 1.10.2. </b>Ngày 47 - Hai chế độ Question Answering 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.10-week10/1.10.3-day48-2025-11-12/"
+  title="Ngày 48 - BERT và ngữ cảnh hai chiều"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.10-week10/1.10.3-day48-2025-11-12/">
+    <b> 1.10.3. </b>Ngày 48 - BERT và ngữ cảnh hai chiều 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.10-week10/1.10.4-day49-2025-11-13/"
+  title="Ngày 49 - T5 đa nhiệm dạng text-to-text"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.10-week10/1.10.4-day49-2025-11-13/">
+    <b> 1.10.4. </b>Ngày 49 - T5 đa nhiệm dạng text-to-text 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.10-week10/1.10.5-day50-2025-11-14/"
+  title="Ngày 50 - Thực hành fine-tuning"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/1-worklog/1.10-week10/1.10.5-day50-2025-11-14/">
+    <b> 1.10.5. </b>Ngày 50 - Thực hành fine-tuning 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/2-proposal/"
+  title="Proposal"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/2-proposal/">
+     <b> 2. </b> Proposal 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/3-blogstranslated/"
+  title="Translated Blogs"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="../../../vi/3-blogstranslated/">
+     <b> 3. </b> Translated Blogs 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/3-blogstranslated/3.1-blog1/"
+  title="Tăng tốc luồng dữ liệu và AI của bạn bằng cách kết nối đến Amazon SageMaker Unified Studio từ Visual Studio Code"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/3-blogstranslated/3.1-blog1/">
+     <b> 3.1. </b> Tăng tốc luồng dữ liệu và AI của bạn bằng cách kết nối đến Amazon SageMaker Unified Studio từ Visual Studio Code 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/3-blogstranslated/3.2-blog2/"
+  title="Thông báo Amazon EC2 M4 và M4 Pro Mac instances"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/3-blogstranslated/3.2-blog2/">
+     <b> 3.2. </b> Thông báo Amazon EC2 M4 và M4 Pro Mac instances 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/3-blogstranslated/3.3-blog3/"
+  title="Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD"
+  class="dd-item 
+        
+        active
+        
+        "
+>
+  <a href="../../../vi/3-blogstranslated/3.3-blog3/">
+     <b> 3.3. </b> Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/4-eventparticipated/"
+  title="Các Sự Kiện Tham Gia"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-eventparticipated/">
+     <b> 4. </b> Các Sự Kiện Tham Gia 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.1-event1/"
+  title="Sự Kiện 1 - Vietnam Cloud Day 2025"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-eventparticipated/4.1-event1/">
+    Sự Kiện 1 - Vietnam Cloud Day 2025 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.2-event2/"
+  title="Sự Kiện 2 - AWS GenAI Builder Club"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/4-eventparticipated/4.2-event2/">
+    Sự Kiện 2 - AWS GenAI Builder Club 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/5-workshop/"
+  title="Workshop"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/">
+     <b> 5. </b> Workshop 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/5-workshop/5.1-workshop-overview/"
+  title="Giới thiệu"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.1-workshop-overview/">
+     <b> 5.1. </b> Giới thiệu 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.2-prerequiste/"
+  title="Các bước chuẩn bị"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.2-prerequiste/">
+     <b> 5.2. </b> Các bước chuẩn bị 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.3-s3-vpc/"
+  title="Truy cập S3 từ VPC"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.3-s3-vpc/">
+     <b> 5.3. </b> Truy cập S3 từ VPC 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/"
+  title="Tạo một Gateway Endpoint"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/">
+     <b> 5.3.1 </b> Tạo một Gateway Endpoint 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/"
+  title="Kiểm tra Gateway Endpoint"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/">
+     <b> 5.3.2 </b> Kiểm tra Gateway Endpoint 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.4-s3-onprem/"
+  title="Truy cập S3 từ môi trường truyền thống"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.4-s3-onprem/">
+     <b> 5.4. </b> Truy cập S3 từ môi trường truyền thống 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/5-workshop/5.4-s3-onprem/5.4.1-prepare/"
+  title="Chuẩn bị tài nguyên"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.4-s3-onprem/5.4.1-prepare/">
+     <b> 5.4.1 </b> Chuẩn bị tài nguyên 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/"
+  title="Tạo một S3 Interface endpoint"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/">
+     <b> 5.4.2 </b> Tạo một S3 Interface endpoint 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/"
+  title="Kiểm tra Interface Endpoint"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/">
+     <b> 5.4.3 </b> Kiểm tra Interface Endpoint 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/"
+  title="Mô phỏng On-premises DNS "
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/">
+     <b> 5.4.4 </b> Mô phỏng On-premises DNS  
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.5-policy/"
+  title="VPC Endpoint Policies"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.5-policy/">
+     <b> 5.5 </b> VPC Endpoint Policies 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.6-cleanup/"
+  title="Dọn dẹp tài nguyên"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/5-workshop/5.6-cleanup/">
+     <b> 5.6. </b> Dọn dẹp tài nguyên 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/6-self-evaluation/"
+  title="Tự đánh giá"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/6-self-evaluation/">
+     <b> 6. </b> Tự đánh giá 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/7-feedback/"
+  title="Chia sẻ, đóng góp ý kiến"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="../../../vi/7-feedback/">
+     <b> 7. </b> Chia sẻ, đóng góp ý kiến 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+    </ul>
+
+     
+    <section id="shortcuts">
+      <h3>
+        More
+      </h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj/"
+            ><i class='fab fa-facebook'></i> AWS Study Group</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+   
+    <section id="prefooter">
+      <hr />
+      <ul>
+  
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = this.value;">
+                       
+                <option
+                  id="en"
+                  value="http://localhost:1313/hugo_aws/3-blogstranslated/3.3-blog3/"
+                >
+                  English
+                </option>
+                            
+                <option
+                  id="vi"
+                  value="http://localhost:1313/hugo_aws/vi/3-blogstranslated/3.3-blog3/"
+                  selected
+                >
+                  Tiếng Việt
+                </option>
+                   
+              </select>
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="255px"
+                height="255px"
+                viewBox="0 0 255 255"
+                style="enable-background: new 0 0 255 255"
+                xml:space="preserve"
+              >
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+         
+        <li>
+          <a class="padding" href="#" data-clear-history-toggle=""
+            ><i class="fas fa-history fa-fw"></i> Clear History</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer"><left>
+    
+    <b> Workshop</b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0"
+        title="Migrate" Alt="web counter" border="0" /></a> <br>
+    <b> <a href="https://cloudjourney.awsstudygroup.com/">Cloud Journey</a></b> <br>
+    <img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0"
+        title="Total CLoud Journey" Alt="web counter" border="0" />
+
+</left>
+<left>
+    <br>
+    <br>
+    <b>Last Updated</b><br>
+    <i>
+        <span id="lastUpdated" style="color:orange;"></span>
+    </i>
+
+    <script>
+        
+        const today = new Date();
+        
+        const formattedDate = today.toLocaleDateString('en-GB');
+        
+        document.getElementById('lastUpdated').textContent = formattedDate;
+    </script>
+</left>
+<left>
+    <br>
+    <br>
+    <b> Team </b> <br>
+
+    <i> <a href="https://www.facebook.com/groups/660548818043427" style="color:orange">First Cloud Journey </a> <br>
+
+    </i>
+</left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script></section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../../vi/'>Week 7 Worklog</a> > <a href='../../../vi/3-blogstranslated/'>Translated Blogs</a> > Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+  <div class="wrapper"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#chọn-loại-instance-amazon-ec2-dùng-amd-epyc-phù-hợp"><strong>Chọn loại instance Amazon EC2 dùng AMD EPYC phù hợp</strong></a></li>
+        <li><a href="#tối-ưu-hóa-các-instance-amazon-ec2-dùng-amd-epyc"><strong>Tối ưu hóa các instance Amazon EC2 dùng AMD EPYC</strong></a></li>
+        <li><a href="#cpu-optimizations"><strong>CPU optimizations</strong></a></li>
+        <li><a href="#sử-dụng-bộ-nhớ-đệm-l3"><strong>Sử dụng bộ nhớ đệm L3</strong></a></li>
+        <li><a href="#tối-ưu-container-docker"><strong>Tối ưu container Docker</strong></a></li>
+        <li><a href="#thiết-lập-governor-tần-số-cpu"><strong>Thiết lập governor tần số CPU</strong></a></li>
+        <li><a href="#dùng-flag-compiler-kiến-trúc-cụ-thể"><strong>Dùng flag compiler kiến trúc cụ thể</strong></a></li>
+        <li><a href="#khi-nào-bật-avx512-và-vnni"><strong>Khi nào bật AVX‑512 và VNNI</strong></a></li>
+        <li><a href="#thư-viện-tối-ưu-cpu-của-amd-amd-optimizing-cpu-libraries--aocl"><strong>Thư viện tối ưu CPU của AMD (AMD Optimizing CPU Libraries – AOCL)</strong></a></li>
+        <li><a href="#cấu-hình-aocl"><strong>Cấu hình AOCL</strong></a></li>
+        <li><a href="#kết-luận"><strong>Kết luận</strong></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD
+            </h1>
+          
+
+        
+
+
+
+	<h1 id="hướng-dẫn-tinh-chỉnh-cho-amazon-ec2-instances-dùng-amd"><strong>Hướng dẫn tinh chỉnh cho Amazon EC2 instances dùng AMD</strong></h1>
+<p>bởi Suyash Nadkarni và Dylan Souvage vào ngày 12 THÁNG 9 2025 trong <a href="https://aws.amazon.com/blogs/compute/category/compute/amazon-ec2/">Amazon EC2</a>, <a href="https://aws.amazon.com/blogs/compute/category/post-types/best-practices/">Best Practices</a>, <a href="https://aws.amazon.com/blogs/compute/category/learning-levels/expert-400/">Expert (400)</a>, <a href="https://aws.amazon.com/blogs/compute/category/post-types/technical-how-to/">Technical</a></p>
+<p>Khi các tổ chức di chuyển nhiều khối lượng công việc quan trọng sang đám mây, tối ưu hóa về <strong>giá — hiệu suất (price-performance)</strong> trở thành một cân nhắc chủ chốt. Các instance <a href="https://aws.amazon.com/pm/ec2/">Amazon Elastic Compute Cloud</a>(Amazon EC2) sử dụng bộ xử lý <a href="https://aws.amazon.com/ec2/amd/">AMD EPYC</a>  đem lại mật độ lõi cao, băng thông bộ nhớ lớn và các tính năng bảo mật được hỗ trợ phần cứng, khiến chúng trở thành một lựa chọn mạnh mẽ cho nhiều loại khối lượng công việc tính toán, bộ nhớ hoặc I/O. Trong bài viết này, chúng tôi giải thích cách chọn loại instance Amazon EC2 dựa trên AMD phù hợp và mô tả các kỹ thuật điều chỉnh có thể giúp người dùng cải thiện hiệu quả khối lượng công việc. Cho dù bạn đang chạy mô phỏng, phân tích quy mô lớn hoặc các khối lượng inference, bài viết này cung cấp hướng dẫn thực tiễn để tối ưu hóa instance Amazon EC2 dùng AMD.</p>
+<p>Amazon EC2 cung cấp instances AMD dựa trên nhiều thế hệ AMD EPYC. Bài viết tập trung vào chiến lược tối ưu cho thế hệ 3 và 4, vốn tăng cường khả năng cho workload tính toán và bộ nhớ chuyên sâu.</p>
+<ul>
+<li>
+<p>Thế hệ 3 (<a href="https://aws.amazon.com/ec2/instance-types/m6a/">M6a</a>, <a href="https://aws.amazon.com/ec2/instance-types/r6a/">R6a</a>, <a href="https://aws.amazon.com/ec2/instance-types/c6a/">C6a</a>, <a href="https://aws.amazon.com/ec2/instance-types/hpc6a/">Hpc6a</a>): Cân bằng tính toán, bộ nhớ và lưu trữ — phù hợp với phân tích dữ liệu, máy chủ web và tính toán hiệu năng cao.</p>
+</li>
+<li>
+<p>Thế hệ thứ 4 (<a href="https://aws.amazon.com/ec2/instance-types/m7a/">M7a</a>, <a href="https://aws.amazon.com/ec2/instance-types/r7a/">R7a</a>, <a href="https://aws.amazon.com/ec2/instance-types/c7a/">C7a</a>, <a href="https://aws.amazon.com/ec2/instance-types/hpc7a/">Hpc7a</a>): Cung cấp hiệu suất tốt hơn tới 50% so với các thế hệ AMD trước đó. Các instance này giới thiệu hỗ trợ AVX‑512, bộ nhớ DDR5 và Simultaneous Multithreading (SMT) bị tắt; SMT là công nghệ cho phép một lõi vật lý chạy nhiều luồng cùng lúc; với SMT bị tắt, mỗi vCPU (virtual CPU) ánh xạ trực tiếp đến một lõi vật lý, điều này có thể cải thiện tính cô lập và nhất quán trong khối lượng công việc.</p>
+</li>
+</ul>
+<h3 id="chọn-loại-instance-amazon-ec2-dùng-amd-epyc-phù-hợp"><strong>Chọn loại instance Amazon EC2 dùng AMD EPYC phù hợp</strong></h3>
+<p>Việc chọn loại instance Amazon EC2 dùng AMD EPYC phù hợp bắt đầu bằng việc hiểu cách ứng dụng của bạn sử dụng tài nguyên tính toán (compute), bộ nhớ, lưu trữ và mạng. Mỗi instance family được tối ưu hóa cho những đặc tính khối lượng công việc nhất định.</p>
+<p><strong>Khối lượng công việc tính toán</strong></p>
+<p>Những khối lượng này liên quan tới các phép tính quy mô lớn, mô phỏng, hoặc mã hóa, và thường cần thông lượng CPU cao và hỗ trợ tập lệnh nâng cao.</p>
+<ul>
+<li>
+<p>Khuyến nghị: C7a, Hpc7a, C6a, Hpc6a</p>
+</li>
+<li>
+<p>Tình huống dùng: điện toán khoa học, mô hình tài chính, chuyển mã media, mã hóa, inference ML</p>
+</li>
+</ul>
+<p><strong>Big Data &amp; Analytics</strong></p>
+<p>Ứng dụng xử lý và phân tích tập dữ liệu lớn hưởng lợi từ băng thông bộ nhớ cao và tỷ lệ tính toán‑bộ nhớ cân bằng.</p>
+<ul>
+<li>
+<p>Khuyến nghị: R7a, M7a, R6a, M6a</p>
+</li>
+<li>
+<p>Tình huống dùng: xử lý luồng, phân tích thời gian thực, công cụ business intelligence, caching phân tán</p>
+</li>
+</ul>
+<p><strong>Khối lượng công việc cơ sở dữ liệu</strong></p>
+<p>Công việc database thường cần hiệu suất bộ nhớ ổn định và throughput I/O cao cho các hoạt động đọc/ghi.</p>
+<ul>
+<li>
+<p>Khuyến nghị: R7a, M7a, R6a, M6a</p>
+</li>
+<li>
+<p>Tình huống dùng: database quan hệ (MySQL, PostgreSQL), NoSQL (MongoDB, Cassandra), database trong bộ nhớ (Redis)</p>
+</li>
+</ul>
+<p><strong>Web và máy chủ ứng dụng</strong></p>
+<p>Những ứng dụng này xử lý các tải yêu cầu biến đổi và hưởng lợi từ sự cân bằng giữa tính toán, bộ nhớ và hiệu năng mạng.</p>
+<ul>
+<li>
+<p>Khuyến nghị: C7a, M7a, C6a, M6a</p>
+</li>
+<li>
+<p>Tình huống dùng: máy chủ web, hệ quản lý nội dung, nền tảng e‑commerce, các điểm cuối API</p>
+</li>
+</ul>
+<p><strong>AI/ML trên CPU</strong></p>
+<p>Các tác vụ ML không cần GPU — như inference hoặc tiền xử lý — có thể chạy hiệu quả trên các instance dựa CPU.</p>
+<ul>
+<li>
+<p>Khuyến nghị: M7a, R7a, C7a</p>
+</li>
+<li>
+<p>Tình huống dùng: inference mô hình, xử lý ngôn ngữ tự nhiên, thị giác máy tính, hệ gợi ý</p>
+</li>
+</ul>
+<p><strong>High Performance Computing</strong></p>
+<p>Những khối lượng công việc này cần nhiều lõi, băng thông bộ nhớ cao và mạng độ trễ thấp cho các tính toán liên kết chặt chẽ.</p>
+<ul>
+<li>
+<p>Khuyến nghị: Hpc7a, Hpc6a, R7a, M7a</p>
+</li>
+<li>
+<p>Tình huống dùng: động lực chất lỏng, genomics, phân tích địa chấn, mô phỏng kỹ thuật</p>
+</li>
+</ul>
+<p>Việc phù hợp hóa loại instance với nhu cầu khối lượng công việc giúp cung cấp hiệu suất dự đoán được và hiệu quả chi phí. Các dịch vụ như <a href="https://aws.amazon.com/ec2/autoscaling/">Amazon EC2 Auto Scaling</a> và <a href="https://aws.amazon.com/compute-optimizer/">AWS Compute Optimizer</a> có thể hỗ trợ trong việc lựa chọn instance và ra quyết định scale liên tục.</p>
+<h3 id="tối-ưu-hóa-các-instance-amazon-ec2-dùng-amd-epyc"><strong>Tối ưu hóa các instance Amazon EC2 dùng AMD EPYC</strong></h3>
+<p>Các instance EC2 dùng bộ xử lý AMD EPYC thế hệ thứ 4 vận hành với kiến trúc “chiplet modular”, như minh họa trong hình dưới đây. Mỗi bộ xử lý bao gồm nhiều <strong>Core Complex Dies (CCD)</strong>, và mỗi CCD chứa một hoặc nhiều tổ hợp lõi (core complexes, gọi là CCX). Một CCX gom tối đa tám lõi vật lý, mỗi lõi có 1 MB bộ nhớ đệm L2 riêng và tám lõi đó cùng chia sẻ 32 MB bộ nhớ đệm L3. Các CCD này được kết nối với một die I/O trung tâm, chịu trách nhiệm quản lý bộ nhớ và liên kết giữa các chip.<br>
+<img src="#ZgotmplZ" alt=""><br>
+(Biểu đồ 1: Sơ đồ của die CPU ‘Zen 4’ với 8 lõi mỗi die)</p>
+<p>Kiến trúc module của các bộ xử lý AMD EPYC thế hệ thứ 4 cho phép các instance như m7a.24xlarge và m7a.48xlarge hỗ trợ số lượng lõi cao — lên đến 96 lõi vật lý mỗi socket. Ví dụ:</p>
+<ul>
+<li>
+<p>m7a.24xlarge cung cấp 96 lõi vật lý từ một socket đơn</p>
+</li>
+<li>
+<p>m7a.48xlarge trải rộng hai socket, cung cấp 192 lõi vật lý</p>
+</li>
+</ul>
+<p>Hiểu cách các kích cỡ instance của EC2 ánh xạ tới bố cục bộ xử lý vật lý có thể giúp bạn tối ưu hóa hiệu suất và tính nhất quán bộ nhớ đệm (cache). Những khối lượng công việc liên quan tới truy cập bộ nhớ chia sẻ hoặc đồng bộ hóa luồng — như HPC hoặc database trong bộ nhớ — có thể hưởng lợi khi chọn kích cỡ instance giảm thiểu giao tiếp giữa socket và tận dụng hiệu quả bộ nhớ đệm L3.</p>
+<p><img src="#ZgotmplZ" alt=""></p>
+<p>(Biểu đồ 2: Bố cục CPU ‘EPYC Chiplet’)</p>
+<p>Các instance EC2 dùng AMD EPYC thế hệ thứ 4 hoạt động với SMT bị tắt. Trong cấu hình này, mỗi vCPU ánh xạ trực tiếp tới một lõi vật lý, loại bỏ chia sẻ tài nguyên như đơn vị thực thi và bộ nhớ đệm giữa các luồng “chị/em”. Thiết kế này có thể giảm nhiễu nội lõi và giúp cung cấp hiệu suất ổn định hơn cho các khối lượng công việc nhất định. Người dùng có thể cô lập luồng ở cấp lõi và quan sát độ biến thiên thấp hơn và thông lượng ổn định hơn cho các khối lượng như HPC, inference ML và database giao dịch.</p>
+<h3 id="cpu-optimizations"><strong>CPU optimizations</strong></h3>
+<p>Các công cụ như <a href="https://htop.dev/">htop</a> giúp xác định mẫu sử dụng CPU, trung bình tải hệ thống, và tiêu thụ tài nguyên theo tiến trình. Việc sử dụng CPU nên được đánh giá trong ngữ cảnh khối lượng công việc và yêu cầu hiệu năng. Nếu mức sử dụng liên tục đạt 100%, điều đó có thể chỉ ra rằng khối lượng công việc bị <strong>CPU-bound</strong> và chưa được cân bằng tối ưu. Trước khi thay đổi kích thước instance, bật Auto Scaling, hoặc chuyển đổi giữa các gia đình instance, cần thực hiện đánh giá các cơ hội tuning có thể cải thiện hiệu suất mà không thay đổi hạ tầng. Trung bình tải (load averages) vượt thường xuyên hơn số lượng vCPU cũng có thể là dấu hiệu bão hòa tính toán và có thể yêu cầu tối ưu tiếp.</p>
+<h3 id="sử-dụng-bộ-nhớ-đệm-l3"><strong>Sử dụng bộ nhớ đệm L3</strong></h3>
+<p><a href="https://www.techtarget.com/searchstorage/definition/cache-memory">L3 cache</a> là lớp nhớ nhanh chia sẻ được sử dụng bởi một nhóm lõi CPU. Trên EC2 dựa AMD, các lõi được tổ chức thành các <strong>slice bộ nhớ đệm L3</strong>, mỗi slice được chia sẻ bởi một tập hợp lõi trên cùng một socket. Các luồng được lập lịch trong cùng slice có thể truy cập dữ liệu chia sẻ hiệu quả hơn, giảm độ trễ bộ nhớ. Trên các instance AMD thế hệ 4 như m7a.2xlarge hoặc r7a.2xlarge, tất cả vCPU thường ánh xạ tới các lõi nằm trong cùng một slice L3, đảm bảo tính nhất quán địa phương bộ nhớ đệm. Đối với các kích cỡ lớn hơn (ví dụ m7a.8xlarge trở lên), <strong>thread pinning</strong> — gán các luồng tới lõi vật lý cụ thể — có thể giúp duy trì tính địa phương này. Thread pinning có thể giảm biến động hiệu suất trong các khối lượng với mẫu truy cập bộ nhớ chia sẻ thường xuyên.</p>
+<p>Bạn có thể pin luồng với lệnh:</p>
+<p><strong>taskset -c 0-3 ./your_application</strong></p>
+<p>Ví dụ này pin ứng dụng của bạn vào các lõi CPU 0 đến 3. Để xác định lõi nào chia sẻ cùng vùng bộ nhớ đệm L3, sử dụng các công cụ như lscpu hoặc lstopo để kiểm tra topology CPU hệ thống. Gom các luồng liên quan vào các lõi cùng chia sẻ L3 cache có thể cải thiện tính nhất quán hiệu suất cho các khối lượng có truy cập bộ nhớ chia sẻ.</p>
+<h3 id="tối-ưu-container-docker"><strong>Tối ưu container Docker</strong></h3>
+<p>Trong môi trường container chạy trên các instance EC2 dựa AMD, điều chỉnh các thiết lập liên quan CPU có thể cải thiện tính nhất quán và hiệu quả khối lượng công việc — đặc biệt cho các ứng dụng tính toán nặng hoặc nhạy độ trễ. Mặc dù cấu hình mặc định hoạt động cho nhiều kịch bản tổng quát, một số workload có thể lợi từ việc kiểm soát rõ ràng cách phân bổ tài nguyên CPU. Theo mặc định, runtime container như <a href="https://docs.docker.com/engine/containers/resource_constraints/">Docker</a> cho phép hệ điều hành lập lịch container trên bất kỳ lõi CPU nào sẵn có. Việc này có thể dẫn đến biến thiên hiệu suất khi container di chuyển giữa các lõi không chia sẻ cache. Để giảm biến thiên và cải thiện hiệu quả cache, container có thể được pin vào các lõi cụ thể bằng flag --cpuset-cpus.</p>
+<p><strong>docker run --cpuset-cpus=&ldquo;1,3&rdquo; my-container</strong></p>
+<p>Thiết lập này giới hạn container chỉ dùng các lõi đã chỉ định. Trong ví dụ này, lõi 1 và 3 được dùng để minh hoạ. Lựa chọn lõi thực tế nên dựa trên topology CPU để đảm bảo lập lịch hiệu quả bộ nhớ đệm. Pin container vào các lõi chia sẻ bộ nhớ đệm L3 có thể giảm overhead lập lịch và cải thiện tính nhất quán cho các workload có mẫu truy cập bộ nhớ chia sẻ.</p>
+<h3 id="thiết-lập-governor-tần-số-cpu"><strong>Thiết lập governor tần số CPU</strong></h3>
+<p>Một số hệ điều hành điều chỉnh tần số CPU động để tiết kiệm điện. Thông thường điều này được kiểm soát bởi thiết lập gọi là <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/processor_state_control.html">CPU frequency governor</a>. Mặc dù hành vi này hiệu quả cho các workload tổng quát, nó có thể gây độ trễ hoặc biến thiên hiệu suất trong môi trường nhạy với tính toán. Với các workload cần hiệu suất CPU ổn định cao — như xử lý dữ liệu thông lượng lớn, mô phỏng, hoặc ứng dụng thời gian thực — chúng tôi khuyến nghị đặt governor của CPU về <strong>performance mode</strong>. Điều này đảm bảo CPU chạy ở tần số tối đa khi chịu tải, tránh thời gian tăng tốc từ trạng thái năng lượng thấp.</p>
+<p>Bạn có thể áp dụng thiết lập này trên các instance bare metal hoặc <a href="https://aws.amazon.com/ec2/dedicated-hosts/">Amazon EC2 Dedicated Hosts</a> bằng lệnh:</p>
+<p><strong>sudo cpupower frequency-set -g performance</strong></p>
+<p>Trước khi áp dụng, hãy cân nhắc benchmark hiệu suất workload với các governor khác (như ondemand hoặc schedutil) để đảm bảo rằng chế độ performance mang lại lợi ích đo được mà không đánh đổi điện năng không cần thiết.</p>
+<h3 id="dùng-flag-compiler-kiến-trúc-cụ-thể"><strong>Dùng flag compiler kiến trúc cụ thể</strong></h3>
+<p>Khi biên dịch các ứng dụng C hoặc C++ nhạy hiệu suất, các flag kiến trúc cụ thể như -march=znverX có thể mở khóa tối ưu hóa dành riêng cho AMD EPYC, bao gồm cải thiện vectorization và hiệu suất số thực. Dù điều này có lợi cho workload tính toán nặng, nó có thể giảm tính di động giữa các kiến trúc. Để cân bằng giữa hiệu suất và tính linh hoạt, cân nhắc dùng phát hiện tính năng thời chạy (runtime feature detection) và dispatching — cách nhiều thư viện tối ưu dùng để thích ứng hành vi dựa trên CPU nền tảng.</p>
+<p>Trước khi dùng các flag này, xác minh rằng phiên bản compiler của bạn hỗ trợ chúng và đảm bảo kiến trúc instance EC2 đích phù hợp với flag chỉ định. Ví dụ, một binary biên dịch với -march=znver4 có thể lỗi chạy với lỗi “illegal instruction” (SIGILL) nếu chạy trên các instance thế hệ trước như M5a. Bảng dưới đây mô tả các flag phù hợp và phiên bản compiler tối thiểu hỗ trợ cho mỗi thế hệ AMD EPYC:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Thế hệ AMD EPYC</th>
+          <th>Flag -march</th>
+          <th>Phiên bản GCC tối thiểu</th>
+          <th>Phiên bản LLVM/Clang tối thiểu</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Thế hệ 4 (ví dụ M7a)</td>
+          <td>znver4</td>
+          <td>GCC 12</td>
+          <td>Clang 15</td>
+      </tr>
+      <tr>
+          <td>Thế hệ 3 (ví dụ M6a)</td>
+          <td>znver3</td>
+          <td>GCC 11</td>
+          <td>Clang 13</td>
+      </tr>
+      <tr>
+          <td>Thế hệ 2 (ví dụ M5a)</td>
+          <td>znver2</td>
+          <td>GCC 9</td>
+          <td>Clang 11</td>
+      </tr>
+  </tbody>
+</table>
+<p>Các flag sau được hỗ trợ cho GCC 11+ hoặc LLVM Clang 13+:</p>
+<ul>
+<li>
+<p>Cho EPYC thế hệ 4 (M7a, R7a, C7a, Hpc7a): -march=znver4</p>
+</li>
+<li>
+<p>Cho EPYC thế hệ 3 (M6a, R6a, C6a): -march=znver3</p>
+</li>
+<li>
+<p>Cho EPYC thế hệ 2 (M5a, R5a, C5a): -march=znver2</p>
+</li>
+</ul>
+<h3 id="khi-nào-bật-avx512-và-vnni"><strong>Khi nào bật AVX‑512 và VNNI</strong></h3>
+<p>Các instance EC2 dùng AMD EPYC thế hệ 4 hỗ trợ các tập lệnh SIMD tiên tiến như AVX2, AVX‑512 và VNNI. Những tập lệnh này có thể cải thiện thông lượng cho các workload vector nặng như inference ML, xử lý hình ảnh hoặc mô phỏng khoa học. Tuy nhiên, những flag này là đặc trưng theo thế hệ — việc cố chạy các binary được biên dịch với AVX‑512 trên instance không hỗ trợ (ví dụ thế hệ 2 như M5a) có thể gây lỗi thời gian chạy như “illegal instruction” (SIGILL).</p>
+<p>Khi biên dịch mã C hoặc C++:</p>
+<p><strong>gcc -mavx2 -mavx512f -O2 your_program.c -o your_program</strong></p>
+<p>Để hiểu rõ hơn tối ưu hóa nào được áp dụng, dùng:</p>
+<p><strong>-ftree-vectorizer-verbose=2 -fopt-info-vec-missed</strong></p>
+<p>Cách này giúp xác định các vòng lặp hưởng lợi từ vectorization và những vòng lặp không. Chỉ bật các tối ưu hóa này nếu workload của bạn hưởng lợi và bạn đã xác thực tính tương thích với thế hệ instance đang dùng. Tránh áp dụng flag AVX một cách bừa bãi, vì có thể làm giảm tính di động và tăng độ phức tạp binary.</p>
+<h3 id="thư-viện-tối-ưu-cpu-của-amd-amd-optimizing-cpu-libraries--aocl"><strong>Thư viện tối ưu CPU của AMD (AMD Optimizing CPU Libraries – AOCL)</strong></h3>
+<p>Thư viện <a href="https://www.amd.com/en/developer/aocl.html">AMD Optimizing CPU Libraries (AOCL)</a> cung cấp các thư viện toán học được tinh chỉnh hiệu năng dành riêng cho các bộ xử lý AMD EPYC. Những thư viện này bao gồm các triển khai tối ưu của các hàm hay dùng trong khoa học, kỹ thuật và workload ML. Bạn có thể liên kết ứng dụng của bạn với AOCL để sử dụng các tối ưu phần cứng mà không cần viết lại mã. AOCL gồm các thư viện cho toán vector, scalar, tạo số ngẫu nhiên, FFT, BLAS và LAPACK, trong số những cái khác.</p>
+<h3 id="cấu-hình-aocl"><strong>Cấu hình AOCL</strong></h3>
+<p>Gán biến môi trường AOCL_ROOT trỏ tới thư mục cài đặt:</p>
+<p><strong>export AOCL_ROOT=/path/to/aocl</strong></p>
+<p>Biên dịch ứng dụng với đường dẫn include và library tương ứng:</p>
+<p><strong>gcc -I$AOCL_ROOT/include -L$AOCL_ROOT/lib -lamdlibm -lm your_program.c -o your_program</strong></p>
+<p>Tối ưu toán vector và scalar: bạn có thể bật các tuning vector hóa hay scalar cụ thể cho workload:</p>
+<p><strong># Tối ưu toán vector</strong><br>
+<strong>gcc -lamdlibm -fveclib=AMDLIBM -lm your_program.c -o your_program</strong></p>
+<p><strong># Toán scalar nhanh hơn</strong><br>
+<strong>gcc -lamdlibm -fsclrlib=AMDLIBM -lamdlibmfast -lm your_program.c -o your_program</strong></p>
+<p>Profiling runtime AOCL<br>
+AOCL hỗ trợ profiling runtime, giúp các nhà phát triển xác định các phép toán nào chiếm thời gian thực thi lớn. Để bật profiling:</p>
+<p><strong>export AOCL_PROFILE=1</strong><br>
+<strong>./your_program</strong></p>
+<p>Sau khi chạy, một file báo cáo tên aocl_profile_report.txt được sinh ra. Nó cung cấp phân tích theo hàm gồm số lần gọi, thời gian thực thi và việc sử dụng luồng. Các nhà phát triển có thể dùng nó để tập trung tối ưu hóa vào các phần có ảnh hưởng cao nhất.</p>
+<h3 id="kết-luận"><strong>Kết luận</strong></h3>
+<p>Bài viết này khảo sát cách chọn các loại instance Amazon EC2 dựa AMD phù hợp với đặc điểm khối lượng công việc, và cách áp dụng các kỹ thuật điều chỉnh tập trung vào việc sử dụng CPU, định vị luồng, hiệu quả cache và tối ưu thư viện toán học. Những phương pháp này đặc biệt quan trọng với khối lượng công việc bị giới hạn bởi CPU hoặc nhạy độ trễ, nơi hiệu suất ổn định là thiết yếu.</p>
+<p>Sẵn sàng bắt đầu? Đăng nhập <a href="https://aws.amazon.com/console/">AWS Management Console</a>  và khởi động các instance Amazon EC2 dùng AMD EPYC để bắt tay vào tối ưu hóa workload của bạn ngay hôm nay.</p>
+<p>TAGS: <a href="https://aws.amazon.com/blogs/compute/tag/amd/">AMD</a></p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../../vi/3-blogstranslated/3.2-blog2/" title="Thông báo Amazon EC2 M4 và M4 Pro Mac instances"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../../vi/4-eventparticipated/" title="Các Sự Kiện Tham Gia" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../../js/clipboard.min.js?1765002308"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1765002308"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1765002308"></script>
+    <script src="../../../js/jquery.sticky.js?1765002308"></script>
+    <script src="../../../js/featherlight.min.js?1765002308"></script>
+    <script src="../../../js/highlight.pack.js?1765002308"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1765002308"></script>
+    <script src="../../../js/learn.js?1765002308"></script>
+    <script src="../../../js/hugo-learn.js?1765002308"></script>
+
+    <link href="../../../mermaid/mermaid.css?1765002308" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1765002308"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function (i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    ((i[r] =
+      i[r] ||
+      function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+      (i[r].l = 1 * new Date()));
+    ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(
+    window,
+    document,
+    "script",
+    "https://www.google-analytics.com/analytics.js",
+    "ga",
+  );
+
+  ga("create", "UA-158079754-2", "auto");
+  ga("send", "pageview");
+</script>
+
+  </body>
+</html>
