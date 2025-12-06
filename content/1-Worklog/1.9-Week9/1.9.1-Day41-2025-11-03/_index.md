@@ -153,18 +153,18 @@ Transformer Does:
 Parallel: "I" attends to {"I", "am", "happy"}
 Parallel: "am" attends to {"I", "am", "happy"}
 Parallel: "happy" attends to {"I", "am", "happy"}
-All at once! ⚡
+All at once! 
 ```
 
 ---
 
 ## **Why Everyone Talks About Transformers**
 
-✅ **Speed:** Can train much faster on GPUs/TPUs (parallel)
-✅ **Scalability:** Can handle very long sequences (no bottleneck)
-✅ **Long-range:** Direct attention solves gradient problems
-✅ **Versatility:** Works for translation, classification, QA, summarization, chatbots...
-✅ **Performance:** Achieves state-of-the-art on nearly every NLP task
+ **Speed:** Can train much faster on GPUs/TPUs (parallel)
+ **Scalability:** Can handle very long sequences (no bottleneck)
+ **Long-range:** Direct attention solves gradient problems
+ **Versatility:** Works for translation, classification, QA, summarization, chatbots...
+ **Performance:** Achieves state-of-the-art on nearly every NLP task
 
 ---
 
@@ -206,13 +206,3 @@ Transformers are used for:
 
 ---
 
-## **Next Steps**
-
-Now that we understand **why** transformers are revolutionary, we'll learn:
-
-1. The complete **transformer architecture**
-2. How **attention mechanisms** work mathematically
-3. How to **implement** a transformer decoder
-4. How to use **pre-trained models** (BERT, GPT-2, T5)
-
-**Key Insight:** The transformer replaced RNNs because it solved three fundamental problems through pure attention and parallel processing. This was a paradigm shift in NLP.

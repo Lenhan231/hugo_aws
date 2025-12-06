@@ -153,18 +153,18 @@ Transformer Làm:
 Song Song: "I" attend tới {"I", "am", "happy"}
 Song Song: "am" attend tới {"I", "am", "happy"}
 Song Song: "happy" attend tới {"I", "am", "happy"}
-Tất cả cùng lúc! ⚡
+Tất cả cùng lúc! 
 ```
 
 ---
 
 ## **Tại Sao Mọi Người Nói Về Transformers**
 
-✅ **Tốc Độ:** Có thể huấn luyện nhanh hơn trên GPU/TPU (song parallel)
-✅ **Khả Năng Mở Rộng:** Có thể xử lý chuỗi rất dài (không thắt cổ chai)
-✅ **Dài Hạn:** Attention trực tiếp giải quyết các vấn đề gradient
-✅ **Tính Linh Hoạt:** Hoạt động cho dịch, phân loại, QA, tóm tắt, chatbots...
-✅ **Hiệu Năng:** Đạt kết quả tiên tiến trên gần như mọi tác vụ NLP
+**Tốc Độ:** Có thể huấn luyện nhanh hơn trên GPU/TPU (song parallel)
+**Khả Năng Mở Rộng:** Có thể xử lý chuỗi rất dài (không thắt cổ chai)
+**Dài Hạn:** Attention trực tiếp giải quyết các vấn đề gradient
+**Tính Linh Hoạt:** Hoạt động cho dịch, phân loại, QA, tóm tắt, chatbots...
+**Hiệu Năng:** Đạt kết quả tiên tiến trên gần như mọi tác vụ NLP
 
 ---
 
@@ -206,13 +206,3 @@ Transformers được sử dụng cho:
 
 ---
 
-## **Bước Tiếp Theo**
-
-Bây giờ chúng ta hiểu **tại sao** transformers là cách mạng, chúng ta sẽ học:
-
-1. **Kiến trúc transformer** hoàn chỉnh
-2. Cách các **cơ chế attention** hoạt động về mặt toán học
-3. Cách **triển khai** một transformer decoder
-4. Cách sử dụng **các mô hình được huấn luyện trước** (BERT, GPT-2, T5)
-
-**Thông Tin Chính:** Transformer thay thế RNNs vì nó giải quyết ba vấn đề cơ bản thông qua attention thuần và xử lý song song. Đây là một sự thay đổi mô hình trong NLP.

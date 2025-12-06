@@ -298,4 +298,3 @@ Output: "I am happy"
 3. **Scalability:** Can increase model size with predictable improvements
 4. **Transfer Learning:** Pre-trained transformers (BERT, GPT) work across tasks
 
-**Next:** We dive into the mathematical details of attention mechanisms!

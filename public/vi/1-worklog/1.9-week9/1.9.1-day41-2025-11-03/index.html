@@ -15,21 +15,21 @@
     <title>Ngày 41 - Vấn Đề RNN &amp; Tại Sao Cần Transformers :: Báo cáo thực tập</title>
 
     
-    <link href="../../../../css/nucleus.css?1764943966" rel="stylesheet">
-    <link href="../../../../css/fontawesome-all.min.css?1764943966" rel="stylesheet">
-    <link href="../../../../css/hybrid.css?1764943966" rel="stylesheet">
-    <link href="../../../../css/featherlight.min.css?1764943966" rel="stylesheet">
-    <link href="../../../../css/perfect-scrollbar.min.css?1764943966" rel="stylesheet">
-    <link href="../../../../css/auto-complete.css?1764943966" rel="stylesheet">
-    <link href="../../../../css/atom-one-dark-reasonable.css?1764943966" rel="stylesheet">
-    <link href="../../../../css/theme.css?1764943966" rel="stylesheet">
-    <link href="../../../../css/hugo-theme.css?1764943966" rel="stylesheet">
+    <link href="../../../../css/nucleus.css?1764944103" rel="stylesheet">
+    <link href="../../../../css/fontawesome-all.min.css?1764944103" rel="stylesheet">
+    <link href="../../../../css/hybrid.css?1764944103" rel="stylesheet">
+    <link href="../../../../css/featherlight.min.css?1764944103" rel="stylesheet">
+    <link href="../../../../css/perfect-scrollbar.min.css?1764944103" rel="stylesheet">
+    <link href="../../../../css/auto-complete.css?1764944103" rel="stylesheet">
+    <link href="../../../../css/atom-one-dark-reasonable.css?1764944103" rel="stylesheet">
+    <link href="../../../../css/theme.css?1764944103" rel="stylesheet">
+    <link href="../../../../css/hugo-theme.css?1764944103" rel="stylesheet">
     
-    <link href="../../../../css/theme-workshop.css?1764943966" rel="stylesheet">
+    <link href="../../../../css/theme-workshop.css?1764944103" rel="stylesheet">
     
-    <link href="../../../../css/custom.css?1764943966" rel="stylesheet">
+    <link href="../../../../css/custom.css?1764944103" rel="stylesheet">
 
-    <script src="../../../../js/jquery-3.3.1.min.js?1764943966"></script>
+    <script src="../../../../js/jquery-3.3.1.min.js?1764944103"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -1863,7 +1863,6 @@
         <li><a href="#t5-text-to-text-transfer-transformer"><strong>T5</strong> (Text-to-Text Transfer Transformer)</a></li>
       </ul>
     </li>
-    <li><a href="#bước-tiếp-theo"><strong>Bước Tiếp Theo</strong></a></li>
   </ul>
 </nav></div>
 </div>
@@ -2053,14 +2052,14 @@ Transformer Làm:
 Song Song: &#34;I&#34; attend tới {&#34;I&#34;, &#34;am&#34;, &#34;happy&#34;}
 Song Song: &#34;am&#34; attend tới {&#34;I&#34;, &#34;am&#34;, &#34;happy&#34;}
 Song Song: &#34;happy&#34; attend tới {&#34;I&#34;, &#34;am&#34;, &#34;happy&#34;}
-Tất cả cùng lúc! ⚡
+Tất cả cùng lúc! 
 </code></pre><hr>
 <h2 id="tại-sao-mọi-người-nói-về-transformers"><strong>Tại Sao Mọi Người Nói Về Transformers</strong></h2>
-<p>✅ <strong>Tốc Độ:</strong> Có thể huấn luyện nhanh hơn trên GPU/TPU (song parallel)
-✅ <strong>Khả Năng Mở Rộng:</strong> Có thể xử lý chuỗi rất dài (không thắt cổ chai)
-✅ <strong>Dài Hạn:</strong> Attention trực tiếp giải quyết các vấn đề gradient
-✅ <strong>Tính Linh Hoạt:</strong> Hoạt động cho dịch, phân loại, QA, tóm tắt, chatbots&hellip;
-✅ <strong>Hiệu Năng:</strong> Đạt kết quả tiên tiến trên gần như mọi tác vụ NLP</p>
+<p><strong>Tốc Độ:</strong> Có thể huấn luyện nhanh hơn trên GPU/TPU (song parallel)
+<strong>Khả Năng Mở Rộng:</strong> Có thể xử lý chuỗi rất dài (không thắt cổ chai)
+<strong>Dài Hạn:</strong> Attention trực tiếp giải quyết các vấn đề gradient
+<strong>Tính Linh Hoạt:</strong> Hoạt động cho dịch, phân loại, QA, tóm tắt, chatbots&hellip;
+<strong>Hiệu Năng:</strong> Đạt kết quả tiên tiến trên gần như mọi tác vụ NLP</p>
 <hr>
 <h2 id="ứng-dụng-của-transformers"><strong>Ứng Dụng của Transformers</strong></h2>
 <p>Transformers được sử dụng cho:</p>
@@ -2099,15 +2098,6 @@ Tất cả cùng lúc! ⚡
 <li>Rất linh hoạt: Một mô hình xử lý dịch, phân loại, QA, tóm tắt, hồi quy</li>
 </ul>
 <hr>
-<h2 id="bước-tiếp-theo"><strong>Bước Tiếp Theo</strong></h2>
-<p>Bây giờ chúng ta hiểu <strong>tại sao</strong> transformers là cách mạng, chúng ta sẽ học:</p>
-<ol>
-<li><strong>Kiến trúc transformer</strong> hoàn chỉnh</li>
-<li>Cách các <strong>cơ chế attention</strong> hoạt động về mặt toán học</li>
-<li>Cách <strong>triển khai</strong> một transformer decoder</li>
-<li>Cách sử dụng <strong>các mô hình được huấn luyện trước</strong> (BERT, GPT-2, T5)</li>
-</ol>
-<p><strong>Thông Tin Chính:</strong> Transformer thay thế RNNs vì nó giải quyết ba vấn đề cơ bản thông qua attention thuần và xử lý song song. Đây là một sự thay đổi mô hình trong NLP.</p>
 
 
 
@@ -3550,19 +3540,19 @@ Tất cả cùng lúc! ⚡
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../../js/clipboard.min.js?1764943966"></script>
-    <script src="../../../../js/perfect-scrollbar.min.js?1764943966"></script>
-    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1764943966"></script>
-    <script src="../../../../js/jquery.sticky.js?1764943966"></script>
-    <script src="../../../../js/featherlight.min.js?1764943966"></script>
-    <script src="../../../../js/highlight.pack.js?1764943966"></script>
+    <script src="../../../../js/clipboard.min.js?1764944103"></script>
+    <script src="../../../../js/perfect-scrollbar.min.js?1764944103"></script>
+    <script src="../../../../js/perfect-scrollbar.jquery.min.js?1764944103"></script>
+    <script src="../../../../js/jquery.sticky.js?1764944103"></script>
+    <script src="../../../../js/featherlight.min.js?1764944103"></script>
+    <script src="../../../../js/highlight.pack.js?1764944103"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../../js/modernizr.custom-3.6.0.js?1764943966"></script>
-    <script src="../../../../js/learn.js?1764943966"></script>
-    <script src="../../../../js/hugo-learn.js?1764943966"></script>
+    <script src="../../../../js/modernizr.custom-3.6.0.js?1764944103"></script>
+    <script src="../../../../js/learn.js?1764944103"></script>
+    <script src="../../../../js/hugo-learn.js?1764944103"></script>
 
-    <link href="../../../../mermaid/mermaid.css?1764943966" rel="stylesheet" />
-    <script src="../../../../mermaid/mermaid.js?1764943966"></script>
+    <link href="../../../../mermaid/mermaid.css?1764944103" rel="stylesheet" />
+    <script src="../../../../mermaid/mermaid.js?1764944103"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -298,4 +298,4 @@ Bước 4: [<START>, I, am, happy]
 3. **Khả Năng Mở Rộng:** Có thể tăng kích thước mô hình với cải thiện dự đoán
 4. **Transfer Learning:** Các transformer được huấn luyện trước (BERT, GPT) hoạt động trên các tác vụ
 
-**Tiếp Theo:** Chúng ta đi sâu vào chi tiết toán học của các cơ chế attention!
+
