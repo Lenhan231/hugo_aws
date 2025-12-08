@@ -241,3 +241,6 @@ If costs exceed budget, enable Invite-Only mode to cap Cognito MAU and reduce lo
 - Room for future analytics (QuickSight) or AI/ML features.
 
 This system proves the ability to build a platform that securely, cost-effectively, and scalably easy by AWS Serverless services - that suitable to apply for small groups or communities.
+
+### **9. Word attachment**
+- [Online Library](https://docs.google.com/document/d/1Wf70Iif5duHvM_0IDd3TpI8vLsMkgIZZ8XsJ02B6BKI/edit?tab=t.0)

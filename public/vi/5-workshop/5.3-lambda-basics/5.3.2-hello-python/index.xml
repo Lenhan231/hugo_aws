@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lambda Hello World (Python) on Báo cáo thực tập</title>
-    <link>http://localhost:55895/hugo_aws/vi/5-workshop/5.3-lambda-basics/5.3.2-hello-python/</link>
+    <link>http://localhost:1313/hugo_aws/vi/5-workshop/5.3-lambda-basics/5.3.2-hello-python/</link>
     <description>Recent content in Lambda Hello World (Python) on Báo cáo thực tập</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:55895/hugo_aws/vi/5-workshop/5.3-lambda-basics/5.3.2-hello-python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/hugo_aws/vi/5-workshop/5.3-lambda-basics/5.3.2-hello-python/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

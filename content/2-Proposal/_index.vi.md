@@ -248,4 +248,7 @@ Nếu chi phí tăng vượt ngân sách, có thể tạm thời giới hạn ng
 - Cung cấp một **tài liệu tham khảo sống** về việc triển khai Serverless E2E.
 - Khả năng tích hợp các dịch vụ phân tích (như Amazon QuickSight) hoặc AI/ML trong tương lai.
 
-Hệ thống này chứng minh khả năng xây dựng nền tảng nội dung bảo mật, tiết kiệm chi phí và mở rộng dễ dàng bằng AWS Serverless — phù hợp triển khai thực tế cho nhóm nhỏ. Rẻ
+Hệ thống này chứng minh khả năng xây dựng nền tảng nội dung bảo mật, tiết kiệm chi phí và mở rộng dễ dàng bằng AWS Serverless — phù hợp triển khai thực tế cho nhóm nhỏ.
+
+### **9. Word đính kèm**
+- [Online Library](https://docs.google.com/document/d/1Wf70Iif5duHvM_0IDd3TpI8vLsMkgIZZ8XsJ02B6BKI/edit?tab=t.0)

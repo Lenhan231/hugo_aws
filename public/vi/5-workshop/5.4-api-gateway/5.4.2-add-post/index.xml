@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Thêm phương thức POST on Báo cáo thực tập</title>
-    <link>http://localhost:55895/hugo_aws/vi/5-workshop/5.4-api-gateway/5.4.2-add-post/</link>
+    <link>http://localhost:1313/hugo_aws/vi/5-workshop/5.4-api-gateway/5.4.2-add-post/</link>
     <description>Recent content in Thêm phương thức POST on Báo cáo thực tập</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="http://localhost:55895/hugo_aws/vi/5-workshop/5.4-api-gateway/5.4.2-add-post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/hugo_aws/vi/5-workshop/5.4-api-gateway/5.4.2-add-post/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

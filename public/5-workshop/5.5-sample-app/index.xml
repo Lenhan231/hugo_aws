@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sample App Logic on Internship Report</title>
-    <link>http://localhost:55895/hugo_aws/5-workshop/5.5-sample-app/</link>
+    <link>http://localhost:1313/hugo_aws/5-workshop/5.5-sample-app/</link>
     <description>Recent content in Sample App Logic on Internship Report</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="http://localhost:55895/hugo_aws/5-workshop/5.5-sample-app/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/hugo_aws/5-workshop/5.5-sample-app/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
