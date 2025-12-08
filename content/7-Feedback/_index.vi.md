@@ -26,4 +26,3 @@ Văn hóa công ty rất tích cực: mọi người tôn trọng lẫn nhau, l�
 **6. Chính sách / phúc lợi cho thực tập sinh**  
 Công ty có hỗ trợ phụ cấp thực tập và tạo điều kiện về thời gian linh hoạt khi cần thiết. Ngoài ra, việc được tham gia các buổi đào tạo nội bộ là một điểm cộng lớn.
 
----
